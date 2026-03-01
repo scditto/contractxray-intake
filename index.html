@@ -896,12 +896,12 @@
                     <li><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
                 </ol>
                 
-                <p>Questions about these Terms? Contact us at: <a href="/cdn-cgi/l/email-protection#e99a9c9999869b9da987889c9d80859c9a818c88859d81c7869b8e"><span class="__cf_email__" data-cfemail="7f0c0a0f0f100d0b3f111e0a0b16130a0c171a1e130b1751100d18">[email&#160;protected]</span></a></p>
+                <p>Questions about these Terms? Contact us at: info@nautilushealth.org</p>
             </div>
 
             <div class="nda-note">
                 <strong>Confidentiality:</strong> We respect your privacy. If your organization requires an NDA, 
-                email <a href="/cdn-cgi/l/email-protection#b0c3c5c0c0dfc2c4f0ded1c5c4d9dcc5c3d8d5d1dcc4d89edfc2d7"><span class="__cf_email__" data-cfemail="d3a0a6a3a3bca1a793bdb2a6a7babfa6a0bbb6b2bfa7bbfdbca1b4">[email&#160;protected]</span></a> and we will 
+                email info@nautilushealth.org and we will 
                 process one electronically.
             </div>
 
@@ -953,7 +953,7 @@
                 <p>
                     Thank you! Your contract has been submitted for analysis.<br>
                     You'll receive your <span id="confirm-report-type">Quick Look report</span> at 
-                    <span class="email-highlight" id="confirm-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb92849e99ab8e868a8287c5888486">[email&#160;protected]</a></span> 
+                    <span class="email-highlight" id="confirm-email">your@email.com</span> 
                     within <span id="confirm-sla">same business day</span>.
                 </p>
             </div>
@@ -1129,7 +1129,7 @@
                     <li>Request deletion of your contract and personal information</li>
                     <li>Ask questions about how your data is handled</li>
                 </ul>
-                <p>To exercise any of these rights, contact us at <a href="/cdn-cgi/l/email-protection#e89b9d9898879a9ca886899d9c81849d9b808d89849c80c6879a8f"><span class="__cf_email__" data-cfemail="32414742425d4046725c5347465b5e47415a57535e465a1c5d4055">[email&#160;protected]</span></a>.</p>
+                <p>To exercise any of these rights, contact us at info@nautilushealth.org.</p>
 
                 <h4>8. Changes to This Policy</h4>
                 <p>We may update this Privacy Policy from time to time. Material changes will be communicated via email to active users. The effective date at the top of this policy indicates when it was last revised.</p>
@@ -1138,7 +1138,7 @@
                 <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact:</p>
                 <p style="margin-top: 0.5rem;">
                     Nautilus Health Institute<br>
-                    <a href="/cdn-cgi/l/email-protection#483b3d3838273a3c0826293d3c21243d3b202d29243c2066273a2f"><span class="__cf_email__" data-cfemail="fa898f8a8a95888eba949b8f8e93968f89929f9b968e92d495889d">[email&#160;protected]</span></a>
+                    info@nautilushealth.org
                 </p>
             </div>
             <div class="modal-footer">
@@ -1164,12 +1164,12 @@
     <footer class="footer">
         <p>
             © 2026 Nautilus Health Institute. All rights reserved.<br>
-            <a href="/cdn-cgi/l/email-protection#14676164647b6660547a7561607d7861677c717578607c3a7b6673"><span class="__cf_email__" data-cfemail="6e1d1b1e1e011c1a2e000f1b1a07021b1d060b0f021a0640011c09">[email&#160;protected]</span></a> | 
+            info@nautilushealth.org | 
             <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // State
         let selectedTier = null;
         let selectedFile = null;
@@ -1425,4 +1425,26 @@
                 document.getElementById('confirm-email').textContent = formData.submitterEmail;
                 if (selectedTier === 'premium') {
                     document.getElementById('confirm-report-type').textContent = 'Scorecard and Negotiation Guide';
-                    
+                    document.getElementById('confirm-sla').textContent = '24 hours';
+                } else {
+                    document.getElementById('confirm-report-type').textContent = 'Quick Look report';
+                    document.getElementById('confirm-sla').textContent = 'same business day';
+                }
+                
+                document.getElementById('confirmation-section').classList.add('visible');
+                
+                // Scroll to confirmation
+                setTimeout(() => {
+                    document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('There was an error submitting your contract. Please try again or contact support.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit for Analysis';
+            }
+        }
+    </script>
+</body>
+</html>
