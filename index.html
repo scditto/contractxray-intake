@@ -827,7 +827,7 @@
             </div>
             <div id="tier-description-premium" style="display:none;">
                 <p style="margin-bottom: 1.25rem; color: var(--mid-gray); font-size: 0.95rem;">
-                    You'll receive a comprehensive Scorecard with detailed analysis of all 35 issues, 
+                    You'll receive a comprehensive Scorecard with detailed provision-by-provision analysis, 
                     plus a Negotiation Guide with specific improvement recommendations.
                 </p>
             </div>
@@ -952,7 +952,7 @@
                 <h3>Contract Received!</h3>
                 <p>
                     We're on it. Your <span id="confirm-report-type">Quick Look report</span> will land in your inbox at
-                    <span class="email-highlight" id="confirm-email">your@email.com</span> 
+                    <span class="email-highlight" id="confirm-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f980968c8bb99c94989095d79a9694">[email&#160;protected]</a></span> 
                     within <span id="confirm-sla">5 minutes</span>.<br>
                     Time enough for a coffee run.
                 </p>
@@ -972,27 +972,27 @@
                 <p>The Quick Look report provides a rapid assessment of your PBM contract's alignment with fiduciary standards. Perfect for initial screening or when you need fast answers.</p>
                 
                 <ul>
-                    <li>Overall contract score (0-100 scale)</li>
-                    <li>Rating category (Excellent, Good, Fair, Concern, or Red Flag)</li>
-                    <li>Top 3 strengths identified in your contract</li>
-                    <li>Top 3 priority concerns requiring attention</li>
-                    <li>CAA 2026 alignment assessment</li>
+                    <li>Category assessments across Fiduciary Foundation, Financial Transparency, and Employer Rights</li>
+                    <li>10 key provisions each rated Good, Concern, or Red Flag</li>
+                    <li>Specific findings with contract evidence for each provision</li>
+                    <li>CAA 2026 compliance flags where applicable</li>
                 </ul>
 
                 <h4>Sample Report Preview</h4>
                 <div class="sample-preview">
                     <div class="sample-preview-header">📊 Quick Look Summary</div>
-                    <div class="sample-score">
-                        <span class="sample-score-value">58</span>
-                        <span class="sample-score-label">/ 100 (Fair)</span>
+                    <div class="sample-score" style="display: flex; gap: 8px; margin: 12px 0;">
+                        <span style="background: #059669; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600;">2 Good</span>
+                        <span style="background: #EAB308; color: #1a1a2e; padding: 4px 10px; border-radius: 4px; font-weight: 600;">5 Concern</span>
+                        <span style="background: #DC2626; color: white; padding: 4px 10px; border-radius: 4px; font-weight: 600;">3 Red Flag</span>
                     </div>
                     <div class="sample-findings">
-                        <strong>Priority Concerns:</strong> Limited audit rights, exclusivity requirements restrict carve-out options, rebate timing exceeds best practice...
+                        <strong>Sample Finding:</strong> P6 Conflict of Interest: Complete silence on pharmacy ownership and supply chain conflicts. <span style="background: #DC2626; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">Red Flag</span>
                     </div>
                 </div>
 
                 <h4>Analysis Methodology</h4>
-                <p>Your contract is evaluated against 35 issues across 10 key provisions, including fiduciary acknowledgment, pricing transparency, audit rights, data ownership, and more. Each issue is scored 0-5 and weighted based on fiduciary importance.</p>
+                <p>Your contract is evaluated against fiduciary-aligned standards across 10 key provisions including fiduciary commitment, pricing transparency, rebate pass-through, audit rights, data ownership, and more.</p>
 
                 <div class="delivery-badge">
                     ⏱ Delivered in about 5 minutes
@@ -1004,8 +1004,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Premium Modal -->
     <div class="modal-overlay" id="modal-premium">
         <div class="modal">
             <div class="modal-header">
@@ -1020,7 +1018,7 @@
                 <ul>
                     <li>Overall contract score with detailed breakdown</li>
                     <li>Individual scores for all 10 provisions</li>
-                    <li>Issue-by-issue analysis across 35 evaluation criteria</li>
+                    <li>Issue-by-issue analysis across comprehensive evaluation criteria</li>
                     <li>Evidence citations with specific contract references</li>
                     <li>Comparison to fiduciary best practices</li>
                     <li>CAA 2026 compliance assessment</li>
@@ -1059,7 +1057,7 @@
                 </div>
 
                 <h4>Analysis Methodology</h4>
-                <p>Your contract is evaluated against the Fiduciary-Aligned PBM Contract Standards: 35 issues across 10 provisions aligned with CAA 2026 requirements. Each issue receives a score (0-5), confidence rating, and specific contract evidence.</p>
+                <p>Your contract is evaluated against the Fiduciary-Aligned PBM Contract Standards: comprehensive evaluation criteria across 10 provisions aligned with CAA 2026 requirements. Each issue receives a score (0-5), confidence rating, and specific contract evidence.</p>
 
                 <div class="delivery-badge">
                     ⏱ Delivered within 24 hours
@@ -1165,12 +1163,12 @@
     <footer class="footer">
         <p>
             © 2026 Nautilus Health Institute. All rights reserved.<br>
-            info@nautilushealth.org | 
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd94939b92bd939c88899491888e95989c918995d3928f9a">[email&#160;protected]</a> | 
             <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // State
         let selectedTier = null;
         let selectedFile = null;
@@ -1439,13 +1437,21 @@
                     document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
 
-            } catch (error) {
+                  } catch (error) {
                 console.error('Submission error:', error);
-                alert('There was an error submitting your contract. Please try again or contact support.');
+                alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit for Analysis';
             }
         }
+
+        // Auto-select Premium tier from URL parameter
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('tier') === 'premium') {
+                selectTier('premium');
+            }
+        });
     </script>
 </body>
 </html>
