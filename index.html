@@ -759,9 +759,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-brand">
-            <div class="header-logo">
-                <span class="nautilus">NAUTILUS</span> HEALTH INSTITUTE
-            </div>
+            <img src="https://scditto.github.io/contractxray-intake/Nautilus_Logo_WIDE.png" alt="Nautilus Health Institute" style="height: 40px;">
         </div>
         <div class="header-tagline">Fiduciary-Aligned PBM Contract Standards</div>
     </header>
@@ -789,7 +787,7 @@
                         <li>Quick Look report</li>
                         <li>Overall score and rating</li>
                         <li>Key findings summary</li>
-                        <li>Delivered same business day</li>
+                        <li>Delivered in about 5 minutes</li>
                     </ul>
                     <a href="#" class="learn-more-link" onclick="openModal('essential', event)">
                         Learn more →
@@ -896,12 +894,12 @@
                     <li><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
                 </ol>
                 
-                <p>Questions about these Terms? Contact us at: info@nautilushealth.org</p>
+                <p>Questions about these Terms? Contact us at: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b0b7bfb699b7b8acadb0b5acaab1bcb8b5adb1f7b6abbe">[email&#160;protected]</a></p>
             </div>
 
             <div class="nda-note">
                 <strong>Confidentiality:</strong> We respect your privacy. If your organization requires an NDA, 
-                email info@nautilushealth.org and we will 
+                email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e881868e87a886899d9c81849d9b808d89849c80c6879a8f">[email&#160;protected]</a> and we will 
                 process one electronically.
             </div>
 
@@ -935,7 +933,7 @@
 
             <div class="sla-info">
                 <span class="clock">⏱</span>
-                <span id="sla-text">Your Quick Look report will be delivered same business day.</span>
+                <span id="sla-text">Your Quick Look report will be delivered in about 5 minutes.</span>
             </div>
 
             <div style="margin-top: 1.5rem;">
@@ -948,13 +946,13 @@
         <!-- Confirmation Section -->
         <section id="confirmation-section" class="form-section">
             <div class="confirmation">
-                <div class="confirmation-icon">✓</div>
-                <h3>Contract Received</h3>
+                <img src="https://scditto.github.io/contractxray-intake/Coffee_Cup.png" alt="Coffee cup" style="height: 80px; margin-bottom: 1rem;">
+                <h3>Contract Received!</h3>
                 <p>
-                    Thank you! Your contract has been submitted for analysis.<br>
-                    You'll receive your <span id="confirm-report-type">Quick Look report</span> at 
+                    We're on it. Time enough for a coffee run.<br>
+                    Your <span id="confirm-report-type">Quick Look report</span> will land in your inbox at
                     <span class="email-highlight" id="confirm-email">your@email.com</span> 
-                    within <span id="confirm-sla">same business day</span>.
+                    within <span id="confirm-sla">5 minutes</span>.
                 </p>
             </div>
         </section>
@@ -995,7 +993,7 @@
                 <p>Your contract is evaluated against 35 issues across 10 key provisions, including fiduciary acknowledgment, pricing transparency, audit rights, data ownership, and more. Each issue is scored 0-5 and weighted based on fiduciary importance.</p>
 
                 <div class="delivery-badge">
-                    ⏱ Delivered same business day
+                    ⏱ Delivered in about 5 minutes
                 </div>
             </div>
             <div class="modal-footer">
@@ -1129,7 +1127,7 @@
                     <li>Request deletion of your contract and personal information</li>
                     <li>Ask questions about how your data is handled</li>
                 </ul>
-                <p>To exercise any of these rights, contact us at info@nautilushealth.org.</p>
+                <p>To exercise any of these rights, contact us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caa3a4aca58aa4abbfbea3a6bfb9a2afaba6bea2e4a5b8ad">[email&#160;protected]</a>.</p>
 
                 <h4>8. Changes to This Policy</h4>
                 <p>We may update this Privacy Policy from time to time. Material changes will be communicated via email to active users. The effective date at the top of this policy indicates when it was last revised.</p>
@@ -1138,7 +1136,7 @@
                 <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact:</p>
                 <p style="margin-top: 0.5rem;">
                     Nautilus Health Institute<br>
-                    info@nautilushealth.org
+                    <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="573e39313817393622233e3b22243f32363b233f79382530">[email&#160;protected]</a>
                 </p>
             </div>
             <div class="modal-footer">
@@ -1164,12 +1162,12 @@
     <footer class="footer">
         <p>
             © 2026 Nautilus Health Institute. All rights reserved.<br>
-            info@nautilushealth.org | 
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a73747c755a747b6f6e73766f69727f7b766e723475687d">[email&#160;protected]</a> | 
             <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // State
         let selectedTier = null;
         let selectedFile = null;
@@ -1428,7 +1426,7 @@
                     document.getElementById('confirm-sla').textContent = '24 hours';
                 } else {
                     document.getElementById('confirm-report-type').textContent = 'Quick Look report';
-                    document.getElementById('confirm-sla').textContent = 'same business day';
+                    document.getElementById('confirm-sla').textContent = '5 minutes';
                 }
                 
                 document.getElementById('confirmation-section').classList.add('visible');
