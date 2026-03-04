@@ -1435,17 +1435,12 @@
                     document.getElementById('confirm-sla').textContent = '5 minutes';
                 }
                 document.getElementById('confirmation-section').classList.add('visible');
-
-                // Scroll to confirmation
                 setTimeout(() => {
                     document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
 
             } catch (error) {
                 if (error.name === 'AbortError') {
-                    // Timed out waiting for Make.com response — but the webhook
-                    // almost certainly received the payload. Show confirmation
-                    // rather than re-enabling the button and risking a duplicate.
                     console.warn('Webhook response timed out — submission likely received.');
                     document.getElementById('upload-section').classList.remove('visible');
                     document.getElementById('confirm-email').textContent =
@@ -1462,7 +1457,6 @@
                         document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 100);
                 } else {
-                    // Genuine error — safe to let the user retry
                     console.error('Submission error:', error);
                     alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
                     submitBtn.disabled = false;
@@ -1472,4 +1466,12 @@
         }
 
         // Auto-select Premium tier from URL parameter
-        document.addEve
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('tier') === 'premium') {
+                selectTier('premium');
+            }
+        });
+    </script>
+</body>
+</html>
