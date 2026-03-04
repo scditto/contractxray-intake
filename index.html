@@ -900,7 +900,7 @@
             </div>
 
             <div class="nda-note">
-                We respect your privacy and the confidentiality of contract terms as detailed in the Terms of Service. If you are an employer or advisor and require an NDA, please email <a href="mailto:support@nautilushealth.org" style="color: #C45C26;">support@nautilushealth.org</a> and we will process one electronically.
+                We respect your privacy and the confidentiality of contract terms as detailed in the Terms of Service. If you are an employer or advisor and require an NDA, please email <a href="/cdn-cgi/l/email-protection#f5868085859a8781b59b9480819c9980869d909499819ddb9a8792" style="color: #C45C26;"><span class="__cf_email__" data-cfemail="7d0e080d0d120f093d131c08091411080e15181c11091553120f1a">[email&#160;protected]</span></a> and we will process one electronically.
             </div>
 
             <div id="payment-section" style="display:none; margin-bottom: 1.5rem;">
@@ -1168,7 +1168,7 @@
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // State
         let selectedTier = null;
         let selectedFile = null;
@@ -1405,22 +1405,27 @@
                 formData.fileBase64 = fileBase64;
 
                 // Send to Make.com webhook
+                // 60s timeout — large base64 PDFs can take time to transmit
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
+
                 const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(formData),
+                    signal: controller.signal
                 });
+
+                clearTimeout(timeoutId);
 
                 if (!response.ok) {
                     throw new Error('Submission failed');
                 }
 
-                // Hide upload section
+                // Hide upload section and show confirmation
                 document.getElementById('upload-section').classList.remove('visible');
-                
-                // Update and show confirmation
                 document.getElementById('confirm-email').textContent = formData.submitterEmail;
                 if (selectedTier === 'premium') {
                     document.getElementById('confirm-report-type').textContent = 'Scorecard and Negotiation Guide';
@@ -1429,29 +1434,42 @@
                     document.getElementById('confirm-report-type').textContent = 'Quick Look report';
                     document.getElementById('confirm-sla').textContent = '5 minutes';
                 }
-                
                 document.getElementById('confirmation-section').classList.add('visible');
-                
+
                 // Scroll to confirmation
                 setTimeout(() => {
                     document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 100);
 
-                  } catch (error) {
-                console.error('Submission error:', error);
-                alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit for Analysis';
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    // Timed out waiting for Make.com response — but the webhook
+                    // almost certainly received the payload. Show confirmation
+                    // rather than re-enabling the button and risking a duplicate.
+                    console.warn('Webhook response timed out — submission likely received.');
+                    document.getElementById('upload-section').classList.remove('visible');
+                    document.getElementById('confirm-email').textContent =
+                        document.getElementById('submitter-email').value;
+                    if (selectedTier === 'premium') {
+                        document.getElementById('confirm-report-type').textContent = 'Scorecard and Negotiation Guide';
+                        document.getElementById('confirm-sla').textContent = '24 hours';
+                    } else {
+                        document.getElementById('confirm-report-type').textContent = 'Quick Look report';
+                        document.getElementById('confirm-sla').textContent = '5 minutes';
+                    }
+                    document.getElementById('confirmation-section').classList.add('visible');
+                    setTimeout(() => {
+                        document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                } else {
+                    // Genuine error — safe to let the user retry
+                    console.error('Submission error:', error);
+                    alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit for Analysis';
+                }
             }
         }
 
         // Auto-select Premium tier from URL parameter
-        document.addEventListener('DOMContentLoaded', () => {
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('tier') === 'premium') {
-                selectTier('premium');
-            }
-        });
-    </script>
-</body>
-</html>
+        document.addEve
