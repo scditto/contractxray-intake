@@ -426,6 +426,17 @@
             display: none;
         }
 
+        .form-subsection-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin-bottom: 0.85rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
         /* Confirmation */
         .confirmation {
             padding: 0;
@@ -918,19 +929,33 @@
                 </p>
             </div>
 
+            <div class="form-subsection-label">Contract Parties</div>
+
             <div class="form-group">
-                <label for="email">Email Address <span class="required">*</span></label>
+                <label for="contractCompany">Company <span class="optional">(employer name)</span></label>
+                <input type="text" id="contractCompany" name="contractCompany" placeholder="e.g., Riverside County Schools">
+            </div>
+
+            <div class="form-group">
+                <label for="contractPbm">PBM <span class="optional">(pharmacy benefit manager)</span></label>
+                <input type="text" id="contractPbm" name="contractPbm" placeholder="e.g., CVS Caremark, Express Scripts">
+            </div>
+
+            <div class="form-subsection-label" style="margin-top: 1.5rem;">Submitter</div>
+
+            <div class="form-group">
+                <label for="submitterName">Name <span class="required">*</span></label>
+                <input type="text" id="submitterName" name="submitterName" placeholder="Your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="submitterCompany">Company <span class="optional">(your organization)</span></label>
+                <input type="text" id="submitterCompany" name="submitterCompany" placeholder="Your organization">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label>
                 <input type="email" id="email" name="email" placeholder="you@company.com" required>
-            </div>
-
-            <div class="form-group">
-                <label for="company">Company Name <span class="optional">(optional)</span></label>
-                <input type="text" id="company" name="company" placeholder="Your organization">
-            </div>
-
-            <div class="form-group">
-                <label for="pbm">PBM Name <span class="optional">(optional)</span></label>
-                <input type="text" id="pbm" name="pbm" placeholder="e.g., CVS Caremark, Express Scripts">
             </div>
 
             <div class="checkbox-group">
@@ -968,12 +993,12 @@
                     <li><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
                 </ol>
                 
-                <p>Questions about these Terms? Contact us at: <a href="/cdn-cgi/l/email-protection#deadabaeaeb1acaa9eb0bfabaab7b2abadb6bbbfb2aab6f0b1acb9"><span class="__cf_email__" data-cfemail="aedddbdedec1dcdaeec0cfdbdac7c2dbddc6cbcfc2dac680c1dcc9">[email&#160;protected]</span></a></p>
+                <p>Questions about these Terms? Contact us at: legal@nautilushealth.org</p>
             </div>
 
             <div class="nda-note">
                 <strong>Confidentiality:</strong> We respect your privacy. If your organization requires an NDA, 
-                email <a href="/cdn-cgi/l/email-protection#4b383e3b3b24393f0b252a3e3f22273e38232e2a273f236524392c"><span class="__cf_email__" data-cfemail="d8abada8a8b7aaac98b6b9adacb1b4adabb0bdb9b4acb0f6b7aabf">[email&#160;protected]</span></a> and we will 
+                email privacy@nautilushealth.org and we will 
                 process one electronically.
             </div>
 
@@ -1203,12 +1228,12 @@
     <footer class="footer">
         <p>
             © 2026 Nautilus Health Institute. All rights reserved.<br>
-            <a href="/cdn-cgi/l/email-protection#14676164647b6660547a7561607d7861677c717578607c3a7b6673"><span class="__cf_email__" data-cfemail="067573767669747246686773726f6a73756e63676a726e28697461">[email&#160;protected]</span></a> | 
+            support@nautilushealth.org | 
             <a href="#">Privacy Policy</a>
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // State
         let selectedTier = null;
         let selectedFile = null;
@@ -1291,15 +1316,18 @@
         // Form Validation
         function validateInfoForm() {
             const email = document.getElementById('email').value;
+            const submitterName = document.getElementById('submitterName').value;
             const terms = document.getElementById('terms').checked;
             const emailValid = email && email.includes('@') && email.includes('.');
+            const nameValid = submitterName.trim().length > 0;
             
             const continueBtn = document.getElementById('continue-btn');
-            continueBtn.disabled = !(emailValid && terms && (selectedTier === 'essential' || paymentComplete));
+            continueBtn.disabled = !(emailValid && nameValid && terms && (selectedTier === 'essential' || paymentComplete));
         }
 
         // Event listeners for form validation
         document.getElementById('email').addEventListener('input', validateInfoForm);
+        document.getElementById('submitterName').addEventListener('input', validateInfoForm);
         document.getElementById('terms').addEventListener('change', validateInfoForm);
 
         // Toggle Terms
@@ -1394,20 +1422,23 @@
                 return;
             }
 
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            const pbm = document.getElementById('pbm').value;
+            const submitterName = document.getElementById('submitterName').value;
+            const submitterCompany = document.getElementById('submitterCompany').value;
+            const submitterEmail = document.getElementById('email').value;
+            const contractCompany = document.getElementById('contractCompany').value;
+            const contractPbm = document.getElementById('contractPbm').value;
 
             // In production: send to Make.com webhook
             // For demo: show confirmation
             
-            // Hide upload section
+            // Hide upload and info sections
             document.getElementById('upload-section').classList.remove('visible');
+            document.getElementById('info-section').classList.remove('visible');
             
             // Update and show confirmation
-            document.getElementById('confirm-pbm').textContent = pbm;
-            document.getElementById('confirm-company').textContent = company;
-            document.getElementById('confirm-email').textContent = email;
+            document.getElementById('confirm-pbm').textContent = contractPbm || 'Not provided';
+            document.getElementById('confirm-company').textContent = contractCompany || 'Not provided';
+            document.getElementById('confirm-email').textContent = submitterEmail;
             const now = new Date();
             document.getElementById('confirm-timestamp').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
             
