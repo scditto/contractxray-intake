@@ -437,6 +437,64 @@
             border-bottom: 1px solid var(--light-gray);
         }
 
+        /* File list rows */
+        .file-list-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: var(--light-gray);
+            border: 1px solid #dde4ec;
+            border-radius: 6px;
+            margin-bottom: 0.65rem;
+        }
+        .file-list-row .file-row-name {
+            font-size: 0.85rem;
+            color: var(--navy);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-list-row select {
+            font-size: 0.82rem;
+            padding: 0.35rem 0.6rem;
+            border: 1px solid #ccd4df;
+            border-radius: 4px;
+            color: var(--navy);
+            background: #fff;
+            min-width: 200px;
+        }
+        .file-list-row select:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+        .file-row-other {
+            margin-top: 0.4rem;
+            grid-column: 1 / -1;
+        }
+        .file-row-other input {
+            width: 100%;
+            font-size: 0.82rem;
+            padding: 0.35rem 0.6rem;
+            border: 1px solid #ccd4df;
+            border-radius: 4px;
+            color: var(--navy);
+        }
+        .file-row-remove {
+            background: none;
+            border: none;
+            color: #9aa5b4;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 0.2rem 0.4rem;
+            line-height: 1;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+        .file-row-remove:hover { color: #c0392b; background: #fdf0ef; }
+
         /* Confirmation */
         .confirmation {
             padding: 0;
@@ -936,11 +994,6 @@
                 <input type="text" id="contract-company" name="contract-company" placeholder="e.g., Riverside County Schools">
             </div>
 
-            <div class="form-group">
-                <label for="contract-pbm">PBM <span class="optional">(pharmacy benefit manager)</span></label>
-                <input type="text" id="contract-pbm" name="contract-pbm" placeholder="e.g., CVS Caremark, Express Scripts">
-            </div>
-
             <div class="form-subsection-label" style="margin-top: 1.5rem;">Submitter</div>
 
             <div class="form-group">
@@ -1020,14 +1073,15 @@
 
         <!-- Section 3: Upload + Submit -->
         <section id="upload-section" class="form-section">
-            <h3>Upload Your Contract</h3>
-            
-            <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+            <h3>Upload Your Contract(s)</h3>
+
+            <div id="file-list"></div>
+
+            <div id="add-file-area" class="upload-area" onclick="document.getElementById('file-input-new').click()">
                 <div class="upload-icon">📄</div>
-                <div class="upload-text">Drag and drop your PBM contract here</div>
+                <div class="upload-text">Drag and drop a PBM contract here</div>
                 <div class="upload-hint">or click to browse (PDF only, max 25MB)</div>
-                <div class="file-name" id="file-name"></div>
-                <input type="file" id="file-input" class="upload-input" accept=".pdf" onchange="handleFileSelect(event)">
+                <input type="file" id="file-input-new" class="upload-input" accept=".pdf" onchange="handleNewFile(event)">
             </div>
 
             <div class="sla-info">
@@ -1046,15 +1100,7 @@
         <section id="confirmation-section" class="form-section">
             <div class="confirmation">
                 <div class="conf-wordmark">
-                    <div class="conf-wordmark-icon">
-                        <svg viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="8" stroke="#CCFBF1" stroke-width="1.5"/>
-                            <path d="M8 12.5l2.5 2.5L16 9" stroke="#2D8B9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="conf-wordmark-text">Nautilus</span>
-                    <div class="conf-wordmark-divider"></div>
-                    <span class="conf-wordmark-product">Contract X-Ray</span>
+                    <img src="https://scditto.github.io/contractxray-intake/Nautilus_Logo_WIDE.png" alt="Nautilus Health Institute" style="height: 36px; display: block;">
                 </div>
 
                 <div class="conf-check-wrap">
@@ -1065,16 +1111,12 @@
 
                 <div class="conf-headline">Submission received.</div>
                 <div class="conf-subhead">
-                    Your contract has been uploaded and your Quick Look analysis is underway.
-                    You will receive your report at the email address below.
+                    Your contract(s) have been uploaded and your Quick Look analysis is underway.
+                    You will receive a report for each contract at the email address below.
                 </div>
 
                 <div class="conf-detail-block">
                     <div class="conf-detail-label">Submission details</div>
-                    <div class="conf-detail-row">
-                        <span class="conf-detail-key">PBM</span>
-                        <span class="conf-detail-val" id="confirm-pbm"></span>
-                    </div>
                     <div class="conf-detail-row">
                         <span class="conf-detail-key">Employer</span>
                         <span class="conf-detail-val" id="confirm-company"></span>
@@ -1087,6 +1129,7 @@
                         <span class="conf-detail-key">Submitted</span>
                         <span class="conf-detail-val" id="confirm-timestamp"></span>
                     </div>
+                    <div id="confirm-contracts-block"></div>
                 </div>
 
                 <div class="conf-next-label">What happens next</div>
@@ -1311,7 +1354,6 @@
     <script>
         // State
         let selectedTier = null;
-        let selectedFile = null;
         let paymentComplete = false;
 
         // Modal Functions
@@ -1457,118 +1499,228 @@
             }, 100);
         }
 
-        // File Upload
-        const uploadArea = document.getElementById('upload-area');
+        // ── Multi-file state ─────────────────────────────────────────────
+        const PBM_NAMES = [
+            'CarelonRx','CVS Caremark','Express Scripts','Humana Pharmacy Solutions',
+            'OptumRx','PerformRx','Pharmacy Benefit Dimensions','Prime Therapeutics',
+            'AffirmedRx','BeneCard PBF','CerpassRx','Citizens Rx','ClearScript',
+            'Costco Health Solutions','DisclosedRx','EHIM','EmpiRx Health','EpiphanyRx',
+            'Evo','ExhaleRx','Kroger Prescription Plans','Liviniti','Lucent Health Rx',
+            'MaxorPlus','MedalistRx','MedImpact','MedOne','National Script','Navitus',
+            'ProAct','ProCare Rx','Rightway','RxBenefits','RxPreferred Benefits','Sav-Rx',
+            'Serve You Rx','Slate Rx','SmithRx','TransparentRx','TrueRx','US-Rx Care',
+            'Veracity Rx','Vivid Clear Rx','VerusRx','WellDyne','Wellyfe','PharmPix',
+            'Phoenix Benefits Management','Other (Please specify below)'
+        ];
 
-        uploadArea.addEventListener('dragover', (e) => {
+        // Array of { file: File, pbm: string, otherpbm: string }
+        let fileEntries = [];
+        let lastPbm = '';
+
+        const addFileArea = document.getElementById('add-file-area');
+
+        addFileArea.addEventListener('dragover', (e) => {
             e.preventDefault();
-            uploadArea.classList.add('dragover');
+            addFileArea.classList.add('dragover');
         });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('dragover');
+        addFileArea.addEventListener('dragleave', () => {
+            addFileArea.classList.remove('dragover');
         });
-
-        uploadArea.addEventListener('drop', (e) => {
+        addFileArea.addEventListener('drop', (e) => {
             e.preventDefault();
-            uploadArea.classList.remove('dragover');
+            addFileArea.classList.remove('dragover');
             const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFile(files[0]);
-            }
+            for (let i = 0; i < files.length; i++) addFileToList(files[i]);
         });
 
-        function handleFileSelect(event) {
+        function handleNewFile(event) {
             const files = event.target.files;
-            if (files.length > 0) {
-                handleFile(files[0]);
-            }
+            for (let i = 0; i < files.length; i++) addFileToList(files[i]);
+            event.target.value = '';
         }
 
-        function handleFile(file) {
+        function addFileToList(file) {
             if (file.type !== 'application/pdf') {
-                alert('Please upload a PDF file.');
+                alert(`"${file.name}" is not a PDF. Please upload PDF files only.`);
                 return;
             }
             if (file.size > 25 * 1024 * 1024) {
-                alert('File size must be under 25MB.');
+                alert(`"${file.name}" exceeds the 25MB limit.`);
                 return;
             }
-            
-            selectedFile = file;
-            document.getElementById('file-name').textContent = file.name;
-            uploadArea.classList.add('has-file');
-            document.getElementById('submit-btn').disabled = false;
+            const entry = { file, pbm: lastPbm, otherpbm: '' };
+            fileEntries.push(entry);
+            renderFileList();
+            updateSubmitBtn();
         }
 
+        function removeFile(index) {
+            fileEntries.splice(index, 1);
+            renderFileList();
+            updateSubmitBtn();
+        }
+
+        function buildPbmOptions(selectedValue) {
+            return PBM_NAMES.map(name =>
+                `<option value="${name}" ${name === selectedValue ? 'selected' : ''}>${name}</option>`
+            ).join('');
+        }
+
+        function renderFileList() {
+            const list = document.getElementById('file-list');
+            if (fileEntries.length === 0) {
+                list.innerHTML = '';
+                return;
+            }
+            list.innerHTML = fileEntries.map((entry, i) => `
+                <div class="file-list-row" id="file-row-${i}">
+                    <div class="file-row-name" title="${entry.file.name}">📄 ${entry.file.name}</div>
+                    <select onchange="updatePbm(${i}, this.value)">
+                        <option value="" disabled ${!entry.pbm ? 'selected' : ''}>Select PBM</option>
+                        ${buildPbmOptions(entry.pbm)}
+                    </select>
+                    <button class="file-row-remove" onclick="removeFile(${i})" title="Remove">✕</button>
+                    ${entry.pbm === 'Other (Please specify below)' ? `
+                    <div class="file-row-other">
+                        <input type="text" placeholder="Enter PBM name"
+                            value="${entry.otherpbm}"
+                            oninput="updateOtherPbm(${i}, this.value)">
+                    </div>` : ''}
+                </div>
+            `).join('');
+        }
+
+        function updatePbm(index, value) {
+            fileEntries[index].pbm = value;
+            lastPbm = value;
+            // Pre-fill subsequent entries that have no PBM selected
+            for (let i = index + 1; i < fileEntries.length; i++) {
+                if (!fileEntries[i].pbm) fileEntries[i].pbm = value;
+            }
+            renderFileList();
+            updateSubmitBtn();
+        }
+
+        function updateOtherPbm(index, value) {
+            fileEntries[index].otherpbm = value;
+            updateSubmitBtn();
+        }
+
+        function updateSubmitBtn() {
+            const allReady = fileEntries.length > 0 && fileEntries.every(e => {
+                if (!e.pbm) return false;
+                if (e.pbm === 'Other (Please specify below)' && !e.otherpbm.trim()) return false;
+                return true;
+            });
+            document.getElementById('submit-btn').disabled = !allReady;
+        }
+
+        // ── Submit ────────────────────────────────────────────────────────
         async function submitForm() {
-            if (!selectedFile || !selectedTier) {
-                alert('Please complete all required fields.');
+            if (fileEntries.length === 0 || !selectedTier) {
+                alert('Please add at least one contract before submitting.');
                 return;
             }
 
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
 
-            try {
-                // Collect form data
-                const formData = {
-                    tier: selectedTier,
-                    contractCompany: document.getElementById('contract-company').value || '',
-                    contractPbm: document.getElementById('contract-pbm').value || '',
-                    submitterName: document.getElementById('submitter-name').value,
-                    submitterCompany: document.getElementById('submitter-company').value || '',
-                    submitterEmail: document.getElementById('submitter-email').value,
-                    fileName: selectedFile.name,
-                    fileSize: selectedFile.size,
-                    submittedAt: new Date().toISOString()
-                };
+            const contractCompany = document.getElementById('contract-company').value || '';
+            const submitterName   = document.getElementById('submitter-name').value;
+            const submitterCompany= document.getElementById('submitter-company').value || '';
+            const submitterEmail  = document.getElementById('submitter-email').value;
 
-                // Convert PDF to base64
-                const fileBase64 = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result.split(',')[1]);
-                    reader.onerror = reject;
-                    reader.readAsDataURL(selectedFile);
-                });
+            const errors = [];
 
-                formData.fileBase64 = fileBase64;
+            for (let i = 0; i < fileEntries.length; i++) {
+                const entry = fileEntries[i];
+                const pbmLabel = entry.pbm === 'Other (Please specify below)'
+                    ? entry.otherpbm.trim()
+                    : entry.pbm;
 
-                // Send to Make.com webhook
-                const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
+                submitBtn.textContent = fileEntries.length > 1
+                    ? `Submitting ${i + 1} of ${fileEntries.length}...`
+                    : 'Submitting...';
 
-                if (!response.ok) {
-                    throw new Error('Submission failed');
+                try {
+                    const fileBase64 = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result.split(',')[1]);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(entry.file);
+                    });
+
+                    const payload = {
+                        tier: selectedTier,
+                        contractCompany,
+                        contractPbm: pbmLabel,
+                        submitterName,
+                        submitterCompany,
+                        submitterEmail,
+                        fileName: entry.file.name,
+                        fileSize: entry.file.size,
+                        submittedAt: new Date().toISOString(),
+                        fileBase64
+                    };
+
+                    const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                } catch (err) {
+                    errors.push(entry.file.name);
+                    console.error(`Error submitting ${entry.file.name}:`, err);
                 }
+            }
 
-                // Hide upload and info sections
-                document.getElementById('upload-section').classList.remove('visible');
-                document.getElementById('info-section').classList.remove('visible');
-
-                // Update and show confirmation
-                document.getElementById('confirm-pbm').textContent = formData.contractPbm || 'Not provided';
-                document.getElementById('confirm-company').textContent = formData.contractCompany || 'Not provided';
-                document.getElementById('confirm-email').textContent = formData.submitterEmail;
-                const now = new Date();
-                document.getElementById('confirm-timestamp').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-
-                document.getElementById('confirmation-section').classList.add('visible');
-
-                setTimeout(() => {
-                    document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-
-            } catch (error) {
-                console.error('Submission error:', error);
-                alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
+            if (errors.length > 0 && errors.length === fileEntries.length) {
+                // All failed
+                alert('There was an error submitting your contracts. Please try again or contact support@nautilushealth.org');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit for Analysis';
+                return;
             }
+
+            // At least some succeeded — show confirmation
+            document.getElementById('upload-section').classList.remove('visible');
+            document.getElementById('info-section').classList.remove('visible');
+
+            // Build contracts summary
+            const successEntries = errors.length > 0
+                ? fileEntries.filter(e => !errors.includes(e.file.name))
+                : fileEntries;
+
+            const contractsBlock = document.getElementById('confirm-contracts-block');
+            contractsBlock.innerHTML = successEntries.map(e => {
+                const pbmLabel = e.pbm === 'Other (Please specify below)' ? e.otherpbm.trim() : e.pbm;
+                return `<div class="conf-detail-row">
+                    <span class="conf-detail-key">Contract</span>
+                    <span class="conf-detail-val">${pbmLabel} &mdash; ${e.file.name}</span>
+                </div>`;
+            }).join('');
+
+            document.getElementById('confirm-company').textContent = contractCompany || 'Not provided';
+            document.getElementById('confirm-email').textContent = submitterEmail;
+            const now = new Date();
+            document.getElementById('confirm-timestamp').textContent =
+                now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) +
+                ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+
+            if (errors.length > 0) {
+                const note = document.createElement('p');
+                note.style.cssText = 'color:#b45309;font-size:0.82rem;margin-top:0.75rem;';
+                note.textContent = `Note: ${errors.length} file(s) could not be submitted. Please contact support@nautilushealth.org for assistance.`;
+                contractsBlock.appendChild(note);
+            }
+
+            document.getElementById('confirmation-section').classList.add('visible');
+            setTimeout(() => {
+                document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
         }
 
         </script>
