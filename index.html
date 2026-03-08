@@ -932,30 +932,30 @@
             <div class="form-subsection-label">Contract Parties</div>
 
             <div class="form-group">
-                <label for="contractCompany">Company <span class="optional">(employer name)</span></label>
-                <input type="text" id="contractCompany" name="contractCompany" placeholder="e.g., Riverside County Schools">
+                <label for="contract-company">Company <span class="optional">(employer name)</span></label>
+                <input type="text" id="contract-company" name="contract-company" placeholder="e.g., Riverside County Schools">
             </div>
 
             <div class="form-group">
-                <label for="contractPbm">PBM <span class="optional">(pharmacy benefit manager)</span></label>
-                <input type="text" id="contractPbm" name="contractPbm" placeholder="e.g., CVS Caremark, Express Scripts">
+                <label for="contract-pbm">PBM <span class="optional">(pharmacy benefit manager)</span></label>
+                <input type="text" id="contract-pbm" name="contract-pbm" placeholder="e.g., CVS Caremark, Express Scripts">
             </div>
 
             <div class="form-subsection-label" style="margin-top: 1.5rem;">Submitter</div>
 
             <div class="form-group">
-                <label for="submitterName">Name <span class="required">*</span></label>
-                <input type="text" id="submitterName" name="submitterName" placeholder="Your full name" required>
+                <label for="submitter-name">Name <span class="required">*</span></label>
+                <input type="text" id="submitter-name" name="submitter-name" placeholder="Your full name" required>
             </div>
 
             <div class="form-group">
-                <label for="submitterCompany">Company <span class="optional">(your organization)</span></label>
-                <input type="text" id="submitterCompany" name="submitterCompany" placeholder="Your organization">
+                <label for="submitter-company">Company <span class="optional">(your organization)</span></label>
+                <input type="text" id="submitter-company" name="submitter-company" placeholder="Your organization">
             </div>
 
             <div class="form-group">
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                <label for="submitter-email">Email <span class="required">*</span></label>
+                <input type="email" id="submitter-email" name="submitter-email" placeholder="you@company.com" required>
             </div>
 
             <div class="checkbox-group">
@@ -1112,6 +1112,81 @@
         </section>
     </main>
 
+    <!-- Privacy Policy Modal -->
+    <div class="modal-overlay" id="modal-privacy">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>Privacy Policy</h3>
+                <button class="modal-close" onclick="closePrivacyModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--mid-gray); margin-bottom: 1.5rem;"><em>Effective Date: February 28, 2026</em></p>
+
+                <h4>1. Who We Are</h4>
+                <p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit organization dedicated to democratizing access to high-performance health plans. This Privacy Policy explains how we collect, use, and protect your information when you use our contract analysis service.</p>
+
+                <h4>2. Information We Collect</h4>
+                <p>When you submit a contract for analysis, we collect:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li><strong>Contact Information:</strong> Email address, company name</li>
+                    <li><strong>Contract Details:</strong> PBM name, contract effective date, member count</li>
+                    <li><strong>Uploaded Documents:</strong> Your PBM contract (PDF)</li>
+                    <li><strong>Payment Information:</strong> For Premium tier, payment is processed securely through Stripe. We do not store your credit card details.</li>
+                </ul>
+
+                <h4>3. How We Use Your Information</h4>
+                <p>We use your information solely to:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li>Generate your Contract X-Ray analysis report</li>
+                    <li>Deliver the report to your email address</li>
+                    <li>Respond to questions about your analysis</li>
+                    <li>Improve our scoring methodology and standards (using anonymized, aggregated data only)</li>
+                </ul>
+
+                <h4>4. Who Has Access to Your Contract</h4>
+                <p>Your contract is treated as confidential. Access is strictly limited to:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li>Nautilus analysts who perform or review your analysis</li>
+                    <li>Secure AI systems used to assist in the analysis process</li>
+                </ul>
+                <p><strong>We do not sell, share, or disclose your contract to third parties.</strong> Your contract is never shared with PBMs, competitors, or any external organizations.</p>
+
+                <h4>5. Data Security</h4>
+                <p>We implement appropriate technical and organizational measures to protect your information:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li>Secure, encrypted transmission of all data</li>
+                    <li>Access controls limiting who can view contracts</li>
+                    <li>Secure cloud storage with encryption at rest</li>
+                </ul>
+
+                <h4>6. Data Retention</h4>
+                <p>We retain your contract and analysis for 12 months to support follow-up questions and ongoing client relationships. After this period, contracts are securely deleted unless you request earlier deletion or ask us to retain them longer.</p>
+
+                <h4>7. Your Rights</h4>
+                <p>You have the right to:</p>
+                <ul style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li>Request a copy of the data we hold about you</li>
+                    <li>Request deletion of your contract and personal information</li>
+                    <li>Ask questions about how your data is handled</li>
+                </ul>
+                <p>To exercise any of these rights, contact us at privacy@nautilushealth.org.</p>
+
+                <h4>8. Changes to This Policy</h4>
+                <p>We may update this Privacy Policy from time to time. Material changes will be communicated via email to active users. The effective date at the top of this policy indicates when it was last revised.</p>
+
+                <h4>9. Contact Us</h4>
+                <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact:</p>
+                <p style="margin-top: 0.5rem;">
+                    Nautilus Health Institute<br>
+                    privacy@nautilushealth.org
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closePrivacyModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Essential Modal -->
     <div class="modal-overlay" id="modal-essential">
         <div class="modal">
@@ -1229,7 +1304,7 @@
         <p>
             © 2026 Nautilus Health Institute. All rights reserved.<br>
             support@nautilushealth.org | 
-            <a href="#">Privacy Policy</a>
+            <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
         </p>
     </footer>
 
@@ -1315,8 +1390,8 @@
 
         // Form Validation
         function validateInfoForm() {
-            const email = document.getElementById('email').value;
-            const submitterName = document.getElementById('submitterName').value;
+            const email = document.getElementById('submitter-email').value;
+            const submitterName = document.getElementById('submitter-name').value;
             const terms = document.getElementById('terms').checked;
             const emailValid = email && email.includes('@') && email.includes('.');
             const nameValid = submitterName.trim().length > 0;
@@ -1326,9 +1401,20 @@
         }
 
         // Event listeners for form validation
-        document.getElementById('email').addEventListener('input', validateInfoForm);
-        document.getElementById('submitterName').addEventListener('input', validateInfoForm);
+        document.getElementById('submitter-email').addEventListener('input', validateInfoForm);
+        document.getElementById('submitter-name').addEventListener('input', validateInfoForm);
         document.getElementById('terms').addEventListener('change', validateInfoForm);
+
+        function openPrivacyModal(event) {
+            event.preventDefault();
+            document.getElementById('modal-privacy').classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('modal-privacy').classList.remove('visible');
+            document.body.style.overflow = '';
+        }
 
         // Toggle Terms
         function toggleTerms(event) {
@@ -1415,35 +1501,74 @@
             document.getElementById('submit-btn').disabled = false;
         }
 
-        // Form Submission
-        function submitForm() {
+        async function submitForm() {
             if (!selectedFile || !selectedTier) {
                 alert('Please complete all required fields.');
                 return;
             }
 
-            const submitterName = document.getElementById('submitterName').value;
-            const submitterCompany = document.getElementById('submitterCompany').value;
-            const submitterEmail = document.getElementById('email').value;
-            const contractCompany = document.getElementById('contractCompany').value;
-            const contractPbm = document.getElementById('contractPbm').value;
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
 
-            // In production: send to Make.com webhook
-            // For demo: show confirmation
-            
-            // Hide upload and info sections
-            document.getElementById('upload-section').classList.remove('visible');
-            document.getElementById('info-section').classList.remove('visible');
-            
-            // Update and show confirmation
-            document.getElementById('confirm-pbm').textContent = contractPbm || 'Not provided';
-            document.getElementById('confirm-company').textContent = contractCompany || 'Not provided';
-            document.getElementById('confirm-email').textContent = submitterEmail;
-            const now = new Date();
-            document.getElementById('confirm-timestamp').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-            
-      
-            document.getElementById('confirmation-section').classList.add('visible');
+            try {
+                // Collect form data
+                const formData = {
+                    tier: selectedTier,
+                    contractCompany: document.getElementById('contract-company').value || '',
+                    contractPbm: document.getElementById('contract-pbm').value || '',
+                    submitterName: document.getElementById('submitter-name').value,
+                    submitterCompany: document.getElementById('submitter-company').value || '',
+                    submitterEmail: document.getElementById('submitter-email').value,
+                    fileName: selectedFile.name,
+                    fileSize: selectedFile.size,
+                    submittedAt: new Date().toISOString()
+                };
+
+                // Convert PDF to base64
+                const fileBase64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(selectedFile);
+                });
+
+                formData.fileBase64 = fileBase64;
+
+                // Send to Make.com webhook
+                const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Submission failed');
+                }
+
+                // Hide upload and info sections
+                document.getElementById('upload-section').classList.remove('visible');
+                document.getElementById('info-section').classList.remove('visible');
+
+                // Update and show confirmation
+                document.getElementById('confirm-pbm').textContent = formData.contractPbm || 'Not provided';
+                document.getElementById('confirm-company').textContent = formData.contractCompany || 'Not provided';
+                document.getElementById('confirm-email').textContent = formData.submitterEmail;
+                const now = new Date();
+                document.getElementById('confirm-timestamp').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+
+                document.getElementById('confirmation-section').classList.add('visible');
+
+                setTimeout(() => {
+                    document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('There was an error submitting your request. Please try again or contact support@nautilushealth.org');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit for Analysis';
+            }
         }
 
         </script>
