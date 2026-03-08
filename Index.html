@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contract X-Ray™ | Nautilus Health Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B365D;
+            --teal: #2D8B9A;
+            --gold: #C5A572;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-text: #333333;
+            --mid-gray: #666666;
+            --excellent: #059669;
+            --good: #2D8B9A;
+            --fair: #EAB308;
+            --concern: #EA580C;
+            --red-flag: #DC2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--navy);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header-logo .nautilus {
+            color: var(--gold);
+        }
+
+        .header-tagline {
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .hero h1 {
+            color: var(--navy);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 .tm {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+
+        .hero .subtitle {
+            color: var(--teal);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .hero .description {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tier Selection */
+        .tier-section {
+            margin-bottom: 2rem;
+        }
+
+        .tier-section h2 {
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .tier-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .tier-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tier-card {
+            background: var(--white);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .tier-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .tier-card.selected {
+            border-color: var(--navy);
+            box-shadow: 0 4px 16px rgba(27, 54, 93, 0.2);
+        }
+
+        .tier-card.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--navy);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tier-name {
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tier-price {
+            color: var(--teal);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .tier-price .note {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--mid-gray);
+        }
+
+        .tier-features {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--mid-gray);
+            margin-bottom: 1rem;
+        }
+
+        .tier-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .tier-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+        }
+
+        .learn-more-link {
+            color: var(--teal);
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .learn-more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Form Sections */
+        .form-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: none;
+        }
+
+        .form-section.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-section h3 {
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--dark-text);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label .required {
+            color: var(--red-flag);
+        }
+
+        .form-group label .optional {
+            color: var(--mid-gray);
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(45, 139, 154, 0.1);
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            accent-color: var(--navy);
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--dark-text);
+            cursor: pointer;
+        }
+
+        .checkbox-group a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        /* NDA Note */
+        .nda-note {
+            background: var(--light-gray);
+            border-left: 3px solid var(--gold);
+            padding: 1rem;
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nda-note a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #152a4a;
+        }
+
+        .btn-primary:disabled {
+            background: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+        .btn-stripe {
+            background: var(--teal);
+            color: var(--white);
+        }
+
+        .btn-stripe:hover {
+            background: #257a87;
+        }
+
+        /* File Upload */
+        .upload-area {
+            border: 2px dashed #d0d0d0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-area:hover {
+            border-color: var(--teal);
+            background: rgba(45, 139, 154, 0.02);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--teal);
+            background: rgba(45, 139, 154, 0.05);
+        }
+
+        .upload-area.has-file {
+            border-color: var(--excellent);
+            background: rgba(5, 150, 105, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-text {
+            color: var(--dark-text);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .upload-hint {
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        .file-name {
+            color: var(--excellent);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        /* Confirmation */
+        .confirmation {
+            padding: 0;
+        }
+        .conf-wordmark {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+        .conf-wordmark-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .conf-wordmark-icon svg { width: 13px; height: 13px; }
+        .conf-wordmark-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--navy);
+        }
+        .conf-wordmark-divider {
+            width: 1px;
+            height: 13px;
+            background: #dde4ec;
+            margin: 0 0.2rem;
+        }
+        .conf-wordmark-product {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--teal);
+        }
+        .conf-check-wrap { margin-bottom: 1.5rem; }
+        .conf-check-ring {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid var(--teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #CCFBF1;
+        }
+        .conf-check-ring svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--teal);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .conf-headline {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .conf-subhead {
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #5a6a7e;
+            line-height: 1.5;
+            margin-bottom: 1.75rem;
+        }
+        .conf-detail-block {
+            background: #f4f7f9;
+            border: 1px solid #dde4ec;
+            border-left: 3px solid var(--teal);
+            padding: 1.1rem 1.4rem;
+            margin-bottom: 1.75rem;
+        }
+        .conf-detail-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.65rem;
+        }
+        .conf-detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #dde4ec;
+            font-size: 0.85rem;
+        }
+        .conf-detail-row:last-child { border-bottom: none; }
+        .conf-detail-key { color: #6b7a8d; font-weight: 400; flex-shrink: 0; margin-right: 1rem; }
+        .conf-detail-val { color: var(--navy); font-weight: 500; text-align: right; }
+        .conf-next-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #9aa5b4;
+            margin-bottom: 0.85rem;
+        }
+        .conf-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .conf-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            color: #3d4f66;
+            line-height: 1.45;
+        }
+        .conf-step-num {
+            flex-shrink: 0;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+        .conf-email-plain { color: var(--teal); font-weight: 500; }
+        .conf-footer {
+            border-top: 1px solid #dde4ec;
+            padding-top: 1.25rem;
+            font-size: 0.75rem;
+            color: #9aa5b4;
+            font-weight: 300;
+        }
+
+        /* Terms Modal */
+        .terms-content {
+            display: none;
+            background: var(--light-gray);
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .terms-content.visible {
+            display: block;
+        }
+
+        .terms-content h4 {
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .terms-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .terms-content ol {
+            padding-left: 1.25rem;
+        }
+
+        .terms-content ol li {
+            margin-bottom: 0.75rem;
+        }
+
+        .terms-toggle {
+            color: var(--teal);
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-left: 0.25rem;
+        }
+
+        .terms-toggle:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--mid-gray);
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--teal);
+            text-decoration: none;
+        }
+
+        /* Tier-specific styles */
+        .tier-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .tier-badge.essential {
+            background: rgba(45, 139, 154, 0.1);
+            color: var(--teal);
+        }
+
+        .tier-badge.premium {
+            background: rgba(197, 165, 114, 0.2);
+            color: #8b7355;
+        }
+
+        /* SLA display */
+        .sla-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+        }
+
+        .sla-info .clock {
+            color: var(--teal);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.visible {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--mid-gray);
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--dark-text);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-body h4 {
+            color: var(--navy);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            color: var(--mid-gray);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--dark-text);
+            font-size: 0.95rem;
+        }
+
+        .modal-body ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .sample-preview {
+            background: var(--light-gray);
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .sample-preview-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .sample-score {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sample-score-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--fair);
+        }
+
+        .sample-score-label {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+        }
+
+        .sample-findings {
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .btn-secondary {
+            background: var(--light-gray);
+            color: var(--dark-text);
+            border: 1px solid #d0d0d0;
+        }
+
+        .btn-secondary:hover {
+            background: #e8e8e8;
+        }
+
+        .delivery-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(45, 139, 154, 0.1);
+            color: var(--teal);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-brand">
+            <div class="header-logo">
+                <span class="nautilus">NAUTILUS</span> HEALTH INSTITUTE
+            </div>
+        </div>
+        <div class="header-tagline">Fiduciary-Aligned PBM Contract Standards</div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Contract X-Ray<span class="tm">™</span></h1>
+            <p class="subtitle">AI-Powered PBM Contract Analysis</p>
+            <p class="description">
+                Evaluate your PBM contract against a comprehensive framework of Fiduciary-Aligned 
+                Contract Standards and the Consolidated Appropriations Act (CAA) of 2026.
+            </p>
+        </section>
+
+        <!-- Tier Selection -->
+        <section class="tier-section">
+            <h2>Select Your Analysis</h2>
+            <div class="tier-cards">
+                <div class="tier-card" data-tier="essential" onclick="selectTier('essential')">
+                    <div class="tier-name">Essential</div>
+                    <div class="tier-price">Free</div>
+                    <ul class="tier-features">
+                        <li>Quick Look report</li>
+                        <li>Overall score and rating</li>
+                        <li>Key findings summary</li>
+                        <li>Delivered within 1 hour</li>
+                    </ul>
+                    <a href="#" class="learn-more-link" onclick="openModal('essential', event)">
+                        Learn more →
+                    </a>
+                </div>
+                <div class="tier-card" data-tier="premium" onclick="selectTier('premium')">
+                    <div class="tier-name">Premium</div>
+                    <div class="tier-price">$25 <span class="note">one-time</span></div>
+                    <ul class="tier-features">
+                        <li>Full Scorecard report</li>
+                        <li>Negotiation Guide</li>
+                        <li>Detailed provision analysis</li>
+                        <li>Delivered within 24 hours</li>
+                    </ul>
+                    <a href="#" class="learn-more-link" onclick="openModal('premium', event)">
+                        Learn more →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Info + Terms -->
+        <section id="info-section" class="form-section">
+            <h3>
+                <span class="tier-badge essential" id="badge-essential">Essential</span>
+                <span class="tier-badge premium" id="badge-premium" style="display:none;">Premium</span>
+                Your Information
+            </h3>
+            
+            <div id="tier-description-essential">
+                <p style="margin-bottom: 1.25rem; color: var(--mid-gray); font-size: 0.95rem;">
+                    You'll receive a Quick Look report with your contract's overall score, rating category, 
+                    and key findings summary.
+                </p>
+            </div>
+            <div id="tier-description-premium" style="display:none;">
+                <p style="margin-bottom: 1.25rem; color: var(--mid-gray); font-size: 0.95rem;">
+                    You'll receive a comprehensive Scorecard with detailed analysis of all 35 issues, 
+                    plus a Negotiation Guide with specific improvement recommendations.
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company Name <span class="optional">(optional)</span></label>
+                <input type="text" id="company" name="company" placeholder="Your organization">
+            </div>
+
+            <div class="form-group">
+                <label for="pbm">PBM Name <span class="optional">(optional)</span></label>
+                <input type="text" id="pbm" name="pbm" placeholder="e.g., CVS Caremark, Express Scripts">
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms">
+                <label for="terms">
+                    I agree to the <a href="#" onclick="toggleTerms(event)">Terms of Service</a>
+                    <span class="terms-toggle" onclick="toggleTerms(event)">[view]</span>
+                </label>
+            </div>
+
+            <div id="terms-content" class="terms-content">
+                <h4>Contract X-Ray™ Terms of Service</h4>
+                
+                <p>These Terms of Service ("Terms") govern your use of the Contract X-Ray™ analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization ("Nautilus", "we", or "us"). By uploading a contract or using our service, you ("User" or "you") agree to these Terms.</p>
+                
+                <p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+                
+                <ol>
+                    <li><strong>Service Description.</strong> Contract X-Ray™ analyzes PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
+                    
+                    <li><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us ("Contract Information"). You represent that you have the legal right to share this information with us for analysis.</li>
+                    
+                    <li><strong>How We Use Contract Information.</strong> We use your Contract Information solely to: (a) conduct Contract X-Ray™ analysis and provide analysis reports to you; (b) develop industry educational materials and transparency standards using aggregate, anonymized data that does not identify you or reveal your specific contract terms; and (c) support our nonprofit educational mission regarding PBM accountability and fiduciary standards.</li>
+                    
+                    <li><strong>Confidentiality.</strong> We will: (a) maintain your Contract Information in confidence using reasonable care; (b) not disclose your Contract Information to third parties without your consent, except to employees or contractors who need access and are bound by confidentiality obligations; and (c) not use your Contract Information for purposes other than those specified in Section 3.</li>
+                    
+                    <li><strong>What We May Publish.</strong> You acknowledge that: (a) the analysis report we provide to you is yours to use as you wish; and (b) we may publish industry research, benchmarks, and educational content derived from aggregate contract analysis data, provided such publications do not identify you or reveal your specific contract terms, scores, or analysis results.</li>
+                    
+                    <li><strong>Your Responsibilities.</strong> You agree to: (a) only upload contracts you have legal authority to share; (b) not use the service for unlawful purposes; and (c) understand that our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
+                    
+                    <li><strong>Disclaimers and Limitations.</strong> OUR SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES. OUR LIABILITY IS LIMITED TO ACTUAL DIRECT DAMAGES NOT TO EXCEED $100 FOR FREE SERVICES OR THE FEES PAID FOR PAID SERVICES. WE ARE NOT LIABLE FOR INDIRECT, CONSEQUENTIAL, OR PUNITIVE DAMAGES.</li>
+                    
+                    <li><strong>Data Retention.</strong> We retain Contract Information for three (3) years to improve our analysis and support our educational mission. You may request deletion of your specific contract information by contacting us, though we may retain aggregate, anonymized insights as permitted under Section 3.</li>
+                    
+                    <li><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
+                </ol>
+                
+                <p>Questions about these Terms? Contact us at: legal@nautilushealth.org</p>
+            </div>
+
+            <div class="nda-note">
+                <strong>Confidentiality:</strong> We respect your privacy. If your organization requires an NDA, 
+                email privacy@nautilushealth.org and we will 
+                process one electronically.
+            </div>
+
+            <div id="payment-section" style="display:none; margin-bottom: 1.5rem;">
+                <p style="margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--mid-gray);">
+                    Complete payment to continue. Have a coupon code? Enter it on the Stripe checkout page.
+                </p>
+                <a href="#" class="btn btn-stripe" id="stripe-btn" onclick="handlePayment(event)">
+                    Pay $25 with Stripe →
+                </a>
+            </div>
+
+            <div id="continue-section">
+                <button class="btn btn-primary" id="continue-btn" onclick="showUploadSection()" disabled>
+                    Continue
+                </button>
+            </div>
+        </section>
+
+        <!-- Section 3: Upload + Submit -->
+        <section id="upload-section" class="form-section">
+            <h3>Upload Your Contract</h3>
+            
+            <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
+                <div class="upload-icon">📄</div>
+                <div class="upload-text">Drag and drop your PBM contract here</div>
+                <div class="upload-hint">or click to browse (PDF only, max 25MB)</div>
+                <div class="file-name" id="file-name"></div>
+                <input type="file" id="file-input" class="upload-input" accept=".pdf" onchange="handleFileSelect(event)">
+            </div>
+
+            <div class="sla-info">
+                <span class="clock">⏱</span>
+                <span id="sla-text">Your Quick Look report will be delivered within 1 hour.</span>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <button class="btn btn-primary" id="submit-btn" onclick="submitForm()" disabled>
+                    Submit for Analysis
+                </button>
+            </div>
+        </section>
+
+        <!-- Confirmation Section -->
+        <section id="confirmation-section" class="form-section">
+            <div class="confirmation">
+                <div class="conf-wordmark">
+                    <div class="conf-wordmark-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="8" stroke="#CCFBF1" stroke-width="1.5"/>
+                            <path d="M8 12.5l2.5 2.5L16 9" stroke="#2D8B9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="conf-wordmark-text">Nautilus</span>
+                    <div class="conf-wordmark-divider"></div>
+                    <span class="conf-wordmark-product">Contract X-Ray</span>
+                </div>
+
+                <div class="conf-check-wrap">
+                    <div class="conf-check-ring">
+                        <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg>
+                    </div>
+                </div>
+
+                <div class="conf-headline">Submission received.</div>
+                <div class="conf-subhead">
+                    Your contract has been uploaded and your Quick Look analysis is underway.
+                    You will receive your report at the email address below.
+                </div>
+
+                <div class="conf-detail-block">
+                    <div class="conf-detail-label">Submission details</div>
+                    <div class="conf-detail-row">
+                        <span class="conf-detail-key">PBM</span>
+                        <span class="conf-detail-val" id="confirm-pbm"></span>
+                    </div>
+                    <div class="conf-detail-row">
+                        <span class="conf-detail-key">Employer</span>
+                        <span class="conf-detail-val" id="confirm-company"></span>
+                    </div>
+                    <div class="conf-detail-row">
+                        <span class="conf-detail-key">Report delivery</span>
+                        <span class="conf-detail-val" id="confirm-email"></span>
+                    </div>
+                    <div class="conf-detail-row">
+                        <span class="conf-detail-key">Submitted</span>
+                        <span class="conf-detail-val" id="confirm-timestamp"></span>
+                    </div>
+                </div>
+
+                <div class="conf-next-label">What happens next</div>
+                <ul class="conf-steps">
+                    <li>
+                        <div class="conf-step-num">1</div>
+                        <span>Your contract is being analyzed against fiduciary standards by the Contract X-Ray engine.</span>
+                    </li>
+                    <li>
+                        <div class="conf-step-num">2</div>
+                        <span>Your Quick Look report will be emailed to you shortly.</span>
+                    </li>
+                    <li>
+                        <div class="conf-step-num">3</div>
+                        <span>If you have questions or do not receive your report, reply to this confirmation email or contact <span class="conf-email-plain">support@nautilushealth.org</span>.</span>
+                    </li>
+                </ul>
+
+                <div class="conf-footer">
+                    Nautilus Health Institute &nbsp;|&nbsp; nautilushealth.org
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Essential Modal -->
+    <div class="modal-overlay" id="modal-essential">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Essential: Quick Look Report</h3>
+                <button class="modal-close" onclick="closeModal('essential')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>What You'll Receive</h4>
+                <p>The Quick Look report provides a rapid assessment of your PBM contract's alignment with fiduciary standards. Perfect for initial screening or when you need fast answers.</p>
+                
+                <ul>
+                    <li>Overall contract score (0-100 scale)</li>
+                    <li>Rating category (Excellent, Good, Fair, Concern, or Red Flag)</li>
+                    <li>Top 3 strengths identified in your contract</li>
+                    <li>Top 3 priority concerns requiring attention</li>
+                    <li>CAA 2026 alignment assessment</li>
+                </ul>
+
+                <h4>Sample Report Preview</h4>
+                <div class="sample-preview">
+                    <div class="sample-preview-header">📊 Quick Look Summary</div>
+                    <div class="sample-score">
+                        <span class="sample-score-value">58</span>
+                        <span class="sample-score-label">/ 100 — Fair</span>
+                    </div>
+                    <div class="sample-findings">
+                        <strong>Priority Concerns:</strong> Limited audit rights, exclusivity requirements restrict carve-out options, rebate timing exceeds best practice...
+                    </div>
+                </div>
+
+                <h4>Analysis Methodology</h4>
+                <p>Your contract is evaluated against 35 issues across 10 key provisions, including fiduciary acknowledgment, pricing transparency, audit rights, data ownership, and more. Each issue is scored 0-5 and weighted based on fiduciary importance.</p>
+
+                <div class="delivery-badge">
+                    ⏱ Delivered within 1 hour
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('essential')">Close</button>
+                <button class="btn btn-primary" onclick="closeModal('essential'); selectTier('essential');">Select Essential</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Modal -->
+    <div class="modal-overlay" id="modal-premium">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Premium: Scorecard + Negotiation Guide</h3>
+                <button class="modal-close" onclick="closeModal('premium')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>What You'll Receive</h4>
+                <p>The Premium package delivers comprehensive analysis with actionable guidance. Ideal for contract negotiations, renewals, or detailed fiduciary assessment.</p>
+                
+                <h4>Scorecard Report</h4>
+                <ul>
+                    <li>Overall contract score with detailed breakdown</li>
+                    <li>Individual scores for all 10 provisions</li>
+                    <li>Issue-by-issue analysis across 35 evaluation criteria</li>
+                    <li>Evidence citations with specific contract references</li>
+                    <li>Comparison to fiduciary best practices</li>
+                    <li>CAA 2026 compliance assessment</li>
+                </ul>
+
+                <h4>Negotiation Guide</h4>
+                <ul>
+                    <li>Prioritized list of contract improvements</li>
+                    <li>Model contract language for each issue</li>
+                    <li>Talking points for PBM discussions</li>
+                    <li>Risk assessment for unaddressed gaps</li>
+                    <li>Implementation recommendations</li>
+                </ul>
+
+                <h4>Sample Scorecard Preview</h4>
+                <div class="sample-preview">
+                    <div class="sample-preview-header">📋 Provision Breakdown</div>
+                    <table style="width: 100%; font-size: 0.85rem; margin-top: 0.5rem;">
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 0.5rem 0;">1. Fiduciary Acknowledgment</td>
+                            <td style="text-align: right; color: var(--concern);">45</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 0.5rem 0;">2. Pricing Transparency</td>
+                            <td style="text-align: right; color: var(--fair);">62</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e0e0e0;">
+                            <td style="padding: 0.5rem 0;">3. Rebate Pass-Through</td>
+                            <td style="text-align: right; color: var(--good);">78</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem 0; color: var(--mid-gray);">... and 7 more provisions</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h4>Analysis Methodology</h4>
+                <p>Your contract is evaluated against the Fiduciary-Aligned PBM Contract Standards: 35 issues across 10 provisions aligned with CAA 2026 requirements. Each issue receives a score (0-5), confidence rating, and specific contract evidence.</p>
+
+                <div class="delivery-badge">
+                    ⏱ Delivered within 24 hours
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('premium')">Close</button>
+                <button class="btn btn-primary" onclick="closeModal('premium'); selectTier('premium');">Select Premium — $25</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            © 2026 Nautilus Health Institute. All rights reserved.<br>
+            support@nautilushealth.org | 
+            <a href="#">Privacy Policy</a>
+        </p>
+    </footer>
+
+    <script>
+        // State
+        let selectedTier = null;
+        let selectedFile = null;
+        let paymentComplete = false;
+
+        // Modal Functions
+        function openModal(tier, event) {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById(`modal-${tier}`).classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(tier) {
+            document.getElementById(`modal-${tier}`).classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('visible');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.visible').forEach(modal => {
+                    modal.classList.remove('visible');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Tier Selection
+        function selectTier(tier) {
+            selectedTier = tier;
+            
+            // Update card selection
+            document.querySelectorAll('.tier-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelector(`[data-tier="${tier}"]`).classList.add('selected');
+            
+            // Show info section
+            document.getElementById('info-section').classList.add('visible');
+            
+            // Update tier-specific content
+            if (tier === 'essential') {
+                document.getElementById('badge-essential').style.display = 'inline-block';
+                document.getElementById('badge-premium').style.display = 'none';
+                document.getElementById('tier-description-essential').style.display = 'block';
+                document.getElementById('tier-description-premium').style.display = 'none';
+                document.getElementById('payment-section').style.display = 'none';
+                document.getElementById('continue-section').style.display = 'block';
+                paymentComplete = true; // No payment needed for free tier
+            } else {
+                document.getElementById('badge-essential').style.display = 'none';
+                document.getElementById('badge-premium').style.display = 'inline-block';
+                document.getElementById('tier-description-essential').style.display = 'none';
+                document.getElementById('tier-description-premium').style.display = 'block';
+                document.getElementById('payment-section').style.display = 'block';
+                document.getElementById('continue-section').style.display = 'none';
+                paymentComplete = false;
+            }
+            
+            // Reset validation
+            validateInfoForm();
+            
+            // Scroll to info section
+            setTimeout(() => {
+                document.getElementById('info-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Form Validation
+        function validateInfoForm() {
+            const email = document.getElementById('email').value;
+            const terms = document.getElementById('terms').checked;
+            const emailValid = email && email.includes('@') && email.includes('.');
+            
+            const continueBtn = document.getElementById('continue-btn');
+            continueBtn.disabled = !(emailValid && terms && (selectedTier === 'essential' || paymentComplete));
+        }
+
+        // Event listeners for form validation
+        document.getElementById('email').addEventListener('input', validateInfoForm);
+        document.getElementById('terms').addEventListener('change', validateInfoForm);
+
+        // Toggle Terms
+        function toggleTerms(event) {
+            event.preventDefault();
+            const termsContent = document.getElementById('terms-content');
+            termsContent.classList.toggle('visible');
+        }
+
+        // Payment Handler (simulated for MVP)
+        function handlePayment(event) {
+            event.preventDefault();
+            // In production: redirect to Stripe Payment Link
+            // For demo: simulate payment completion
+            const confirmed = confirm('This will redirect to Stripe checkout.\n\nFor demo purposes, click OK to simulate successful payment.');
+            if (confirmed) {
+                paymentComplete = true;
+                document.getElementById('payment-section').innerHTML = `
+                    <div style="background: rgba(5, 150, 105, 0.1); border: 1px solid var(--excellent); 
+                                border-radius: 4px; padding: 1rem; color: var(--excellent);">
+                        ✓ Payment complete
+                    </div>
+                `;
+                document.getElementById('continue-section').style.display = 'block';
+                validateInfoForm();
+            }
+        }
+
+        // Show Upload Section
+        function showUploadSection() {
+            document.getElementById('upload-section').classList.add('visible');
+            
+            // Update SLA text based on tier
+            if (selectedTier === 'premium') {
+                document.getElementById('sla-text').textContent = 
+                    'Your Scorecard and Negotiation Guide will be delivered within 24 hours.';
+            }
+            
+            setTimeout(() => {
+                document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // File Upload
+        const uploadArea = document.getElementById('upload-area');
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        }
+
+        function handleFile(file) {
+            if (file.type !== 'application/pdf') {
+                alert('Please upload a PDF file.');
+                return;
+            }
+            if (file.size > 25 * 1024 * 1024) {
+                alert('File size must be under 25MB.');
+                return;
+            }
+            
+            selectedFile = file;
+            document.getElementById('file-name').textContent = file.name;
+            uploadArea.classList.add('has-file');
+            document.getElementById('submit-btn').disabled = false;
+        }
+
+        // Form Submission
+        function submitForm() {
+            if (!selectedFile || !selectedTier) {
+                alert('Please complete all required fields.');
+                return;
+            }
+
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const pbm = document.getElementById('pbm').value;
+
+            // In production: send to Make.com webhook
+            // For demo: show confirmation
+            
+            // Hide upload section
+            document.getElementById('upload-section').classList.remove('visible');
+            
+            // Update and show confirmation
+            document.getElementById('confirm-pbm').textContent = pbm;
+            document.getElementById('confirm-company').textContent = company;
+            document.getElementById('confirm-email').textContent = email;
+            const now = new Date();
+            document.getElementById('confirm-timestamp').textContent = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) + ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+            
+      
+            document.getElementById('confirmation-section').classList.add('visible');
+        }
+
+        </script>
+</body>
+</html>
