@@ -1110,40 +1110,11 @@
             <div class="checkbox-group">
                 <input type="checkbox" id="terms" name="terms">
                 <label for="terms">
-                    I agree to the <a href="#" onclick="toggleTerms(event)">Terms of Service</a>
-                    <span class="terms-toggle" onclick="toggleTerms(event)">[view]</span>
+                    I agree to the <a href="#" onclick="openTermsModal(event)">Terms of Service</a>
+                </label>
                 </label>
             </div>
 
-            <div id="terms-content" class="terms-content">
-                <h4>Contract X-Ray™ Terms of Service</h4>
-                
-                <p>These Terms of Service ("Terms") govern your use of the Contract X-Ray™ analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization ("Nautilus", "we", or "us"). By uploading a contract or using our service, you ("User" or "you") agree to these Terms.</p>
-                
-                <p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
-                
-                <ol>
-                    <li><strong>Service Description.</strong> Contract X-Ray™ analyzes PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
-                    
-                    <li><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us ("Contract Information"). You represent that you have the legal right to share this information with us for analysis.</li>
-                    
-                    <li><strong>How We Use Contract Information.</strong> We use your Contract Information solely to: (a) conduct Contract X-Ray™ analysis and provide analysis reports to you; (b) develop industry educational materials and transparency standards using aggregate, anonymized data that does not identify you or reveal your specific contract terms; and (c) support our nonprofit educational mission regarding PBM accountability and fiduciary standards.</li>
-                    
-                    <li><strong>Confidentiality.</strong> We will: (a) maintain your Contract Information in confidence using reasonable care; (b) not disclose your Contract Information to third parties without your consent, except to employees or contractors who need access and are bound by confidentiality obligations; and (c) not use your Contract Information for purposes other than those specified in Section 3.</li>
-                    
-                    <li><strong>What We May Publish.</strong> You acknowledge that: (a) the analysis report we provide to you is yours to use as you wish; and (b) we may publish industry research, benchmarks, and educational content derived from aggregate contract analysis data, provided such publications do not identify you or reveal your specific contract terms, scores, or analysis results.</li>
-                    
-                    <li><strong>Your Responsibilities.</strong> You agree to: (a) only upload contracts you have legal authority to share; (b) not use the service for unlawful purposes; and (c) understand that our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
-                    
-                    <li><strong>Disclaimers and Limitations.</strong> OUR SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES. OUR LIABILITY IS LIMITED TO ACTUAL DIRECT DAMAGES NOT TO EXCEED $100 FOR FREE SERVICES OR THE FEES PAID FOR PAID SERVICES. WE ARE NOT LIABLE FOR INDIRECT, CONSEQUENTIAL, OR PUNITIVE DAMAGES.</li>
-                    
-                    <li><strong>Data Retention.</strong> We retain Contract Information for three (3) years to improve our analysis and support our educational mission. You may request deletion of your specific contract information by contacting us, though we may retain aggregate, anonymized insights as permitted under Section 3.</li>
-                    
-                    <li><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
-                </ol>
-                
-                <p>Questions about these Terms? Contact us at: legal@nautilushealth.org</p>
-            </div>
 
             <div class="nda-note">
                 <strong>Confidentiality:</strong> We respect your privacy. If your organization requires an NDA, 
@@ -1248,6 +1219,48 @@
             </div>
         </section>
     </main>
+
+    <!-- Terms of Service Modal -->
+    <div class="modal-overlay" id="modal-terms">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3>Terms of Service</h3>
+                <button class="modal-close" onclick="closeTermsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--mid-gray); margin-bottom: 1.5rem;"><em>Effective Date: February 28, 2026</em></p>
+
+                <p>These Terms of Service ("Terms") govern your use of the Contract X-Ray™ analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization ("Nautilus", "we", or "us"). By uploading a contract or using our service, you ("User" or "you") agree to these Terms.</p>
+
+                <p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+
+                <ol style="margin: 0.5rem 0 1rem 1.5rem;">
+                    <li style="margin-bottom: 0.75rem;"><strong>Service Description.</strong> Contract X-Ray™ analyzes PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us ("Contract Information"). You represent that you have the legal right to share this information with us for analysis.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>How We Use Contract Information.</strong> We use your Contract Information solely to: (a) conduct Contract X-Ray™ analysis and provide analysis reports to you; (b) develop industry educational materials and transparency standards using aggregate, anonymized data that does not identify you or reveal your specific contract terms; and (c) support our nonprofit educational mission regarding PBM accountability and fiduciary standards.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>Confidentiality.</strong> We will: (a) maintain your Contract Information in confidence using reasonable care; (b) not disclose your Contract Information to third parties without your consent, except to employees or contractors who need access and are bound by confidentiality obligations; and (c) not use your Contract Information for purposes other than those specified in Section 3.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>What We May Publish.</strong> You acknowledge that: (a) the analysis report we provide to you is yours to use as you wish; and (b) we may publish industry research, benchmarks, and educational content derived from aggregate contract analysis data, provided such publications do not identify you or reveal your specific contract terms, scores, or analysis results.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>Your Responsibilities.</strong> You agree to: (a) only upload contracts you have legal authority to share; (b) not use the service for unlawful purposes; and (c) understand that our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>Disclaimers and Limitations.</strong> OUR SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES. OUR LIABILITY IS LIMITED TO ACTUAL DIRECT DAMAGES NOT TO EXCEED $100 FOR FREE SERVICES OR THE FEES PAID FOR PAID SERVICES. WE ARE NOT LIABLE FOR INDIRECT, CONSEQUENTIAL, OR PUNITIVE DAMAGES.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>Data Retention.</strong> We retain Contract Information for three (3) years to improve our analysis and support our educational mission. You may request deletion of your specific contract information by contacting us, though we may retain aggregate, anonymized insights as permitted under Section 3.</li>
+
+                    <li style="margin-bottom: 0.75rem;"><strong>General Terms.</strong> These Terms are governed by Delaware law. We may update these Terms by posting changes to our website with at least 30 days notice. Continued use after changes constitutes acceptance. If any provision is unenforceable, the remainder remains in effect.</li>
+                </ol>
+
+                <p>Questions about these Terms? Contact us at legal@nautilushealth.org</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeTermsModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Privacy Policy Modal -->
     <div class="modal-overlay" id="modal-privacy">
@@ -1541,6 +1554,17 @@
         document.getElementById('submitter-name').addEventListener('input', validateInfoForm);
         document.getElementById('terms').addEventListener('change', validateInfoForm);
 
+        function openTermsModal(event) {
+            event.preventDefault();
+            document.getElementById('modal-terms').classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTermsModal() {
+            document.getElementById('modal-terms').classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
         function openPrivacyModal(event) {
             event.preventDefault();
             document.getElementById('modal-privacy').classList.add('visible');
@@ -1550,13 +1574,6 @@
         function closePrivacyModal() {
             document.getElementById('modal-privacy').classList.remove('visible');
             document.body.style.overflow = '';
-        }
-
-        // Toggle Terms
-        function toggleTerms(event) {
-            event.preventDefault();
-            const termsContent = document.getElementById('terms-content');
-            termsContent.classList.toggle('visible');
         }
 
         // Payment Handler (simulated for MVP)
