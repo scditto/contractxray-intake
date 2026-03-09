@@ -1864,6 +1864,17 @@
                         })
                     ));
 
+                    // Build document blocks as pre-serialized JSON fragment
+                    // (comma-separated, no outer brackets — injected inline into Claude content array)
+                    const documentBlocks = files.map(f =>
+                        JSON.stringify({
+                            type: 'document',
+                            source: { type: 'base64', media_type: 'application/pdf', data: f.fileBase64 }
+                        })
+                    ).join(',');
+
+                    const fileNames = files.map(f => f.fileName).join(', ');
+
                     const payload = {
                         tier: selectedTier,
                         contractCompany,
@@ -1873,6 +1884,10 @@
                         submitterEmail,
                         submittedAt: new Date().toISOString(),
                         fileCount: files.length,
+                        fileName: files[0].fileName,       // first file — Drive upload compat
+                        fileBase64: files[0].fileBase64,   // first file — Drive upload compat
+                        fileNames,
+                        documentBlocks,
                         files
                     };
 
