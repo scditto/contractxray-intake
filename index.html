@@ -437,7 +437,148 @@
             border-bottom: 1px solid var(--light-gray);
         }
 
-        /* File list rows */
+        /* Upload instructions */
+        .upload-instructions {
+            font-size: 0.875rem;
+            color: var(--mid-gray);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        /* Relationship groups */
+        .relationship-group {
+            border: 1px solid #dde4ec;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #f8fafc;
+            overflow: hidden;
+        }
+        .relationship-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            background: #eef2f7;
+            border-bottom: 1px solid #dde4ec;
+        }
+        .relationship-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--navy);
+            white-space: nowrap;
+        }
+        .relationship-header select {
+            flex: 1;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid #ccd4df;
+            border-radius: 4px;
+            color: var(--navy);
+            background: #fff;
+        }
+        .relationship-header select:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+        .relationship-remove {
+            background: none;
+            border: none;
+            color: #9aa5b4;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .relationship-remove:hover { color: #c0392b; background: #fdf0ef; }
+        .relationship-body { padding: 0.85rem 1rem; }
+        .rel-other-input {
+            margin-bottom: 0.75rem;
+        }
+        .rel-other-input input {
+            width: 100%;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.6rem;
+            border: 1px solid #ccd4df;
+            border-radius: 4px;
+            color: var(--navy);
+        }
+        .rel-file-list { margin-bottom: 0.65rem; }
+        .rel-file-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 0.6rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            margin-bottom: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--navy);
+        }
+        .rel-file-row span { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .rel-file-row button {
+            background: none; border: none; color: #9aa5b4;
+            cursor: pointer; font-size: 0.9rem; padding: 0 0.3rem;
+            flex-shrink: 0;
+        }
+        .rel-file-row button:hover { color: #c0392b; }
+        .rel-size-bar {
+            font-size: 0.78rem;
+            margin-bottom: 0.65rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .rel-size-bar .size-ok { color: var(--teal); }
+        .rel-size-bar .size-warn { color: #b45309; font-weight: 600; }
+        .rel-drop-zone {
+            border: 1.5px dashed #b0bec9;
+            border-radius: 6px;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.82rem;
+            color: #6b7a8d;
+            transition: border-color 0.15s, background 0.15s;
+        }
+        .rel-drop-zone:hover, .rel-drop-zone.dragover {
+            border-color: var(--teal);
+            background: #f0fdfb;
+            color: var(--teal);
+        }
+
+        /* Add relationship button */
+        .btn-add-relationship {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px dashed #b0bec9;
+            border-radius: 8px;
+            background: transparent;
+            color: #6b7a8d;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+            justify-content: center;
+        }
+        .btn-add-relationship:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+            background: #f0fdfb;
+        }
+        .btn-add-relationship-icon {
+            font-size: 1.1rem;
+            line-height: 1;
+            font-weight: 300;
+        }
+
+        /* File list rows (legacy — keep for safety) */
         .file-list-row {
             display: grid;
             grid-template-columns: 1fr auto auto;
@@ -449,51 +590,6 @@
             border-radius: 6px;
             margin-bottom: 0.65rem;
         }
-        .file-list-row .file-row-name {
-            font-size: 0.85rem;
-            color: var(--navy);
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .file-list-row select {
-            font-size: 0.82rem;
-            padding: 0.35rem 0.6rem;
-            border: 1px solid #ccd4df;
-            border-radius: 4px;
-            color: var(--navy);
-            background: #fff;
-            min-width: 200px;
-        }
-        .file-list-row select:focus {
-            outline: none;
-            border-color: var(--teal);
-        }
-        .file-row-other {
-            margin-top: 0.4rem;
-            grid-column: 1 / -1;
-        }
-        .file-row-other input {
-            width: 100%;
-            font-size: 0.82rem;
-            padding: 0.35rem 0.6rem;
-            border: 1px solid #ccd4df;
-            border-radius: 4px;
-            color: var(--navy);
-        }
-        .file-row-remove {
-            background: none;
-            border: none;
-            color: #9aa5b4;
-            cursor: pointer;
-            font-size: 1.1rem;
-            padding: 0.2rem 0.4rem;
-            line-height: 1;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-        .file-row-remove:hover { color: #c0392b; background: #fdf0ef; }
 
         /* Confirmation */
         .confirmation {
@@ -1074,19 +1170,17 @@
         <!-- Section 3: Upload + Submit -->
         <section id="upload-section" class="form-section">
             <h3>Upload Your Contract(s)</h3>
+            <p class="upload-instructions">Group documents by PBM relationship. Each relationship produces one report. You may upload multiple documents per relationship (e.g., base agreement + exhibits).</p>
 
-            <div id="file-list"></div>
+            <div id="relationships-container"></div>
 
-            <div id="add-file-area" class="upload-area" onclick="document.getElementById('file-input-new').click()">
-                <div class="upload-icon">📄</div>
-                <div class="upload-text">Drag and drop a PBM contract here</div>
-                <div class="upload-hint">or click to browse (PDF only, max 25MB)</div>
-                <input type="file" id="file-input-new" class="upload-input" accept=".pdf" onchange="handleNewFile(event)">
-            </div>
+            <button class="btn-add-relationship" onclick="addRelationship()">
+                <span class="btn-add-relationship-icon">+</span> Add another PBM relationship
+            </button>
 
-            <div class="sla-info">
+            <div class="sla-info" style="margin-top: 1.5rem;">
                 <span class="clock">⏱</span>
-                <span id="sla-text">Your Quick Look report will be delivered within 1 hour.</span>
+                <span id="sla-text">Your Quick Look report will be delivered within 1 hour per relationship.</span>
             </div>
 
             <div style="margin-top: 1.5rem;">
@@ -1493,131 +1587,232 @@
                 document.getElementById('sla-text').textContent = 
                     'Your Scorecard and Negotiation Guide will be delivered within 24 hours.';
             }
+
+            initRelationships();
             
             setTimeout(() => {
                 document.getElementById('upload-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
         }
 
-        // ── Multi-file state ─────────────────────────────────────────────
+        // ── Relationship-grouped multi-file state ────────────────────────
         const PBM_NAMES = [
-            'CarelonRx','CVS Caremark','Express Scripts','Humana Pharmacy Solutions',
-            'OptumRx','PerformRx','Pharmacy Benefit Dimensions','Prime Therapeutics',
-            'AffirmedRx','BeneCard PBF','CerpassRx','Citizens Rx','ClearScript',
-            'Costco Health Solutions','DisclosedRx','EHIM','EmpiRx Health','EpiphanyRx',
-            'Evo','ExhaleRx','Kroger Prescription Plans','Liviniti','Lucent Health Rx',
-            'MaxorPlus','MedalistRx','MedImpact','MedOne','National Script','Navitus',
-            'ProAct','ProCare Rx','Rightway','RxBenefits','RxPreferred Benefits','Sav-Rx',
-            'Serve You Rx','Slate Rx','SmithRx','TransparentRx','TrueRx','US-Rx Care',
-            'Veracity Rx','Vivid Clear Rx','VerusRx','WellDyne','Wellyfe','PharmPix',
-            'Phoenix Benefits Management','Other (Please specify below)'
+            'AffirmedRx','BeneCard PBF','CarelonRx','CerpassRx','Citizens Rx',
+            'ClearScript','Costco Health Solutions','CVS Caremark','DisclosedRx',
+            'EHIM','EmpiRx Health','EpiphanyRx','Evo','ExhaleRx','Express Scripts',
+            'Humana Pharmacy Solutions','Kroger Prescription Plans','Liviniti',
+            'Lucent Health Rx','MaxorPlus','MedalistRx','MedImpact','MedOne',
+            'National Script','Navitus','OptumRx','PerformRx',
+            'Pharmacy Benefit Dimensions','PharmPix','Phoenix Benefits Management',
+            'Prime Therapeutics','ProAct','ProCare Rx','Rightway','RxBenefits',
+            'RxPreferred Benefits','Sav-Rx','Serve You Rx','Slate Rx','SmithRx',
+            'TransparentRx','TrueRx','US-Rx Care','Veracity Rx','VerusRx',
+            'Vivid Clear Rx','WellDyne','Wellyfe','Other (Please specify below)'
         ];
 
-        // Array of { file: File, pbm: string, otherpbm: string }
-        let fileEntries = [];
-        let lastPbm = '';
+        const MAX_REL_BYTES = 4 * 1024 * 1024; // 4MB per relationship
+        const OTHER_VALUE   = 'Other (Please specify below)';
 
-        const addFileArea = document.getElementById('add-file-area');
+        // relationships: [{ id, pbm, otherpbm, files: [File, ...] }]
+        let relationships = [];
+        let relIdCounter  = 0;
+        let lastPbm       = '';
 
-        addFileArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            addFileArea.classList.add('dragover');
-        });
-        addFileArea.addEventListener('dragleave', () => {
-            addFileArea.classList.remove('dragover');
-        });
-        addFileArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            addFileArea.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            for (let i = 0; i < files.length; i++) addFileToList(files[i]);
-        });
-
-        function handleNewFile(event) {
-            const files = event.target.files;
-            for (let i = 0; i < files.length; i++) addFileToList(files[i]);
-            event.target.value = '';
+        function buildPbmOptions(selected) {
+            return `<option value="" disabled ${!selected ? 'selected' : ''}>Select PBM</option>` +
+                PBM_NAMES.map(n =>
+                    `<option value="${n}" ${n === selected ? 'selected' : ''}>${n}</option>`
+                ).join('');
         }
 
-        function addFileToList(file) {
-            if (file.type !== 'application/pdf') {
-                alert(`"${file.name}" is not a PDF. Please upload PDF files only.`);
-                return;
-            }
-            if (file.size > 25 * 1024 * 1024) {
-                alert(`"${file.name}" exceeds the 25MB limit.`);
-                return;
-            }
-            const entry = { file, pbm: lastPbm, otherpbm: '' };
-            fileEntries.push(entry);
-            renderFileList();
+        function relSize(rel) {
+            return rel.files.reduce((sum, f) => sum + f.size, 0);
+        }
+
+        function fmtSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+        }
+
+        function addRelationship() {
+            const id = ++relIdCounter;
+            relationships.push({ id, pbm: lastPbm, otherpbm: '', files: [] });
+            renderRelationships();
+            // Scroll new group into view
+            setTimeout(() => {
+                const el = document.getElementById(`rel-${id}`);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 80);
+        }
+
+        function removeRelationship(id) {
+            relationships = relationships.filter(r => r.id !== id);
+            renderRelationships();
             updateSubmitBtn();
         }
 
-        function removeFile(index) {
-            fileEntries.splice(index, 1);
-            renderFileList();
-            updateSubmitBtn();
-        }
-
-        function buildPbmOptions(selectedValue) {
-            return PBM_NAMES.map(name =>
-                `<option value="${name}" ${name === selectedValue ? 'selected' : ''}>${name}</option>`
-            ).join('');
-        }
-
-        function renderFileList() {
-            const list = document.getElementById('file-list');
-            if (fileEntries.length === 0) {
-                list.innerHTML = '';
-                return;
-            }
-            list.innerHTML = fileEntries.map((entry, i) => `
-                <div class="file-list-row" id="file-row-${i}">
-                    <div class="file-row-name" title="${entry.file.name}">📄 ${entry.file.name}</div>
-                    <select onchange="updatePbm(${i}, this.value)">
-                        <option value="" disabled ${!entry.pbm ? 'selected' : ''}>Select PBM</option>
-                        ${buildPbmOptions(entry.pbm)}
-                    </select>
-                    <button class="file-row-remove" onclick="removeFile(${i})" title="Remove">✕</button>
-                    ${entry.pbm === 'Other (Please specify below)' ? `
-                    <div class="file-row-other">
-                        <input type="text" placeholder="Enter PBM name"
-                            value="${entry.otherpbm}"
-                            oninput="updateOtherPbm(${i}, this.value)">
-                    </div>` : ''}
-                </div>
-            `).join('');
-        }
-
-        function updatePbm(index, value) {
-            fileEntries[index].pbm = value;
+        function updateRelPbm(id, value) {
+            const rel = relationships.find(r => r.id === id);
+            if (!rel) return;
+            rel.pbm = value;
             lastPbm = value;
-            // Pre-fill subsequent entries that have no PBM selected
-            for (let i = index + 1; i < fileEntries.length; i++) {
-                if (!fileEntries[i].pbm) fileEntries[i].pbm = value;
-            }
-            renderFileList();
+            renderRelationships();
             updateSubmitBtn();
         }
 
-        function updateOtherPbm(index, value) {
-            fileEntries[index].otherpbm = value;
+        function updateRelOther(id, value) {
+            const rel = relationships.find(r => r.id === id);
+            if (rel) rel.otherpbm = value;
             updateSubmitBtn();
+        }
+
+        function addFilesToRel(id, fileList) {
+            const rel = relationships.find(r => r.id === id);
+            if (!rel) return;
+            const current = relSize(rel);
+            let running = current;
+            const rejected = [];
+
+            Array.from(fileList).forEach(file => {
+                if (file.type !== 'application/pdf') {
+                    rejected.push(`"${file.name}" is not a PDF.`);
+                    return;
+                }
+                if (running + file.size > MAX_REL_BYTES) {
+                    rejected.push(`"${file.name}" would exceed the 4MB limit for this relationship.`);
+                    return;
+                }
+                // Skip duplicate filenames
+                if (rel.files.some(f => f.name === file.name)) return;
+                rel.files.push(file);
+                running += file.size;
+            });
+
+            if (rejected.length) {
+                alert('Some files were not added:\n\n' + rejected.join('\n') +
+                    '\n\nPlease compress large files before uploading, or contact support@nautilushealth.org.');
+            }
+            renderRelationships();
+            updateSubmitBtn();
+        }
+
+        function removeFileFromRel(relId, fileIndex) {
+            const rel = relationships.find(r => r.id === relId);
+            if (rel) rel.files.splice(fileIndex, 1);
+            renderRelationships();
+            updateSubmitBtn();
+        }
+
+        function renderRelationships() {
+            const container = document.getElementById('relationships-container');
+            const addBtn    = document.querySelector('.btn-add-relationship');
+
+            if (relationships.length === 0) {
+                container.innerHTML = '';
+                if (addBtn) addBtn.style.display = '';
+                return;
+            }
+
+            container.innerHTML = relationships.map((rel, rIdx) => {
+                const size     = relSize(rel);
+                const pct      = Math.min(100, (size / MAX_REL_BYTES) * 100);
+                const sizeStr  = fmtSize(size);
+                const overLimit= size >= MAX_REL_BYTES;
+                const sizeClass= overLimit ? 'size-warn' : 'size-ok';
+                const sizeMsg  = overLimit
+                    ? `${sizeStr} / 4 MB limit reached. Compress files before adding more.`
+                    : `${sizeStr} of 4 MB`;
+
+                const fileRows = rel.files.map((f, fi) => `
+                    <div class="rel-file-row">
+                        <span title="${f.name}">📄 ${f.name} <span style="color:#9aa5b4;">(${fmtSize(f.size)})</span></span>
+                        <button onclick="removeFileFromRel(${rel.id}, ${fi})" title="Remove">✕</button>
+                    </div>`).join('');
+
+                const showRemoveRel = relationships.length > 1;
+
+                return `
+                <div class="relationship-group" id="rel-${rel.id}">
+                    <div class="relationship-header">
+                        <span class="relationship-label">PBM ${rIdx + 1}</span>
+                        <select onchange="updateRelPbm(${rel.id}, this.value)">
+                            ${buildPbmOptions(rel.pbm)}
+                        </select>
+                        ${showRemoveRel ? `<button class="relationship-remove" onclick="removeRelationship(${rel.id})" title="Remove relationship">✕</button>` : ''}
+                    </div>
+                    <div class="relationship-body">
+                        ${rel.pbm === OTHER_VALUE ? `
+                        <div class="rel-other-input">
+                            <input type="text" placeholder="Enter PBM name"
+                                value="${rel.otherpbm}"
+                                oninput="updateRelOther(${rel.id}, this.value)">
+                        </div>` : ''}
+                        ${rel.files.length > 0 ? `
+                        <div class="rel-file-list">${fileRows}</div>
+                        <div class="rel-size-bar">
+                            <span class="${sizeClass}">${sizeMsg}</span>
+                        </div>` : ''}
+                        ${!overLimit ? `
+                        <div class="rel-drop-zone" id="drop-${rel.id}"
+                            onclick="document.getElementById('file-input-${rel.id}').click()"
+                            ondragover="relDragOver(event, ${rel.id})"
+                            ondragleave="relDragLeave(event, ${rel.id})"
+                            ondrop="relDrop(event, ${rel.id})">
+                            ${rel.files.length === 0
+                                ? 'Drop contract document(s) here or click to browse'
+                                : '+ Add more documents to this relationship'}
+                            <input type="file" id="file-input-${rel.id}" style="display:none"
+                                accept=".pdf" multiple
+                                onchange="addFilesToRel(${rel.id}, this.files); this.value='';">
+                        </div>` : `
+                        <div class="rel-drop-zone" style="opacity:0.45;cursor:not-allowed;pointer-events:none;">
+                            4 MB limit reached. Compress files or contact support@nautilushealth.org.
+                        </div>`}
+                    </div>
+                </div>`;
+            }).join('');
+
+            // Show "Add another" only after at least one relationship exists
+            if (addBtn) addBtn.style.display = '';
+        }
+
+        function relDragOver(e, id) {
+            e.preventDefault();
+            const el = document.getElementById(`drop-${id}`);
+            if (el) el.classList.add('dragover');
+        }
+        function relDragLeave(e, id) {
+            const el = document.getElementById(`drop-${id}`);
+            if (el) el.classList.remove('dragover');
+        }
+        function relDrop(e, id) {
+            e.preventDefault();
+            const el = document.getElementById(`drop-${id}`);
+            if (el) el.classList.remove('dragover');
+            addFilesToRel(id, e.dataTransfer.files);
         }
 
         function updateSubmitBtn() {
-            const allReady = fileEntries.length > 0 && fileEntries.every(e => {
-                if (!e.pbm) return false;
-                if (e.pbm === 'Other (Please specify below)' && !e.otherpbm.trim()) return false;
+            const allReady = relationships.length > 0 && relationships.every(rel => {
+                if (!rel.pbm) return false;
+                if (rel.pbm === OTHER_VALUE && !rel.otherpbm.trim()) return false;
+                if (rel.files.length === 0) return false;
                 return true;
             });
             document.getElementById('submit-btn').disabled = !allReady;
         }
 
+        // Initialize with one relationship on page load (after upload section shown)
+        function initRelationships() {
+            if (relationships.length === 0) {
+                addRelationship();
+            }
+        }
+
         // ── Submit ────────────────────────────────────────────────────────
         async function submitForm() {
-            if (fileEntries.length === 0 || !selectedTier) {
+            if (relationships.length === 0 || !selectedTier) {
                 alert('Please add at least one contract before submitting.');
                 return;
             }
@@ -1625,30 +1820,32 @@
             const submitBtn = document.getElementById('submit-btn');
             submitBtn.disabled = true;
 
-            const contractCompany = document.getElementById('contract-company').value || '';
-            const submitterName   = document.getElementById('submitter-name').value;
-            const submitterCompany= document.getElementById('submitter-company').value || '';
-            const submitterEmail  = document.getElementById('submitter-email').value;
+            const contractCompany  = document.getElementById('contract-company').value || '';
+            const submitterName    = document.getElementById('submitter-name').value;
+            const submitterCompany = document.getElementById('submitter-company').value || '';
+            const submitterEmail   = document.getElementById('submitter-email').value;
 
-            const errors = [];
+            const errors   = [];
+            const successes= [];
 
-            for (let i = 0; i < fileEntries.length; i++) {
-                const entry = fileEntries[i];
-                const pbmLabel = entry.pbm === 'Other (Please specify below)'
-                    ? entry.otherpbm.trim()
-                    : entry.pbm;
+            for (let i = 0; i < relationships.length; i++) {
+                const rel = relationships[i];
+                const pbmLabel = rel.pbm === OTHER_VALUE ? rel.otherpbm.trim() : rel.pbm;
 
-                submitBtn.textContent = fileEntries.length > 1
-                    ? `Submitting ${i + 1} of ${fileEntries.length}...`
+                submitBtn.textContent = relationships.length > 1
+                    ? `Submitting ${i + 1} of ${relationships.length}...`
                     : 'Submitting...';
 
                 try {
-                    const fileBase64 = await new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = () => resolve(reader.result.split(',')[1]);
-                        reader.onerror = reject;
-                        reader.readAsDataURL(entry.file);
-                    });
+                    // Encode all files for this relationship
+                    const files = await Promise.all(rel.files.map(file =>
+                        new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload  = () => resolve({ fileName: file.name, fileSize: file.size, fileBase64: reader.result.split(',')[1] });
+                            reader.onerror = reject;
+                            reader.readAsDataURL(file);
+                        })
+                    ));
 
                     const payload = {
                         tier: selectedTier,
@@ -1657,10 +1854,9 @@
                         submitterName,
                         submitterCompany,
                         submitterEmail,
-                        fileName: entry.file.name,
-                        fileSize: entry.file.size,
                         submittedAt: new Date().toISOString(),
-                        fileBase64
+                        fileCount: files.length,
+                        files
                     };
 
                     const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
@@ -1670,52 +1866,45 @@
                     });
 
                     if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
                 } catch (err) {
-                    errors.push(entry.file.name);
-                    console.error(`Error submitting ${entry.file.name}:`, err);
+                    errors.push(pbmLabel);
+                    console.error(`Error submitting ${pbmLabel}:`, err);
                 }
             }
 
-            if (errors.length > 0 && errors.length === fileEntries.length) {
-                // All failed
+            if (errors.length > 0 && successes.length === 0) {
                 alert('There was an error submitting your contracts. Please try again or contact support@nautilushealth.org');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit for Analysis';
                 return;
             }
 
-            // At least some succeeded — show confirmation
+            // Show confirmation
             document.getElementById('upload-section').classList.remove('visible');
             document.getElementById('info-section').classList.remove('visible');
 
-            // Build contracts summary
-            const successEntries = errors.length > 0
-                ? fileEntries.filter(e => !errors.includes(e.file.name))
-                : fileEntries;
-
             const contractsBlock = document.getElementById('confirm-contracts-block');
-            contractsBlock.innerHTML = successEntries.map(e => {
-                const pbmLabel = e.pbm === 'Other (Please specify below)' ? e.otherpbm.trim() : e.pbm;
-                return `<div class="conf-detail-row">
-                    <span class="conf-detail-key">Contract</span>
-                    <span class="conf-detail-val">${pbmLabel} &mdash; ${e.file.name}</span>
-                </div>`;
-            }).join('');
-
-            document.getElementById('confirm-company').textContent = contractCompany || 'Not provided';
-            document.getElementById('confirm-email').textContent = submitterEmail;
-            const now = new Date();
-            document.getElementById('confirm-timestamp').textContent =
-                now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) +
-                ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+            contractsBlock.innerHTML = successes.map(s => `
+                <div class="conf-detail-row">
+                    <span class="conf-detail-key">PBM</span>
+                    <span class="conf-detail-val">${s.pbm} <span style="color:#9aa5b4;font-size:0.82rem;">(${s.fileCount} document${s.fileCount > 1 ? 's' : ''})</span></span>
+                </div>`).join('');
 
             if (errors.length > 0) {
                 const note = document.createElement('p');
                 note.style.cssText = 'color:#b45309;font-size:0.82rem;margin-top:0.75rem;';
-                note.textContent = `Note: ${errors.length} file(s) could not be submitted. Please contact support@nautilushealth.org for assistance.`;
+                note.textContent = `Note: submission failed for ${errors.join(', ')}. Contact support@nautilushealth.org for assistance.`;
                 contractsBlock.appendChild(note);
             }
+
+            document.getElementById('confirm-company').textContent  = contractCompany || 'Not provided';
+            document.getElementById('confirm-email').textContent    = submitterEmail;
+            const now = new Date();
+            document.getElementById('confirm-timestamp').textContent =
+                now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) +
+                ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
 
             document.getElementById('confirmation-section').classList.add('visible');
             setTimeout(() => {
