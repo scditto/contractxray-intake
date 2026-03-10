@@ -1875,24 +1875,22 @@
 
                     const fileNames = files.map(f => f.fileName).join(', ');
 
-                    const payload = {
-    tier: selectedTier,
-    contractCompany,
-    contractPbm: pbmLabel,
-    submitterName,
-    submitterCompany,
-    submitterEmail,
-    submittedAt: new Date().toISOString(),
-    fileCount: files.length,
-    fileName: files[0].fileName,
-    fileBase64: files[0].fileBase64,
-    fileNames
-};
-console.log('Payload size:', JSON.stringify(payload).length / 1024 / 1024, 'MB');
+                    const formData = new FormData();
+formData.append('tier', selectedTier);
+formData.append('contractCompany', contractCompany);
+formData.append('contractPbm', pbmLabel);
+formData.append('submitterName', submitterName);
+formData.append('submitterCompany', submitterCompany);
+formData.append('submitterEmail', submitterEmail);
+formData.append('submittedAt', new Date().toISOString());
+formData.append('fileCount', files.length);
+formData.append('fileName', files[0].fileName);
+formData.append('fileBase64', files[0].fileBase64);
+formData.append('fileNames', fileNames);
+
 await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
     method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(payload)
+    body: formData
 });
                     successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
