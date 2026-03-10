@@ -1884,9 +1884,14 @@ formData.append('submitterCompany', submitterCompany);
 formData.append('submitterEmail', submitterEmail);
 formData.append('submittedAt', new Date().toISOString());
 formData.append('fileCount', files.length);
-formData.append('fileName', files[0].fileName);
-formData.append('fileBase64', files[0].fileBase64);
 formData.append('fileNames', fileNames);
+
+// Send file as binary, not base64
+const byteChars = atob(files[0].fileBase64);
+const byteArray = new Uint8Array(byteChars.length);
+for (let i = 0; i < byteChars.length; i++) byteArray[i] = byteChars.charCodeAt(i);
+const blob = new Blob([byteArray], { type: 'application/pdf' });
+formData.append('file', blob, files[0].fileName);
 
 await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
     method: 'POST',
