@@ -1894,10 +1894,8 @@
                     await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
     method: 'POST',
     mode: 'no-cors',
-    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(payload)
 });
-
                     successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
                 } catch (err) {
