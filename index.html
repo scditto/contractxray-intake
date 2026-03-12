@@ -1153,7 +1153,6 @@
             <p>The Quick Look is a triage tool, not a full evaluation. It reads your contract against fiduciary-aligned standards and gives you a fast directional read — so you know whether to act before committing to a full analysis.</p>
             <ul>
                 <li>Every provision rated <strong>Good</strong>, <strong>Concern</strong>, or <strong>Red Flag</strong> — no scoring complexity, just a clear signal</li>
-                <li>Overall contract score (0&ndash;100) and rating category</li>
                 <li>Key findings summary: top strengths and priority concerns</li>
                 <li>CAA 2026 alignment assessment</li>
                 <li>Delivered as a PDF you can share immediately</li>
@@ -1346,7 +1345,8 @@
             try {
                 await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
                     body: JSON.stringify({
                         tier: 'waitlist',
                         submitterName: name,
@@ -1780,11 +1780,12 @@
 
                     const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain' },
                         body: JSON.stringify(payload)
                     });
 
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    // no-cors returns opaque response — assume success if fetch didn't throw
                     successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
                 } catch (err) {
