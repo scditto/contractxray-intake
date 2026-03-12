@@ -1345,8 +1345,7 @@
             try {
                 await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         tier: 'waitlist',
                         submitterName: name,
@@ -1780,12 +1779,11 @@
 
                     const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                         method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'text/plain' },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
                     });
 
-                    // no-cors returns opaque response — assume success if fetch didn't throw
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
                 } catch (err) {
