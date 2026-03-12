@@ -974,7 +974,7 @@
                     </div>
 
                     <div class="nda-note">
-                        <strong>Confidentiality:</strong> If your organization requires an NDA, email <a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a> and we will process one electronically before you submit.
+                        <strong>Confidentiality:</strong> If your organization requires an NDA, email <a href="mailto:info&#64;nautilushealth.org">info&#64;nautilushealth.org</a> and we will process one electronically before you submit.
                     </div>
 
                     <div id="payment-section">
@@ -1056,7 +1056,7 @@
                         </li>
                         <li class="conf-step">
                             <div class="conf-step-num">3</div>
-                            <span>If you have questions or do not receive your report, contact <span class="conf-email-plain"><a href="mailto:support@nautilushealth.org">support@nautilushealth.org</a></span>.</span>
+                            <span>If you have questions or do not receive your report, contact <span class="conf-email-plain"><a href="mailto:support&#64;nautilushealth.org">support&#64;nautilushealth.org</a></span>.</span>
                         </li>
                     </ul>
 
@@ -1072,7 +1072,7 @@
 
 <footer class="site-footer">
     &copy; 2026 Nautilus Health Institute. All rights reserved. &nbsp;&bull;&nbsp;
-    <a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a> &nbsp;&bull;&nbsp;
+    <a href="mailto:info&#64;nautilushealth.org">info&#64;nautilushealth.org</a> &nbsp;&bull;&nbsp;
     <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
 </footer>
 
@@ -1099,7 +1099,7 @@
                 <li><strong>Data Retention.</strong> We retain contract information for three years. You may request deletion by contacting us.</li>
                 <li><strong>General Terms.</strong> Governed by Delaware law. We may update these Terms with 30 days notice. Continued use constitutes acceptance.</li>
             </ol>
-            <p style="margin-top:0.75rem;">Questions: <a href="mailto:info@nautilushealth.org" style="color:var(--teal);">info@nautilushealth.org</a></p>
+            <p style="margin-top:0.75rem;">Questions: <a href="mailto:info&#64;nautilushealth.org" style="color:var(--teal);">info&#64;nautilushealth.org</a></p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" style="width:auto;" onclick="closeTermsModal()">Close</button>
@@ -1129,11 +1129,11 @@
             <h4>6. Data Retention</h4>
             <p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
             <h4>7. Your Rights</h4>
-            <p>You may request a copy of your data, request deletion, or ask questions. Contact <a href="mailto:info@nautilushealth.org" style="color:var(--teal);">info@nautilushealth.org</a>.</p>
+            <p>You may request a copy of your data, request deletion, or ask questions. Contact <a href="mailto:info&#64;nautilushealth.org" style="color:var(--teal);">info&#64;nautilushealth.org</a>.</p>
             <h4>8. Changes to This Policy</h4>
             <p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
             <h4>9. Contact Us</h4>
-            <p>Nautilus Health Institute &mdash; <a href="mailto:info@nautilushealth.org" style="color:var(--teal);">info@nautilushealth.org</a></p>
+            <p>Nautilus Health Institute &mdash; <a href="mailto:info&#64;nautilushealth.org" style="color:var(--teal);">info&#64;nautilushealth.org</a></p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" style="width:auto;" onclick="closePrivacyModal()">Close</button>
@@ -1599,7 +1599,7 @@
 
             if (rejected.length) {
                 alert('Some files were not added:\n\n' + rejected.join('\n') +
-                    '\n\nPlease compress large files before uploading, or contact support@nautilushealth.org.');
+                    '\n\nPlease compress large files before uploading, or contact support&#64;nautilushealth.org.');
             }
             renderRelationships();
             updateSubmitBtn();
@@ -1675,7 +1675,7 @@
                                 onchange="addFilesToRel(${rel.id}, this.files); this.value='';">
                         </div>` : `
                         <div class="rel-drop-zone" style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
-                            4 MB limit reached. Compress files or contact support@nautilushealth.org.
+                            4 MB limit reached. Compress files or contact support&#64;nautilushealth.org.
                         </div>`}
                     </div>
                 </div>`;
@@ -1795,7 +1795,7 @@
             }
 
             if (errors.length > 0 && successes.length === 0) {
-                alert('There was an error submitting your contracts. Please try again or contact support@nautilushealth.org');
+                alert('There was an error submitting your contracts. Please try again or contact support&#64;nautilushealth.org');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit for Analysis';
                 return;
@@ -1814,7 +1814,7 @@
             if (errors.length > 0) {
                 const note = document.createElement('p');
                 note.style.cssText = 'color:#b45309;font-size:0.8rem;margin-top:0.75rem;padding:0 1rem 0.75rem;';
-                note.textContent = `Note: submission failed for ${errors.join(', ')}. Contact support@nautilushealth.org for assistance.`;
+                note.textContent = `Note: submission failed for ${errors.join(', ')}. Contact support` + String.fromCharCode(64) + `nautilushealth.org for assistance.`;
                 contractsBlock.appendChild(note);
             }
 
