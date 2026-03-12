@@ -1814,4 +1814,24 @@
             if (errors.length > 0) {
                 const note = document.createElement('p');
                 note.style.cssText = 'color:#b45309;font-size:0.8rem;margin-top:0.75rem;padding:0 1rem 0.75rem;';
-                note.textContent = `Note: submission failed for ${errors.join(', ')}. Contact support@na
+                note.textContent = `Note: submission failed for ${errors.join(', ')}. Contact support@nautilushealth.org for assistance.`;
+                contractsBlock.appendChild(note);
+            }
+
+            document.getElementById('confirm-company').textContent = contractCompany || submitterCompany || '—';
+            document.getElementById('confirm-email').textContent = submitterEmail;
+            const now = new Date();
+            document.getElementById('confirm-timestamp').textContent =
+                now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) +
+                ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+
+            document.getElementById('confirmation-section').classList.add('visible');
+            updateSteps(4);
+
+            setTimeout(() => {
+                document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+</script>
+</body>
+</html>
