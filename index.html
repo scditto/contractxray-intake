@@ -974,7 +974,7 @@
                     </div>
 
                     <div class="nda-note">
-                        <strong>Confidentiality:</strong> If your organization requires an NDA, email <a href="mailto:info@nautilushealth.org"><!--email_off-->info@nautilushealth.org<!--/email_off--></a> and we will process one electronically before you submit.
+                        <strong>Confidentiality:</strong> If your organization requires an NDA, email <a href="/cdn-cgi/l/email-protection#355c5b535a755b5440415c5940465d505459415d1b5a4752">info@nautilushealth.org</a> and we will process one electronically before you submit.
                     </div>
 
                     <div id="payment-section">
@@ -1056,7 +1056,7 @@
                         </li>
                         <li class="conf-step">
                             <div class="conf-step-num">3</div>
-                            <span>If you have questions or do not receive your report, contact <span class="conf-email-plain"><a href="mailto:support@nautilushealth.org"><!--email_off-->support@nautilushealth.org<!--/email_off--></a></span>.</span>
+                            <span>If you have questions or do not receive your report, contact <span class="conf-email-plain"><a href="/cdn-cgi/l/email-protection#ccbfb9bcbca3beb88ca2adb9b8a5a0b9bfa4a9ada0b8a4e2a3beab">support@nautilushealth.org</a></span>.</span>
                         </li>
                     </ul>
 
@@ -1072,7 +1072,7 @@
 
 <footer class="site-footer">
     &copy; 2026 Nautilus Health Institute. All rights reserved. &nbsp;&bull;&nbsp;
-    <a href="mailto:info@nautilushealth.org"><!--email_off-->info@nautilushealth.org<!--/email_off--></a> &nbsp;&bull;&nbsp;
+    <a href="/cdn-cgi/l/email-protection#b6dfd8d0d9f6d8d7c3c2dfdac3c5ded3d7dac2de98d9c4d1">info@nautilushealth.org</a> &nbsp;&bull;&nbsp;
     <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
 </footer>
 
@@ -1099,7 +1099,7 @@
                 <li><strong>Data Retention.</strong> We retain contract information for three years. You may request deletion by contacting us.</li>
                 <li><strong>General Terms.</strong> Governed by Delaware law. We may update these Terms with 30 days notice. Continued use constitutes acceptance.</li>
             </ol>
-            <p style="margin-top:0.75rem;">Questions: <a href="mailto:info@nautilushealth.org" style="color:var(--teal);"><!--email_off-->info@nautilushealth.org<!--/email_off--></a></p>
+            <p style="margin-top:0.75rem;">Questions: <a href="/cdn-cgi/l/email-protection#f1989f979eb19f908485989d84829994909d8599df9e8396" style="color:var(--teal);">info@nautilushealth.org</a></p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" style="width:auto;" onclick="closeTermsModal()">Close</button>
@@ -1129,11 +1129,11 @@
             <h4>6. Data Retention</h4>
             <p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
             <h4>7. Your Rights</h4>
-            <p>You may request a copy of your data, request deletion, or ask questions. Contact <a href="mailto:info@nautilushealth.org" style="color:var(--teal);"><!--email_off-->info@nautilushealth.org<!--/email_off--></a>.</p>
+            <p>You may request a copy of your data, request deletion, or ask questions. Contact <a href="/cdn-cgi/l/email-protection#a5cccbc3cae5cbc4d0d1ccc9d0d6cdc0c4c9d1cd8bcad7c2" style="color:var(--teal);">info@nautilushealth.org</a>.</p>
             <h4>8. Changes to This Policy</h4>
             <p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
             <h4>9. Contact Us</h4>
-            <p>Nautilus Health Institute &mdash; <a href="mailto:info@nautilushealth.org" style="color:var(--teal);"><!--email_off-->info@nautilushealth.org<!--/email_off--></a></p>
+            <p>Nautilus Health Institute &mdash; <a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddf3fce8e9f4f1e8eef5f8fcf1e9f5b3f2effa" style="color:var(--teal);">info@nautilushealth.org</a></p>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" style="width:auto;" onclick="closePrivacyModal()">Close</button>
@@ -1281,7 +1281,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── State ──────────────────────────────────────────────────────────
         let selectedTier = null;
         let paymentComplete = false;
@@ -1747,7 +1747,7 @@
                     const files = await Promise.all(rel.files.map(file =>
                         new Promise((resolve, reject) => {
                             const reader = new FileReader();
-                            reader.onload  = () => resolve({ fileName: file.name, fileSize: file.size, fileBase64: reader.result.split(',')[1], blob: file });
+                            reader.onload  = () => resolve({ fileName: file.name, fileSize: file.size, fileBase64: reader.result.split(',')[1] });
                             reader.onerror = reject;
                             reader.readAsDataURL(file);
                         })
@@ -1763,29 +1763,31 @@
 
                     const fileNames = files.map(f => f.fileName).join(', ');
 
-                    // Send as FormData with binary blob — required by Make.com webhook + blueprint
-                    // fileCollection binary: Module 4 (Drive upload) uses {{1.fileCollection.data}}
-                    // documentBlocks text:   Module 96 uses {{1.documentBlocks}} for multi-file Claude API call
-                    const formData = new FormData();
-                    formData.append('tier',            selectedTier);
-                    formData.append('contractCompany', contractCompany);
-                    formData.append('contractPbm',     pbmLabel);
-                    formData.append('submitterName',   submitterName);
-                    formData.append('submitterCompany',submitterCompany);
-                    formData.append('submitterEmail',  submitterEmail);
-                    formData.append('submittedAt',     new Date().toISOString());
-                    formData.append('fileCount',       String(files.length));
-                    formData.append('fileName',        files[0].fileName);
-                    formData.append('fileNames',       fileNames);
-                    formData.append('documentBlocks',  documentBlocks);
-                    formData.append('fileCollection',  files[0].blob, files[0].fileName); // binary blob — no Content-Type header
+                    // Send as JSON — no-cors + text/plain required to avoid CORS preflight block
+                    // fileBase64: Module 4 (Drive upload) uses toBinary(1.fileBase64; "base64")
+                    // documentBlocks: Module 96 uses {{1.documentBlocks}} for multi-file Claude API call
+                    const payload = {
+                        tier:            selectedTier,
+                        contractCompany: contractCompany,
+                        contractPbm:     pbmLabel,
+                        submitterName:   submitterName,
+                        submitterCompany:submitterCompany,
+                        submitterEmail:  submitterEmail,
+                        submittedAt:     new Date().toISOString(),
+                        fileCount:       String(files.length),
+                        fileName:        files[0].fileName,
+                        fileNames:       fileNames,
+                        fileBase64:      files[0].fileBase64,
+                        documentBlocks:  documentBlocks
+                    };
 
-                    const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
+                    await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
                         method: 'POST',
-                        body: formData  // browser sets Content-Type + boundary automatically — do NOT set manually
+                        mode:   'no-cors',
+                        headers: { 'Content-Type': 'text/plain' },
+                        body:   JSON.stringify(payload)
                     });
-
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    // no-cors returns opaque response — cannot check response.ok, assume success
                     successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
 
                 } catch (err) {
@@ -1828,10 +1830,4 @@
             document.getElementById('confirmation-section').classList.add('visible');
             updateSteps(4);
 
-            setTimeout(() => {
-                document.getElementById('confirmation-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
-        }
-</script>
-</body>
-</html>
+            setTime
