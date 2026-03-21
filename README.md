@@ -137,11 +137,6 @@ Ten categories. Fiduciary-aligned standards within each. Zero to one hundred.
 
 ---
 
-## Calibrated Contract Library
-
-Twenty-two PBM contracts have been scored under the current methodology. Each score is supported by a full workpaper with category-level evidence citations.
----
-
 ## What Is Not in This Repository
 
 The Claude API system prompt — the encoded scoring methodology that instructs the AI how to analyze contracts — is the core intellectual asset of Contract X-Ray and is not published here. It is the product of years of expert calibration and is what makes AI analysis defensible and consistent at scale.
