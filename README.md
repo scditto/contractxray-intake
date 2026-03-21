@@ -130,8 +130,16 @@ Ten categories. Fiduciary-aligned standards within each. Zero to one hundred.
 | Financial Integrity | P2, P3, P10 |
 | Oversight and Control | P4, P5, P7, P9 |
 
+
+![Fiduciary-Aligned PBM Contract Standards Framework](fiduciary_aligned_pbm_framework_hierarchy_v2.svg)
+
 **Calibration principle:** Silence = Red Flag. If a contract does not explicitly address a provision, it scores as if the provision is absent. Business model reputation and marketing claims do not count. Only explicit contract language receives credit.
 
+---
+
+## Calibrated Contract Library
+
+Twenty-two PBM contracts have been scored under the current methodology. Each score is supported by a full workpaper with category-level evidence citations.
 ---
 
 ## What Is Not in This Repository
@@ -178,7 +186,7 @@ Contract X-Ray uses Claude (Anthropic) via the Messages API with the following k
 
 ## Using This for Government Plan Analysis
 
-Contract X-Ray is designed to analyze employer health plan contracts. Key implementation notes:
+Contract X-Ray is designed to analyze government employer health plan contracts. Key implementation notes:
 
 - The scoring standards include a government employer adaptation: where ERISA does not apply (municipal, county, state, school district plans), fiduciary language references "applicable law" rather than ERISA. Scoring criteria are unchanged.
 - CAA 2026 transparency requirements apply to government plans through the No Surprises Act and related provisions. The P10 provision (Administrative Fee Transparency) specifically evaluates CAA 2026 alignment.
