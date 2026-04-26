@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Underway | Contract X-Ray™ | Nautilus Health Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B365D;
+            --navy-deep: #122443;
+            --teal: #2D8B9A;
+            --teal-light: rgba(45,139,154,0.09);
+            --gold: #C5A572;
+            --gold-light: rgba(197,165,114,0.13);
+            --gold-dark: #9d8559;
+            --white: #FFFFFF;
+            --linen: #F7F5F2;
+            --border: #E2DED8;
+            --border-mid: #CEC9C1;
+            --dark-text: #1A1A1A;
+            --mid-text: #5A5A5A;
+            --light-text: #8A8A8A;
+            --excellent: #059669;
+            --excellent-light: rgba(5,150,105,0.08);
+            --sidebar-w: 272px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 17.5px; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--linen);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── LAYOUT ──────────────────────────────────────────── */
+        .shell { display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR (mirrors tier selector) ───────────────────── */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--navy);
+            color: var(--white);
+            padding: 2.25rem 1.75rem 2.25rem;
+            display: flex; flex-direction: column;
+            position: fixed; top: 0; bottom: 0; left: 0;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+            opacity: 0.4;
+        }
+
+        .wordmark { margin-bottom: 2.5rem; }
+
+        .wm-product {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.42rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .wm-product .tm {
+            font-size: 0.62rem;
+            vertical-align: super;
+            font-weight: 400;
+            margin-left: 0.05em;
+            opacity: 0.8;
+        }
+
+        .wm-rule {
+            height: 1px; background: var(--gold);
+            opacity: 0.35; margin: 0.7rem 0; width: 32px;
+        }
+
+        .wm-org {
+            font-size: 0.68rem; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .step-rail { margin-top: 0; }
+
+        .rail-label {
+            font-size: 0.6rem; font-weight: 600;
+            letter-spacing: 0.13em; text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 1.1rem;
+        }
+
+        .step-list { list-style: none; }
+
+        .step-item {
+            display: flex; align-items: flex-start;
+            gap: 0.85rem; padding: 0.55rem 0;
+            position: relative;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 13px; top: 30px; bottom: -8px;
+            width: 1px; background: rgba(255,255,255,0.18);
+        }
+
+        .step-num {
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.55);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.74rem; font-weight: 600;
+            flex-shrink: 0;
+            position: relative; z-index: 1;
+        }
+
+        .step-item.active .step-num {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        .step-item.complete .step-num {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: transparent;
+        }
+
+        .step-item.complete .step-num::after {
+            content: ''; position: absolute;
+            width: 8px; height: 5px;
+            border-left: 1.5px solid var(--navy-deep);
+            border-bottom: 1.5px solid var(--navy-deep);
+            transform: rotate(-45deg);
+            top: 9px; left: 9px;
+        }
+
+        .step-title {
+            font-size: 0.84rem; font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.3;
+        }
+
+        .step-item.active .step-title { color: var(--white); font-weight: 600; }
+
+        .step-sub {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.42);
+            margin-top: 0.1rem;
+            line-height: 1.3;
+        }
+
+        .trust {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .trust-item {
+            display: flex; align-items: center;
+            gap: 0.55rem;
+            font-size: 0.74rem;
+            color: rgba(255,255,255,0.6);
+            padding: 0.35rem 0;
+        }
+
+        .trust-item svg {
+            width: 12px; height: 12px;
+            stroke: rgba(255,255,255,0.5);
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* ── CONTENT ────────────────────────────────────────────── */
+        .content {
+            margin-left: var(--sidebar-w);
+            flex: 1; min-width: 0;
+        }
+
+        .content-inner {
+            max-width: 720px;
+            padding: 4rem 3rem 4rem;
+        }
+
+        /* ── HERO ──────────────────────────────────────────────── */
+        .success-icon-wrap {
+            display: inline-flex;
+            align-items: center; justify-content: center;
+            width: 68px; height: 68px;
+            border-radius: 50%;
+            background: var(--excellent-light);
+            border: 1.5px solid var(--excellent);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .success-icon-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1.5px solid var(--excellent);
+            opacity: 0.15;
+        }
+
+        .success-icon-wrap svg {
+            width: 30px; height: 30px;
+            stroke: var(--excellent);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .pre-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--excellent);
+            margin-bottom: 0.65rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .lede {
+            font-size: 1.06rem;
+            color: var(--mid-text);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+            line-height: 1.6;
+        }
+
+        /* ── DETAIL CARD ────────────────────────────────────────── */
+        .detail-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.75rem 1.85rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px; height: 100%;
+            background: var(--gold);
+            border-radius: 6px 0 0 6px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-row:last-child { border-bottom: 0; }
+
+        .detail-label {
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--light-text);
+        }
+
+        .detail-value {
+            font-size: 0.95rem;
+            color: var(--dark-text);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .detail-value.ref-mono {
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            background: var(--linen);
+            padding: 0.25rem 0.55rem;
+            border-radius: 3px;
+            border: 1px solid var(--border);
+            color: var(--navy);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .detail-value.timing {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* ── WHAT NEXT BLOCK ───────────────────────────────────── */
+        .next-block {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--teal);
+            padding: 1.4rem 1.6rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .next-intro {
+            font-size: 0.95rem;
+            color: var(--mid-text);
+            line-height: 1.6;
+            margin: 0 0 1rem;
+        }
+
+        .report-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .report-list li {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 0.55rem 0 0.55rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            letter-spacing: -0.005em;
+        }
+
+        .report-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+        .report-list li:first-child { padding-top: 0; }
+
+        .report-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translateY(-50%);
+        }
+
+        .report-list li:first-child::before {
+            top: calc(0.5rem + 4px);
+            transform: translateY(0);
+        }
+
+        /* ── FOOTER STRIP ──────────────────────────────────────── */
+        .footer-strip {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.78rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .footer-strip a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-strip a:hover { text-decoration: underline; }
+
+        /* ── PROCESSING STATE (Stripe session validation) ───────── */
+        .processing {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.86rem;
+            color: var(--light-text);
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .processing::before {
+            content: '';
+            width: 14px; height: 14px;
+            border: 2px solid var(--border-mid);
+            border-top-color: var(--teal);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            flex-shrink: 0;
+        }
+
+        .processing.hidden { display: none; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── RESPONSIVE ────────────────────────────────────────── */
+        @media (max-width: 720px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+            .sidebar::before { display: none; }
+            .wordmark { margin-bottom: 0; }
+            .step-rail, .trust { display: none; }
+            .content { margin-left: 0; }
+            .content-inner { padding: 2rem 1.25rem 3rem; }
+            .shell { flex-direction: column; }
+            h1 { font-size: 2rem; }
+            .detail-row { flex-direction: column; gap: 0.3rem; align-items: flex-start; }
+            .detail-value { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+<div class="shell">
+
+    <!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+        <div class="wordmark">
+            <div class="wm-product">Contract X-Ray<span class="tm">™</span></div>
+            <div class="wm-rule"></div>
+            <div class="wm-org">Nautilus Health Institute</div>
+        </div>
+
+        <nav class="step-rail" aria-label="Progress">
+            <div class="rail-label">Progress</div>
+            <ul class="step-list">
+                <li class="step-item complete">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <div class="step-title">Submission Received</div>
+                        <div class="step-sub">Contract uploaded</div>
+                    </div>
+                </li>
+                <li class="step-item complete">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <div class="step-title">Payment Confirmed</div>
+                        <div class="step-sub">Suggested payment received</div>
+                    </div>
+                </li>
+                <li class="step-item active">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <div class="step-title">Analysis Underway</div>
+                        <div class="step-sub">Three business days or less</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="trust">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Independent infrastructure
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+                Confirmation email on the way
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── CONTENT ───────────────────────────────────────────────────── -->
+    <main class="content">
+        <div class="content-inner">
+
+            <div class="success-icon-wrap">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+
+            <div class="pre-eyebrow">Step 3 of 3</div>
+            <h1>Thank you!</h1>
+            <p class="lede">
+                Your payment has been received and your contract is under review. Reports will be sent to your email within three business days, often sooner.
+            </p>
+
+            <div class="detail-card">
+                <div class="detail-row">
+                    <div class="detail-label">Reference Number</div>
+                    <div class="detail-value ref-mono" id="case-ref">--</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Expected Delivery</div>
+                    <div class="detail-value timing">3 business days or less</div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-label">Status</div>
+                    <div class="detail-value" id="status-text">Confirmation email queued</div>
+                </div>
+            </div>
+
+            <div class="next-block">
+                <p class="next-intro">
+                    A confirmation email is on its way to your inbox. Within three business days you will receive four reports:
+                </p>
+                <ul class="report-list">
+                    <li>Contract Scorecard</li>
+                    <li>Executive Brief</li>
+                    <li>Negotiation Guide</li>
+                    <li>Data Sovereignty Index</li>
+                </ul>
+            </div>
+
+            <div class="processing hidden" id="processing-msg">Confirming your payment with Stripe...</div>
+
+            <div class="footer-strip">
+                Questions? Reach us at
+                <a href="mailto:support@nautilushealth.org">support@nautilushealth.org</a>.
+                Please reference your case number above.
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    // ─── Configuration ───────────────────────────────────────────────────
+    const WORKER_BASE = 'https://cxr-analyze.steve-340.workers.dev';
+
+    // ─── Init ────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', async () => {
+        const params = new URLSearchParams(window.location.search);
+        const caseId = params.get('case_id');
+        const sessionId = params.get('session_id');
+
+        // Display reference number
+        if (caseId) {
+            document.getElementById('case-ref').textContent = caseId;
+        } else {
+            document.getElementById('case-ref').textContent = 'Pending';
+        }
+
+        // Optionally validate session and fire confirmation email
+        if (caseId && sessionId) {
+            await confirmPayment(caseId, sessionId);
+        } else if (caseId && !sessionId) {
+            document.getElementById('status-text').textContent = 'Confirmation email queued';
+        }
+    });
+
+    // ─── Confirm payment via Worker ──────────────────────────────────────
+    async function confirmPayment(caseId, sessionId) {
+        const proc = document.getElementById('processing-msg');
+        proc.classList.remove('hidden');
+
+        try {
+            const resp = await fetch(`${WORKER_BASE}/premium-confirm`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    case_id: caseId,
+                    session_id: sessionId
+                })
+            });
+
+            proc.classList.add('hidden');
+
+            if (resp.ok) {
+                document.getElementById('status-text').textContent = 'Confirmation email sent';
+            } else {
+                document.getElementById('status-text').textContent = 'Confirmation email queued';
+            }
+        } catch (err) {
+            proc.classList.add('hidden');
+            // Don't surface errors aggressively — payment succeeded, this is just confirmation flow
+            document.getElementById('status-text').textContent = 'Confirmation email queued';
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggested Payment | Contract X-Ray™ | Nautilus Health Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        :root {
+            --navy: #1B365D;
+            --navy-deep: #122443;
+            --teal: #2D8B9A;
+            --teal-light: rgba(45,139,154,0.09);
+            --gold: #C5A572;
+            --gold-light: rgba(197,165,114,0.13);
+            --gold-dark: #9d8559;
+            --white: #FFFFFF;
+            --linen: #F7F5F2;
+            --border: #E2DED8;
+            --border-mid: #CEC9C1;
+            --dark-text: #1A1A1A;
+            --mid-text: #5A5A5A;
+            --light-text: #8A8A8A;
+            --excellent: #059669;
+            --error: #DC2626;
+            --error-bg: rgba(220,38,38,0.06);
+            --sidebar-w: 272px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { font-size: 17.5px; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--linen);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── LAYOUT ──────────────────────────────────────────── */
+        .shell { display: flex; min-height: 100vh; }
+
+        /* ── SIDEBAR ─────────────────────────────────────────── */
+        .sidebar {
+            width: var(--sidebar-w);
+            background: var(--navy);
+            color: var(--white);
+            padding: 2.25rem 1.75rem 2.25rem;
+            display: flex; flex-direction: column;
+            position: fixed; top: 0; bottom: 0; left: 0;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+            opacity: 0.4;
+        }
+
+        .wordmark {
+            margin-bottom: 2.5rem;
+        }
+
+        .wm-product {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.42rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        .wm-product .tm {
+            font-size: 0.62rem;
+            vertical-align: super;
+            font-weight: 400;
+            margin-left: 0.05em;
+            opacity: 0.8;
+        }
+
+        .wm-rule {
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.35;
+            margin: 0.7rem 0;
+            width: 32px;
+        }
+
+        .wm-org {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .step-rail {
+            margin-top: 0;
+        }
+
+        .rail-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 1.1rem;
+        }
+
+        .step-list { list-style: none; }
+
+        .step-item {
+            display: flex; align-items: flex-start;
+            gap: 0.85rem; padding: 0.55rem 0;
+            position: relative;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 13px; top: 30px; bottom: -8px;
+            width: 1px; background: rgba(255,255,255,0.18);
+        }
+
+        .step-num {
+            width: 26px; height: 26px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.55);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.74rem; font-weight: 600;
+            flex-shrink: 0;
+            position: relative; z-index: 1;
+            transition: all 0.2s;
+        }
+
+        .step-item.active .step-num {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        .step-item.complete .step-num {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: transparent;
+        }
+
+        .step-item.complete .step-num::after {
+            content: ''; position: absolute;
+            width: 8px; height: 5px;
+            border-left: 1.5px solid var(--navy-deep);
+            border-bottom: 1.5px solid var(--navy-deep);
+            transform: rotate(-45deg);
+            top: 9px; left: 9px;
+        }
+
+        .step-title {
+            font-size: 0.84rem; font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.3;
+        }
+
+        .step-item.active .step-title { color: var(--white); font-weight: 600; }
+
+        .step-sub {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.42);
+            margin-top: 0.1rem;
+            line-height: 1.3;
+        }
+
+        .trust {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .trust-item {
+            display: flex; align-items: center;
+            gap: 0.55rem;
+            font-size: 0.74rem;
+            color: rgba(255,255,255,0.6);
+            padding: 0.35rem 0;
+        }
+
+        .trust-item svg {
+            width: 12px; height: 12px;
+            stroke: rgba(255,255,255,0.5);
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        /* ── MAIN ────────────────────────────────────────────── */
+        .content {
+            margin-left: var(--sidebar-w);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .content-inner {
+            max-width: 880px;
+            padding: 3rem 3rem 4rem;
+        }
+
+        .pre-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.65rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.18;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .lede {
+            font-size: 1.02rem;
+            color: var(--mid-text);
+            font-weight: 300;
+            margin-bottom: 2.4rem;
+            max-width: 680px;
+            line-height: 1.55;
+        }
+
+        .pwyw-explain {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.2rem;
+            margin-bottom: 2.2rem;
+            border-radius: 4px;
+        }
+
+        .pwyw-explain h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.35rem;
+        }
+
+        .pwyw-explain p {
+            font-size: 0.84rem;
+            color: var(--mid-text);
+            line-height: 1.55;
+        }
+
+        /* ── TIER GRID ────────────────────────────────────────── */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem 1rem;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+        }
+
+        .tier-card {
+            background: var(--white);
+            border: 1.5px solid var(--border);
+            border-radius: 6px;
+            padding: 1.5rem 1.4rem;
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+        }
+
+        .tier-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 4px 18px rgba(45,139,154,0.12);
+            transform: translateY(-1px);
+        }
+
+        .tier-card.selected {
+            border-color: var(--gold);
+            border-width: 2px;
+            box-shadow: 0 4px 22px rgba(197,165,114,0.18);
+            padding: calc(1.5rem - 0.5px) calc(1.4rem - 0.5px);
+        }
+
+        .tier-card.selected::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .tier-card > * { position: relative; z-index: 1; }
+
+        .sel-badge {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: none;
+            align-items: center; justify-content: center;
+            z-index: 2;
+        }
+
+        .tier-card.selected .sel-badge { display: flex; }
+
+        .sel-badge svg {
+            width: 11px; height: 11px;
+            stroke: var(--white);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .tc-eyebrow {
+            font-size: 0.63rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--light-text);
+            margin-bottom: 0.4rem;
+        }
+
+        .tc-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.65rem;
+            letter-spacing: -0.005em;
+        }
+
+        .tc-suggested-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .tc-suggested-label::before {
+            content: '';
+            width: 16px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.7;
+        }
+
+        .tc-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.15rem;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .tc-price-note {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--light-text);
+            line-height: 1.4;
+        }
+
+        /* ── RECOMMENDATION PILL ──────────────────────────────── */
+        .rec-pill {
+            position: absolute;
+            top: -10px; left: 1.2rem;
+            background: var(--navy);
+            color: var(--white);
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
+            z-index: 3;
+            box-shadow: 0 2px 6px rgba(27,54,93,0.18);
+        }
+
+        .rec-pill::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 14px;
+            width: 0; height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid var(--navy);
+        }
+
+        /* When recommended tier is also selected, change the pill color to gold for contrast */
+        .tier-card.selected .rec-pill {
+            background: var(--gold);
+        }
+
+        .tier-card.selected .rec-pill::after {
+            border-top-color: var(--gold);
+        }
+
+        /* ── CUSTOM TIER CARD (embedded input) ─────────────────── */
+        .tier-card-custom .tc-name {
+            color: var(--mid-text);
+        }
+
+        .tc-custom-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-bottom: 0.45rem;
+            margin-top: 0.05rem;
+        }
+
+        .tc-currency-prefix {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .tc-custom-input {
+            flex: 1;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            padding: 0.05rem 0.2rem;
+            border: 0;
+            border-bottom: 2px solid var(--border);
+            background: transparent;
+            outline: none;
+            transition: border-color 0.15s;
+            letter-spacing: -0.02em;
+            min-width: 0;
+            line-height: 1;
+            width: 100%;
+            -moz-appearance: textfield;
+        }
+
+        .tc-custom-input::-webkit-outer-spin-button,
+        .tc-custom-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .tc-custom-input:focus {
+            border-bottom-color: var(--gold);
+        }
+
+        .tc-custom-input::placeholder {
+            color: var(--border-mid);
+            opacity: 1;
+        }
+
+        .tier-card-custom.error .tc-custom-input {
+            border-bottom-color: var(--error);
+        }
+
+        .tier-card-custom.error .tc-price-note {
+            color: var(--error);
+            font-weight: 500;
+        }
+
+        /* ── OVERRIDE SECTION (legacy, hidden — kept for safety) ─ */
+        .override-section { display: none; }
+
+        .override-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 1rem 1.3rem;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            color: var(--navy);
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: background 0.15s;
+        }
+
+        .override-toggle:hover { background: var(--linen); }
+
+        .override-toggle svg {
+            width: 14px; height: 14px;
+            stroke: var(--teal);
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform 0.2s;
+            margin-left: auto;
+        }
+
+        .override-section.open .override-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .override-body {
+            display: none;
+            padding: 0 1.3rem 1.3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .override-section.open .override-body { display: block; }
+
+        .override-body p {
+            font-size: 0.82rem;
+            color: var(--mid-text);
+            margin: 1rem 0 0.9rem;
+            line-height: 1.55;
+        }
+
+        .override-input-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 280px;
+            margin-bottom: 0.6rem;
+        }
+
+        .currency-prefix {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--mid-text);
+        }
+
+        .override-input {
+            flex: 1;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            padding: 0.55rem 0.75rem;
+            border: 1.5px solid var(--border-mid);
+            border-radius: 4px;
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.15s;
+        }
+
+        .override-input:focus {
+            border-color: var(--teal);
+        }
+
+        .override-input.error {
+            border-color: var(--error);
+            background: var(--error-bg);
+        }
+
+        .override-validation {
+            font-size: 0.76rem;
+            color: var(--light-text);
+            min-height: 1.2rem;
+        }
+
+        .override-validation.error {
+            color: var(--error);
+            font-weight: 500;
+        }
+
+        /* ── FEES NOTICE ──────────────────────────────────────── */
+        .fees-notice {
+            font-size: 0.78rem;
+            color: var(--mid-text);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* ── PROCEED BUTTON ────────────────────────────────────── */
+        .btn-proceed {
+            display: block;
+            width: 100%;
+            padding: 0.95rem 1.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--navy);
+            border: 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-proceed:hover:not(:disabled) {
+            background: var(--navy-deep);
+            transform: translateY(-1px);
+        }
+
+        .btn-proceed:active:not(:disabled) { transform: translateY(0); }
+
+        .btn-proceed:disabled {
+            background: var(--border-mid);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-proceed-icon {
+            display: inline-block;
+            margin-left: 0.4rem;
+            transition: transform 0.15s;
+        }
+
+        .btn-proceed:hover:not(:disabled) .btn-proceed-icon {
+            transform: translateX(3px);
+        }
+
+        /* ── REFERENCE STRIP ───────────────────────────────────── */
+        .ref-strip {
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.74rem;
+            color: var(--light-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .ref-strip strong { color: var(--mid-text); font-weight: 600; }
+
+        .stripe-mark {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            color: var(--light-text);
+        }
+
+        .stripe-mark svg {
+            width: 14px; height: 14px;
+            stroke: var(--light-text);
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* ── REF ISSUE (subtle, only shown if case_id missing) ── */
+        .ref-issue {
+            margin-top: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--linen);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .ref-issue p {
+            font-size: 0.78rem;
+            color: var(--mid-text);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .ref-issue a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .ref-issue a:hover { text-decoration: underline; }
+
+        /* ── ERROR STATE (kept for checkout failures) ─────────── */
+        .global-error {
+            display: none;
+            padding: 0.85rem 1rem;
+            background: var(--error-bg);
+            border: 1px solid var(--error);
+            border-radius: 4px;
+            color: var(--error);
+            font-size: 0.82rem;
+            margin-top: 1rem;
+        }
+
+        .global-error.show { display: block; }
+
+        /* ── LOADING STATE ─────────────────────────────────────── */
+        .btn-proceed.loading {
+            position: relative;
+            color: transparent;
+            pointer-events: none;
+        }
+
+        .btn-proceed.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 18px; height: 18px;
+            margin: -9px 0 0 -9px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── RESPONSIVE ────────────────────────────────────────── */
+        @media (max-width: 1100px) {
+            .tier-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 720px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                padding: 1rem 1.5rem;
+            }
+            .sidebar::before { display: none; }
+            .wordmark { margin-bottom: 0; }
+            .step-rail, .trust { display: none; }
+            .content { margin-left: 0; }
+            .content-inner { padding: 1.75rem 1.25rem 3rem; }
+            .tier-grid { grid-template-columns: 1fr; }
+            .shell { flex-direction: column; }
+            h1 { font-size: 1.65rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="shell">
+
+    <!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+    <aside class="sidebar">
+        <div class="wordmark">
+            <div class="wm-product">Contract X-Ray<span class="tm">™</span></div>
+            <div class="wm-rule"></div>
+            <div class="wm-org">Nautilus Health Institute</div>
+        </div>
+
+        <nav class="step-rail" aria-label="Progress">
+            <div class="rail-label">Progress</div>
+            <ul class="step-list">
+                <li class="step-item complete">
+                    <div class="step-num">1</div>
+                    <div class="step-body">
+                        <div class="step-title">Submission Received</div>
+                        <div class="step-sub">Contract uploaded</div>
+                    </div>
+                </li>
+                <li class="step-item active">
+                    <div class="step-num">2</div>
+                    <div class="step-body">
+                        <div class="step-title">Suggested Payment</div>
+                        <div class="step-sub">Pay what you want</div>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-body">
+                        <div class="step-title">Analysis Underway</div>
+                        <div class="step-sub">Three business days or less</div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="trust">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Payments secured by Stripe
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Fiduciary-aligned standards
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── CONTENT ───────────────────────────────────────────────────── -->
+    <main class="content">
+        <div class="content-inner">
+
+            <div class="pre-eyebrow">Step 2 of 3</div>
+            <h1>Pay what you want.</h1>
+            <p class="lede">
+                We publish suggested payments scaled to plan size. You can pay the suggested amount, more, or less.
+            </p>
+
+            <!-- Tier cards (including Custom as 6th option) -->
+            <div class="tier-grid" id="tier-grid">
+                <div class="tier-card" data-tier="under_500" data-amount="500" data-price-id="price_1TPUVeR63p8Xx9DWixUXBpRH" onclick="selectTier(this)">
+                    <div class="rec-pill" style="display:none;">Recommended for your plan</div>
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Tier 1</div>
+                    <div class="tc-name">Under 500 lives</div>
+                    <div class="tc-suggested-label">Suggested</div>
+                    <div class="tc-price">$500</div>
+                    <div class="tc-price-note">For plans covering fewer than 500 lives</div>
+                </div>
+
+                <div class="tier-card" data-tier="500_1999" data-amount="1000" data-price-id="price_1TPUWTR63p8Xx9DWrnmq08cl" onclick="selectTier(this)">
+                    <div class="rec-pill" style="display:none;">Recommended for your plan</div>
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Tier 2</div>
+                    <div class="tc-name">500 to 1,999 lives</div>
+                    <div class="tc-suggested-label">Suggested</div>
+                    <div class="tc-price">$1,000</div>
+                    <div class="tc-price-note">For plans covering 500 to 1,999 lives</div>
+                </div>
+
+                <div class="tier-card" data-tier="2000_4999" data-amount="2000" data-price-id="price_1TPUXCR63p8Xx9DWNqdVKGY7" onclick="selectTier(this)">
+                    <div class="rec-pill" style="display:none;">Recommended for your plan</div>
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Tier 3</div>
+                    <div class="tc-name">2,000 to 4,999 lives</div>
+                    <div class="tc-suggested-label">Suggested</div>
+                    <div class="tc-price">$2,000</div>
+                    <div class="tc-price-note">For plans covering 2,000 to 4,999 lives</div>
+                </div>
+
+                <div class="tier-card" data-tier="5000_19999" data-amount="5000" data-price-id="price_1TPUXnR63p8Xx9DWYNsZkiP3" onclick="selectTier(this)">
+                    <div class="rec-pill" style="display:none;">Recommended for your plan</div>
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Tier 4</div>
+                    <div class="tc-name">5,000 to 19,999 lives</div>
+                    <div class="tc-suggested-label">Suggested</div>
+                    <div class="tc-price">$5,000</div>
+                    <div class="tc-price-note">For plans covering 5,000 to 19,999 lives</div>
+                </div>
+
+                <div class="tier-card" data-tier="20000_plus" data-amount="10000" data-price-id="price_1TPUYpR63p8Xx9DWYaqEwQ1L" onclick="selectTier(this)">
+                    <div class="rec-pill" style="display:none;">Recommended for your plan</div>
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Tier 5</div>
+                    <div class="tc-name">20,000+ lives</div>
+                    <div class="tc-suggested-label">Suggested</div>
+                    <div class="tc-price">$10,000</div>
+                    <div class="tc-price-note">For plans covering 20,000 or more lives</div>
+                </div>
+
+                <div class="tier-card tier-card-custom" data-tier="custom" id="tier-card-custom" onclick="selectCustom(event)">
+                    <div class="sel-badge"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="tc-eyebrow">Custom</div>
+                    <div class="tc-name">Other amount</div>
+                    <div class="tc-suggested-label">Your choice</div>
+                    <div class="tc-custom-input-wrap">
+                        <span class="tc-currency-prefix">$</span>
+                        <input type="number" class="tc-custom-input" id="custom-input" min="50" step="1" placeholder="0" oninput="onCustomInput()" onclick="event.stopPropagation();">
+                    </div>
+                    <div class="tc-price-note" id="custom-validation">$50 minimum</div>
+                </div>
+            </div>
+
+            <!-- Why pay-what-you-want rationale (now below the choices) -->
+            <div class="pwyw-explain">
+                <h3>Why pay-what-you-want</h3>
+                <p>Most contract evaluation today is sold by parties whose pay depends on whether you renew with their preferred PBM. We are not. Suggested payments anchor sustainability without making the analysis transactional. Pay whatever feels right for the size of the plan you are protecting.</p>
+            </div>
+
+            <p class="fees-notice">
+                Processing fees and applicable sales tax are added at checkout.
+            </p>
+
+            <div class="global-error" id="global-error" style="margin-top:0;margin-bottom:1.5rem;"></div>
+
+            <button type="button" class="btn-proceed" id="btn-proceed" disabled onclick="proceedToCheckout()">
+                Continue to Payment <span class="btn-proceed-icon">&rarr;</span>
+            </button>
+
+            <div class="ref-strip">
+                <div>Reference: <strong id="case-ref">--</strong></div>
+                <div class="stripe-mark">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Secured by Stripe
+                </div>
+            </div>
+
+            <div class="ref-issue" id="ref-issue" style="display:none;">
+                <p>
+                    Reference number missing. Please <a href="https://scditto.github.io/contractxray-intake/">return to the intake form</a> and submit your contract there. Or contact <a href="mailto:support@nautilushealth.org">support@nautilushealth.org</a> for help.
+                </p>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<script>
+    // ─── Configuration ───────────────────────────────────────────────────
+    const STRIPE_PK = 'pk_test_51TPUPUR63p8Xx9DWBvKqIwtU9S4Z3PykovyDagRrlktRbEG8xrDPkZA5iVBJxFDXZbZ2ItvjssXNck7o5F1GP1v300279ARHrO';
+    const WORKER_BASE = 'https://cxr-analyze.steve-340.workers.dev';
+    const SUCCESS_URL_BASE = 'https://scditto.github.io/contractxray-intake/success.html';
+    const CANCEL_URL_BASE = window.location.href;  // return here on cancel
+
+    // ─── State ───────────────────────────────────────────────────────────
+    const state = {
+        caseId: null,
+        customerEmail: null,
+        customerName: null,
+        selection: null,    // { mode: 'suggested'|'custom', amount: number, priceId: string|null, tier: string }
+        recommendedTier: null
+    };
+
+    const stripe = Stripe(STRIPE_PK);
+
+    // ─── Init ────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        state.caseId = params.get('case_id');
+        state.customerEmail = params.get('email');
+        state.customerName = params.get('name');
+
+        if (!state.caseId) {
+            // Subtle inline message near the reference strip — not a heavy red box
+            document.getElementById('ref-issue').style.display = 'block';
+            document.getElementById('case-ref').textContent = 'Missing';
+            document.getElementById('btn-proceed').disabled = true;
+            return;
+        }
+
+        document.getElementById('case-ref').textContent = state.caseId;
+
+        // Auto-recommend tier based on URL param. Two modes supported:
+        //   tier_hint=under_500|500_1999|2000_4999|5000_19999|20000_plus  (preferred)
+        //   lives_count=2400  (fallback — we map to a tier)
+        const tierHint = params.get('tier_hint');
+        const livesCount = parseInt(params.get('lives_count'), 10);
+
+        let recommendedTier = null;
+        if (tierHint && ['under_500','500_1999','2000_4999','5000_19999','20000_plus'].includes(tierHint)) {
+            recommendedTier = tierHint;
+        } else if (!isNaN(livesCount) && livesCount > 0) {
+            if (livesCount < 500) recommendedTier = 'under_500';
+            else if (livesCount < 2000) recommendedTier = '500_1999';
+            else if (livesCount < 5000) recommendedTier = '2000_4999';
+            else if (livesCount < 20000) recommendedTier = '5000_19999';
+            else recommendedTier = '20000_plus';
+        }
+
+        if (recommendedTier) {
+            state.recommendedTier = recommendedTier;
+            const card = document.querySelector(`.tier-card[data-tier="${recommendedTier}"]`);
+            if (card) {
+                // Show the recommendation pill
+                const pill = card.querySelector('.rec-pill');
+                if (pill) pill.style.display = 'block';
+                // Auto-select this tier
+                selectTier(card);
+                // Scroll the card into view nicely on mobile
+                if (window.innerWidth < 720) {
+                    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+                }
+            }
+        }
+    });
+
+    // ─── Tier selection ──────────────────────────────────────────────────
+    function selectTier(card) {
+        document.querySelectorAll('.tier-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+
+        state.selection = {
+            mode: 'suggested',
+            amount: parseInt(card.dataset.amount, 10),
+            priceId: card.dataset.priceId,
+            tier: card.dataset.tier
+        };
+
+        // Clear any custom amount input
+        const customInput = document.getElementById('custom-input');
+        const customCard = document.getElementById('tier-card-custom');
+        if (customInput && customInput.value) {
+            customInput.value = '';
+        }
+        if (customCard) {
+            customCard.classList.remove('error');
+            const validation = document.getElementById('custom-validation');
+            if (validation) validation.textContent = '$50 minimum';
+        }
+
+        updateProceedButton();
+    }
+
+    // ─── Custom tier card ────────────────────────────────────────────────
+    function selectCustom(event) {
+        // Clicking anywhere on the card focuses the input and selects "custom" mode
+        const customInput = document.getElementById('custom-input');
+        if (event.target === customInput) return; // already focused
+
+        customInput.focus();
+    }
+
+    function onCustomInput() {
+        const input = document.getElementById('custom-input');
+        const card = document.getElementById('tier-card-custom');
+        const validation = document.getElementById('custom-validation');
+        const value = parseInt(input.value, 10);
+
+        // De-select all other tier cards while typing in custom
+        document.querySelectorAll('.tier-card:not(.tier-card-custom)').forEach(c => c.classList.remove('selected'));
+
+        if (input.value === '' || isNaN(value)) {
+            card.classList.remove('error', 'selected');
+            validation.textContent = '$50 minimum';
+            if (state.selection?.mode === 'custom') {
+                state.selection = null;
+            }
+            updateProceedButton();
+            return;
+        }
+
+        if (value < 50) {
+            card.classList.add('error');
+            card.classList.remove('selected');
+            validation.textContent = `$50 minimum (you entered $${value})`;
+            state.selection = null;
+            updateProceedButton();
+            return;
+        }
+
+        // Valid custom amount
+        card.classList.remove('error');
+        card.classList.add('selected');
+        validation.textContent = `$${value.toLocaleString()} at checkout`;
+
+        state.selection = {
+            mode: 'custom',
+            amount: value,
+            priceId: null,
+            tier: 'custom'
+        };
+
+        updateProceedButton();
+    }
+
+    // ─── Proceed button state ────────────────────────────────────────────
+    function updateProceedButton() {
+        const btn = document.getElementById('btn-proceed');
+        if (state.selection && state.selection.amount >= 50) {
+            btn.disabled = false;
+            const fmt = `$${state.selection.amount.toLocaleString()}`;
+            btn.innerHTML = `Continue to Payment of ${fmt} <span class="btn-proceed-icon">&rarr;</span>`;
+        } else {
+            btn.disabled = true;
+            btn.innerHTML = `Continue to Payment <span class="btn-proceed-icon">&rarr;</span>`;
+        }
+    }
+
+    // ─── Checkout ────────────────────────────────────────────────────────
+    async function proceedToCheckout() {
+        if (!state.selection || !state.caseId) return;
+
+        const btn = document.getElementById('btn-proceed');
+        btn.classList.add('loading');
+        clearError();
+
+        try {
+            const payload = {
+                case_id: state.caseId,
+                customer_email: state.customerEmail || undefined,
+                customer_name: state.customerName || undefined,
+                tier: state.selection.tier,
+                amount_dollars: state.selection.amount,
+                mode: state.selection.mode,
+                price_id: state.selection.priceId,
+                success_url: `${SUCCESS_URL_BASE}?case_id=${encodeURIComponent(state.caseId)}&session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: CANCEL_URL_BASE
+            };
+
+            const resp = await fetch(`${WORKER_BASE}/premium-checkout`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!resp.ok) {
+                const errBody = await resp.text();
+                throw new Error(`Server returned ${resp.status}: ${errBody.slice(0, 200)}`);
+            }
+
+            const data = await resp.json();
+
+            if (!data.checkout_url) {
+                throw new Error('No checkout URL returned by the server.');
+            }
+
+            // Redirect to Stripe Checkout
+            window.location.href = data.checkout_url;
+
+        } catch (err) {
+            btn.classList.remove('loading');
+            showError(`We could not start the payment session: ${err.message}. Please try again, or contact us at <a href="mailto:support@nautilushealth.org" style="color:var(--teal);">support@nautilushealth.org</a>.`);
+        }
+    }
+
+    // ─── Errors ──────────────────────────────────────────────────────────
+    function showError(msg) {
+        const el = document.getElementById('global-error');
+        el.innerHTML = msg;
+        el.classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function clearError() {
+        const el = document.getElementById('global-error');
+        el.classList.remove('show');
+        el.textContent = '';
+    }
+</script>
+</body>
+</html>
