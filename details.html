@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!-- Contract X-Ray Intake — multi-page refactor of v15. Step 2 of 4. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Engagement Details | Contract X-Ray Intake</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+<div class="shell">
+<!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+<aside class="sidebar">
+<div class="wordmark">
+<div class="wm-product">Contract X-Ray</div>
+<div class="wm-rule"></div>
+<div class="wm-org">Nautilus Health Institute</div>
+</div>
+<nav aria-label="Progress" class="step-rail">
+<div class="rail-label">Progress</div>
+<ul class="step-list">
+<li class="step-item complete" id="step-1">
+<div class="step-num">1</div>
+<div class="step-body">
+<div class="step-title">Select Engagement</div>
+<div class="step-sub">Review level</div>
+</div>
+</li>
+<li class="step-item active" id="step-2">
+<div class="step-num">2</div>
+<div class="step-body">
+<div class="step-title">Enter Details</div>
+<div class="step-sub">Organization and contact</div>
+</div>
+</li>
+<li class="step-item" id="step-3">
+<div class="step-num">3</div>
+<div class="step-body">
+<div class="step-title">Upload Materials</div>
+<div class="step-sub">Contracts and exhibits</div>
+</div>
+</li>
+<li class="step-item" id="step-4">
+<div class="step-num">4</div>
+<div class="step-body">
+<div class="step-title">Start Analysis</div>
+<div class="step-sub">Report generation</div>
+</div>
+</li>
+</ul>
+</nav>
+<div class="sidebar-context">
+<ul class="sidebar-context-list">
+<li>501(c)(3) nonprofit</li>
+<li>No PBM affiliation</li>
+<li>NDA process available</li>
+<li>Contracts kept confidential</li>
+<li>Encrypted transfer</li>
+</ul>
+<a class="sidebar-context-link" href="https://nautilushealth.org/pbm" target="_blank" rel="noopener">About Nautilus &rarr;</a>
+</div>
+</aside>
+
+<!-- ── CONTENT ───────────────────────────────────────────────────── -->
+<main class="content">
+<div class="content-inner">
+<!-- Engagement Details -->
+<section class="form-section visible" id="info-section">
+<div class="page-hd">
+<div class="page-hd-text">
+<div class="intake-kicker" id="step2-kicker">Engagement Details</div>
+<h1 id="step2-title">Provide Contract and Contact Information</h1>
+<p id="step2-sub">Tell us who is submitting the contract and which employer plan it covers. We use this to scope the review and route the report to the right recipient.</p>
+</div>
+</div>
+<div class="card">
+<div class="subsection-label">Contract Parties</div>
+<div class="field">
+<label for="contract-company">Company <span class="req">*</span> <span class="opt">(employer name)</span></label>
+<input id="contract-company" name="contract-company" placeholder="e.g., Riverside County Schools" required="" type="text"/>
+</div>
+<div class="field">
+<label for="covered-lives">Covered lives <span class="opt">(approximate, all enrollees including dependents)</span></label>
+<input id="covered-lives" min="1" name="covered-lives" placeholder="e.g., 2400" step="1" type="number"/>
+</div>
+<div class="subsection-label" style="margin-top:1.25rem;">Submitter</div>
+<div class="field">
+<label for="submitter-name">Name <span class="req">*</span></label>
+<input id="submitter-name" name="submitter-name" placeholder="Your full name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="submitter-company">Company <span class="req">*</span> <span class="opt">(your organization)</span></label>
+<input id="submitter-company" name="submitter-company" placeholder="Your organization" type="text"/>
+</div>
+<div class="field">
+<label for="submitter-email">Email <span class="req">*</span></label>
+<input id="submitter-email" name="submitter-email" placeholder="you@company.com" required="" type="email"/>
+</div>
+<div class="check-row">
+<input id="terms" name="terms" type="checkbox"/>
+<label for="terms">I agree to the <a href="#" onclick="openTermsModal(event)">Terms of Service</a></label>
+</div>
+<div class="nda-note">
+<strong>Confidentiality:</strong> If your organization requires an NDA, <span class="copy-email" onclick="openContactModal()" style="cursor:pointer;" title="Get in touch">contact us</span> and we will process one electronically before you submit.
+                    </div>
+<div id="contribution-note" style="display:none;">
+<p class="payment-note">Premium Full Assessment uses a contribution-based model with a $50 minimum contribution. Instructions will be provided after submission.</p>
+</div>
+<div id="continue-section">
+<button class="btn btn-primary" disabled="" id="continue-btn" onclick="continueToUpload()">Continue &rarr;</button>
+</div>
+</div>
+</section>
+</main></div><!-- /content-inner -->
+</div><!-- /shell -->
+<footer class="site-footer">
+    © 2026 <a href="https://nautilushealth.org" target="_blank" rel="noopener">Nautilus Health Institute</a>. All rights reserved.  • 
+    <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>  • 
+    <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
+</footer>
+<!-- Terms of Service Modal -->
+<div class="modal-overlay" id="modal-terms">
+<div class="modal" style="max-width:700px;">
+<div class="modal-header">
+<h3>Terms of Service</h3>
+<button class="modal-close" onclick="closeTermsModal()">×</button>
+</div>
+<div class="modal-body">
+<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
+<p>These Terms of Service govern your use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization. By uploading a contract or using our service, you agree to these Terms.</p>
+<p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+<ol>
+<li><strong>Service Description.</strong> Contract X-Ray reviews PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
+<li><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us. You represent that you have the legal right to share this information with us for analysis.</li>
+<li><strong>How We Use Contract Information.</strong> We use your contract solely to: (a) conduct analysis and provide reports to you; (b) develop industry educational materials using aggregate, anonymized data that does not identify you or reveal your specific terms; and (c) support our nonprofit educational mission.</li>
+<li><strong>Confidentiality.</strong> We will maintain your contract in confidence using reasonable care and not disclose it to third parties without your consent.</li>
+<li><strong>What We May Publish.</strong> We may publish aggregate benchmarks and educational content derived from contract analysis, provided such publications do not identify you or reveal your specific terms.</li>
+<li><strong>Your Responsibilities.</strong> Upload only contracts you have legal authority to share. Our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
+<li><strong>Disclaimers and Limitations.</strong> Service provided "as is." Liability limited to $100 for free services or fees paid for paid services. Not liable for indirect or consequential damages.</li>
+<li><strong>Data Retention.</strong> We retain contract information for three years. You may request deletion by contacting us.</li>
+<li><strong>General Terms.</strong> Governed by Delaware law. We may update these Terms with 30 days notice. Continued use constitutes acceptance.</li>
+</ol>
+<p style="margin-top:0.75rem;">Questions: <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closeTermsModal()" style="width:auto;">Close</button>
+</div>
+</div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="modal-privacy">
+<div class="modal" style="max-width:700px;">
+<div class="modal-header">
+<h3>Privacy Policy</h3>
+<button class="modal-close" onclick="closePrivacyModal()">×</button>
+</div>
+<div class="modal-body">
+<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
+<h4>1. Who We Are</h4>
+<p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit dedicated to improving transparency, accountability, and fiduciary standards in employer-sponsored health plans. This Privacy Policy explains how we collect, use, and protect your information when you use our contract analysis service.</p>
+<h4>2. Information We Collect</h4>
+<p>When you submit a contract for analysis, we collect: contact information (email, company name), contract details (PBM name), uploaded documents (PDF), and for Premium, payment processed securely through Stripe. We do not store your credit card details.</p>
+<h4>3. How We Use Engagement Details</h4>
+<p>Solely to generate your analysis report, deliver it to your email, respond to questions, and improve our scoring methodology using anonymized aggregated data.</p>
+<h4>4. Who Has Access to Your Contract</h4>
+<p>Access is strictly limited to Nautilus analysts and secure AI systems used in the analysis process. We do not sell, share, or disclose your contract to third parties, PBMs, competitors, or any external organizations.</p>
+<h4>5. Data Security</h4>
+<p>Encrypted transmission of all data, access controls limiting who can view contracts, and secure cloud storage with encryption at rest.</p>
+<h4>6. Data Retention</h4>
+<p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
+<h4>7. Your Rights</h4>
+<p>You may request a copy of your data, request deletion, or ask questions. Contact <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>.</p>
+<h4>8. Changes to This Policy</h4>
+<p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
+<h4>9. Contact Us</h4>
+<p>Nautilus Health Institute — <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closePrivacyModal()" style="width:auto;">Close</button>
+</div>
+</div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="modal-contact">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Get in Touch</h3>
+<button class="modal-close" onclick="closeContactModal()">×</button>
+</div>
+<div class="modal-body" id="contact-form-body">
+<p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="contact-name">Name <span class="req">*</span></label>
+<input id="contact-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="contact-email">Email <span class="req">*</span></label>
+<input id="contact-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="contact-org">Organization <span class="opt">(optional)</span></label>
+<input id="contact-org" placeholder="Your company, coalition, or firm" type="text"/>
+</div>
+<div class="field">
+<label for="contact-message">Message <span class="req">*</span></label>
+<textarea id="contact-message" placeholder="Tell us what you are working on..." style="width:100%;min-height:100px;padding:0.6rem 0.75rem;border:1.5px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--dark-text);resize:vertical;box-sizing:border-box;"></textarea>
+</div>
+</div>
+<div class="modal-body" id="contact-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(27,54,93,0.08);border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--navy)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Message received.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will follow up within one business day.</p>
+</div>
+</div>
+<div class="modal-footer" id="contact-footer">
+<button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+<button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()" style="width:auto;">Send Message</button>
+</div>
+</div>
+</div>
+
+<!-- Waitlist Modal -->
+<div class="modal-overlay" id="modal-waitlist">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Join the Premium Waitlist</h3>
+<button class="modal-close" onclick="closeWaitlistModal()">×</button>
+</div>
+<div class="modal-body" id="waitlist-form-body">
+<p>Premium is coming soon. Leave your name and email and we'll notify you when it launches.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="waitlist-name">Name <span class="req">*</span></label>
+<input id="waitlist-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="waitlist-email">Email <span class="req">*</span></label>
+<input id="waitlist-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="waitlist-org">Organization <span class="opt">(optional)</span></label>
+<input id="waitlist-org" placeholder="Your company or coalition" type="text"/>
+</div>
+</div>
+<div class="modal-body" id="waitlist-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(197,165,114,0.12);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">You're on the list.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We'll be in touch when Premium launches. In the meantime, the Essential Preliminary Review is free and available now.</p>
+</div>
+</div>
+<div class="modal-footer" id="waitlist-footer">
+<button class="btn btn-secondary" onclick="closeWaitlistModal()">Cancel</button>
+<button class="btn btn-primary" id="waitlist-submit-btn" onclick="submitWaitlist()" style="width:auto;background:var(--gold);">Notify Me</button>
+</div>
+</div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+<button id="lightbox-close" onclick="closeLightbox()">×</button>
+<img alt="Report sample" id="lightbox-img" onclick="event.stopPropagation()" src=""/>
+</div>
+
+<script src="assets/shared.js"></script>
+<script>
+// Multi-page wiring: hydrate tier and any prior form values, then run
+// the original v15 validateInfoForm logic. On Continue, persist values
+// and navigate to upload.html.
+
+let selectedTier = null;
+let flowAllowed  = false;
+
+(function init() {
+    const s = getCxrState();
+
+    // Step 2 requires that step 1 was completed (tier chosen).
+    if (!s.tier) {
+        window.location.replace('index.html');
+        return;
+    }
+
+    selectedTier = s.tier;
+    flowAllowed  = true;
+
+    // Premium tier shows a contribution note (v15 line 1697).
+    if (selectedTier === 'premium') {
+        document.getElementById('contribution-note').style.display = 'block';
+    }
+
+    // Hydrate prior form values if user came back via Back button.
+    if (s.form) {
+        const f = s.form;
+        if (f['contract-company'])  document.getElementById('contract-company').value  = f['contract-company'];
+        if (f['covered-lives'])     document.getElementById('covered-lives').value     = f['covered-lives'];
+        if (f['submitter-name'])    document.getElementById('submitter-name').value    = f['submitter-name'];
+        if (f['submitter-company']) document.getElementById('submitter-company').value = f['submitter-company'];
+        if (f['submitter-email'])   document.getElementById('submitter-email').value   = f['submitter-email'];
+        if (f['terms'])             document.getElementById('terms').checked           = !!f['terms'];
+    }
+
+    validateInfoForm();
+})();
+
+// ── Form Validation (verbatim from v15) ────────────────────────────
+function validateInfoForm() {
+    const email = document.getElementById('submitter-email').value;
+    const submitterName = document.getElementById('submitter-name').value;
+    const contractCompany = document.getElementById('contract-company').value;
+    const submitterCompany = document.getElementById('submitter-company').value;
+    const terms = document.getElementById('terms').checked;
+    const emailValid = email && email.includes('@') && email.includes('.');
+    // Server requires >= 2 characters; match that on the client to fail fast
+    const nameValid = submitterName.trim().length >= 2;
+    const contractCompanyValid = contractCompany.trim().length > 0;
+    const submitterCompanyValid = submitterCompany.trim().length > 0;
+
+    const continueBtn = document.getElementById('continue-btn');
+    continueBtn.disabled = !(emailValid && nameValid && contractCompanyValid && submitterCompanyValid && terms && (selectedTier === 'essential' || flowAllowed));
+}
+
+document.getElementById('submitter-email').addEventListener('input', validateInfoForm);
+document.getElementById('submitter-name').addEventListener('input', validateInfoForm);
+document.getElementById('contract-company').addEventListener('input', validateInfoForm);
+document.getElementById('submitter-company').addEventListener('input', validateInfoForm);
+document.getElementById('terms').addEventListener('change', validateInfoForm);
+
+// ── Continue → upload.html ─────────────────────────────────────────
+// Replaces v15's showUploadSection() in-place section swap.
+function continueToUpload() {
+    setCxrState({
+        form: {
+            'contract-company':  document.getElementById('contract-company').value,
+            'covered-lives':     document.getElementById('covered-lives').value,
+            'submitter-name':    document.getElementById('submitter-name').value,
+            'submitter-company': document.getElementById('submitter-company').value,
+            'submitter-email':   document.getElementById('submitter-email').value,
+            'terms':             document.getElementById('terms').checked
+        }
+    });
+    window.location.assign('upload.html');
+}
+</script>
+</body>
+</html>
