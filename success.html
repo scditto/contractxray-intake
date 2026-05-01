@@ -198,21 +198,55 @@
             padding: 2rem 2.5rem 2rem;
         }
 
-        /* ── RECEIPT HEADER ──────────────────────────────────────── */
-        .receipt-head {
-            display: flex; align-items: center; gap: 1rem;
-            margin-bottom: 1.4rem;
+        /* ── THANK-YOU HEADER ──────────────────────────────────── */
+        .thanks-head {
+            display: flex; align-items: flex-start; gap: 1rem;
+            margin-bottom: 0.85rem;
         }
-        .receipt-head-text { flex: 1; min-width: 0; }
-        .receipt-head-actions { flex-shrink: 0; }
+        .thanks-head-text { flex: 1; min-width: 0; padding-top: 0.05rem; }
+
+        .thanks-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.15;
+            margin: 0;
+            letter-spacing: -0.015em;
+        }
+
+        .thanks-sub {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.02rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--mid-text);
+            margin: 0.18rem 0 0;
+            line-height: 1.4;
+        }
+
+        /* ── RECEIPT CARD HEADER (label + print button) ─────────── */
+        .receipt-card-hd {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 0.85rem;
+            margin-bottom: 0.95rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .receipt-card-hd-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.02em;
+        }
 
         .receipt-btn {
             display: inline-flex; align-items: center; gap: 0.45rem;
-            padding: 0.55rem 0.95rem;
+            padding: 0.45rem 0.85rem;
             background: var(--white);
             border: 1px solid var(--border-mid);
             border-radius: 4px;
-            font-family: inherit; font-size: 0.82rem; font-weight: 500;
+            font-family: inherit; font-size: 0.8rem; font-weight: 500;
             color: var(--mid-text); cursor: pointer;
             transition: all 0.15s ease;
         }
@@ -220,8 +254,11 @@
             border-color: var(--navy); color: var(--navy);
             background: var(--linen);
         }
-        .receipt-btn svg {
-            width: 14px; height: 14px;
+        .receipt-btn svg { width: 14px; height: 14px; }
+
+        /* Trust strip placed up top reads as commitment, not disclaimer */
+        .trust-strip-top {
+            margin-bottom: 1.1rem;
         }
 
         /* ── HERO ──────────────────────────────────────────────── */
@@ -467,7 +504,7 @@
 
         /* ── PRINT — restyle for paper receipt ───────────────────── */
         @media print {
-            .sidebar, .receipt-head-actions { display: none !important; }
+            .sidebar, .receipt-btn { display: none !important; }
             .content { margin-left: 0 !important; }
             .content-inner { padding: 1rem !important; max-width: 100% !important; }
             body { background: white !important; }
@@ -476,8 +513,8 @@
                 border: 1px solid #ccc !important;
                 page-break-inside: avoid;
             }
-            .receipt-head { margin-bottom: 1rem; }
-            h1 { font-size: 1.5rem !important; }
+            .thanks-head { margin-bottom: 1rem; }
+            .thanks-title { font-size: 1.5rem !important; }
         }
 
         /* ── WHAT NEXT BLOCK ───────────────────────────────────── */
@@ -642,25 +679,34 @@
     <main class="content">
         <div class="content-inner">
 
-            <!-- Compact receipt header: icon + title + Stripe brand sit on one line -->
-            <div class="receipt-head">
+            <!-- Warm header: thank-you, personalization, status -->
+            <div class="thanks-head">
                 <div class="success-icon-wrap">
                     <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <div class="receipt-head-text">
+                <div class="thanks-head-text">
                     <div class="pre-eyebrow">Payment Confirmed</div>
-                    <h1>Receipt of Submission</h1>
+                    <h1 class="thanks-title">Thank you!</h1>
+                    <p class="thanks-sub">Your contract analysis has begun.</p>
                 </div>
-                <div class="receipt-head-actions">
+            </div>
+
+            <!-- Trust line up top, where it does emotional work — short verbs, not legalese -->
+            <div class="trust-strip trust-strip-top">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>While we work, your documents stay protected. Not shared. Not sold. Not used to train AI. Encrypted in transit and at rest.</span>
+            </div>
+
+            <!-- Receipt card sits underneath the warmth as the formal record -->
+            <div class="receipt-card">
+                <div class="receipt-card-hd">
+                    <span class="receipt-card-hd-label">Receipt</span>
                     <button class="receipt-btn" onclick="window.print()" type="button" aria-label="Print or save as PDF">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
                         Print / Save PDF
                     </button>
                 </div>
-            </div>
 
-            <!-- Receipt body: two columns of detail rows + processing line -->
-            <div class="receipt-card">
                 <div class="receipt-grid">
                     <!-- Left: payment record -->
                     <div class="receipt-col">
@@ -714,12 +760,6 @@
                 </div>
 
                 <div class="processing hidden" id="processing-msg">Confirming your payment with Stripe…</div>
-            </div>
-
-            <!-- Trust line — addresses buyer's-remorse anxiety. Single line, low contrast. -->
-            <div class="trust-strip">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Your contract documents are not shared, sold, or used to train AI models. Encrypted at rest and in transit. Reviewed by Nautilus Health Institute, an independent 501(c)(3) nonprofit with no PBM affiliation.
             </div>
 
         </div>
