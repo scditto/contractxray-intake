@@ -176,7 +176,7 @@
 <div class="modal-overlay" id="modal-waitlist">
 <div class="modal" style="max-width:480px;">
 <div class="modal-header">
-<h3>Reserve Founding Member Access</h3>
+<h3>Reserve Founding Cohort Access</h3>
 <button class="modal-close" onclick="closeWaitlistModal()">×</button>
 </div>
 <div class="modal-body" id="waitlist-form-body">
@@ -218,6 +218,22 @@
 
 <script src="assets/shared.js"></script>
 <script>
+// === TEST MODE banner — shows on all pages when sessionStorage flag is set ===
+(function showTestBanner() {
+    if (sessionStorage.getItem('cxr_test_mode') !== 'premium') return;
+    const banner = document.createElement('div');
+    banner.id = 'cxr-test-banner';
+    banner.innerHTML = 'TEST MODE — Premium tier unlocked. Public visitors still see reservation. <a href="#" id="cxr-test-exit" style="color:#fff;text-decoration:underline;margin-left:0.5rem;">Exit test mode</a>';
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#C5A572;color:#fff;font-size:0.78rem;font-weight:600;text-align:center;padding:5px 10px;letter-spacing:0.04em;font-family:-apple-system,sans-serif;';
+    document.body.appendChild(banner);
+    document.body.style.paddingTop = (parseInt(getComputedStyle(document.body).paddingTop) || 0) + 28 + 'px';
+    document.getElementById('cxr-test-exit').onclick = function(e) {
+        e.preventDefault();
+        sessionStorage.removeItem('cxr_test_mode');
+        window.location.href = window.location.pathname;
+    };
+})();
+
 // ── Constants and state (declared FIRST so the bootstrap at the
 //   bottom of this script can call functions that reference them) ──
 const PBM_NAMES = [

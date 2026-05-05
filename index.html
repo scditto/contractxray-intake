@@ -155,7 +155,7 @@ PDF in under 1 hour
 <div class="tc-action">
 <div class="tc-secondary-note">Best fit when a contract is being negotiated, renewed, benchmarked, or escalated for fiduciary review.</div>
 <div class="tc-secondary-note" style="color:var(--gold);font-weight:600;margin-top:0.4rem;">Founding Cohort opens May 8, 2026. First 25 employers lock in Founding terms.</div>
-<a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();">Reserve Founding Member Access</a>
+<a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();">Reserve Founding Cohort Access</a>
 <a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables &rarr;</a>
 </div>
 </div>
@@ -312,7 +312,7 @@ PDF in under 1 hour
 </div>
 <div class="modal-footer">
 <button class="btn btn-secondary" onclick="closeModal('premium')">Close</button>
-<button class="btn btn-primary" onclick="closeModal('premium'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Member Access</button>
+<button class="btn btn-primary" onclick="closeModal('premium'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
 </div>
 </div>
 </div>
@@ -418,7 +418,7 @@ PDF in under 1 hour
 <div class="modal-overlay" id="modal-waitlist">
 <div class="modal" style="max-width:480px;">
 <div class="modal-header">
-<h3>Reserve Founding Member Access</h3>
+<h3>Reserve Founding Cohort Access</h3>
 <button class="modal-close" onclick="closeWaitlistModal()">×</button>
 </div>
 <div class="modal-body" id="waitlist-form-body">
@@ -470,13 +470,47 @@ PDF in under 1 hour
     }
 })();
 
+// === TEST MODE ===
+// Activated by visiting any page with ?test=premium in the URL.
+// Sets a sessionStorage flag that persists across details.html and upload.html.
+// When active: Premium card bypasses the reservation modal and flows normally.
+// A small banner appears at the top of the page so you know you are in test mode.
+(function initTestMode() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('test') === 'premium') {
+        sessionStorage.setItem('cxr_test_mode', 'premium');
+    }
+    if (sessionStorage.getItem('cxr_test_mode') === 'premium') {
+        // Banner
+        const banner = document.createElement('div');
+        banner.id = 'cxr-test-banner';
+        banner.innerHTML = 'TEST MODE — Premium tier unlocked. Public visitors still see reservation. <a href="#" id="cxr-test-exit" style="color:#fff;text-decoration:underline;margin-left:0.5rem;">Exit test mode</a>';
+        banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#C5A572;color:#fff;font-size:0.78rem;font-weight:600;text-align:center;padding:5px 10px;letter-spacing:0.04em;font-family:-apple-system,sans-serif;';
+        document.body.appendChild(banner);
+        document.body.style.paddingTop = (parseInt(getComputedStyle(document.body).paddingTop) || 0) + 28 + 'px';
+        document.getElementById('cxr-test-exit').onclick = function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('cxr_test_mode');
+            window.location.href = window.location.pathname; // strip query
+        };
+        // Rewire the Premium tier card and CTA to bypass the modal
+        document.querySelectorAll('[data-tier="premium"]').forEach(function(card) {
+            card.onclick = function() { selectTier('premium'); };
+        });
+        document.querySelectorAll('.tier-card[data-tier="premium"] .tc-cta').forEach(function(cta) {
+            cta.onclick = function(e) { e.stopPropagation(); selectTier('premium'); };
+        });
+    }
+})();
+
 // Tier selection: persist tier and navigate to details page.
 // Original v15 behaviour (showing info-section in place) is replaced with
 // a real navigation to details.html so the URL changes and back button works.
-// Premium is currently disabled. Defensive guard: if any path still calls
-// selectTier('premium'), route to the waitlist modal instead of advancing.
+// Premium is currently disabled for public visitors. Defensive guard: if any
+// path still calls selectTier('premium'), route to the waitlist modal instead.
+// Test mode (?test=premium) bypasses this guard.
 function selectTier(tier) {
-    if (tier === 'premium') {
+    if (tier === 'premium' && sessionStorage.getItem('cxr_test_mode') !== 'premium') {
         openWaitlistModal();
         return;
     }
