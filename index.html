@@ -37,6 +37,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/styles.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+/* Page-specific override: keep the subtitle on one line on wider screens.
+   Below the breakpoint it wraps as before so mobile does not horizontal-scroll. */
+@media (min-width: 980px) {
+  .page-hd-text p { white-space: nowrap; }
+}
+</style>
 </head>
 <body>
 <div class="shell">
