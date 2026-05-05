@@ -449,8 +449,7 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 0.45rem;
-            padding-top: 0.95rem;
-            border-top: 1px solid var(--border);
+            margin-bottom: 1rem;
         }
         .reports-strip-label {
             font-size: 0.7rem;
@@ -697,6 +696,15 @@
                 <span>While we work, your documents stay protected. Not shared. Not sold. Not used to train AI. Encrypted in transit and at rest.</span>
             </div>
 
+            <!-- Reports being prepared — placed at top to lead with the deliverables -->
+            <div class="reports-strip">
+                <span class="reports-strip-label">You will receive</span>
+                <span class="report-pill">Contract Scorecard</span>
+                <span class="report-pill">Executive Brief</span>
+                <span class="report-pill">Negotiation Guide</span>
+                <span class="report-pill">Data Sovereignty Index</span>
+            </div>
+
             <!-- Receipt card sits underneath the warmth as the formal record -->
             <div class="receipt-card">
                 <div class="receipt-card-hd">
@@ -737,7 +745,7 @@
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">ETA</div>
-                            <div class="detail-value timing">3 business days</div>
+                            <div class="detail-value timing">Within 3 business days</div>
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">Status</div>
@@ -748,15 +756,6 @@
                             <div class="detail-value"><a href="mailto:support@nautilushealth.org" class="contact-link">support@nautilushealth.org</a></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Reports being prepared — horizontal pills, not vertical list -->
-                <div class="reports-strip">
-                    <span class="reports-strip-label">You will receive</span>
-                    <span class="report-pill">Contract Scorecard</span>
-                    <span class="report-pill">Executive Brief</span>
-                    <span class="report-pill">Negotiation Guide</span>
-                    <span class="report-pill">Data Sovereignty Index</span>
                 </div>
 
                 <div class="processing hidden" id="processing-msg">Confirming your payment with Stripe…</div>
