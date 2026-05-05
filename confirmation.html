@@ -229,8 +229,7 @@
 
 .reports-strip {
     display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem;
-    padding-top: 0.85rem;
-    border-top: 1px solid var(--border);
+    margin-bottom: 1rem;
 }
 .reports-strip-label {
     font-size: 0.7rem; font-weight: 600;
@@ -302,6 +301,12 @@
     </div>
 </div>
 
+<!-- Reports being prepared — placed at top to lead with the deliverables -->
+<div class="reports-strip" id="reports-strip">
+    <span class="reports-strip-label">You will receive</span>
+    <!-- Pills inserted by init based on tier -->
+</div>
+
 <div class="receipt-card">
     <div class="receipt-grid">
         <!-- Left: submission record -->
@@ -333,7 +338,7 @@
             </div>
             <div class="receipt-row">
                 <span class="receipt-label">ETA</span>
-                <span class="receipt-value timing">Within 1 hour</span>
+                <span class="receipt-value timing" id="confirm-eta">Within 1 hour</span>
             </div>
             <div class="receipt-row">
                 <span class="receipt-label">Status</span>
@@ -346,14 +351,6 @@
                 </span>
             </div>
         </div>
-    </div>
-
-    <!-- Reports being prepared — horizontal pill row -->
-    <div class="reports-strip">
-        <span class="reports-strip-label">You will receive</span>
-        <span class="report-pill">10-Provision Dashboard</span>
-        <span class="report-pill">Key Findings Summary</span>
-        <span class="report-pill">CAA 2026 Notes</span>
     </div>
 </div>
 
@@ -507,6 +504,31 @@
     document.getElementById('confirm-company').textContent   = c.company  || '—';
     document.getElementById('confirm-email').textContent     = c.email    || '—';
     document.getElementById('confirm-timestamp').textContent = c.timestamp || '—';
+
+    // Render the deliverables strip and ETA based on tier. Default to the Quick Look set.
+    const tier = (s.tier || 'essential').toLowerCase();
+    const tierConfig = {
+        essential: {
+            pills: ['10-Provision Dashboard', 'Key Findings Summary', 'CAA 2026 Notes'],
+            eta:   'Within 1 hour'
+        },
+        premium: {
+            pills: ['Contract Scorecard', 'Executive Brief', 'Negotiation Report', 'Data Sovereignty Score'],
+            eta:   'Within 3 business days'
+        }
+    };
+    const cfg = tierConfig[tier] || tierConfig.essential;
+    const strip = document.getElementById('reports-strip');
+    if (strip) {
+        cfg.pills.forEach(function(label) {
+            const pill = document.createElement('span');
+            pill.className = 'report-pill';
+            pill.textContent = label;
+            strip.appendChild(pill);
+        });
+    }
+    const etaEl = document.getElementById('confirm-eta');
+    if (etaEl) etaEl.textContent = cfg.eta;
 
     // PBM(s) from the relationship submissions: usually one. Multiple are joined with commas.
     const pbms = (c.successes || []).map(x => x.pbm).filter(Boolean);
