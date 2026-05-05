@@ -97,6 +97,10 @@
 <label for="submitter-company">Company <span class="req">*</span> <span class="opt">(your organization)</span></label>
 <input id="submitter-company" name="submitter-company" placeholder="Your organization" type="text"/>
 </div>
+<div class="check-row" style="margin: 0.4rem 0 0.6rem;">
+<input id="na-member" name="na-member" type="checkbox"/>
+<label for="na-member" style="font-size:0.86rem;">Our organization is a member of a National Alliance coalition <span class="opt" style="display:block;font-size:0.75rem;color:var(--light-text);margin-top:2px;">Adds the National Alliance logo to your delivered report.</span></label>
+</div>
 <div class="field">
 <label for="submitter-email">Email <span class="req">*</span></label>
 <input id="submitter-email" name="submitter-email" placeholder="you@company.com" required="" type="email"/>
@@ -233,11 +237,11 @@
 <div class="modal-overlay" id="modal-waitlist">
 <div class="modal" style="max-width:480px;">
 <div class="modal-header">
-<h3>Join the Premium Waitlist</h3>
+<h3>Reserve Founding Member Access</h3>
 <button class="modal-close" onclick="closeWaitlistModal()">×</button>
 </div>
 <div class="modal-body" id="waitlist-form-body">
-<p>Premium is coming soon. Leave your name and email and we'll notify you when it launches.</p>
+<p>The Founding Cohort opens May 8, 2026. The first 25 employers lock in Founding contribution terms. Reserve your spot below.</p>
 <div class="field" style="margin-top:1rem;">
 <label for="waitlist-name">Name <span class="req">*</span></label>
 <input id="waitlist-name" placeholder="Your full name" type="text"/>
@@ -256,13 +260,13 @@
 <div style="width:42px;height:42px;border-radius:50%;background:rgba(197,165,114,0.12);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
 <svg fill="none" height="17" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
 </div>
-<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">You're on the list.</p>
-<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We'll be in touch when Premium launches. In the meantime, the Essential Preliminary Review is free and available now.</p>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Your spot is reserved.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will be in touch with next steps as the Founding Cohort opens. In the meantime, the Preliminary Review is free and available now.</p>
 </div>
 </div>
 <div class="modal-footer" id="waitlist-footer">
 <button class="btn btn-secondary" onclick="closeWaitlistModal()">Cancel</button>
-<button class="btn btn-primary" id="waitlist-submit-btn" onclick="submitWaitlist()" style="width:auto;background:var(--gold);">Notify Me</button>
+<button class="btn btn-primary" id="waitlist-submit-btn" onclick="submitWaitlist()" style="width:auto;background:var(--gold);">Reserve My Spot</button>
 </div>
 </div>
 </div>
@@ -308,6 +312,7 @@ let flowAllowed  = false;
         if (f['submitter-company']) document.getElementById('submitter-company').value = f['submitter-company'];
         if (f['submitter-email'])   document.getElementById('submitter-email').value   = f['submitter-email'];
         if (f['terms'])             document.getElementById('terms').checked           = !!f['terms'];
+        if (f['na-member'])         document.getElementById('na-member').checked       = !!f['na-member'];
     }
 
     validateInfoForm();
@@ -346,7 +351,8 @@ function continueToUpload() {
             'submitter-name':    document.getElementById('submitter-name').value,
             'submitter-company': document.getElementById('submitter-company').value,
             'submitter-email':   document.getElementById('submitter-email').value,
-            'terms':             document.getElementById('terms').checked
+            'terms':             document.getElementById('terms').checked,
+            'na-member':         document.getElementById('na-member').checked
         }
     });
     window.location.assign('upload.html');
