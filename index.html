@@ -107,7 +107,7 @@
 <div class="page-hd-text">
 <div class="intake-kicker">Contract Review Intake</div>
 <h1>Submit a Contract for Independent Review</h1>
-<p>Fiduciary-oriented review of PBM contract language for governance, procurement, and contracting decisions.</p>
+<p>Independent review of PBM contracts for plan sponsors, advisors, and coalitions.</p>
 </div>
 <div class="page-hd-logo">
 <img alt="Nautilus Health Institute" src="https://scditto.github.io/contractxray-intake/Nautilus_Logo_WIDE.png"/>
@@ -118,9 +118,13 @@
 <div class="tier-card" data-tier="essential" onclick="selectTier('essential')">
 <div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
 <div class="tc-main">
-<div class="tc-eyebrow">Triage Review</div>
+<div class="tc-eyebrow">Triage</div>
 <div class="tc-name">Quick Look</div>
-<div class="tc-price">No-cost screening</div>
+<div class="tc-price">Free Screening</div>
+<div class="tc-sla" style="margin-top:0.5rem;">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+PDF in under 1 hour
+</div>
 </div>
 <div class="tc-detail">
 <p class="tc-hook">A fast read on whether your contract warrants a deeper look.</p>
@@ -131,10 +135,6 @@
 </ul>
 </div>
 <div class="tc-action">
-<div class="tc-sla">
-<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-PDF in under 1 hour
-</div>
 <a class="tc-cta" href="#" onclick="event.stopPropagation(); selectTier('essential');">Begin Quick Look</a>
 <a class="tc-link" href="#" onclick="openModal('essential', event)">Review sample deliverables &rarr;</a>
 </div>
@@ -142,19 +142,18 @@ PDF in under 1 hour
 <div class="tier-card" data-tier="premium" onclick="openWaitlistModal()">
 <div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
 <div class="tc-main">
-<div class="tc-eyebrow">Fiduciary-Grade Review <span style="display:inline-block;margin-left:0.5rem;padding:2px 8px;background:var(--gold);color:#fff;font-size:0.6rem;font-weight:700;letter-spacing:0.06em;border-radius:3px;vertical-align:1px;">FOUNDING COHORT</span></div>
+<div class="tc-eyebrow">Fiduciary-Grade Review</div>
 <div class="tc-name">Full Assessment</div>
 <div class="tc-price" style="color:var(--gold);">$500 to $10,000</div>
-<div class="tc-price-note">Founding Cohort Contribution · Scaled to plan size</div>
+<div class="tc-price-note">Scaled to plan size</div>
 <div class="tc-price-note" style="font-style:italic;color:var(--mid-text);margin-top:0.25rem;">Comparable independent review: $20,000 and up</div>
 </div>
 <div class="tc-detail">
 <p class="tc-hook">A complete contract analysis for governance, negotiation, and executive decision support.</p>
-<ul class="tc-features"><li><strong>Scorecard:</strong> Fiduciary Alignment Score across ten contract provisions</li><li><strong>Data Sovereignty Score:</strong> Designation rating across five data provisions</li><li><strong>Negotiation Report:</strong> Gap analysis, model language, and talking points</li><li><strong>Executive Brief:</strong> Board-ready summary for leadership</li></ul>
+<ul class="tc-features"><li><strong>Scorecard:</strong> Fiduciary Alignment Score across ten contract provisions</li><li><strong>Data Sovereignty Score:</strong> Rating across five data provisions</li><li><strong>Negotiation Report:</strong> Gap analysis, model language, and talking points</li><li><strong>Executive Brief:</strong> Board-ready summary for leadership</li></ul>
 </div>
 <div class="tc-action">
-<div class="tc-secondary-note">Best fit for contracts being negotiated, renewed, or escalated for fiduciary review.</div>
-<div class="tc-secondary-note" style="color:var(--gold);font-weight:600;margin-top:0.4rem;">Founding Cohort opens May 8, 2026. First 25 employers lock in Founding terms.</div>
+<div class="tc-secondary-note" style="color:var(--gold);font-weight:600;">Founding Cohort opens May 8, 2026. First 25 employers lock in Founding terms.</div>
 <a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();">Reserve Founding Cohort Access</a>
 <a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables &rarr;</a>
 </div>
@@ -172,18 +171,16 @@ PDF in under 1 hour
 <li>Packages of Full Assessments across multiple employers</li>
 <li>Dedicated support and custom reporting</li>
 <li>Access to Contract Accountability Benchmark data</li>
-<li>Program design around procurement standards or member services</li>
 </ul>
 </div>
 <div class="tc-action">
-<div class="tc-secondary-note">Appropriate when the objective is a repeatable review program, not a single contract submission.</div>
 <a class="tc-cta" href="#" onclick="event.stopPropagation(); openContactModal();">Request Program Discussion</a>
 <a class="tc-link" href="#" onclick="openModal('enterprise', event)">Review program fit &rarr;</a>
 </div>
 </div>
 </div>
 <div class="decision-note">
-<strong>Not sure which path fits?</strong> Use Quick Look for a directional screen, Full Assessment for fiduciary committee or negotiation support, and Multi-Employer Programs when reviewing contracts across a client, member, or coalition portfolio.
+<strong>Not sure which fits?</strong> <strong>Quick Look</strong> for a screen, <strong>Full Assessment</strong> for negotiation or fiduciary review, <strong>Multi-Employer Programs</strong> for portfolio reviews.
             </div>
 </main></div><!-- /content-inner -->
 </div><!-- /shell -->
@@ -297,6 +294,13 @@ PDF in under 1 hour
 </div>
 <div style="margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border);">
 <p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0.6rem;"><strong style="color:var(--gold);">Founding Cohort opens May 8, 2026.</strong> The first 25 employers join as Founding Cohort members and lock in Founding contribution terms. Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
+<p style="font-size:0.84rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1rem;">The first 25 employers join the Founding Cohort and lock in:</p>
+<ul style="font-size:0.84rem;color:var(--mid-text);line-height:1.55;margin-bottom:1rem;padding-left:1.1rem;">
+<li style="margin-bottom:0.4rem;"><strong>Three years of Full Assessment access</strong> from your join date, with one Founding contribution. Submit any contract during that period: your current PBM agreement, a renewal draft, or a competing proposal under evaluation.</li>
+<li style="margin-bottom:0.4rem;"><strong>Unlimited contract reviews</strong> during your access period. Use the platform iteratively as language changes through negotiation, renewal, and procurement cycles.</li>
+<li style="margin-bottom:0.4rem;"><strong>Every new report type Nautilus releases during your access period</strong>, including capabilities currently in development.</li>
+<li><strong>Your founding contribution is all you pay through 2029</strong>, regardless of how pricing evolves as the platform matures.</li>
+</ul>
 <p style="font-size:0.84rem;color:var(--mid-text);font-weight:600;margin-bottom:0.4rem;">Founding Cohort Contribution (scaled to plan size):</p>
 <table style="width:100%;border-collapse:collapse;font-size:0.82rem;color:var(--mid-text);margin-bottom:0;">
 <thead><tr><th style="text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);font-weight:600;">Covered Lives</th><th style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);font-weight:600;">Contribution</th></tr></thead>
