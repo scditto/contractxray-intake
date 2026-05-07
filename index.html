@@ -155,7 +155,8 @@ PDF in under 1 hour
 <div class="tc-action">
 <div class="tc-secondary-note" style="color:var(--gold);font-weight:600;">Founding Cohort opens May 11, 2026. First 25 employers lock in Founding terms.</div>
 <a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();">Reserve Founding Cohort Access</a>
-<a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables and Founding Cohort details &rarr;</a>
+<a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables &rarr;</a>
+<a class="tc-link" href="#" onclick="openModal('founding', event)">Founding Cohort details &rarr;</a>
 </div>
 </div>
 <div class="tier-card" data-tier="enterprise" onclick="openModal('enterprise', event)">
@@ -293,30 +294,48 @@ PDF in under 1 hour
 </div>
 </div>
 <div style="margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border);">
-<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0.6rem;"><strong style="color:var(--gold);">Founding Cohort opens May 11, 2026.</strong> The first 25 employers join as Founding Cohort members and lock in Founding contribution terms. Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
-<p style="font-size:0.84rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1rem;">The first 25 employers join the Founding Cohort and lock in:</p>
-<ul style="font-size:0.84rem;color:var(--mid-text);line-height:1.55;margin-bottom:1rem;padding-left:1.1rem;">
-<li style="margin-bottom:0.4rem;"><strong>Three years of Full Assessment access</strong> from your join date, with one Founding contribution. Submit any contract during that period: your current PBM agreement, a renewal draft, or a competing proposal under evaluation.</li>
-<li style="margin-bottom:0.4rem;"><strong>Unlimited contract reviews</strong> during your access period. Use the platform iteratively as language changes through negotiation, renewal, and procurement cycles.</li>
-<li style="margin-bottom:0.4rem;"><strong>Every new report type Nautilus releases during your access period</strong>, including capabilities currently in development.</li>
-<li><strong>Your founding contribution is all you pay through 2029</strong>, regardless of how pricing evolves as the platform matures.</li>
-</ul>
-<p style="font-size:0.84rem;color:var(--mid-text);font-weight:600;margin-bottom:0.4rem;">Founding Cohort Contribution (scaled to plan size):</p>
-<table style="width:100%;border-collapse:collapse;font-size:0.82rem;color:var(--mid-text);margin-bottom:0;">
-<thead><tr><th style="text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);font-weight:600;">Covered Lives</th><th style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);font-weight:600;">Contribution</th></tr></thead>
-<tbody>
-<tr><td style="padding:5px 10px;border-bottom:1px solid var(--border);">Under 500</td><td style="text-align:right;padding:5px 10px;border-bottom:1px solid var(--border);">$500</td></tr>
-<tr><td style="padding:5px 10px;border-bottom:1px solid var(--border);">500 to 1,999</td><td style="text-align:right;padding:5px 10px;border-bottom:1px solid var(--border);">$1,000</td></tr>
-<tr><td style="padding:5px 10px;border-bottom:1px solid var(--border);">2,000 to 4,999</td><td style="text-align:right;padding:5px 10px;border-bottom:1px solid var(--border);">$2,000</td></tr>
-<tr><td style="padding:5px 10px;border-bottom:1px solid var(--border);">5,000 to 19,999</td><td style="text-align:right;padding:5px 10px;border-bottom:1px solid var(--border);">$5,000</td></tr>
-<tr><td style="padding:5px 10px;">20,000 and above</td><td style="text-align:right;padding:5px 10px;">$10,000</td></tr>
-</tbody>
-</table>
+<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;"><strong style="color:var(--gold);">Founding Cohort opens May 11, 2026.</strong> The first 25 employers lock in Founding contribution terms. <a href="#" onclick="closeModal('premium'); openModal('founding', event); return false;" style="color:var(--teal);font-weight:600;">View Founding Cohort details &rarr;</a></p>
 </div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-secondary" onclick="closeModal('premium')">Close</button>
 <button class="btn btn-primary" onclick="closeModal('premium'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
+</div>
+</div>
+</div>
+
+<!-- Founding Cohort Modal -->
+<div class="modal-overlay" id="modal-founding">
+<div class="modal">
+<div class="modal-header">
+<h3>Founding Cohort</h3>
+<button class="modal-close" onclick="closeModal('founding')">×</button>
+</div>
+<div class="modal-body">
+<p><strong style="color:var(--gold);">Founding Cohort opens May 11, 2026.</strong> The first 25 employers join as Founding Cohort members and lock in Founding contribution terms. Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
+<p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1.25rem;">The first 25 employers join the Founding Cohort and lock in:</p>
+<ul style="font-size:0.92rem;color:var(--mid-text);line-height:1.55;margin-bottom:1.25rem;padding-left:1.1rem;">
+<li style="margin-bottom:0.5rem;"><strong>Three years of Full Assessment access</strong> from your join date, with one Founding contribution. Submit any contract during that period: your current PBM agreement, a renewal draft, or a competing proposal under evaluation.</li>
+<li style="margin-bottom:0.5rem;"><strong>Unlimited contract reviews</strong> during your access period. Use the platform iteratively as language changes through negotiation, renewal, and procurement cycles.</li>
+<li style="margin-bottom:0.5rem;"><strong>Every new report type Nautilus releases during your access period</strong>, including capabilities currently in development.</li>
+<li><strong>Your founding contribution is all you pay through 2029</strong>, regardless of how pricing evolves as the platform matures.</li>
+</ul>
+<p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;">Founding Cohort Contribution (scaled to plan size):</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:var(--mid-text);margin-bottom:1rem;">
+<thead><tr><th style="text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:600;">Covered Lives</th><th style="text-align:right;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:600;">Contribution</th></tr></thead>
+<tbody>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">Under 500</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$500</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">500 to 1,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$1,000</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">2,000 to 4,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$2,000</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">5,000 to 19,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$5,000</td></tr>
+<tr><td style="padding:6px 10px;">20,000 and above</td><td style="text-align:right;padding:6px 10px;">$10,000</td></tr>
+</tbody>
+</table>
+<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);">Want to see what you'll receive? <a href="#" onclick="closeModal('founding'); openModal('premium', event); return false;" style="color:var(--teal);font-weight:600;">Review sample deliverables &rarr;</a></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('founding')">Close</button>
+<button class="btn btn-primary" onclick="closeModal('founding'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
 </div>
 </div>
 </div>
