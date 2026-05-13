@@ -1,0 +1,38 @@
+<!--
+  Multi-Employer Programs tier card.
+
+  Removed from intake/index.html in this restructure. Per Steve, this is being
+  parked for relocation to a future destination page (likely an advisors or
+  partners page, since the audience is coalitions and advisors, not individual
+  plan sponsors).
+
+  To restore: paste this card block back inside the <div class="tier-grid">
+  container in intake/index.html, after the Full Assessment card. The
+  Enterprise modal (<div class="modal-overlay" id="modal-enterprise">) was
+  left in place in the same file, so the openModal('enterprise', event)
+  handler will still work when the card is restored.
+
+  Removed on: May 13, 2026
+  Source: intake/index.html (formerly index.html at repo root)
+-->
+
+<div class="tier-card" data-tier="enterprise" onclick="openModal('enterprise', event)">
+<div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+<div class="tc-main">
+<div class="tc-eyebrow">Program Engagement</div>
+<div class="tc-name">Multi-Employer Programs</div>
+<div class="tc-price">Custom scope</div>
+</div>
+<div class="tc-detail">
+<p class="tc-hook">For coalitions, associations, advisors, and organizations managing multiple employer relationships.</p>
+<ul class="tc-features">
+<li>Packages of Full Assessments across multiple employers</li>
+<li>Dedicated support and custom reporting</li>
+<li>Access to Contract Accountability Benchmark data</li>
+</ul>
+</div>
+<div class="tc-action">
+<a class="tc-cta" href="#" onclick="event.stopPropagation(); openContactModal();">Request Program Discussion</a>
+<a class="tc-link" href="#" onclick="openModal('enterprise', event)">Review program fit &rarr;</a>
+</div>
+</div>

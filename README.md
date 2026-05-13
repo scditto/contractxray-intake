@@ -1,223 +1,179 @@
-# Contract X-Ray
-**AI-Powered PBM Contract Analysis | Nautilus Health Institute**
+# Contract X-Ray repo restructure — deploy notes
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Try%20It-navy)](https://scditto.github.io/contractxray-intake/)
-[![Nautilus Health](https://img.shields.io/badge/Nautilus-Health%20Institute-1B365D)](https://nautilushealth.org)
-
----
-
-## What This Is
-
-Contract X-Ray is an AI-powered contract analysis platform that scores pharmacy benefit manager (PBM) contracts against fiduciary-aligned standards organized into 10 categories, on a 0–100 scale. It is designed for employer plan administrators, public sector benefits officers, and benefits advisors who need to understand what their PBM contract actually says — without $10,000–$50,000 in legal fees.
-
-A contract submitted through the intake form is analyzed by Claude (Anthropic's AI) using an encoded scoring methodology developed from decades of PBM contracting expertise. The analysis returns a scored Quick Look report in under 60 seconds.
-
-**[Try it live →](https://scditto.github.io/contractxray-intake/)**
+**What this is:** A restructure of the `scditto/contractxray-intake` repo so that
+`contractxray.com` serves the hero at root, the multi-page intake at `/intake/`,
+and the sample reports page at `/samples.html`. After this deploys, the hero
+becomes the front door and its "Analyze your contract" button routes into the
+multi-page intake that's already wired to the production Quick Look webhook.
 
 ---
 
-## Why This Matters
+## What's in this zip
 
-24 million U.S. government employees have health plans governed by PBM contracts. Most plan administrators — school district benefits officers, county HR directors, municipal finance staff — have never had the tools to evaluate what those contracts say relative to their fiduciary obligations. The categories that matter most (audit rights, rebate pass-through, data ownership, carve-out rights) are the ones most likely to be absent, buried, or actively restricted.
-
-Contract X-Ray makes that evaluation available to anyone, at no cost, in minutes.
-
----
-
-## What Is in This Repository
-
-This repository contains the open-source components of the Contract X-Ray system. They are published as civic infrastructure — free to use, adapt, and extend.
-
-### `ContractXRay_Intake_v4.html`
-The public-facing intake form. A self-contained HTML file with embedded CSS and JavaScript that collects a contract PDF, PBM name, and plan sponsor name, then sends a webhook to trigger the Make.com automation pipeline.
-
-- No framework dependencies
-- Drag-and-drop file upload
-- Client-side validation (file type, file size, required fields)
-- Accessible and mobile-responsive
-- Embeds directly into any web host — currently deployed on GitHub Pages
-
-**To deploy your own instance:** update the webhook URL on line ~890 to point to your own Make.com scenario or equivalent automation endpoint.
-
-### `Contract_XRay_Scoring_Rubric_v5_1.md`
-The complete scoring rules governing all Contract X-Ray analyses. This is the methodology document — the encoded scoring standards that make the AI analysis defensible, consistent, and reproducible.
-
-Contains:
-- All 10 categories and their scoring standards
-- 0–5 score definitions for every issue, with explicit criteria for each level
-- Calibration rules for edge cases (silence vs. active disclaimer, referenced document handling, government employer adaptation)
-- Amendment history documenting every methodology change and the rationale
-
-This document is what separates Contract X-Ray from generic AI contract review. The scoring rules can be applied manually by any human analyst using the same criteria the AI uses. They are the ground truth.
-
-### `generate_quick_look.js`
-The Node.js report generator that converts a scored workpaper (YAML format) into a formatted Word document Quick Look report.
-
-- Reads YAML data block from a markdown workpaper file
-- Generates a 3-zone report: category summary, flags table (Concern + Red Flag categories only), conditional call to action
-- Applies Nautilus brand standards (navy/teal/gold color scheme)
-- Outputs `.docx` via the `docx` npm library
-- No proprietary dependencies — runs with `npm install docx js-yaml`
-
-**To run:**
-```bash
-npm install docx js-yaml
-node generate_quick_look.js path/to/workpaper.md output.docx
+```
+index.html                          (hero — was contractxray_hero_v9.html, links updated)
+samples.html                        (sample reports — v4 with all links updated)
+intake/
+  index.html                        (step 1, Multi-Employer Programs card removed)
+  details.html                      (unchanged)
+  upload.html                       (unchanged, webhook already correct)
+  confirmation.html                 (unchanged)
+  success.html                      (unchanged)
+_SNIPPET_multi_employer_programs_card.html   (parked markup for future relocation)
+README.md                           (this file — do NOT upload to the repo)
 ```
 
 ---
 
-## System Architecture
+## What changed in each file
 
-The full Contract X-Ray pipeline has six stages:
+**index.html (hero)**
+- Renamed from `contractxray_hero_v9.html`
+- "Analyze your contract" button: now points to `/intake/`
+- "View sample reports" button: now points to `/samples.html`
+- Footer Product links: same updates
 
-```
-Intake Form (GitHub Pages)
-    ↓  webhook
-Make.com Automation Pipeline
-    ↓  HTTP request
-Claude API (Anthropic)
-    → System prompt encodes scoring methodology
-    → Contract PDF analyzed against 10 categories
-    → Returns structured JSON (37 fields)
-    ↓  JSON parsed + variables mapped
-HTML Report Template
-    → 37 variables populated
-    ↓
-PDF.co (HTML → PDF)
-    ↓
-Google Drive (storage + logging)
-    ↓
-Email delivery to submitter
-```
+**samples.html**
+- Renamed from `contractxray_sample_reports_v3.html` (v4 content from earlier this session)
+- Brand link and breadcrumb: now point to `/`
+- Footer Product links: now point to `/intake/` and `/samples.html`
 
-**Total pipeline time:** ~60 seconds  
-**Marginal cost per analysis:** ~$0.20 (Claude API tokens)  
-**Infrastructure:** Make.com, Anthropic API, PDF.co, Google Drive, Google Sheets, Gmail — all connected via webhook and HTTP modules. No custom server infrastructure required.
+**intake/index.html**
+- Moved from repo root
+- Multi-Employer Programs tier card removed
+- "Not sure which fits?" decision note updated to two-option text
+- Enterprise modal markup left in place (unreferenced) so it's available if you
+  ever decide to restore the card
+
+**intake/{details,upload,confirmation,success}.html**
+- Moved from repo root, otherwise unchanged
+- All cross-page navigation uses relative paths, which continue to work after the move
 
 ---
 
-## Scoring Framework
+## Deploy steps (web UI only, no terminal)
 
-Ten categories. Fiduciary-aligned standards within each. Zero to one hundred.
+Recommended order minimizes the window where the site is in a half-deployed
+state. Do steps 1 and 2 first — these create new URLs without breaking
+anything. Step 3 is the moment the front door flips.
 
-| # | Category | Core Question |
-|---|-----------|---------------|
-| P1 | Fiduciary Loyalty Commitment | Does the PBM commit to support the plan sponsor's fiduciary obligations? |
-| P2 | Pass-Through Pricing Integrity | Are pharmacy discounts passed through at cost with no spread? |
-| P3 | Rebate & Manufacturer Revenue | Are 100% of manufacturer revenues passed through? |
-| P4 | Data Ownership & Access | Does the employer own its claims data? |
-| P5 | Audit Rights & Verification | Can the employer audit all financial arrangements independently? |
-| P6 | Conflict of Interest & Network | Are PBM-affiliated pharmacies disclosed? |
-| P7 | Carve-Out & Vendor Rights | Can the employer redirect drugs outside the PBM network? |
-| P8 | Lowest Net Cost & Clinical | Is the formulary governed by lowest net cost, not rebate maximization? |
-| P9 | Termination & Clean Exit | Can the employer exit cleanly with data and no penalty? |
-| P10 | Administrative Fee Transparency | Are all fees disclosed with CAA 2026 attestation? |
+### Step 1: Add the `/intake/` folder
 
-**Rating bands:**
-- 90–100: Excellent
-- 75–89: Good
-- 60–74: Fair
-- 45–59: Concern
-- 0–44: Red Flag
+1. Unzip on your computer.
+2. Go to `github.com/scditto/contractxray-intake`.
+3. Click **Add file** → **Upload files**.
+4. Drag the entire `intake` folder (not the files inside it — the folder
+   itself) onto the upload area. GitHub creates the `/intake/` path
+   automatically and uploads all five files inside it.
+5. Scroll down, write a commit message like "Add multi-page intake under /intake/",
+   click **Commit changes**.
 
-**Three domains group the 10 categories:**
+After this commits, `contractxray.com/intake/` will work but nothing on the
+site links to it yet. Safe to verify in your browser before continuing.
 
-| Domain | Categories |
-|--------|-----------|
-| Fiduciary Conduct | P1, P6, P8 |
-| Financial Integrity | P2, P3, P10 |
-| Oversight and Control | P4, P5, P7, P9 |
+### Step 2: Add `samples.html`
 
+1. Same repo page, **Add file** → **Upload files**.
+2. Drag `samples.html` from the unzipped folder.
+3. Commit message: "Add samples.html at repo root", **Commit changes**.
 
-![Fiduciary-Aligned PBM Contract Standards Framework](fiduciary_aligned_pbm_framework_hierarchy_v2.svg)
+Verify `contractxray.com/samples.html` loads correctly.
 
-**Calibration principle:** Silence = Red Flag. If a contract does not explicitly address a provision, it scores as if the provision is absent. Business model reputation and marketing claims do not count. Only explicit contract language receives credit.
+### Step 3: Move the assets folder
 
----
+The intake pages reference `assets/styles.css`, `assets/shared.js`, and
+several image files. These currently live at `/assets/` at the repo root.
+They need to move to `/intake/assets/` so the intake pages can find them.
 
-## What Is Not in This Repository
+Do this in the GitHub web UI:
 
-The Claude API system prompt — the encoded scoring methodology that instructs the AI how to analyze contracts — is the core intellectual asset of Contract X-Ray and is not published here. It is the product of years of expert calibration and is what makes AI analysis defensible and consistent at scale.
+1. Open `github.com/scditto/contractxray-intake` in the browser.
+2. Click into the `assets` folder.
+3. For each file inside: open it, click the pencil icon (Edit this file),
+   then in the filename field at the top, change the path from
+   `assets/styles.css` to `intake/assets/styles.css` (and so on for each
+   file). Click **Commit changes** for each.
 
-The open components in this repository are sufficient to:
-- Understand the full system architecture
-- Reproduce the scoring framework manually using the published scoring rules
-- Deploy your own intake form
-- Build compatible integrations with the methodology
-- Generate Quick Look reports from scored workpapers
+That's slow if there are a lot of files in `assets/`. Faster alternative if
+you have a friend or contractor comfortable with `git`: ask them to run
+`git mv assets intake/assets` once and push. Either way works.
 
----
+**After step 3, verify** `contractxray.com/intake/` displays correctly with
+all styling and the page rendering as intended.
 
-## The AI Component
+### Step 4: Flip the front door
 
-Contract X-Ray uses Claude (Anthropic) via the Messages API with the following key design choices:
+This is the one moment where the site changes for visitors. Until this
+step, `contractxray.com` still serves the old intake step 1 at root.
 
-**Temperature 0.** Deterministic output. The same contract produces the same scores every time. Required for a ratings system that must be defensible across analysts and over time.
+1. Same repo page, **Add file** → **Upload files**.
+2. Drag `index.html` from the unzipped folder.
+3. GitHub will prompt that a file with this name already exists and ask if
+   you want to replace it. Confirm.
+4. Commit message: "Replace root index with hero page", **Commit changes**.
 
-**Methodology-locked system prompt.** The system prompt encodes all 10 category definitions, scoring criteria, calibration rules, and edge case handling before any contract text is analyzed. The AI executes the methodology — it does not interpret it.
+Within a minute or two, `contractxray.com/` now serves the hero. The full
+funnel is live: hero → "Analyze your contract" → intake → Quick Look PDF.
 
-**Evidence requirement.** Every finding must cite a specific contract section. The model cannot score a provision without a direct contract quote. Silence defaults to Red Flag.
+### Step 5: Delete the old files
 
-**Structured JSON output.** The model returns a validated 37-field JSON object. No natural language parsing required downstream. The pipeline fails gracefully if output is malformed.
+Once you've verified the new front door works, clean up the old files. For
+each file below: open it on github.com, click the trash-can icon (top right
+of the file viewer), commit the deletion.
 
-**Referenced document detection.** Before scoring, the model identifies any external agreements incorporated by reference but not submitted. Missing referenced documents are flagged and their dependent provisions scored Red Flag — a structural gap most contract review tools miss entirely.
-
----
-
-## Roadmap
-
-| Phase | Timeline | Status |
-|-------|----------|--------|
-| Essential Tier (free, automated) | Q1 2026 | Live |
-| PBM Accountability Index | Q2 2026 | In Progress — 22 contracts scored |
-| Nautilus Surface (FOIA automation) | Q2–Q3 2026 | Planning |
-| RosettaFest Public Launch | July 2026 | Target |
-| Premium Tier (full report suite) | Q3 2026 | Planned |
-| Government Plan Dataset | 2026–2027 | Planned |
-
----
-
-## Using This for Government Plan Analysis
-
-Contract X-Ray is designed to analyze government employer health plan contracts. Key implementation notes:
-
-- The scoring standards include a government employer adaptation: where ERISA does not apply (municipal, county, state, school district plans), fiduciary language references "applicable law" rather than ERISA. Scoring criteria are unchanged.
-- CAA 2026 transparency requirements apply to government plans through the No Surprises Act and related provisions. The P10 provision (Administrative Fee Transparency) specifically evaluates CAA 2026 alignment.
-- Government contracts obtained through FOIA or public records requests are fully compatible with the intake pipeline. Upload the contract PDF exactly as received.
+- `contractxray_hero_v9.html`
+- `contractxray_sample_reports_v3.html`
+- `contractxray_sample_reports_v4.html` (if you uploaded the v4 file
+  separately earlier — it's now superseded by `samples.html`)
+- `intake 04-30-26.html`
+- `details.html` at repo root (the copy in `/intake/` is the live one)
+- `upload.html` at repo root (same)
+- `confirmation.html` at repo root (same)
+- `success.html` at repo root (same)
 
 ---
 
-## Contributing
+## After deploy — verify
 
-Contract X-Ray is a civic infrastructure project. Contributions that improve the scoring standards, extend coverage to additional contract types (TPA, ASO, stop-loss), or improve accessibility for non-specialist users are welcome.
+Click through this exact path to confirm everything wired up:
 
-**To contribute:**
-1. Open an issue describing the proposed change and its rationale
-2. For scoring standard changes, cite specific contract language that motivates the update
-3. For code changes, include a brief description of how the change was tested
-
-All contributions are reviewed by the Nautilus Health Institute team before merging.
-
----
-
-## About Nautilus Health Institute
-
-Nautilus Health Institute is a nonprofit organization focused on pharmacy benefit manager transparency and fiduciary accountability. Contract X-Ray is one component of a broader standards and ratings infrastructure that includes the PBM Accountability Index — an independent, Morningstar-style public ratings system for PBM contracts — and the Nautilus Standards Library, an open repository of fiduciary-aligned model contract language.
-
-**Website:** [nautilushealth.org](https://nautilushealth.org)  
-**Contact:** steve@dittoandassociates.com  
-**Live Demo:** [scditto.github.io/contractxray-intake](https://scditto.github.io/contractxray-intake/)
+1. Visit `contractxray.com/` — should see the hero.
+2. Click "View sample reports" — should land on `/samples.html`.
+3. From samples, click the brand link or breadcrumb — should return to `/`.
+4. From samples, click "Analyze your contract" in footer — should land on `/intake/`.
+5. From hero, click "Analyze your contract" — should land on `/intake/`.
+6. On `/intake/`, click Quick Look — should navigate to `/intake/details.html`.
+7. Fill in any junk details, continue to upload, drop a small test PDF,
+   submit. Confirm you receive the Quick Look email within ~30 minutes (the
+   production Make.com scenario timing).
 
 ---
 
-## License
+## Known minor items (not blocking)
 
-MIT License. See [LICENSE](LICENSE) for details.
+- The intake pages reference some sample-thumbnail images via absolute URLs
+  like `https://scditto.github.io/contractxray-intake/QuickLook-Sample-Thumbnail.jpg`.
+  These still resolve correctly because the same GitHub Pages site backs
+  both URLs, but they could be cleaned up to relative paths in a future
+  pass.
 
-The scoring standards and methodology documents are published under Creative Commons Attribution 4.0 (CC BY 4.0). You may use, adapt, and redistribute them with attribution to Nautilus Health Institute.
+- The intake pages still use Playfair Display + DM Sans while the hero and
+  samples pages use Fraunces + Inter. This is the "Phase 2" alignment work
+  we deferred. Doing it cleanly requires editing `intake/assets/styles.css`,
+  which isn't in this zip.
+
+- The Multi-Employer Programs card markup is in
+  `_SNIPPET_multi_employer_programs_card.html`. When the future advisors or
+  partners page is built, paste the card markup back into that page's tier
+  grid. The Enterprise modal is still in `intake/index.html` so the
+  openModal('enterprise') handler will still work if the card is ever
+  restored to the intake page.
 
 ---
 
-*Contract X-Ray™ is a service of Nautilus Health Institute. Scores reflect contract documents, not PBM performance, service quality, or business practices.*
+## If something goes wrong
+
+The fastest rollback is to re-upload the original `index.html` (the intake
+step 1) to repo root, which restores the previous front-door behaviour
+within a couple of minutes. Everything else you've deployed (`/intake/`,
+`/samples.html`) keeps working in parallel.
