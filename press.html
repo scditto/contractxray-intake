@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Researchers &amp; Press | Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Independent methodology and a growing reference dataset on PBM contracts. Open to research collaboration and press inquiries.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #1B365D;
+    --navy-deep: #122845;
+    --teal: #2D8B9A;
+    --teal-deep: #236f7c;
+    --gold: #C5A572;
+    --cream: #F5F0E6;
+    --cream-light: #FAF6EE;
+    --paper: #FFFCF6;
+    --ink: #1A1F2E;
+    --ink-soft: #4A4F5C;
+    --ink-muted: #7A7F8C;
+    --border: rgba(27, 54, 93, 0.14);
+    --border-strong: rgba(27, 54, 93, 0.22);
+
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --container-max: 1320px;
+    --container-narrow: 880px;
+    --side-pad: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 80% 0%, rgba(45, 139, 154, 0.06), transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(197, 165, 114, 0.05), transparent 50%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--side-pad); }
+  .container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--side-pad); }
+
+  .site-header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.6);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; color: var(--navy); }
+  .brand-logo { width: 32px; height: 32px; display: block; }
+  .brand-name { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--navy); }
+  .brand-divider { width: 1px; height: 22px; background: var(--border-strong); }
+  .brand-product { font-weight: 500; font-size: 15px; color: var(--navy); letter-spacing: 0.02em; }
+  .brand-product em { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--teal); margin-left: 2px; }
+
+  .main-nav { display: flex; gap: 38px; }
+  .main-nav a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.2s ease; }
+  .main-nav a:hover { color: var(--navy); }
+
+  .intro { padding: 72px 0 40px; text-align: center; }
+
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted); margin: 0 0 28px;
+  }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .divider { opacity: 0.4; }
+
+  .intro-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 auto 16px;
+    max-width: 720px;
+  }
+
+  .effective-date {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  /* Document body */
+  .document {
+    padding: 32px 0 80px;
+  }
+
+  .doc-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 0 40px;
+  }
+
+  .doc-intro p { margin: 0 0 18px; }
+  .doc-intro p:last-child { margin-bottom: 0; }
+  .doc-intro strong { color: var(--navy); font-weight: 600; }
+
+  .doc-section {
+    margin: 0 0 36px;
+    max-width: 720px;
+  }
+
+  .doc-section:last-child { margin-bottom: 0; }
+
+  .doc-section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .doc-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .doc-section p:last-child { margin-bottom: 0; }
+
+  .doc-section a {
+    color: var(--teal-deep);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+  }
+
+  .doc-section a:hover { border-bottom-color: var(--teal-deep); }
+
+  .doc-section strong { color: var(--navy); font-weight: 600; }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.5);
+    padding: 72px 0 32px;
+  }
+
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 56px; padding-bottom: 56px; }
+
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 22px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .footer-col li a { font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+  .footer-col li a:hover { color: var(--navy); }
+
+  .footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .footer-brand-row .brand-logo { width: 28px; height: 28px; }
+  .footer-brand-row span { font-weight: 600; font-size: 16px; color: var(--navy); }
+
+  .footer-brand p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    max-width: 360px;
+  }
+
+  .footer-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px; border-top: 1px solid var(--border);
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .footer-bottom p {
+    margin: 0; font-family: var(--font-mono);
+    font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
+  }
+
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+  .footer-legal a { font-size: 13px; color: var(--ink-soft); }
+  .footer-legal a:hover { color: var(--navy); }
+  .footer-legal a.current { color: var(--navy); font-weight: 600; }
+
+  @media (max-width: 1100px) { :root { --side-pad: 40px; } .main-nav { gap: 24px; } }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .intro { padding: 56px 0 32px; }
+    .document { padding: 24px 0 64px; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --side-pad: 24px; }
+    .nav-bar { gap: 16px; }
+    .main-nav { display: none; }
+    .intro-headline { font-size: clamp(28px, 7vw, 38px); }
+    .doc-section h2 { font-size: 19px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { flex-wrap: wrap; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="/">
+      <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+      <span class="brand-name">Nautilus</span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-product">Contract <em>X-Ray</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/plan-sponsors.html">Plan Sponsors</a>
+      <a href="/advisors.html">Advisors</a>
+      <a href="/pbms.html">PBMs</a>
+      <a href="/methodology.html">Methodology</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="container-narrow">
+      <p class="breadcrumb">
+        <a href="/">Contract X-Ray</a>
+        <span class="divider">/</span>
+        <span>Researchers &amp; Press</span>
+      </p>
+
+      <h1 class="intro-headline">Researchers &amp; Press</h1>
+      <p class="effective-date">Independent methodology. Growing reference dataset. Open to collaboration.</p>
+    </div>
+  </section>
+
+  <section class="document">
+    <div class="container-narrow">
+
+      <div class="doc-intro">
+        <p>Nautilus Health Institute is a 501(c)(3) nonprofit advancing fiduciary-aligned standards for PBM contracts. Contract X-Ray is the methodology Nautilus develops and maintains. This page exists for two audiences: researchers interested in the methodology and the growing reference dataset, and press covering PBM contracting, fiduciary practice, and CAA 2026.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>For researchers</h2>
+        <p>Contract X-Ray scores PBM contracts against a fiduciary-aligned framework of ten provisions across three domains. The methodology is publicly documented on the <a href="/methodology.html">Methodology page</a>. The framework was developed with input from over 30 experts in ERISA fiduciary law, PBM contracting, employer health plan governance, and benefits consulting, and is applied consistently across all contracts analyzed.</p>
+        <p>Nautilus is building a reference dataset of scored PBM contracts. The dataset currently spans approximately 20 distinct PBMs and grows with each cycle. The aggregate statistics produced from this dataset are first-party research and may be published without PBM consent. Individual contract scores remain confidential to the client engagements that produced them.</p>
+        <p>Research collaboration is core to the educational mission of a 501(c)(3) nonprofit. Nautilus welcomes inquiries from academic researchers, policy analysts, think tank staff, and independent writers interested in:</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Research collaboration topics</h2>
+        <p><strong>Studying the reference dataset.</strong> Aggregate statistics on contract language patterns across the PBM market, broken down by provision, by PBM business model, or by employer segment.</p>
+        <p><strong>Co-authored publications.</strong> Working with Nautilus on research articles, white papers, or policy briefs grounded in Contract X-Ray data.</p>
+        <p><strong>Applying the methodology to specific research questions.</strong> Using the framework to analyze contract trends, regulatory impact, or sector-specific dynamics.</p>
+        <p><strong>Methodology review and critique.</strong> Independent academic review of the scoring framework, calibration approach, or reliability testing.</p>
+        <p>Inquiries: <a href="mailto:info@nautilushealth.org?subject=Research%20collaboration%20inquiry">info@nautilushealth.org</a> with subject line "Research collaboration inquiry."</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>For press</h2>
+        <p>Background calls, fact-checks, and interviews are welcome on PBM contracting, ERISA fiduciary practice, CAA 2026 readiness, the CAA 2026 Readiness Quarterly Report, and related topics. Reporters covering these areas can reach Nautilus directly.</p>
+        <p>Press contact: <a href="mailto:info@nautilushealth.org?subject=Press%20inquiry">info@nautilushealth.org</a> with subject line "Press inquiry," or <a href="https://calendly.com/steve-dittoandassociates/30-minute-call">schedule a 30-minute call</a>.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>What is publicly quotable</h2>
+        <p><strong>The methodology.</strong> The ten provisions, three domains, five-tier scoring scale, and framework documentation are public.</p>
+        <p><strong>Aggregate reference-set statistics.</strong> Market-level findings from the reference dataset are first-party Nautilus research and may be quoted with attribution.</p>
+        <p><strong>Public Quarterly Report disclosures.</strong> PBMs participating in the CAA 2026 Readiness Quarterly Report have opted in to publication of their Fiduciary Alignment Score. Those scores are public on publication.</p>
+        <p><strong>Confidential.</strong> Individual client contract scores and findings outside the Quarterly Report disclosure are confidential to the engagements that produced them and are not available for public attribution.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>Institutional partners</h2>
+        <p><strong>Health Rosetta.</strong> Content and market amplification partner. Health Rosetta publishes Contract X-Ray analytical content for its network of advisors, employers, and benefits professionals.</p>
+        <p><strong>National Alliance of Healthcare Purchaser Coalitions.</strong> Publisher of the CAA 2026 Readiness Quarterly Report and a partner in advancing fiduciary-aligned standards across the coalition network.</p>
+        <p>Nautilus develops and maintains the methodology independently. Partners amplify and apply the framework within their networks; they do not maintain or modify the methodology itself.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-row">
+          <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+          <span>Nautilus Health Institute</span>
+        </div>
+        <p>Independent nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
+        <span class="footer-tag">501(C)(3) NONPROFIT</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/intake/">Analyze your contract</a></li>
+          <li><a href="/samples.html">Sample reports</a></li>
+          <li><a href="/methodology.html">Methodology</a></li>
+          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>For</h4>
+        <ul>
+          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
+          <li><a href="/advisors.html">Advisors</a></li>
+          <li><a href="/pbms.html">PBMs</a></li>
+          <li><a href="/#press">Researchers &amp; press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></li>
+          <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
+          <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Use</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
