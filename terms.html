@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service | Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Terms of Service governing the use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #1B365D;
+    --navy-deep: #122845;
+    --teal: #2D8B9A;
+    --teal-deep: #236f7c;
+    --gold: #C5A572;
+    --cream: #F5F0E6;
+    --cream-light: #FAF6EE;
+    --paper: #FFFCF6;
+    --ink: #1A1F2E;
+    --ink-soft: #4A4F5C;
+    --ink-muted: #7A7F8C;
+    --border: rgba(27, 54, 93, 0.14);
+    --border-strong: rgba(27, 54, 93, 0.22);
+
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --container-max: 1320px;
+    --container-narrow: 800px;
+    --side-pad: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 80% 0%, rgba(45, 139, 154, 0.06), transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(197, 165, 114, 0.05), transparent 50%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--side-pad); }
+  .container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--side-pad); }
+
+  .site-header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.6);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; color: var(--navy); }
+  .brand-logo { width: 32px; height: 32px; display: block; }
+  .brand-name { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--navy); }
+  .brand-divider { width: 1px; height: 22px; background: var(--border-strong); }
+  .brand-product { font-weight: 500; font-size: 15px; color: var(--navy); letter-spacing: 0.02em; }
+  .brand-product em { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--teal); margin-left: 2px; }
+
+  .main-nav { display: flex; gap: 38px; }
+  .main-nav a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.2s ease; }
+  .main-nav a:hover { color: var(--navy); }
+
+  .intro { padding: 72px 0 40px; text-align: center; }
+
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted); margin: 0 0 28px;
+  }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .divider { opacity: 0.4; }
+
+  .intro-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 auto 16px;
+    max-width: 720px;
+  }
+
+  .effective-date {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* Document body */
+  .document {
+    padding: 32px 0 80px;
+  }
+
+  .doc-intro {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 0 40px;
+  }
+
+  .doc-intro p { margin: 0 0 18px; }
+  .doc-intro p:last-child { margin-bottom: 0; }
+  .doc-intro strong { color: var(--navy); font-weight: 600; }
+
+  .doc-section {
+    margin: 0 0 36px;
+    max-width: 720px;
+  }
+
+  .doc-section:last-child { margin-bottom: 0; }
+
+  .doc-section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .doc-section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+
+  .doc-section p:last-child { margin-bottom: 0; }
+
+  .doc-section a {
+    color: var(--teal-deep);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+  }
+
+  .doc-section a:hover { border-bottom-color: var(--teal-deep); }
+
+  .doc-section strong { color: var(--navy); font-weight: 600; }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.5);
+    padding: 72px 0 32px;
+  }
+
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 56px; padding-bottom: 56px; }
+
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 22px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .footer-col li a { font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+  .footer-col li a:hover { color: var(--navy); }
+
+  .footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .footer-brand-row .brand-logo { width: 28px; height: 28px; }
+  .footer-brand-row span { font-weight: 600; font-size: 16px; color: var(--navy); }
+
+  .footer-brand p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    max-width: 360px;
+  }
+
+  .footer-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px; border-top: 1px solid var(--border);
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .footer-bottom p {
+    margin: 0; font-family: var(--font-mono);
+    font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
+  }
+
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+  .footer-legal a { font-size: 13px; color: var(--ink-soft); }
+  .footer-legal a:hover { color: var(--navy); }
+  .footer-legal a.current { color: var(--navy); font-weight: 600; }
+
+  @media (max-width: 1100px) { :root { --side-pad: 40px; } .main-nav { gap: 24px; } }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .intro { padding: 56px 0 32px; }
+    .document { padding: 24px 0 64px; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --side-pad: 24px; }
+    .nav-bar { gap: 16px; }
+    .main-nav { display: none; }
+    .intro-headline { font-size: clamp(28px, 7vw, 38px); }
+    .doc-section h2 { font-size: 19px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { flex-wrap: wrap; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="/">
+      <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+      <span class="brand-name">Nautilus</span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-product">Contract <em>X-Ray</em></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/plan-sponsors.html">Plan Sponsors</a>
+      <a href="/advisors.html">Advisors</a>
+      <a href="/pbms.html">PBMs</a>
+      <a href="/methodology.html">Methodology</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="container-narrow">
+      <p class="breadcrumb">
+        <a href="/">Contract X-Ray</a>
+        <span class="divider">/</span>
+        <span>Terms of Service</span>
+      </p>
+
+      <h1 class="intro-headline">Terms of Service</h1>
+      <p class="effective-date">Effective February 28, 2026</p>
+    </div>
+  </section>
+
+  <section class="document">
+    <div class="container-narrow">
+
+      <div class="doc-intro">
+        <p>These Terms of Service govern your use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization. By uploading a contract or using the service, you agree to these Terms.</p>
+        <p>Nautilus exists to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>1. Service description</h2>
+        <p>Contract X-Ray reviews PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts. The service does not constitute legal, financial, or professional advice.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>2. Information you share</h2>
+        <p>When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with Nautilus. You represent that you have the legal right to share this information with us for analysis.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>3. How we use contract information</h2>
+        <p>We use your contract solely to conduct the analysis and provide reports to you, develop industry educational materials using aggregate anonymized data that does not identify you or reveal your specific terms, and support our nonprofit educational mission.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>4. Confidentiality</h2>
+        <p>We will maintain your contract in confidence using reasonable care and will not disclose it to third parties without your consent.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>5. What we may publish</h2>
+        <p>We may publish aggregate benchmarks and educational content derived from contract analysis, provided such publications do not identify you or reveal your specific contract terms.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>6. Your responsibilities</h2>
+        <p>Upload only contracts you have legal authority to share. Our analysis is for educational purposes and does not constitute legal, financial, or professional advice. Use the report in consultation with your own legal counsel and fiduciary process.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>7. Disclaimers and limitations</h2>
+        <p>The service is provided "as is." Our liability is limited to $100 for free services or to fees paid for paid services. We are not liable for indirect or consequential damages.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>8. Data retention</h2>
+        <p>We retain contract information for 12 months to support follow-up questions and version comparisons. After this period, contracts are securely deleted unless you request a different retention term. You may request deletion at any time by contacting us.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>9. General terms</h2>
+        <p>These Terms are governed by Delaware law. We may update these Terms with 30 days notice. Continued use of the service constitutes acceptance of any updated Terms.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>10. Contact</h2>
+        <p>Questions about these Terms: <a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-row">
+          <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+          <span>Nautilus Health Institute</span>
+        </div>
+        <p>Independent nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
+        <span class="footer-tag">501(C)(3) NONPROFIT</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/intake/">Analyze your contract</a></li>
+          <li><a href="/samples.html">Sample reports</a></li>
+          <li><a href="/methodology.html">Methodology</a></li>
+          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>For</h4>
+        <ul>
+          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
+          <li><a href="/advisors.html">Advisors</a></li>
+          <li><a href="/pbms.html">PBMs</a></li>
+          <li><a href="/#press">Researchers &amp; press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></li>
+          <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
+          <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html" class="current">Terms of Use</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
