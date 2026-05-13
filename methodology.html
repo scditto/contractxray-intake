@@ -8,6 +8,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -122,7 +124,7 @@
 
   /* ───── Intro / hero strip ───── */
   .intro {
-    padding: 80px 0 56px;
+    padding: 48px 0 40px;
     text-align: center;
   }
 
@@ -154,7 +156,7 @@
   .intro-headline {
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(40px, 4.4vw, 60px);
+    font-size: clamp(44px, 5vw, 68px);
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--navy);
@@ -173,7 +175,7 @@
     line-height: 1.65;
     color: var(--ink-soft);
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 640px;
   }
 
   /* ───── Section pattern ───── */
@@ -210,7 +212,7 @@
     font-size: 17px;
     line-height: 1.7;
     color: var(--ink-soft);
-    max-width: 720px;
+    max-width: 640px;
   }
 
   .prose p { margin: 0 0 18px; }
@@ -614,7 +616,7 @@
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
     .footer-brand { grid-column: 1 / -1; }
     .section { padding: 56px 0; }
-    .intro { padding: 56px 0 40px; }
+    .intro { padding: 40px 0 32px; }
   }
 
   @media (max-width: 640px) {
@@ -635,23 +637,227 @@
     .pullquote p { font-size: 19px; }
     .closing-cta { padding: 72px 0 88px; }
   }
+
+  /* ───── Brand link split ───── */
+  .brand-link-org,
+  .brand-link-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--navy);
+    transition: opacity 0.2s ease;
+  }
+
+  .brand-link-org:hover,
+  .brand-link-product:hover {
+    opacity: 0.75;
+  }
+
+  /* ───── Contact modal ───── */
+  .contact-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .contact-link:hover { color: var(--navy); }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 40, 69, 0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 6px;
+    max-width: 520px;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    box-shadow:
+      0 1px 4px rgba(27, 54, 93, 0.10),
+      0 16px 48px rgba(27, 54, 93, 0.20);
+    border: 1px solid var(--border);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-header h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink-muted);
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
+  }
+
+  .modal-close:hover { color: var(--navy); }
+
+  .modal-body {
+    padding: 24px 28px;
+  }
+
+  .modal-body p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  .modal-field {
+    margin-bottom: 16px;
+  }
+
+  .modal-field:last-child { margin-bottom: 0; }
+
+  .modal-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .modal-field .opt {
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+
+  .modal-field .req {
+    color: var(--teal-deep);
+    margin-left: 2px;
+  }
+
+  .modal-field input,
+  .modal-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+  }
+
+  .modal-field textarea {
+    resize: vertical;
+    min-height: 96px;
+  }
+
+  .modal-field input:focus,
+  .modal-field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 28px 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .modal-footer .btn {
+    padding: 11px 22px;
+    font-size: 14px;
+  }
+
+  .modal-thanks {
+    text-align: center;
+    padding: 20px 0 10px;
+  }
+
+  .modal-thanks-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12);
+    border: 1px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+
+  .modal-thanks h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--navy);
+    margin: 0 0 6px;
+  }
+
+  .modal-thanks p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
 
 <header class="site-header">
   <div class="container nav-bar">
-    <a class="brand" href="/">
-      <img src="Nautilus_Logo.png" alt="" class="brand-logo">
-      <span class="brand-name">Nautilus</span>
+    <div class="brand">
+      <a class="brand-link-org" href="https://www.nautilushealth.org/pbm" target="_blank" rel="noopener">
+        <img src="/Nautilus_Logo.png" alt="Nautilus Health Institute" class="brand-logo">
+        <span class="brand-name">Nautilus</span>
+      </a>
       <span class="brand-divider" aria-hidden="true"></span>
-      <span class="brand-product">Contract <em>X-Ray</em></span>
-    </a>
+      <a class="brand-link-product" href="/">
+        <span class="brand-product">Contract <em>X-Ray</em></span>
+      </a>
+    </div>
     <nav class="main-nav" aria-label="Primary">
-      <a href="/#plan-sponsors">Plan Sponsors</a>
-      <a href="/#advisors">Advisors</a>
-      <a href="/#pbms">PBMs</a>
-      <a href="/methodology.html" class="current">Methodology</a>
+      <a href="/plan-sponsors.html">Plan Sponsors</a>
+      <a href="/advisors.html">Advisors</a>
+      <a href="/pbms.html">PBMs</a>
     </nav>
   </div>
 </header>
@@ -666,8 +872,6 @@
         <span class="divider">/</span>
         <span>Methodology</span>
       </p>
-
-      <p class="eyebrow">Methodology</p>
 
       <h1 class="intro-headline">
         How Contract X-Ray <em>scores</em> a PBM contract.
@@ -902,7 +1106,7 @@
     <div class="footer-grid">
       <div class="footer-col footer-brand">
         <div class="footer-brand-row">
-          <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+          <img src="/Nautilus_Logo.png" alt="" class="brand-logo">
           <span>Nautilus Health Institute</span>
         </div>
         <p>Independent nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
@@ -914,25 +1118,24 @@
         <ul>
           <li><a href="/intake/">Analyze your contract</a></li>
           <li><a href="/samples.html">Sample reports</a></li>
-          <li><a href="/methodology.html">Methodology</a></li>
-          <li><a href="/#caa-2026">CAA 2026 readiness</a></li>
+          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>For</h4>
         <ul>
-          <li><a href="/#plan-sponsors">Plan sponsors</a></li>
-          <li><a href="/#advisors">Advisors</a></li>
-          <li><a href="/#pbms">PBMs</a></li>
-          <li><a href="/#press">Researchers &amp; press</a></li>
+          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
+          <li><a href="/advisors.html">Advisors</a></li>
+          <li><a href="/pbms.html">PBMs</a></li>
+          <li><a href="/press.html">Researchers &amp; press</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></li>
+          <li><button type="button" class="contact-link" onclick="openContactModal()">info@nautilushealth.org</button></li>
           <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
           <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
         </ul>
@@ -942,13 +1145,141 @@
     <div class="footer-bottom">
       <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
       <ul class="footer-legal">
-        <li><a href="/#privacy">Privacy Policy</a></li>
-        <li><a href="/#terms">Terms of Use</a></li>
-        <li><a href="/#acceptable-use">Acceptable Use</a></li>
+        <li><a href="/methodology.html">Methodology</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
 </footer>
+
+<!-- ───── Contact Modal ───── -->
+<div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-contact-title">Get in touch</h3>
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="contact-form-body">
+      <p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+      <div class="modal-field">
+        <label for="contact-name">Name <span class="req">*</span></label>
+        <input id="contact-name" type="text" placeholder="Your full name">
+      </div>
+      <div class="modal-field">
+        <label for="contact-email">Email <span class="req">*</span></label>
+        <input id="contact-email" type="email" placeholder="you@company.com">
+      </div>
+      <div class="modal-field">
+        <label for="contact-org">Organization <span class="opt">(optional)</span></label>
+        <input id="contact-org" type="text" placeholder="Your company, coalition, or firm">
+      </div>
+      <div class="modal-field">
+        <label for="contact-message">Message <span class="req">*</span></label>
+        <textarea id="contact-message" placeholder="Tell us what you are working on..."></textarea>
+      </div>
+    </div>
+    <div class="modal-body" id="contact-thanks-body" style="display:none;">
+      <div class="modal-thanks">
+        <div class="modal-thanks-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h4>Message received.</h4>
+        <p>We will follow up within one business day.</p>
+      </div>
+    </div>
+    <div class="modal-footer" id="contact-footer">
+      <button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+      <button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()">Send message</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init('C7xembvd7srWMEvEU');
+    }
+  })();
+
+  function openContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    document.getElementById('contact-form-body').style.display = '';
+    document.getElementById('contact-thanks-body').style.display = 'none';
+    document.getElementById('contact-footer').style.display = '';
+    setTimeout(function() {
+      const nameField = document.getElementById('contact-name');
+      if (nameField) nameField.focus();
+    }, 50);
+  }
+
+  function closeContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  function submitContact() {
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const org = document.getElementById('contact-org').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const btn = document.getElementById('contact-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    if (typeof emailjs === 'undefined') {
+      alert('Could not load the contact service. Please email info@nautilushealth.org directly.');
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      return;
+    }
+
+    emailjs.send('service_3z4s8ya', 'template_ywq6kvq', {
+      from_name: name,
+      from_email: email,
+      organization: org || '(not provided)',
+      message: message,
+      source_page: window.location.pathname
+    }).then(function() {
+      document.getElementById('contact-form-body').style.display = 'none';
+      document.getElementById('contact-thanks-body').style.display = '';
+      document.getElementById('contact-footer').style.display = 'none';
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-org').value = '';
+      document.getElementById('contact-message').value = '';
+    }, function(err) {
+      console.error('EmailJS error:', err);
+      alert('Something went wrong sending your message. Please try again or email info@nautilushealth.org directly.');
+    }).finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal-contact');
+    if (e.target === modal) closeContactModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal-contact');
+      if (modal.classList.contains('active')) closeContactModal();
+    }
+  });
+</script>
 
 </body>
 </html>
