@@ -439,6 +439,23 @@
   body.modal-open {
     overflow: hidden;
   }
+
+
+  .inline-contact {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--teal-deep);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+    transition: border-color 0.2s ease;
+  }
+
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
 </style>
 </head>
 <body>
@@ -498,13 +515,13 @@
         <p><strong>Co-authored publications.</strong> Working with Nautilus on research articles, white papers, or policy briefs grounded in Contract X-Ray data.</p>
         <p><strong>Applying the methodology to specific research questions.</strong> Using the framework to analyze contract trends, regulatory impact, or sector-specific dynamics.</p>
         <p><strong>Methodology review and critique.</strong> Independent academic review of the scoring framework, calibration approach, or reliability testing.</p>
-        <p>Inquiries: <a href="mailto:info@nautilushealth.org?subject=Research%20collaboration%20inquiry">info@nautilushealth.org</a> with subject line "Research collaboration inquiry."</p>
+        <p>Inquiries: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Research collaboration inquiry')">info@nautilushealth.org</button> with subject line "Research collaboration inquiry."</p>
       </div>
 
       <div class="doc-section">
         <h2>For press</h2>
         <p>Background calls, fact-checks, and interviews are welcome on PBM contracting, ERISA fiduciary practice, CAA 2026 readiness, the CAA 2026 Readiness Quarterly Report, and related topics. Reporters covering these areas can reach Nautilus directly.</p>
-        <p>Press contact: <a href="mailto:info@nautilushealth.org?subject=Press%20inquiry">info@nautilushealth.org</a> with subject line "Press inquiry," or <a href="https://calendly.com/steve-dittoandassociates/30-minute-call">schedule a 30-minute call</a>.</p>
+        <p>Press contact: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Press inquiry')">info@nautilushealth.org</button> with subject line "Press inquiry," or <a href="https://calendly.com/steve-dittoandassociates/30-minute-call">schedule a 30-minute call</a>.</p>
       </div>
 
       <div class="doc-section">
@@ -649,6 +666,18 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();

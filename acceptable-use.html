@@ -639,6 +639,23 @@
   body.modal-open {
     overflow: hidden;
   }
+
+
+  .inline-contact {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--teal-deep);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+    transition: border-color 0.2s ease;
+  }
+
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
 </style>
 </head>
 <body>
@@ -888,7 +905,7 @@
 
       <div class="ack-block">
         <p><strong>Acknowledgment.</strong> If a use case is not addressed here, contact Nautilus before proceeding. When in doubt, treat client scores and analysis as confidential. Submission of a contract for analysis constitutes acknowledgment and acceptance of these guidelines as a condition of participation.</p>
-        <p>Questions: <a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></p>
+        <p>Questions: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Acceptable Use Guidelines question')">info@nautilushealth.org</button></p>
       </div>
 
       <div class="version-footer">
@@ -1037,6 +1054,18 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();

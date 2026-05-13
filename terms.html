@@ -438,6 +438,23 @@
   body.modal-open {
     overflow: hidden;
   }
+
+
+  .inline-contact {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--teal-deep);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+    transition: border-color 0.2s ease;
+  }
+
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
 </style>
 </head>
 <body>
@@ -532,7 +549,7 @@
 
       <div class="doc-section">
         <h2>10. Contact</h2>
-        <p>Questions about these Terms: <a href="mailto:info@nautilushealth.org">info@nautilushealth.org</a></p>
+        <p>Questions about these Terms: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Terms of Service question')">info@nautilushealth.org</button></p>
       </div>
 
     </div>
@@ -662,6 +679,18 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();

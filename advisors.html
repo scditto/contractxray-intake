@@ -707,6 +707,23 @@
   body.modal-open {
     overflow: hidden;
   }
+
+
+  .inline-contact {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--teal-deep);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+    transition: border-color 0.2s ease;
+  }
+
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
 </style>
 </head>
 <body>
@@ -835,7 +852,7 @@
 
       <div class="program-callout">
         <p><strong>Interested in multi-employer engagements?</strong> Nautilus is building a Network Partner Program for advisors, coalitions, and associations supporting multiple employer relationships with shared methodology, custom reporting, and access to aggregate benchmark data.</p>
-        <a class="program-link" href="mailto:info@nautilushealth.org?subject=Network%20Partner%20Program%20inquiry">Get in touch about the program &rarr;</a>
+        <button type="button" class="program-link" onclick="openContactModalWithTopic('Network Partner Program inquiry')">Get in touch about the program &rarr;</button>
       </div>
     </div>
   </section>
@@ -992,6 +1009,18 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();

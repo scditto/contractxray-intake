@@ -658,6 +658,23 @@
   body.modal-open {
     overflow: hidden;
   }
+
+
+  .inline-contact {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--teal-deep);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+    transition: border-color 0.2s ease;
+  }
+
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
 </style>
 </head>
 <body>
@@ -839,9 +856,9 @@
         <a class="btn btn-primary" href="https://calendly.com/steve-dittoandassociates/30-minute-call">
           Schedule a conversation &rarr;
         </a>
-        <a class="btn btn-secondary" href="mailto:info@nautilushealth.org?subject=PBM%20engagement%20inquiry">
+        <button type="button" class="btn btn-secondary" onclick="openContactModalWithTopic('PBM engagement inquiry')">
           Send a note instead
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -970,6 +987,18 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();
