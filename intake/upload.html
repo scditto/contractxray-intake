@@ -253,7 +253,7 @@ const PBM_NAMES = [
     'Other (Please specify below)'
 ];
 
-const MAX_REL_BYTES     = 4 * 1024 * 1024;
+const MAX_REL_BYTES     = 10 * 1024 * 1024;
 const OTHER_VALUE       = 'Other (Please specify below)';
 const CXR_WORKER_BASE   = 'https://cxr-analyze.steve-340.workers.dev';
 const TIER_SELECTOR_URL = 'https://www.contractxray.com/tier-selector.html';
@@ -334,7 +334,7 @@ function addFilesToRel(id, fileList) {
             return;
         }
         if (running + file.size > MAX_REL_BYTES) {
-            rejected.push(`"${file.name}" would exceed the 4MB limit for this relationship.`);
+            rejected.push(`"${file.name}" would exceed the 10MB limit for this relationship.`);
             return;
         }
         if (rel.files.some(f => f.name === file.name)) return;
@@ -374,8 +374,8 @@ function renderRelationships() {
         const overLimit = size >= MAX_REL_BYTES;
         const sizeClass = overLimit ? 'size-warn' : 'size-ok';
         const sizeMsg   = overLimit
-            ? `${sizeStr} / 4 MB limit reached. Compress files before adding more.`
-            : `${sizeStr} of 4 MB`;
+            ? `${sizeStr} / 10 MB limit reached. Compress files before adding more.`
+            : `${sizeStr} of 10 MB`;
 
         const fileRows = rel.files.map((f, fi) => `
             <div class="rel-file-row">
@@ -420,7 +420,7 @@ function renderRelationships() {
                         onchange="addFilesToRel(${rel.id}, this.files); this.value='';">
                 </div>` : `
                 <div class="rel-drop-zone" style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
-                    4 MB limit reached. Compress files or contact support&#64;nautilushealth.org.
+                    10 MB limit reached. Compress files or contact support&#64;nautilushealth.org.
                 </div>`}
             </div>
         </div>`;
