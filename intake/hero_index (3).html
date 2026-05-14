@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contract X-Ray | Analyze Your PBM Contract Against Fiduciary Standards</title>
+<meta name="description" content="Analyze your PBM contract against 10 provisions across 3 domains and your readiness for CAA 2026. For employer plan sponsors and the advisors who serve them. No signup. PDF in your inbox. 3 minutes.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+  :root {
+    --navy: #1B365D;
+    --navy-deep: #122845;
+    --teal: #2D8B9A;
+    --teal-deep: #236f7c;
+    --gold: #C5A572;
+    --cream: #F5F0E6;
+    --cream-light: #FAF6EE;
+    --paper: #FFFCF6;
+    --ink: #1A1F2E;
+    --ink-soft: #4A4F5C;
+    --ink-muted: #7A7F8C;
+    --border: rgba(27, 54, 93, 0.14);
+    --border-strong: rgba(27, 54, 93, 0.22);
+
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --container-max: 1320px;
+    --side-pad: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 80% 0%, rgba(45, 139, 154, 0.06), transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(197, 165, 114, 0.05), transparent 50%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--side-pad);
+  }
+
+  /* ───── Header ───── */
+  .site-header {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.6);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--navy);
+  }
+
+  .brand-link-org,
+  .brand-link-product {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--navy);
+    transition: opacity 0.2s ease;
+  }
+
+  .brand-link-org:hover,
+  .brand-link-product:hover {
+    opacity: 0.75;
+  }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+
+  .brand-name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+
+  .brand-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--border-strong);
+  }
+
+  .brand-product {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+
+  .brand-product em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--teal);
+    margin-left: 2px;
+  }
+
+  .main-nav {
+    display: flex;
+    gap: 38px;
+  }
+
+  .main-nav a {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+
+  .main-nav a:hover { color: var(--navy); }
+
+  /* ───── Hero ───── */
+  .hero {
+    padding: 12px 0 48px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    color: var(--navy);
+    margin: 0 0 14px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--teal);
+  }
+
+  .hero-subhead {
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 540px;
+  }
+
+  .hero-subhead strong {
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .hero-callout {
+    border-left: 2px solid var(--navy);
+    padding: 2px 0 2px 18px;
+    margin: 0 0 12px;
+    max-width: 540px;
+  }
+
+  .hero-callout p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .hero-callout strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin: 0 0 10px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--paper);
+  }
+
+  .btn-primary:hover {
+    background: var(--navy-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border-color: var(--border-strong);
+    color: var(--navy);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--navy);
+    background: rgba(27, 54, 93, 0.04);
+  }
+
+  .hero-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0 0 10px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 0 10px;
+    max-width: 540px;
+  }
+
+  .hero-tagline {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 10px;
+    letter-spacing: 0.005em;
+  }
+
+  .hero-partner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .hero-partner-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  .hero-partner-link {
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .hero-partner-link:hover { opacity: 0.75; }
+
+  .hero-partner-link img {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+
+  .hero-attribution {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    max-width: 540px;
+  }
+
+  .hero-attribution-org {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .hero-attribution-org strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* Sample report on the right */
+  .hero-image {
+    position: relative;
+  }
+
+  .sample-badge {
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    z-index: 2;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(27, 54, 93, 0.12);
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow:
+      0 1px 1px rgba(27, 54, 93, 0.04),
+      0 4px 12px rgba(27, 54, 93, 0.06),
+      0 24px 60px rgba(27, 54, 93, 0.12);
+    background: white;
+  }
+
+  /* ───── Footer ───── */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.5);
+    padding: 72px 0 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+    gap: 56px;
+    padding-bottom: 56px;
+  }
+
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-col li a {
+    font-size: 15px;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+
+  .footer-col li a:hover { color: var(--navy); }
+
+  .footer-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand-row .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .footer-brand-row span {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--navy);
+  }
+
+  .footer-brand p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    max-width: 360px;
+  }
+
+  .footer-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-legal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-legal a {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .footer-legal a:hover { color: var(--navy); }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 1100px) {
+    :root { --side-pad: 40px; }
+    .hero-grid { gap: 56px; }
+    .main-nav { gap: 24px; }
+  }
+
+  @media (max-width: 900px) {
+    .hero { padding: 56px 0 80px; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+    .hero-image { order: -1; max-width: 600px; margin: 0 auto; }
+    .sample-badge { right: 12px; }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 32px;
+    }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --side-pad: 24px; }
+    .nav-bar { gap: 16px; }
+    .main-nav { display: none; }
+    .hero-headline { font-size: clamp(36px, 9vw, 52px); }
+    .hero-ctas { flex-wrap: wrap; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ───── Contact modal ───── */
+  .contact-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .contact-link:hover { color: var(--navy); }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 40, 69, 0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--paper);
+    border-radius: 6px;
+    max-width: 520px;
+    width: 100%;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    box-shadow:
+      0 1px 4px rgba(27, 54, 93, 0.10),
+      0 16px 48px rgba(27, 54, 93, 0.20);
+    border: 1px solid var(--border);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-header h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink-muted);
+    cursor: pointer;
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
+  }
+
+  .modal-close:hover { color: var(--navy); }
+
+  .modal-body {
+    padding: 24px 28px;
+  }
+
+  .modal-body p {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  .modal-field {
+    margin-bottom: 16px;
+  }
+
+  .modal-field:last-child { margin-bottom: 0; }
+
+  .modal-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .modal-field .opt {
+    font-weight: 400;
+    color: var(--ink-muted);
+  }
+
+  .modal-field .req {
+    color: var(--teal-deep);
+    margin-left: 2px;
+  }
+
+  .modal-field input,
+  .modal-field textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+  }
+
+  .modal-field textarea {
+    resize: vertical;
+    min-height: 96px;
+  }
+
+  .modal-field input:focus,
+  .modal-field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 16px 28px 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .modal-footer .btn {
+    padding: 11px 22px;
+    font-size: 14px;
+  }
+
+  .modal-thanks {
+    text-align: center;
+    padding: 20px 0 10px;
+  }
+
+  .modal-thanks-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12);
+    border: 1px solid var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+
+  .modal-thanks h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--navy);
+    margin: 0 0 6px;
+  }
+
+  .modal-thanks p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <div class="brand">
+      <a class="brand-link-org" href="https://www.nautilushealth.org/pbm" target="_blank" rel="noopener">
+        <img src="Nautilus_Logo.png" alt="Nautilus Health Institute" class="brand-logo">
+        <span class="brand-name">Nautilus</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <a class="brand-link-product" href="/">
+        <span class="brand-product">Contract <em>X-Ray</em></span>
+      </a>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/plan-sponsors.html">Plan Sponsors</a>
+      <a href="/advisors.html">Advisors</a>
+      <a href="/pbms.html">PBMs</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1 class="hero-headline">
+          Do you know <em>what&rsquo;s actually in</em> your PBM contract?
+        </h1>
+
+        <p class="hero-subhead">
+          Analyze your PBM contract against <strong>10 provisions across 3 domains</strong> and your readiness for <strong>CAA 2026</strong>.
+        </p>
+
+        <div class="hero-callout">
+          <p>For employer plan sponsors and the advisors who serve them. Whether you&rsquo;re remediating an existing contract, negotiating a new one, or preparing for CAA 2026.</p>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="/intake/">
+            Analyze your contract &rarr;
+          </a>
+          <a class="btn btn-secondary" href="/samples.html">
+            View sample reports &rarr;
+          </a>
+        </div>
+
+        <p class="hero-meta">No signup &middot; PDF in your inbox &middot; 3 minutes</p>
+
+        <div class="hero-partner">
+          <span class="hero-partner-label">Free Quick Look Report<br>in collaboration with</span>
+          <a class="hero-partner-link" href="https://www.nationalalliancehealth.org/" target="_blank" rel="noopener">
+            <img src="National_Alliance_Logo.png" alt="National Alliance of Healthcare Purchaser Coalitions">
+          </a>
+        </div>
+
+        <div class="hero-attribution">
+          <p class="hero-attribution-org"><strong>Nautilus Health Institute</strong> is an independent 501(c)(3) nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <span class="sample-badge">Sample Report</span>
+        <img src="Sample-Report-Hero-Preview.jpg" alt="Sample Contract X-Ray Quick Look analysis showing 10 provisions reviewed across 3 domains">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-row">
+          <img src="Nautilus_Logo.png" alt="" class="brand-logo">
+          <span>Nautilus Health Institute</span>
+        </div>
+        <span class="footer-tag">501(C)(3) NONPROFIT</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/intake/">Analyze your contract</a></li>
+          <li><a href="/samples.html">Sample reports</a></li>
+          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>For</h4>
+        <ul>
+          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
+          <li><a href="/advisors.html">Advisors</a></li>
+          <li><a href="/pbms.html">PBMs</a></li>
+          <li><a href="/press.html">Researchers &amp; press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><button type="button" class="contact-link" onclick="openContactModal()">info@nautilushealth.org</button></li>
+          <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
+          <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/methodology.html">Methodology</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── Contact Modal ───── -->
+<div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-contact-title">Get in touch</h3>
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="contact-form-body">
+      <p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+      <div class="modal-field">
+        <label for="contact-name">Name <span class="req">*</span></label>
+        <input id="contact-name" type="text" placeholder="Your full name">
+      </div>
+      <div class="modal-field">
+        <label for="contact-email">Email <span class="req">*</span></label>
+        <input id="contact-email" type="email" placeholder="you@company.com">
+      </div>
+      <div class="modal-field">
+        <label for="contact-org">Organization <span class="opt">(optional)</span></label>
+        <input id="contact-org" type="text" placeholder="Your company, coalition, or firm">
+      </div>
+      <div class="modal-field">
+        <label for="contact-message">Message <span class="req">*</span></label>
+        <textarea id="contact-message" placeholder="Tell us what you are working on..."></textarea>
+      </div>
+    </div>
+    <div class="modal-body" id="contact-thanks-body" style="display:none;">
+      <div class="modal-thanks">
+        <div class="modal-thanks-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h4>Message received.</h4>
+        <p>We will follow up within one business day.</p>
+      </div>
+    </div>
+    <div class="modal-footer" id="contact-footer">
+      <button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+      <button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()">Send message</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // EmailJS configuration
+  (function() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init('C7xembvd7srWMEvEU');
+    }
+  })();
+
+  function openContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    // Reset form state in case it was previously submitted
+    document.getElementById('contact-form-body').style.display = '';
+    document.getElementById('contact-thanks-body').style.display = 'none';
+    document.getElementById('contact-footer').style.display = '';
+    setTimeout(function() {
+      const nameField = document.getElementById('contact-name');
+      if (nameField) nameField.focus();
+    }, 50);
+  }
+
+  function closeContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  function submitContact() {
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const org = document.getElementById('contact-org').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const btn = document.getElementById('contact-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    if (typeof emailjs === 'undefined') {
+      alert('Could not load the contact service. Please email info@nautilushealth.org directly.');
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      return;
+    }
+
+    emailjs.send('service_3z4s8ya', 'template_ywq6kvq', {
+      from_name: name,
+      from_email: email,
+      organization: org || '(not provided)',
+      message: message,
+      source_page: 'contractxray.com hero'
+    }).then(function() {
+      document.getElementById('contact-form-body').style.display = 'none';
+      document.getElementById('contact-thanks-body').style.display = '';
+      document.getElementById('contact-footer').style.display = 'none';
+      // Reset fields for next time
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-org').value = '';
+      document.getElementById('contact-message').value = '';
+    }, function(err) {
+      console.error('EmailJS error:', err);
+      alert('Something went wrong sending your message. Please try again or email info@nautilushealth.org directly.');
+    }).finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  }
+
+  // Close modal on overlay click and Esc key
+  document.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal-contact');
+    if (e.target === modal) closeContactModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal-contact');
+      if (modal.classList.contains('active')) closeContactModal();
+    }
+  });
+</script>
+
+</body>
+</html>
