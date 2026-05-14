@@ -351,6 +351,56 @@
 
   .view-sample:hover { color: var(--teal); }
 
+  /* Prominent CTA button for Premium card footers */
+  .card-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 22px;
+    background: var(--navy);
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid var(--navy);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .card-cta-button:hover {
+    background: #0F2444;
+    transform: translateY(-1px);
+  }
+
+  .card-cta-button .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .card-cta-button:hover .arrow {
+    transform: translateX(2px);
+  }
+
+  /* When a card footer uses the CTA button instead of the dual link+badge,
+     center the content rather than space-between */
+  .card-footer.cta-footer {
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .card-footer.cta-footer .footer-meta {
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+
+  .card-footer.cta-footer .footer-meta strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
   .tag-badge {
     display: inline-block;
     padding: 6px 14px;
@@ -927,7 +977,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="view-sample" href="QuickLook_Sample_PBM_Inc_2026-05-12.pdf">View full sample &rarr;</a>
+          <a class="view-sample" href="QuickLook_Sample_PBM_Inc_2026-05-13.pdf">View full sample &rarr;</a>
           <span class="tag-badge">Quick Look &middot; Free</span>
         </div>
 
@@ -978,9 +1028,11 @@
               </div>
             </div>
           </div>
-          <div class="card-footer">
-            <a class="view-sample" href="Scorecard-Sample.pdf">View full sample &rarr;</a>
-            <span class="tag-badge gold">Full Assessment</span>
+          <div class="card-footer cta-footer">
+            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
           </div>
         </article>
 
@@ -1009,9 +1061,11 @@
               </div>
             </div>
           </div>
-          <div class="card-footer">
-            <a class="view-sample" href="Negotiation-Sample.pdf">View full sample &rarr;</a>
-            <span class="tag-badge gold">Full Assessment</span>
+          <div class="card-footer cta-footer">
+            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
           </div>
         </article>
 
@@ -1040,9 +1094,11 @@
               </div>
             </div>
           </div>
-          <div class="card-footer">
-            <a class="view-sample" href="DSI-Sample.pdf">View full sample &rarr;</a>
-            <span class="tag-badge gold">Full Assessment</span>
+          <div class="card-footer cta-footer">
+            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
           </div>
         </article>
 
@@ -1071,9 +1127,11 @@
               </div>
             </div>
           </div>
-          <div class="card-footer">
-            <a class="view-sample" href="ExecBrief-Sample.pdf">View full sample &rarr;</a>
-            <span class="tag-badge gold">Full Assessment</span>
+          <div class="card-footer cta-footer">
+            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
           </div>
         </article>
 
