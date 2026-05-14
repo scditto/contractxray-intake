@@ -1,930 +1,535 @@
 <!DOCTYPE html>
+<!-- Contract X-Ray Intake — multi-page refactor of v15. Step 1 of 4. -->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contract X-Ray | Analyze Your PBM Contract Against Fiduciary Standards</title>
-<meta name="description" content="Analyze your PBM contract against 10 provisions across 3 domains and your readiness for CAA 2026. For employer plan sponsors and the advisors who serve them. No signup. PDF in your inbox. 3 minutes.">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Independent review of PBM contracts. Nautilus Health Institute scores contract language against ten provisions covering financial integrity, fiduciary oversight, and data sovereignty."/>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Open Graph (LinkedIn, Slack, email previews) -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://contractxray.com/"/>
+<meta property="og:title" content="Contract X-Ray | Nautilus Health Institute"/>
+<meta property="og:description" content="Independent review of PBM contracts. Nautilus Health Institute scores contract language against ten provisions covering financial integrity, fiduciary oversight, and data sovereignty."/>
+<meta property="og:image" content="https://contractxray.com/assets/og-image.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:site_name" content="Nautilus Health Institute"/>
 
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Contract X-Ray | Nautilus Health Institute"/>
+<meta name="twitter:description" content="Independent review of PBM contracts. Nautilus Health Institute scores contract language against ten provisions covering financial integrity, fiduciary oversight, and data sovereignty."/>
+<meta name="twitter:image" content="https://contractxray.com/assets/og-image.jpg"/>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png"/>
+<link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
-  :root {
-    --navy: #1B365D;
-    --navy-deep: #122845;
-    --teal: #2D8B9A;
-    --teal-deep: #236f7c;
-    --gold: #C5A572;
-    --cream: #F5F0E6;
-    --cream-light: #FAF6EE;
-    --paper: #FFFCF6;
-    --ink: #1A1F2E;
-    --ink-soft: #4A4F5C;
-    --ink-muted: #7A7F8C;
-    --border: rgba(27, 54, 93, 0.14);
-    --border-strong: rgba(27, 54, 93, 0.22);
-
-    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-
-    --container-max: 1320px;
-    --side-pad: 56px;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; }
-
-  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-  body {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.55;
-    color: var(--ink);
-    background: var(--cream);
-    background-image:
-      radial-gradient(ellipse at 80% 0%, rgba(45, 139, 154, 0.06), transparent 50%),
-      radial-gradient(ellipse at 0% 100%, rgba(197, 165, 114, 0.05), transparent 50%);
-  }
-
-  a { color: inherit; text-decoration: none; }
-
-  .container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--side-pad);
-  }
-
-  /* ───── Header ───── */
-  .site-header {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--border);
-    background: rgba(255, 252, 246, 0.6);
-    backdrop-filter: blur(8px);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
-
-  .nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--navy);
-  }
-
-  .brand-link-org,
-  .brand-link-product {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--navy);
-    transition: opacity 0.2s ease;
-  }
-
-  .brand-link-org:hover,
-  .brand-link-product:hover {
-    opacity: 0.75;
-  }
-
-  .brand-logo {
-    width: 32px;
-    height: 32px;
-    display: block;
-  }
-
-  .brand-name {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 17px;
-    letter-spacing: -0.01em;
-    color: var(--navy);
-  }
-
-  .brand-divider {
-    width: 1px;
-    height: 22px;
-    background: var(--border-strong);
-  }
-
-  .brand-product {
-    font-family: var(--font-body);
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--navy);
-    letter-spacing: 0.02em;
-  }
-
-  .brand-product em {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--teal);
-    margin-left: 2px;
-  }
-
-  .main-nav {
-    display: flex;
-    gap: 38px;
-  }
-
-  .main-nav a {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    transition: color 0.2s ease;
-  }
-
-  .main-nav a:hover { color: var(--navy); }
-
-  /* ───── Hero ───── */
-  .hero {
-    padding: 12px 0 48px;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 56px;
-    align-items: start;
-  }
-
-  .hero-headline {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(34px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.025em;
-    color: var(--navy);
-    margin: 0 0 14px;
-  }
-
-  .hero-headline em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--teal);
-  }
-
-  .hero-subhead {
-    font-size: 17px;
-    line-height: 1.5;
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-    max-width: 540px;
-  }
-
-  .hero-subhead strong {
-    font-weight: 600;
-    color: var(--navy);
-  }
-
-  .hero-callout {
-    border-left: 2px solid var(--navy);
-    padding: 2px 0 2px 18px;
-    margin: 0 0 16px;
-    max-width: 540px;
-  }
-
-  .hero-callout p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-
-  .hero-callout strong {
-    color: var(--navy);
-    font-weight: 600;
-  }
-
-  .hero-ctas {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 12px;
-    margin: 0 0 10px;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px 24px;
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.005em;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
-    border: 1px solid transparent;
-    white-space: nowrap;
-  }
-
-  .btn-primary {
-    background: var(--navy);
-    color: var(--paper);
-  }
-
-  .btn-primary:hover {
-    background: var(--navy-deep);
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    border-color: var(--border-strong);
-    color: var(--navy);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--navy);
-    background: rgba(27, 54, 93, 0.04);
-  }
-
-  .hero-meta {
-    font-size: 13px;
-    color: var(--ink-muted);
-    margin: 0 0 12px;
-    letter-spacing: 0.01em;
-  }
-
-  .hero-divider {
-    height: 1px;
-    background: var(--border);
-    margin: 0 0 10px;
-    max-width: 540px;
-  }
-
-  .hero-tagline {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    margin: 0 0 10px;
-    letter-spacing: 0.005em;
-  }
-
-  .hero-partner {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .hero-partner-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    line-height: 1.5;
-    white-space: nowrap;
-  }
-
-  .hero-partner-link {
-    display: inline-flex;
-    align-items: center;
-    transition: opacity 0.2s ease;
-  }
-
-  .hero-partner-link:hover { opacity: 0.75; }
-
-  .hero-partner-link img {
-    height: 56px;
-    width: auto;
-    display: block;
-  }
-
-  /* Sample report on the right */
-  .hero-image {
-    position: relative;
-  }
-
-  .sample-badge {
-    position: absolute;
-    top: -14px;
-    right: 24px;
-    z-index: 2;
-    background: var(--gold);
-    color: var(--navy-deep);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(27, 54, 93, 0.12);
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 4px;
-    box-shadow:
-      0 1px 1px rgba(27, 54, 93, 0.04),
-      0 4px 12px rgba(27, 54, 93, 0.06),
-      0 24px 60px rgba(27, 54, 93, 0.12);
-    background: white;
-  }
-
-  /* ───── Footer ───── */
-  .site-footer {
-    border-top: 1px solid var(--border);
-    background: rgba(255, 252, 246, 0.5);
-    padding: 72px 0 32px;
-  }
-
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
-    gap: 56px;
-    padding-bottom: 56px;
-  }
-
-  .footer-col h4 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin: 0 0 22px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .footer-col ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .footer-col li a {
-    font-size: 15px;
-    color: var(--ink-soft);
-    transition: color 0.2s ease;
-  }
-
-  .footer-col li a:hover { color: var(--navy); }
-
-  .footer-brand-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-  }
-
-  .footer-brand-row .brand-logo {
-    width: 28px;
-    height: 28px;
-  }
-
-  .footer-brand-row span {
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--navy);
-  }
-
-  .footer-brand p {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0 0 22px;
-    max-width: 360px;
-  }
-
-  .footer-tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--navy);
-  }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-bottom p {
-    margin: 0;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--ink-muted);
-    letter-spacing: 0.02em;
-  }
-
-  .footer-legal {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 28px;
-  }
-
-  .footer-legal a {
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-
-  .footer-legal a:hover { color: var(--navy); }
-
-  /* ───── Responsive ───── */
-  @media (max-width: 1100px) {
-    :root { --side-pad: 40px; }
-    .hero-grid { gap: 56px; }
-    .main-nav { gap: 24px; }
-  }
-
-  @media (max-width: 900px) {
-    .hero { padding: 56px 0 80px; }
-    .hero-grid {
-      grid-template-columns: 1fr;
-      gap: 56px;
-    }
-    .hero-image { order: -1; max-width: 600px; margin: 0 auto; }
-    .sample-badge { right: 12px; }
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 32px;
-    }
-    .footer-brand { grid-column: 1 / -1; }
-  }
-
-  @media (max-width: 640px) {
-    :root { --side-pad: 24px; }
-    .nav-bar { gap: 16px; }
-    .main-nav { display: none; }
-    .hero-headline { font-size: clamp(36px, 9vw, 52px); }
-    .hero-ctas { flex-wrap: wrap; }
-    .hero-ctas .btn { width: 100%; justify-content: center; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; align-items: flex-start; }
-  }
-
-  /* ───── Contact modal ───── */
-  .contact-link {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-align: left;
-  }
-
-  .contact-link:hover { color: var(--navy); }
-
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(18, 40, 69, 0.55);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-y: auto;
-  }
-
-  .modal-overlay.active {
-    display: flex;
-  }
-
-  .modal {
-    background: var(--paper);
-    border-radius: 6px;
-    max-width: 520px;
-    width: 100%;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    box-shadow:
-      0 1px 4px rgba(27, 54, 93, 0.10),
-      0 16px 48px rgba(27, 54, 93, 0.20);
-    border: 1px solid var(--border);
-  }
-
-  .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 28px 18px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .modal-header h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--navy);
-    margin: 0;
-  }
-
-  .modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--ink-muted);
-    cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease;
-  }
-
-  .modal-close:hover { color: var(--navy); }
-
-  .modal-body {
-    padding: 24px 28px;
-  }
-
-  .modal-body p {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
-  }
-
-  .modal-field {
-    margin-bottom: 16px;
-  }
-
-  .modal-field:last-child { margin-bottom: 0; }
-
-  .modal-field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 6px;
-  }
-
-  .modal-field .opt {
-    font-weight: 400;
-    color: var(--ink-muted);
-  }
-
-  .modal-field .req {
-    color: var(--teal-deep);
-    margin-left: 2px;
-  }
-
-  .modal-field input,
-  .modal-field textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--paper);
-    transition: border-color 0.15s ease;
-    box-sizing: border-box;
-  }
-
-  .modal-field textarea {
-    resize: vertical;
-    min-height: 96px;
-  }
-
-  .modal-field input:focus,
-  .modal-field textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-  }
-
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 16px 28px 22px;
-    border-top: 1px solid var(--border);
-  }
-
-  .modal-footer .btn {
-    padding: 11px 22px;
-    font-size: 14px;
-  }
-
-  .modal-thanks {
-    text-align: center;
-    padding: 20px 0 10px;
-  }
-
-  .modal-thanks-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(45, 122, 79, 0.12);
-    border: 1px solid var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
-  }
-
-  .modal-thanks h4 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--navy);
-    margin: 0 0 6px;
-  }
-
-  .modal-thanks p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-  body.modal-open {
-    overflow: hidden;
-  }
+/* Page-specific override: keep the subtitle on one line on wider screens.
+   Below the breakpoint it wraps as before so mobile does not horizontal-scroll. */
+@media (min-width: 980px) {
+  .page-hd-text p { white-space: nowrap; }
+}
 </style>
 </head>
 <body>
+<div class="shell">
+<!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+<aside class="sidebar">
+<div class="wordmark">
+<div class="wm-product">Contract X-Ray</div>
+<div class="wm-rule"></div>
+<div class="wm-org">Nautilus Health Institute</div>
+<p style="font-size:0.69rem; line-height:1.35; font-style:normal; font-weight:400; color:rgba(255,255,255,0.62); margin:0.6rem 0 0 0;">Nautilus is a 501(c)(3) nonprofit advancing transparency and fiduciary accountability for employer plan sponsors.</p>
+</div>
+<nav aria-label="Progress" class="step-rail">
+<div class="rail-label">Progress</div>
+<ul class="step-list">
+<li class="step-item active" id="step-1">
+<div class="step-num">1</div>
+<div class="step-body">
+<div class="step-title">Select Engagement</div>
+<div class="step-sub">Review level</div>
+</div>
+</li>
+<li class="step-item" id="step-2">
+<div class="step-num">2</div>
+<div class="step-body">
+<div class="step-title">Enter Details</div>
+<div class="step-sub">Organization and contact</div>
+</div>
+</li>
+<li class="step-item" id="step-3">
+<div class="step-num">3</div>
+<div class="step-body">
+<div class="step-title">Upload Materials</div>
+<div class="step-sub">Contracts and exhibits</div>
+</div>
+</li>
+<li class="step-item" id="step-4">
+<div class="step-num">4</div>
+<div class="step-body">
+<div class="step-title">Start Analysis</div>
+<div class="step-sub">Report generation</div>
+</div>
+</li>
+</ul>
+</nav>
+<div class="sidebar-context">
+<a class="sidebar-context-link" href="https://nautilushealth.org/pbm" target="_blank" rel="noopener" style="display:inline-block; margin-bottom:0.5rem;">About Nautilus &rarr;</a>
+<ul class="sidebar-context-list">
+<li>501(c)(3) nonprofit</li>
+<li>No PBM affiliation</li>
+<li>NDA process available</li>
+<li>Contracts kept confidential</li>
+<li>Encrypted transfer</li>
+</ul>
+</div>
+</aside>
 
-<header class="site-header">
-  <div class="container nav-bar">
-    <div class="brand">
-      <a class="brand-link-org" href="https://www.nautilushealth.org/pbm" target="_blank" rel="noopener">
-        <img src="Nautilus_Logo.png" alt="Nautilus Health Institute" class="brand-logo">
-        <span class="brand-name">Nautilus</span>
-      </a>
-      <span class="brand-divider" aria-hidden="true"></span>
-      <a class="brand-link-product" href="/">
-        <span class="brand-product">Contract <em>X-Ray</em></span>
-      </a>
-    </div>
-    <nav class="main-nav" aria-label="Primary">
-      <a href="/plan-sponsors.html">Plan Sponsors</a>
-      <a href="/advisors.html">Advisors</a>
-      <a href="/pbms.html">PBMs</a>
-    </nav>
-  </div>
-</header>
+<!-- ── CONTENT ───────────────────────────────────────────────────── -->
+<main class="content">
+<div class="content-inner">
+<div class="page-hd">
+<div class="page-hd-text">
+<div class="intake-kicker">Contract Review Intake</div>
+<h1>Submit a Contract for Independent Review</h1>
+<p>Independent review of PBM contracts for plan sponsors, advisors, and coalitions.</p>
+</div>
+<div class="page-hd-logo">
+<img alt="Nautilus Health Institute" src="https://scditto.github.io/contractxray-intake/Nautilus_Logo_WIDE.png"/>
+</div>
+</div>
+<!-- Step 1: Tier Selection -->
+<div class="tier-grid">
+<div class="tier-card" data-tier="essential" onclick="selectTier('essential')">
+<div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+<div class="tc-main">
+<div class="tc-eyebrow">Triage</div>
+<div class="tc-name">Quick Look</div>
+<div class="tc-price">Free Screening</div>
+<div class="tc-sla" style="margin-top:0.5rem;">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+PDF in under 1 hour
+</div>
+</div>
+<div class="tc-detail">
+<p class="tc-hook">A fast read on whether your contract warrants a deeper look.</p>
+<ul class="tc-features">
+<li>Ten-provision dashboard with Good, Concern, and Red Flag ratings</li>
+<li>Key findings summary with priority concerns and notable strengths</li>
+<li>CAA 2026 and fiduciary alignment issue spotting</li>
+</ul>
+</div>
+<div class="tc-action">
+<a class="tc-cta" href="#" onclick="event.stopPropagation(); selectTier('essential');">Begin Quick Look</a>
+<a class="tc-link" href="#" onclick="openModal('essential', event)">Review sample deliverables &rarr;</a>
+</div>
+</div>
+<div class="tier-card" data-tier="premium" onclick="openWaitlistModal()">
+<div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
+<div class="tc-main">
+<div class="tc-eyebrow">Fiduciary-Grade Review</div>
+<div class="tc-name">Full Assessment</div>
+<div class="tc-price" style="color:var(--gold);">$500 to $10,000</div>
+<div class="tc-price-note">Scaled to plan size</div>
+<div class="tc-price-note" style="font-style:italic;color:var(--mid-text);margin-top:0.25rem;">Comparable independent review: $20,000 and up</div>
+</div>
+<div class="tc-detail">
+<p class="tc-hook">A complete contract analysis for governance, negotiation, and executive decision support.</p>
+<ul class="tc-features"><li><strong>Contract Scorecard:</strong> Fiduciary Alignment Score across ten contract provisions</li><li><strong>Data Sovereignty Score:</strong> Rating across five data-control provisions</li><li><strong>Negotiation Report:</strong> Gap analysis, model language, and talking points</li><li><strong>Executive Brief:</strong> Board-ready summary for leadership</li></ul>
+</div>
+<div class="tc-action">
+<div class="tc-secondary-note" style="color:var(--gold);font-weight:600;">Founding Cohort opens Monday June 1, 2026. First 25 employers lock in Founding terms.</div>
+<a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();">Reserve Founding Cohort Access</a>
+<a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables &rarr;</a>
+<a class="tc-link" href="#" onclick="openModal('founding', event)">Founding Cohort details &rarr;</a>
+</div>
+</div>
+</div>
+<div class="decision-note">
+<strong>Not sure which fits?</strong> <strong>Quick Look</strong> for a screen, <strong>Full Assessment</strong> for negotiation or fiduciary review.
+            </div>
+</main></div><!-- /content-inner -->
+</div><!-- /shell -->
 
-<main>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <h1 class="hero-headline">
-          Do you know <em>what&rsquo;s actually in</em> your PBM contract?
-        </h1>
-
-        <p class="hero-subhead">
-          Analyze your PBM contract against <strong>10 provisions across 3 domains</strong> and your readiness for <strong>CAA 2026</strong>.
-        </p>
-
-        <div class="hero-callout">
-          <p>For employer plan sponsors and the advisors who serve them. Whether you&rsquo;re remediating an existing contract, negotiating a new one, or preparing for CAA 2026.</p>
-        </div>
-
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="/intake/">
-            Analyze your contract &rarr;
-          </a>
-          <a class="btn btn-secondary" href="/samples.html">
-            View sample reports &rarr;
-          </a>
-        </div>
-
-        <p class="hero-meta">No signup &middot; PDF in your inbox &middot; 3 minutes</p>
-
-        <div class="hero-divider"></div>
-
-        <p class="hero-tagline">Employer-first. Independent expertise. No vendor conflicts.</p>
-
-        <div class="hero-partner">
-          <span class="hero-partner-label">Free Quick Look Report<br>in collaboration with</span>
-          <a class="hero-partner-link" href="https://www.nationalalliancehealth.org/" target="_blank" rel="noopener">
-            <img src="National_Alliance_Logo.png" alt="National Alliance of Healthcare Purchaser Coalitions">
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-image">
-        <span class="sample-badge">Sample Report</span>
-        <img src="Sample-Report-Hero-Preview.jpg" alt="Sample Contract X-Ray Quick Look analysis showing 10 provisions reviewed across 3 domains">
-      </div>
-    </div>
-  </section>
-</main>
+<!-- Partnership Band: NA collaboration -->
+<section class="partnership-band" aria-label="Partnership" style="padding:1.5rem 1.5rem;background:rgba(247,245,242,0.55);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap;">
+<span style="font-size:0.82rem;font-weight:500;color:var(--mid-text);letter-spacing:0.02em;line-height:1.3;text-align:center;">Free Quick Look in collaboration with</span>
+<img src="assets/national-alliance-logo-band.png" alt="National Alliance of Healthcare Purchaser Coalitions" style="height:56px;width:auto;max-width:100%;display:block;"/>
+</div>
+</section>
 
 <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-brand-row">
-          <img src="Nautilus_Logo.png" alt="" class="brand-logo">
-          <span>Nautilus Health Institute</span>
-        </div>
-        <p>Independent nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
-        <span class="footer-tag">501(C)(3) NONPROFIT</span>
-      </div>
-
-      <div class="footer-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="/intake/">Analyze your contract</a></li>
-          <li><a href="/samples.html">Sample reports</a></li>
-          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>For</h4>
-        <ul>
-          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
-          <li><a href="/advisors.html">Advisors</a></li>
-          <li><a href="/pbms.html">PBMs</a></li>
-          <li><a href="/press.html">Researchers &amp; press</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li><button type="button" class="contact-link" onclick="openContactModal()">info@nautilushealth.org</button></li>
-          <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
-          <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
-      <ul class="footer-legal">
-        <li><a href="/methodology.html">Methodology</a></li>
-        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
-        <li><a href="/privacy.html">Privacy Policy</a></li>
-      </ul>
-    </div>
-  </div>
+    © 2026 <a href="https://nautilushealth.org" target="_blank" rel="noopener">Nautilus Health Institute</a>. All rights reserved.  • 
+    <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>  • 
+    <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
 </footer>
-
-<!-- ───── Contact Modal ───── -->
-<div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
-  <div class="modal">
-    <div class="modal-header">
-      <h3 id="modal-contact-title">Get in touch</h3>
-      <button class="modal-close" onclick="closeContactModal()" aria-label="Close">×</button>
-    </div>
-    <div class="modal-body" id="contact-form-body">
-      <p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
-      <div class="modal-field">
-        <label for="contact-name">Name <span class="req">*</span></label>
-        <input id="contact-name" type="text" placeholder="Your full name">
-      </div>
-      <div class="modal-field">
-        <label for="contact-email">Email <span class="req">*</span></label>
-        <input id="contact-email" type="email" placeholder="you@company.com">
-      </div>
-      <div class="modal-field">
-        <label for="contact-org">Organization <span class="opt">(optional)</span></label>
-        <input id="contact-org" type="text" placeholder="Your company, coalition, or firm">
-      </div>
-      <div class="modal-field">
-        <label for="contact-message">Message <span class="req">*</span></label>
-        <textarea id="contact-message" placeholder="Tell us what you are working on..."></textarea>
-      </div>
-    </div>
-    <div class="modal-body" id="contact-thanks-body" style="display:none;">
-      <div class="modal-thanks">
-        <div class="modal-thanks-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </div>
-        <h4>Message received.</h4>
-        <p>We will follow up within one business day.</p>
-      </div>
-    </div>
-    <div class="modal-footer" id="contact-footer">
-      <button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
-      <button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()">Send message</button>
-    </div>
-  </div>
+<!-- Terms of Service Modal -->
+<div class="modal-overlay" id="modal-terms">
+<div class="modal" style="max-width:700px;">
+<div class="modal-header">
+<h3>Terms of Service</h3>
+<button class="modal-close" onclick="closeTermsModal()">×</button>
+</div>
+<div class="modal-body">
+<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
+<p>These Terms of Service govern your use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization. By uploading a contract or using our service, you agree to these Terms.</p>
+<p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+<ol>
+<li><strong>Service Description.</strong> Contract X-Ray reviews PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
+<li><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us. You represent that you have the legal right to share this information with us for analysis.</li>
+<li><strong>How We Use Contract Information.</strong> We use your contract solely to: (a) conduct analysis and provide reports to you; (b) develop industry educational materials using aggregate, anonymized data that does not identify you or reveal your specific terms; and (c) support our nonprofit educational mission.</li>
+<li><strong>Confidentiality.</strong> We will maintain your contract in confidence using reasonable care and not disclose it to third parties without your consent.</li>
+<li><strong>What We May Publish.</strong> We may publish aggregate benchmarks and educational content derived from contract analysis, provided such publications do not identify you or reveal your specific terms.</li>
+<li><strong>Your Responsibilities.</strong> Upload only contracts you have legal authority to share. Our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
+<li><strong>Disclaimers and Limitations.</strong> Service provided "as is." Liability limited to $100 for free services or fees paid for paid services. Not liable for indirect or consequential damages.</li>
+<li><strong>Data Retention.</strong> We retain contract information for three years. You may request deletion by contacting us.</li>
+<li><strong>General Terms.</strong> Governed by Delaware law. We may update these Terms with 30 days notice. Continued use constitutes acceptance.</li>
+</ol>
+<p style="margin-top:0.75rem;">Questions: <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closeTermsModal()" style="width:auto;">Close</button>
+</div>
+</div>
 </div>
 
+<!-- Essential Modal -->
+<div class="modal-overlay" id="modal-essential">
+<div class="modal">
+<div class="modal-header">
+<h3>Quick Look</h3>
+<button class="modal-close" onclick="closeModal('essential')">×</button>
+</div>
+<div class="modal-body">
+<p><strong>One question answered fast: does this contract warrant a deeper look?</strong></p>
+<p>Quick Look is a triage tool, not a full evaluation. It reads your contract against fiduciary-aligned standards and gives you a fast directional read so you know whether to act before committing to a full analysis.</p>
+<ul>
+<li>No scoring complexity, just a clear signal</li>
+<li>Every provision rated <strong>Good</strong>, <strong>Concern</strong>, or <strong>Red Flag</strong></li>
+<li>Findings summary: top strengths and priority concerns</li>
+<li>CAA 2026 alignment assessment</li>
+<li>Delivered as a PDF you can share immediately</li>
+</ul>
+<h4>Sample Report</h4>
+<div class="sample-thumb-wrap">
+<img alt="Quick Look sample report" onclick="openLightbox(this.src, event)" src="https://scditto.github.io/contractxray-intake/QuickLook-Sample-Thumbnail.jpg"/>
+<a class="enlarge-link" href="#" onclick="openLightbox('https://scditto.github.io/contractxray-intake/QuickLook-Sample-Thumbnail.jpg', event)">Click to enlarge →</a>
+</div>
+<h4>Methodology</h4>
+<p>Your contract is evaluated against 10 key provisions covering fiduciary acknowledgment, pricing transparency, audit rights, and data ownership. Ratings are based solely on explicit contract language, not marketing claims or business reputation.</p>
+<div class="delivery-badge">⏱ PDF delivered in under 1 hour</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('essential')">Close</button>
+<button class="btn btn-primary" onclick="closeModal('essential'); selectTier('essential');" style="width:auto;">Begin Quick Look. Free.</button>
+</div>
+</div>
+</div>
+
+<!-- Premium Modal -->
+<div class="modal-overlay" id="modal-premium">
+<div class="modal">
+<div class="modal-header">
+<h3>Fiduciary-Grade Review: Full Assessment</h3>
+<button class="modal-close" onclick="closeModal('premium')">×</button>
+</div>
+<div class="modal-body">
+<p><strong>Everything you need to evaluate, negotiate, and communicate your contract's strengths and gaps.</strong></p>
+<p>A Full Assessment scores your contract against the Fiduciary-Aligned PBM Contract Standards across ten provisions. Every finding is grounded in your contract's actual language.</p>
+<h4>Contract Scorecard</h4>
+<p>A complete evaluation of your contract. Shows the overall 0–100 Fiduciary Alignment Score, provision-by-provision breakdown with color-coded ratings, and key findings. This is what you bring to the benefits committee or the board meeting.</p>
+<h4>Executive Brief</h4>
+<p>A plain-language summary for stakeholders who need to be informed but may not be conversant in PBM contract details. Designed for board members, senior leadership, and plan sponsors who need the bottom line without the technical depth.</p>
+<h4>Negotiation Report</h4>
+<p>A full action plan for attorneys, advisors, and consultants working to improve the contract. Built around the specific gaps identified in your Contract Scorecard.</p>
+<h4>Data Sovereignty Score</h4>
+<p>Designation of Gold, Silver, Bronze, or Ineligible based on the five data-related provisions most critical to employer control. This is what you can use in procurement: “To be considered, all vendor contracts must meet the Nautilus DSI designation of Silver or Gold.”</p>
+<h4>Sample Reports</h4>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:0.75rem 0 0.5rem;">
+<div class="sample-thumb-wrap">
+<p style="font-size:0.74rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem;text-align:center;">Contract Scorecard</p>
+<img alt="Scorecard sample report" onclick="openLightbox(this.src, event)" src="https://scditto.github.io/contractxray-intake/Scorecard-Sample-Thumbnail.jpg"/>
+<a class="enlarge-link" href="#" onclick="openLightbox('https://scditto.github.io/contractxray-intake/Scorecard-Sample-Thumbnail.jpg', event)">Click to enlarge →</a>
+</div>
+<div class="sample-thumb-wrap">
+<p style="font-size:0.74rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem;text-align:center;">Negotiation Report</p>
+<img alt="Negotiation Report sample" onclick="openLightbox(this.src, event)" src="https://scditto.github.io/contractxray-intake/Negotiation-Sample-Thumbnail.jpg"/>
+<a class="enlarge-link" href="#" onclick="openLightbox('https://scditto.github.io/contractxray-intake/Negotiation-Sample-Thumbnail.jpg', event)">Click to enlarge →</a>
+</div>
+<div class="sample-thumb-wrap">
+<p style="font-size:0.74rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem;text-align:center;">Data Sovereignty</p>
+<img alt="Data Sovereignty sample report" onclick="openLightbox(this.src, event)" src="https://scditto.github.io/contractxray-intake/DSI-Sample-Thumbnail.jpg"/>
+<a class="enlarge-link" href="#" onclick="openLightbox('https://scditto.github.io/contractxray-intake/DSI-Sample-Thumbnail.jpg', event)">Click to enlarge →</a>
+</div>
+<div class="sample-thumb-wrap">
+<p style="font-size:0.74rem;font-weight:600;color:var(--navy);margin-bottom:0.4rem;text-align:center;">Executive Brief</p>
+<img alt="Executive Brief sample report" onclick="openLightbox(this.src, event)" src="https://scditto.github.io/contractxray-intake/ExecBrief-Sample-Thumbnail.jpg"/>
+<a class="enlarge-link" href="#" onclick="openLightbox('https://scditto.github.io/contractxray-intake/ExecBrief-Sample-Thumbnail.jpg', event)">Click to enlarge →</a>
+</div>
+</div>
+<div style="margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border);">
+<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;"><strong style="color:var(--gold);">Founding Cohort opens Monday June 1, 2026.</strong> The first 25 employers lock in Founding contribution terms. <a href="#" onclick="closeModal('premium'); openModal('founding', event); return false;" style="color:var(--teal);font-weight:600;">View Founding Cohort details &rarr;</a></p>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('premium')">Close</button>
+<button class="btn btn-primary" onclick="closeModal('premium'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
+</div>
+</div>
+</div>
+
+<!-- Founding Cohort Modal -->
+<div class="modal-overlay" id="modal-founding">
+<div class="modal">
+<div class="modal-header">
+<h3>Founding Cohort</h3>
+<button class="modal-close" onclick="closeModal('founding')">×</button>
+</div>
+<div class="modal-body">
+<p><strong style="color:var(--gold);">Founding Cohort opens Monday June 1, 2026.</strong> The first 25 employers join as Founding Cohort members and lock in Founding contribution terms. Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
+<p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1.25rem;">The first 25 employers join the Founding Cohort and lock in:</p>
+<ul style="font-size:0.92rem;color:var(--mid-text);line-height:1.55;margin-bottom:1.25rem;padding-left:1.1rem;">
+<li style="margin-bottom:0.5rem;"><strong>Three years of Full Assessment access</strong> from your join date, with one Founding contribution. Submit any contract during that period: your current PBM agreement, a renewal draft, or a competing proposal under evaluation.</li>
+<li style="margin-bottom:0.5rem;"><strong>Unlimited contract reviews</strong> during your access period. Use the platform iteratively as language changes through negotiation, renewal, and procurement cycles.</li>
+<li style="margin-bottom:0.5rem;"><strong>Every new report type Nautilus releases during your access period</strong>, including capabilities currently in development.</li>
+<li><strong>Your founding contribution is all you pay through 2029</strong>, regardless of how pricing evolves as the platform matures.</li>
+</ul>
+<p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;">Founding Cohort Contribution (scaled to plan size):</p>
+<table style="width:100%;border-collapse:collapse;font-size:0.88rem;color:var(--mid-text);margin-bottom:1rem;">
+<thead><tr><th style="text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:600;">Covered Lives</th><th style="text-align:right;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:600;">Contribution</th></tr></thead>
+<tbody>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">Under 500</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$500</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">500 to 1,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$1,000</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">2,000 to 4,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$2,000</td></tr>
+<tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">5,000 to 19,999</td><td style="text-align:right;padding:6px 10px;border-bottom:1px solid var(--border);">$5,000</td></tr>
+<tr><td style="padding:6px 10px;">20,000 and above</td><td style="text-align:right;padding:6px 10px;">$10,000</td></tr>
+</tbody>
+</table>
+<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);">Want to see what you'll receive? <a href="#" onclick="closeModal('founding'); openModal('premium', event); return false;" style="color:var(--teal);font-weight:600;">Review sample deliverables &rarr;</a></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('founding')">Close</button>
+<button class="btn btn-primary" onclick="closeModal('founding'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
+</div>
+</div>
+</div>
+
+<!-- Enterprise Modal -->
+<div class="modal-overlay" id="modal-enterprise">
+<div class="modal">
+<div class="modal-header">
+<h3>Enterprise: Multi-Employer Programs</h3>
+<button class="modal-close" onclick="closeModal('enterprise')">×</button>
+</div>
+<div class="modal-body">
+<p>Designed for organizations managing PBM contracts across multiple employers: coalitions, associations, and advisory firms ready to bring structured contract accountability to their members or clients.</p>
+<p>A single contract review is a transaction. A program is infrastructure. Enterprise engagements include packages of Full Assessments, dedicated support, custom reporting, and access to benchmark data drawn from the full Nautilus contract database. Pricing is structured around your program's scope, not per-contract rates.</p>
+<p>This tier is also the right conversation if you are considering how the Contract Accountability Benchmark or the Data Sovereignty Index could become part of your procurement standards or member services. If you are thinking about what a program could look like for your organization, that conversation is worth having early.</p>
+<p><strong>Contact us to start the discussion:</strong> use the button below or find us at info@nautilushealth.org</p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-secondary" onclick="closeModal('enterprise')">Close</button>
+<button class="btn btn-primary" onclick="closeModal('enterprise'); openContactModal();" style="width:auto;">Contact Us →</button>
+</div>
+</div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="modal-privacy">
+<div class="modal" style="max-width:700px;">
+<div class="modal-header">
+<h3>Privacy Policy</h3>
+<button class="modal-close" onclick="closePrivacyModal()">×</button>
+</div>
+<div class="modal-body">
+<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
+<h4>1. Who We Are</h4>
+<p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit dedicated to improving transparency, accountability, and fiduciary standards in employer-sponsored health plans. This Privacy Policy explains how we collect, use, and protect your information when you use our contract analysis service.</p>
+<h4>2. Information We Collect</h4>
+<p>When you submit a contract for analysis, we collect: contact information (email, company name), contract details (PBM name), uploaded documents (PDF), and for Premium, payment processed securely through Stripe. We do not store your credit card details.</p>
+<h4>3. How We Use Engagement Details</h4>
+<p>Solely to generate your analysis report, deliver it to your email, respond to questions, and improve our scoring methodology using anonymized aggregated data.</p>
+<h4>4. Who Has Access to Your Contract</h4>
+<p>Access is strictly limited to Nautilus analysts and secure AI systems used in the analysis process. We do not sell, share, or disclose your contract to third parties, PBMs, competitors, or any external organizations.</p>
+<h4>5. Data Security</h4>
+<p>Encrypted transmission of all data, access controls limiting who can view contracts, and secure cloud storage with encryption at rest.</p>
+<h4>6. Data Retention</h4>
+<p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
+<h4>7. Your Rights</h4>
+<p>You may request a copy of your data, request deletion, or ask questions. Contact <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>.</p>
+<h4>8. Changes to This Policy</h4>
+<p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
+<h4>9. Contact Us</h4>
+<p>Nautilus Health Institute — <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closePrivacyModal()" style="width:auto;">Close</button>
+</div>
+</div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="modal-contact">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Get in Touch</h3>
+<button class="modal-close" onclick="closeContactModal()">×</button>
+</div>
+<div class="modal-body" id="contact-form-body">
+<p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="contact-name">Name <span class="req">*</span></label>
+<input id="contact-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="contact-email">Email <span class="req">*</span></label>
+<input id="contact-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="contact-org">Organization <span class="opt">(optional)</span></label>
+<input id="contact-org" placeholder="Your company, coalition, or firm" type="text"/>
+</div>
+<div class="field">
+<label for="contact-message">Message <span class="req">*</span></label>
+<textarea id="contact-message" placeholder="Tell us what you are working on..." style="width:100%;min-height:100px;padding:0.6rem 0.75rem;border:1.5px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--dark-text);resize:vertical;box-sizing:border-box;"></textarea>
+</div>
+</div>
+<div class="modal-body" id="contact-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(27,54,93,0.08);border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--navy)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Message received.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will follow up within one business day.</p>
+</div>
+</div>
+<div class="modal-footer" id="contact-footer">
+<button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+<button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()" style="width:auto;">Send Message</button>
+</div>
+</div>
+</div>
+
+<!-- Waitlist Modal -->
+<div class="modal-overlay" id="modal-waitlist">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Reserve Founding Cohort Access</h3>
+<button class="modal-close" onclick="closeWaitlistModal()">×</button>
+</div>
+<div class="modal-body" id="waitlist-form-body">
+<p>The Founding Cohort opens Monday June 1, 2026. The first 25 employers lock in Founding contribution terms. Reserve your spot below.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="waitlist-name">Name <span class="req">*</span></label>
+<input id="waitlist-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="waitlist-email">Email <span class="req">*</span></label>
+<input id="waitlist-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="waitlist-org">Organization <span class="opt">(optional)</span></label>
+<input id="waitlist-org" placeholder="Your company or coalition" type="text"/>
+</div>
+</div>
+<div class="modal-body" id="waitlist-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(197,165,114,0.12);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Your spot is reserved.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will be in touch with next steps as the Founding Cohort opens. In the meantime, Quick Look is free and available now.</p>
+</div>
+</div>
+<div class="modal-footer" id="waitlist-footer">
+<button class="btn btn-secondary" onclick="closeWaitlistModal()">Cancel</button>
+<button class="btn btn-primary" id="waitlist-submit-btn" onclick="submitWaitlist()" style="width:auto;background:var(--gold);">Reserve My Spot</button>
+</div>
+</div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+<button id="lightbox-close" onclick="closeLightbox()">×</button>
+<img alt="Report sample" id="lightbox-img" onclick="event.stopPropagation()" src=""/>
+</div>
+
+<script src="assets/shared.js"></script>
 <script>
-  // EmailJS configuration
-  (function() {
-    if (typeof emailjs !== 'undefined') {
-      emailjs.init('C7xembvd7srWMEvEU');
+// On load: if user previously selected a tier and came back via Back button,
+// restore the highlighted card.
+(function() {
+    const s = getCxrState();
+    if (s.tier) {
+        const card = document.querySelector(`[data-tier="${s.tier}"]`);
+        if (card) card.classList.add('selected');
     }
-  })();
+})();
 
-  function openContactModal() {
-    const modal = document.getElementById('modal-contact');
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
-    // Reset form state in case it was previously submitted
-    document.getElementById('contact-form-body').style.display = '';
-    document.getElementById('contact-thanks-body').style.display = 'none';
-    document.getElementById('contact-footer').style.display = '';
-    setTimeout(function() {
-      const nameField = document.getElementById('contact-name');
-      if (nameField) nameField.focus();
-    }, 50);
-  }
-
-  function closeContactModal() {
-    const modal = document.getElementById('modal-contact');
-    modal.classList.remove('active');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
-  }
-
-  function submitContact() {
-    const name = document.getElementById('contact-name').value.trim();
-    const email = document.getElementById('contact-email').value.trim();
-    const org = document.getElementById('contact-org').value.trim();
-    const message = document.getElementById('contact-message').value.trim();
-
-    if (!name || !email || !message) {
-      alert('Please fill in your name, email, and message.');
-      return;
+// === TEST MODE ===
+// Activated by visiting any page with ?test=premium in the URL.
+// Sets a sessionStorage flag that persists across details.html and upload.html.
+// When active: Premium card bypasses the reservation modal and flows normally.
+// A small banner appears at the top of the page so you know you are in test mode.
+(function initTestMode() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('test') === 'premium') {
+        sessionStorage.setItem('cxr_test_mode', 'premium');
     }
-
-    const btn = document.getElementById('contact-submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    if (typeof emailjs === 'undefined') {
-      alert('Could not load the contact service. Please email info@nautilushealth.org directly.');
-      btn.disabled = false;
-      btn.textContent = 'Send message';
-      return;
+    if (sessionStorage.getItem('cxr_test_mode') === 'premium') {
+        // Banner
+        const banner = document.createElement('div');
+        banner.id = 'cxr-test-banner';
+        banner.innerHTML = 'TEST MODE — Premium tier unlocked. Public visitors still see reservation. <a href="#" id="cxr-test-exit" style="color:#fff;text-decoration:underline;margin-left:0.5rem;">Exit test mode</a>';
+        banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#C5A572;color:#fff;font-size:0.78rem;font-weight:600;text-align:center;padding:5px 10px;letter-spacing:0.04em;font-family:-apple-system,sans-serif;';
+        document.body.appendChild(banner);
+        document.body.style.paddingTop = (parseInt(getComputedStyle(document.body).paddingTop) || 0) + 28 + 'px';
+        document.getElementById('cxr-test-exit').onclick = function(e) {
+            e.preventDefault();
+            sessionStorage.removeItem('cxr_test_mode');
+            window.location.href = window.location.pathname; // strip query
+        };
+        // Rewire the Premium tier card and CTA to bypass the modal
+        document.querySelectorAll('[data-tier="premium"]').forEach(function(card) {
+            card.onclick = function() { selectTier('premium'); };
+        });
+        document.querySelectorAll('.tier-card[data-tier="premium"] .tc-cta').forEach(function(cta) {
+            cta.onclick = function(e) { e.stopPropagation(); selectTier('premium'); };
+        });
     }
+})();
 
-    emailjs.send('service_3z4s8ya', 'template_ywq6kvq', {
-      from_name: name,
-      from_email: email,
-      organization: org || '(not provided)',
-      message: message,
-      source_page: 'contractxray.com hero'
-    }).then(function() {
-      document.getElementById('contact-form-body').style.display = 'none';
-      document.getElementById('contact-thanks-body').style.display = '';
-      document.getElementById('contact-footer').style.display = 'none';
-      // Reset fields for next time
-      document.getElementById('contact-name').value = '';
-      document.getElementById('contact-email').value = '';
-      document.getElementById('contact-org').value = '';
-      document.getElementById('contact-message').value = '';
-    }, function(err) {
-      console.error('EmailJS error:', err);
-      alert('Something went wrong sending your message. Please try again or email info@nautilushealth.org directly.');
-    }).finally(function() {
-      btn.disabled = false;
-      btn.textContent = 'Send message';
-    });
-  }
-
-  // Close modal on overlay click and Esc key
-  document.addEventListener('click', function(e) {
-    const modal = document.getElementById('modal-contact');
-    if (e.target === modal) closeContactModal();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const modal = document.getElementById('modal-contact');
-      if (modal.classList.contains('active')) closeContactModal();
+// Tier selection: persist tier and navigate to details page.
+// Original v15 behaviour (showing info-section in place) is replaced with
+// a real navigation to details.html so the URL changes and back button works.
+// Premium is currently disabled for public visitors. Defensive guard: if any
+// path still calls selectTier('premium'), route to the waitlist modal instead.
+// Test mode (?test=premium) bypasses this guard.
+function selectTier(tier) {
+    if (tier === 'premium' && sessionStorage.getItem('cxr_test_mode') !== 'premium') {
+        openWaitlistModal();
+        return;
     }
-  });
+    setCxrState({ tier: tier });
+    window.location.assign('details.html');
+}
 </script>
-
 </body>
 </html>
