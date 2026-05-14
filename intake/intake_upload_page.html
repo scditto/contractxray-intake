@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<!-- Contract X-Ray Intake — multi-page refactor of v15. Step 3 of 4. -->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<title>Upload Materials | Contract X-Ray Intake</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/styles.css"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+<div class="shell">
+<!-- ── SIDEBAR ───────────────────────────────────────────────────── -->
+<aside class="sidebar">
+<div class="wordmark">
+<div class="wm-product">Contract X-Ray</div>
+<div class="wm-rule"></div>
+<div class="wm-org">Nautilus Health Institute</div>
+<p style="font-size:0.69rem; line-height:1.35; font-style:normal; font-weight:400; color:rgba(255,255,255,0.62); margin:0.6rem 0 0 0;">Nautilus is a 501(c)(3) nonprofit advancing transparency and fiduciary accountability for employer plan sponsors.</p>
+</div>
+<nav aria-label="Progress" class="step-rail">
+<div class="rail-label">Progress</div>
+<ul class="step-list">
+<li class="step-item complete" id="step-1">
+<div class="step-num">1</div>
+<div class="step-body">
+<div class="step-title">Select Engagement</div>
+<div class="step-sub">Review level</div>
+</div>
+</li>
+<li class="step-item complete" id="step-2">
+<div class="step-num">2</div>
+<div class="step-body">
+<div class="step-title">Enter Details</div>
+<div class="step-sub">Organization and contact</div>
+</div>
+</li>
+<li class="step-item active" id="step-3">
+<div class="step-num">3</div>
+<div class="step-body">
+<div class="step-title">Upload Materials</div>
+<div class="step-sub">Contracts and exhibits</div>
+</div>
+</li>
+<li class="step-item" id="step-4">
+<div class="step-num">4</div>
+<div class="step-body">
+<div class="step-title">Start Analysis</div>
+<div class="step-sub">Report generation</div>
+</div>
+</li>
+</ul>
+</nav>
+<div class="sidebar-context">
+<a class="sidebar-context-link" href="https://nautilushealth.org/pbm" target="_blank" rel="noopener" style="display:inline-block; margin-bottom:0.5rem;">About Nautilus &rarr;</a>
+<ul class="sidebar-context-list">
+<li>501(c)(3) nonprofit</li>
+<li>No PBM affiliation</li>
+<li>NDA process available</li>
+<li>Contracts kept confidential</li>
+<li>Encrypted transfer</li>
+</ul>
+</div>
+</aside>
+
+<!-- ── CONTENT ───────────────────────────────────────────────────── -->
+<main class="content">
+<div class="content-inner">
+<!-- Upload Materials -->
+<section class="form-section visible" id="upload-section">
+<div class="page-hd">
+<div class="page-hd-text">
+<div class="intake-kicker">Upload Materials</div>
+<h1>Submit Contracts and Supporting Documents</h1>
+<p>Upload the base agreement, amendments, exhibits, pricing schedules, and other contract materials.</p>
+</div>
+</div>
+<div class="card">
+<div id="relationships-container"></div>
+<div class="sla-strip">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span id="sla-text">Your Quick Look report will be delivered within 1 hour.</span>
+</div>
+<button class="btn btn-primary" disabled="" id="submit-btn" onclick="submitForm()">
+                        Submit for Review &rarr;
+                    </button>
+</div>
+</section>
+</main></div><!-- /content-inner -->
+</div><!-- /shell -->
+<footer class="site-footer">
+    © 2026 <a href="https://nautilushealth.org" target="_blank" rel="noopener">Nautilus Health Institute</a>. All rights reserved.  • 
+    <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>  • 
+    <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
+</footer>
+<!-- Privacy Policy Modal -->
+<div class="modal-overlay" id="modal-privacy">
+<div class="modal" style="max-width:700px;">
+<div class="modal-header">
+<h3>Privacy Policy</h3>
+<button class="modal-close" onclick="closePrivacyModal()">×</button>
+</div>
+<div class="modal-body">
+<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
+<h4>1. Who We Are</h4>
+<p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit dedicated to improving transparency, accountability, and fiduciary standards in employer-sponsored health plans. This Privacy Policy explains how we collect, use, and protect your information when you use our contract analysis service.</p>
+<h4>2. Information We Collect</h4>
+<p>When you submit a contract for analysis, we collect: contact information (email, company name), contract details (PBM name), uploaded documents (PDF), and for Premium, payment processed securely through Stripe. We do not store your credit card details.</p>
+<h4>3. How We Use Engagement Details</h4>
+<p>Solely to generate your analysis report, deliver it to your email, respond to questions, and improve our scoring methodology using anonymized aggregated data.</p>
+<h4>4. Who Has Access to Your Contract</h4>
+<p>Access is strictly limited to Nautilus analysts and secure AI systems used in the analysis process. We do not sell, share, or disclose your contract to third parties, PBMs, competitors, or any external organizations.</p>
+<h4>5. Data Security</h4>
+<p>Encrypted transmission of all data, access controls limiting who can view contracts, and secure cloud storage with encryption at rest.</p>
+<h4>6. Data Retention</h4>
+<p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
+<h4>7. Your Rights</h4>
+<p>You may request a copy of your data, request deletion, or ask questions. Contact <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>.</p>
+<h4>8. Changes to This Policy</h4>
+<p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
+<h4>9. Contact Us</h4>
+<p>Nautilus Health Institute — <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
+</div>
+<div class="modal-footer">
+<button class="btn btn-primary" onclick="closePrivacyModal()" style="width:auto;">Close</button>
+</div>
+</div>
+</div>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="modal-contact">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Get in Touch</h3>
+<button class="modal-close" onclick="closeContactModal()">×</button>
+</div>
+<div class="modal-body" id="contact-form-body">
+<p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="contact-name">Name <span class="req">*</span></label>
+<input id="contact-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="contact-email">Email <span class="req">*</span></label>
+<input id="contact-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="contact-org">Organization <span class="opt">(optional)</span></label>
+<input id="contact-org" placeholder="Your company, coalition, or firm" type="text"/>
+</div>
+<div class="field">
+<label for="contact-message">Message <span class="req">*</span></label>
+<textarea id="contact-message" placeholder="Tell us what you are working on..." style="width:100%;min-height:100px;padding:0.6rem 0.75rem;border:1.5px solid var(--border);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--dark-text);resize:vertical;box-sizing:border-box;"></textarea>
+</div>
+</div>
+<div class="modal-body" id="contact-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(27,54,93,0.08);border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--navy)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Message received.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will follow up within one business day.</p>
+</div>
+</div>
+<div class="modal-footer" id="contact-footer">
+<button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+<button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()" style="width:auto;">Send Message</button>
+</div>
+</div>
+</div>
+
+<!-- Waitlist Modal -->
+<div class="modal-overlay" id="modal-waitlist">
+<div class="modal" style="max-width:480px;">
+<div class="modal-header">
+<h3>Reserve Founding Cohort Access</h3>
+<button class="modal-close" onclick="closeWaitlistModal()">×</button>
+</div>
+<div class="modal-body" id="waitlist-form-body">
+<p>The Founding Cohort opens Monday June 1, 2026. The first 25 employers lock in Founding contribution terms. Reserve your spot below.</p>
+<div class="field" style="margin-top:1rem;">
+<label for="waitlist-name">Name <span class="req">*</span></label>
+<input id="waitlist-name" placeholder="Your full name" type="text"/>
+</div>
+<div class="field">
+<label for="waitlist-email">Email <span class="req">*</span></label>
+<input id="waitlist-email" placeholder="you@company.com" type="email"/>
+</div>
+<div class="field">
+<label for="waitlist-org">Organization <span class="opt">(optional)</span></label>
+<input id="waitlist-org" placeholder="Your company or coalition" type="text"/>
+</div>
+</div>
+<div class="modal-body" id="waitlist-thanks-body" style="display:none;">
+<div style="text-align:center;padding:1.5rem 0;">
+<div style="width:42px;height:42px;border-radius:50%;background:rgba(197,165,114,0.12);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+<svg fill="none" height="17" stroke="var(--gold)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="17"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.4rem;">Your spot is reserved.</p>
+<p style="font-size:0.86rem;color:var(--mid-text);font-weight:300;line-height:1.6;">We will be in touch with next steps as the Founding Cohort opens. In the meantime, Quick Look is free and available now.</p>
+</div>
+</div>
+<div class="modal-footer" id="waitlist-footer">
+<button class="btn btn-secondary" onclick="closeWaitlistModal()">Cancel</button>
+<button class="btn btn-primary" id="waitlist-submit-btn" onclick="submitWaitlist()" style="width:auto;background:var(--gold);">Reserve My Spot</button>
+</div>
+</div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-overlay" onclick="closeLightbox()">
+<button id="lightbox-close" onclick="closeLightbox()">×</button>
+<img alt="Report sample" id="lightbox-img" onclick="event.stopPropagation()" src=""/>
+</div>
+
+<script src="assets/shared.js"></script>
+<script>
+// === TEST MODE banner — shows on all pages when sessionStorage flag is set ===
+(function showTestBanner() {
+    if (sessionStorage.getItem('cxr_test_mode') !== 'premium') return;
+    const banner = document.createElement('div');
+    banner.id = 'cxr-test-banner';
+    banner.innerHTML = 'TEST MODE — Premium tier unlocked. Public visitors still see reservation. <a href="#" id="cxr-test-exit" style="color:#fff;text-decoration:underline;margin-left:0.5rem;">Exit test mode</a>';
+    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#C5A572;color:#fff;font-size:0.78rem;font-weight:600;text-align:center;padding:5px 10px;letter-spacing:0.04em;font-family:-apple-system,sans-serif;';
+    document.body.appendChild(banner);
+    document.body.style.paddingTop = (parseInt(getComputedStyle(document.body).paddingTop) || 0) + 28 + 'px';
+    document.getElementById('cxr-test-exit').onclick = function(e) {
+        e.preventDefault();
+        sessionStorage.removeItem('cxr_test_mode');
+        window.location.href = window.location.pathname;
+    };
+})();
+
+// ── Constants and state (declared FIRST so the bootstrap at the
+//   bottom of this script can call functions that reference them) ──
+const PBM_NAMES = [
+    'AffirmedRx','Archimedes','BeneCard PBF','Capital Rx','CarelonRx',
+    'CerpassRx','Citizens Rx','ClearScript','Costco Health Solutions',
+    'CVS Caremark','DisclosedRx','Drexi','EHIM','EmpiRx Health',
+    'EpiphanyRx','Evo','ExhaleRx','Express Scripts','FairosRx',
+    'Humana Pharmacy Solutions','Kroger Prescription Plans','Liviniti',
+    'Lucent Health Rx','LucyRx','MaxorPlus','MedalistRx','MedImpact',
+    'MedOne','National Script','Navitus','OptumRx','PerformRx',
+    'Pharmacy Benefit Dimensions','PharmPix','Phoenix Benefits Management',
+    'Prime Therapeutics','ProAct','ProCare Rx','Rightway','RxBenefits',
+    'RxPreferred Benefits','Sav-Rx','Serve You Rx','SlateRx','SmithRx',
+    'TransparentRx','TrueRx','TrueScripts','US-Rx Care','Ventegra',
+    'Veracity Rx','VerusRx','Vivid Clear Rx','WellDyne','Wellyfe',
+    'Other (Please specify below)'
+];
+
+const MAX_REL_BYTES     = 4 * 1024 * 1024;
+const OTHER_VALUE       = 'Other (Please specify below)';
+const CXR_WORKER_BASE   = 'https://cxr-analyze.steve-340.workers.dev';
+const TIER_SELECTOR_URL = 'https://www.contractxray.com/tier-selector.html';
+
+let relationships     = [];
+let relIdCounter      = 0;
+let lastPbm           = '';
+let selectedTier      = null;
+let submitterFormData = {};
+
+// ── Relationship UI (verbatim from v15) ────────────────────────────
+function buildPbmOptions(selected) {
+    return `<option value="" disabled ${!selected ? 'selected' : ''}>Select PBM</option>` +
+        PBM_NAMES.map(n =>
+            `<option value="${n}" ${n === selected ? 'selected' : ''}>${n}</option>`
+        ).join('');
+}
+
+function relSize(rel) {
+    return rel.files.reduce((sum, f) => sum + f.size, 0);
+}
+
+function fmtSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+function addRelationship() {
+    const id = ++relIdCounter;
+    relationships.push({ id, pbm: lastPbm, otherpbm: '', files: [] });
+    renderRelationships();
+    setTimeout(() => {
+        const el = document.getElementById(`rel-${id}`);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 80);
+}
+
+function removeRelationship(id) {
+    relationships = relationships.filter(r => r.id !== id);
+    renderRelationships();
+    updateSubmitBtn();
+}
+
+function updateRelPbm(id, value) {
+    const rel = relationships.find(r => r.id === id);
+    if (!rel) return;
+    rel.pbm = value;
+    lastPbm = value;
+    renderRelationships();
+    updateSubmitBtn();
+}
+
+function updateRelOther(id, value) {
+    const rel = relationships.find(r => r.id === id);
+    if (rel) rel.otherpbm = value;
+    updateSubmitBtn();
+}
+
+function isPdfFile(file) {
+    if (file.type === 'application/pdf') return true;
+    if (file.type === '' || file.type === 'application/octet-stream') {
+        return /\.pdf$/i.test(file.name);
+    }
+    return false;
+}
+
+function addFilesToRel(id, fileList) {
+    const rel = relationships.find(r => r.id === id);
+    if (!rel) return;
+    const current = relSize(rel);
+    let running = current;
+    const rejected = [];
+
+    Array.from(fileList).forEach(file => {
+        if (!isPdfFile(file)) {
+            rejected.push(`"${file.name}" is not a PDF. Only PDF files are accepted.`);
+            return;
+        }
+        if (running + file.size > MAX_REL_BYTES) {
+            rejected.push(`"${file.name}" would exceed the 4MB limit for this relationship.`);
+            return;
+        }
+        if (rel.files.some(f => f.name === file.name)) return;
+        rel.files.push(file);
+        running += file.size;
+    });
+
+    if (rejected.length) {
+        alert('Some files were not added:\n\n' + rejected.join('\n') +
+            '\n\nIf the file is too large, please compress it. For other questions, contact info@nautilushealth.org.');
+    }
+    renderRelationships();
+    updateSubmitBtn();
+}
+
+function removeFileFromRel(relId, fileIndex) {
+    const rel = relationships.find(r => r.id === relId);
+    if (rel) rel.files.splice(fileIndex, 1);
+    renderRelationships();
+    updateSubmitBtn();
+}
+
+function renderRelationships() {
+    const container = document.getElementById('relationships-container');
+    const addBtn    = document.querySelector('.btn-add-relationship');
+
+    if (relationships.length === 0) {
+        container.innerHTML = '';
+        if (addBtn) addBtn.style.display = '';
+        return;
+    }
+
+    container.innerHTML = relationships.map((rel, rIdx) => {
+        const size      = relSize(rel);
+        const pct       = Math.min(100, (size / MAX_REL_BYTES) * 100);
+        const sizeStr   = fmtSize(size);
+        const overLimit = size >= MAX_REL_BYTES;
+        const sizeClass = overLimit ? 'size-warn' : 'size-ok';
+        const sizeMsg   = overLimit
+            ? `${sizeStr} / 4 MB limit reached. Compress files before adding more.`
+            : `${sizeStr} of 4 MB`;
+
+        const fileRows = rel.files.map((f, fi) => `
+            <div class="rel-file-row">
+                <span title="${f.name}">&#128196; ${f.name} <span style="color:var(--light-text);">(${fmtSize(f.size)})</span></span>
+                <button onclick="removeFileFromRel(${rel.id}, ${fi})" title="Remove">&#10005;</button>
+            </div>`).join('');
+
+        const showRemoveRel = relationships.length > 1;
+
+        return `
+        <div class="relationship-group" id="rel-${rel.id}">
+            <div class="relationship-header">
+                <span class="relationship-label">PBM ${rIdx + 1}</span>
+                <select onchange="updateRelPbm(${rel.id}, this.value)">
+                    ${buildPbmOptions(rel.pbm)}
+                </select>
+                ${showRemoveRel ? `<button class="relationship-remove" onclick="removeRelationship(${rel.id})" title="Remove relationship">&#10005;</button>` : ''}
+            </div>
+            <div class="relationship-body">
+                ${rel.pbm === OTHER_VALUE ? `
+                <div class="rel-other-input">
+                    <input type="text" placeholder="Enter PBM name"
+                        value="${rel.otherpbm}"
+                        oninput="updateRelOther(${rel.id}, this.value)">
+                </div>` : ''}
+                ${rel.files.length > 0 ? `
+                <div class="rel-file-list">${fileRows}</div>
+                <div class="rel-size-bar">
+                    <span class="${sizeClass}">${sizeMsg}</span>
+                </div>` : ''}
+                ${!overLimit ? `
+                <div class="rel-drop-zone" id="drop-${rel.id}"
+                    onclick="document.getElementById('file-input-${rel.id}').click()"
+                    ondragover="relDragOver(event, ${rel.id})"
+                    ondragleave="relDragLeave(event, ${rel.id})"
+                    ondrop="relDrop(event, ${rel.id})">
+                    ${rel.files.length === 0
+                        ? 'Drop contract document(s) here or click to browse'
+                        : '+ Add more documents to this relationship'}
+                    <input type="file" id="file-input-${rel.id}" style="display:none"
+                        accept=".pdf" multiple
+                        onchange="addFilesToRel(${rel.id}, this.files); this.value='';">
+                </div>` : `
+                <div class="rel-drop-zone" style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
+                    4 MB limit reached. Compress files or contact support&#64;nautilushealth.org.
+                </div>`}
+            </div>
+        </div>`;
+    }).join('');
+
+    if (addBtn) addBtn.style.display = '';
+}
+
+function relDragOver(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(`drop-${id}`);
+    if (el) el.classList.add('dragover');
+}
+function relDragLeave(e, id) {
+    const el = document.getElementById(`drop-${id}`);
+    if (el) el.classList.remove('dragover');
+}
+function relDrop(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(`drop-${id}`);
+    if (el) el.classList.remove('dragover');
+    addFilesToRel(id, e.dataTransfer.files);
+}
+
+function updateSubmitBtn() {
+    const allReady = relationships.length > 0 && relationships.every(rel => {
+        if (!rel.pbm) return false;
+        if (rel.pbm === OTHER_VALUE && !rel.otherpbm.trim()) return false;
+        if (rel.files.length === 0) return false;
+        return true;
+    });
+    document.getElementById('submit-btn').disabled = !allReady;
+}
+
+function initRelationships() {
+    if (relationships.length === 0) {
+        addRelationship();
+    }
+}
+
+// ── Submit (verbatim from v15, with the final section-swap replaced
+//   by a save-and-navigate to confirmation.html) ────────────────────
+function livesToTierHint(lives) {
+    if (!lives || isNaN(lives) || lives <= 0) return null;
+    if (lives < 500)    return 'under_500';
+    if (lives < 2000)   return '500_1999';
+    if (lives < 5000)   return '2000_4999';
+    if (lives < 20000)  return '5000_19999';
+    return '20000_plus';
+}
+
+async function submitPremium(submitBtn, contractCompany, submitterName, submitterEmail, coveredLives) {
+    if (relationships.length === 0) {
+        alert('Please add a contract before submitting.');
+        submitBtn.disabled = false;
+        return;
+    }
+
+    const rel = relationships[0];
+
+    if (!rel.files || rel.files.length === 0) {
+        alert('Please attach at least one PDF before submitting.');
+        submitBtn.disabled = false;
+        return;
+    }
+
+    const nameAtSubmit  = (submitterName  || '').trim();
+    const emailAtSubmit = (submitterEmail || '').trim();
+
+    if (nameAtSubmit.length < 2) {
+        alert('Please enter your full name (at least 2 characters) before submitting.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit for Analysis &rarr;';
+        return;
+    }
+    if (!emailAtSubmit || !emailAtSubmit.includes('@') || !emailAtSubmit.includes('.')) {
+        alert('Please enter a valid email address before submitting.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit for Analysis &rarr;';
+        return;
+    }
+
+    submitterName  = nameAtSubmit;
+    submitterEmail = emailAtSubmit;
+
+    const tierHint = livesToTierHint(coveredLives);
+    submitBtn.textContent = 'Uploading...';
+
+    try {
+        const formData = new FormData();
+        formData.append('customer_email', submitterEmail);
+        formData.append('customer_name', submitterName);
+        if (contractCompany) formData.append('contract_company', contractCompany);
+        if (tierHint) formData.append('tier_hint', tierHint);
+        formData.append('na_member', submitterFormData['na-member'] ? 'true' : 'false');
+        rel.files.forEach((file, i) => formData.append(`file_${i}`, file, file.name));
+
+        console.log('[CXR Premium Submit] Sending fields:');
+        console.log('  customer_email:', JSON.stringify(submitterEmail));
+        console.log('  customer_name:', JSON.stringify(submitterName));
+        console.log('  contract_company:', JSON.stringify(contractCompany));
+        console.log('  tier_hint:', JSON.stringify(tierHint));
+        console.log('  file count:', rel.files.length);
+
+        const resp = await fetch(`${CXR_WORKER_BASE}/premium-prepare`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!resp.ok) {
+            const errBody = await resp.text();
+            throw new Error(`HTTP ${resp.status}: ${errBody.slice(0, 300)}`);
+        }
+
+        const data = await resp.json();
+        if (!data.success || !data.case_id) {
+            throw new Error('Server did not return a valid case_id');
+        }
+
+        const caseId = data.case_id;
+        const params = new URLSearchParams();
+        params.set('case_id', caseId);
+        if (submitterEmail) params.set('email', submitterEmail);
+        if (submitterName) params.set('name', submitterName);
+        if (tierHint) params.set('tier_hint', tierHint);
+        if (coveredLives) params.set('lives_count', String(coveredLives));
+
+        const redirectUrl = `${TIER_SELECTOR_URL}?${params.toString()}`;
+        submitBtn.textContent = 'Redirecting to contribution page...';
+        window.location.href = redirectUrl;
+        return;
+
+    } catch (err) {
+        console.error('Premium upload error:', err);
+        alert('We could not upload your contract. Please try again, or contact info@nautilushealth.org with your details.\n\nError: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit for Analysis &rarr;';
+    }
+}
+
+async function submitForm() {
+    if (relationships.length === 0 || !selectedTier) {
+        alert('Please add at least one contract before submitting.');
+        return;
+    }
+
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
+
+    // Pull values from the carry-forward state instead of (now-absent) DOM inputs.
+    const contractCompany  = submitterFormData['contract-company']  || '';
+    const submitterName    = submitterFormData['submitter-name']    || '';
+    const submitterCompany = submitterFormData['submitter-company'] || '';
+    const submitterEmail   = submitterFormData['submitter-email']   || '';
+    const coveredLivesRaw  = submitterFormData['covered-lives'];
+    const coveredLives     = coveredLivesRaw ? parseInt(coveredLivesRaw, 10) : null;
+
+    if (selectedTier === 'premium') {
+        return submitPremium(submitBtn, contractCompany, submitterName, submitterEmail, coveredLives);
+    }
+
+    const errors    = [];
+    const successes = [];
+
+    for (let i = 0; i < relationships.length; i++) {
+        const rel = relationships[i];
+        const pbmLabel = rel.pbm === OTHER_VALUE ? rel.otherpbm.trim() : rel.pbm;
+
+        submitBtn.textContent = relationships.length > 1
+            ? `Submitting ${i + 1} of ${relationships.length}...`
+            : 'Submitting...';
+
+        try {
+            const files = await Promise.all(rel.files.map(file =>
+                new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload  = () => resolve({ fileName: file.name, fileSize: file.size, blob: file });
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                })
+            ));
+
+            const fileNames = files.map(f => f.fileName).join(', ');
+
+            const formData = new FormData();
+            formData.append('tier',            selectedTier);
+            formData.append('contractCompany', contractCompany);
+            formData.append('contractPbm',     pbmLabel);
+            formData.append('submitterName',   submitterName);
+            formData.append('submitterCompany',submitterCompany);
+            formData.append('submitterEmail',  submitterEmail);
+            formData.append('naMember',        submitterFormData['na-member'] ? 'true' : 'false');
+            formData.append('submittedAt',     new Date().toISOString());
+            formData.append('fileCount',       String(files.length));
+            formData.append('fileName',        files[0].fileName);
+            formData.append('fileNames',       fileNames);
+            formData.append('fileCollection',  files[0].blob, files[0].fileName);
+            files.forEach((f, i) => formData.append(`file_${i}`, f.blob, f.fileName));
+
+            const response = await fetch('https://hook.us2.make.com/l3yr3gia7qk8l0nskj6i2zsgz91kb2je', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            successes.push({ pbm: pbmLabel, fileCount: rel.files.length });
+
+        } catch (err) {
+            errors.push(pbmLabel);
+            console.error(`Error submitting ${pbmLabel}:`, err);
+        }
+    }
+
+    if (errors.length > 0 && successes.length === 0) {
+        alert('There was an error submitting your contracts. Please try again or contact info@nautilushealth.org');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit for Review';
+        return;
+    }
+
+    // ── Hand off to confirmation page ──────────────────────────────
+    // v15 swapped sections in place; we save the recap data and navigate.
+    const now = new Date();
+    const datePart = now.toISOString().slice(0,10).replace(/-/g, '');
+    const randomPart = Math.random().toString(36).slice(2, 8).toUpperCase();
+    const caseId = `CX-${datePart}-${randomPart}`;
+    const formattedTimestamp =
+        now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) +
+        ' at ' + now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+
+    setCxrState({
+        confirmation: {
+            caseId: caseId,
+            company: contractCompany || submitterCompany || '—',
+            email: submitterEmail,
+            timestamp: formattedTimestamp,
+            successes: successes,
+            errors: errors
+        }
+    });
+
+    window.location.assign('confirmation.html');
+}
+
+// ── Bootstrap (runs LAST, after all declarations above are reached) ──
+// This must come at the bottom: initRelationships() reads `relationships`,
+// and `let relationships = []` is in the temporal dead zone until execution
+// reaches that line. Calling it earlier throws ReferenceError silently.
+(function init() {
+    const s = getCxrState();
+    if (!s.tier || !s.form || !s.form['submitter-email']) {
+        window.location.replace('index.html');
+        return;
+    }
+    selectedTier = s.tier;
+    submitterFormData = s.form;
+
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        submitBtn.innerHTML = (selectedTier === 'premium')
+            ? 'Submit for Analysis &rarr;'
+            : 'Submit for Review &rarr;';
+    }
+    if (selectedTier === 'premium') {
+        document.getElementById('sla-text').textContent =
+            'Your Full Assessment reports will be delivered within 3 business days.';
+    }
+
+    initRelationships();
+})();
+</script>
+</body>
+</html>
