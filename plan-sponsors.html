@@ -713,6 +713,7 @@
     overflow: hidden;
   }
 </style>
+<link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
 
@@ -758,7 +759,37 @@
   </section>
 
   <!-- Section 1: The fiduciary question -->
-  <section class="section">
+  
+  <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
+  <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
+    <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
+      <span class="scrollspy-pill-current">The fiduciary question</span>
+    </button>
+    <ul>
+      <li><a href="#fiduciary-question">The fiduciary question</a></li>
+      <li><a href="#what-you-learn">What you'll learn</a></li>
+      <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#who-this-is-for">Who this is for</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Get started</a></li>
+    </ul>
+  </aside>
+
+  <div class="scrollspy-layout">
+    <nav class="scrollspy" aria-label="Page sections">
+      <p class="scrollspy-label">On this page</p>
+      <ul>
+      <li><a href="#fiduciary-question">The fiduciary question</a></li>
+      <li><a href="#what-you-learn">What you'll learn</a></li>
+      <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#who-this-is-for">Who this is for</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Get started</a></li>
+      </ul>
+    </nav>
+
+    <div class="scrollspy-content">
+<section class="section" id="fiduciary-question">
     <div class="container-narrow">
       <p class="section-eyebrow">01 &middot; The question on the table</p>
       <h2 class="section-title">ERISA names the plan sponsor as the fiduciary. Not the PBM. Not the broker.</h2>
@@ -773,7 +804,7 @@
   </section>
 
   <!-- Section 2: What you'll learn -->
-  <section class="section">
+  <section class="section" id="what-you-learn">
     <div class="container-narrow">
       <p class="section-eyebrow">02 &middot; What you&rsquo;ll learn</p>
       <h2 class="section-title">Concrete findings about your specific contract.</h2>
@@ -807,7 +838,7 @@
   </section>
 
   <!-- Section 3: What the analysis gives you -->
-  <section class="section">
+  <section class="section" id="what-you-receive">
     <div class="container-narrow">
       <p class="section-eyebrow">03 &middot; What you receive</p>
       <h2 class="section-title">A board-presentable analysis. Free Quick Look. PDF in your inbox.</h2>
@@ -829,7 +860,7 @@
         <div class="deliverable">
           <p class="deliverable-label">Market context</p>
           <p class="deliverable-name">Reference set placement</p>
-          <p class="deliverable-desc">Where your contract sits relative to a reference set drawn from approximately 20 distinct PBMs.</p>
+          <p class="deliverable-desc">Where your contract sits relative to a reference set drawn from 20+ distinct PBMs.</p>
         </div>
         <div class="deliverable">
           <p class="deliverable-label">Top findings</p>
@@ -850,7 +881,7 @@
   </section>
 
   <!-- Section 4: Who this is for -->
-  <section class="section">
+  <section class="section" id="who-this-is-for">
     <div class="container-narrow">
       <p class="section-eyebrow">04 &middot; Who this is for</p>
       <h2 class="section-title">Self-funded employers, public and private, of any size.</h2>
@@ -866,13 +897,13 @@
       </ul>
 
       <div class="prose" style="margin-top: 28px;">
-        <p>If you serve plan sponsors as a consultant, broker, ERISA attorney, or coalition staffer rather than holding the fiduciary role yourself, the <a href="/advisors.html" style="color: var(--teal-deep); font-weight: 500;">Advisors page</a> is the better starting point.</p>
+        <p>If you serve plan sponsors as a consultant, advisor, ERISA attorney, or coalition staffer rather than holding the fiduciary role yourself, the <a href="/advisors.html" style="color: var(--teal-deep); font-weight: 500;">Advisors page</a> is the better starting point.</p>
       </div>
     </div>
   </section>
 
   <!-- Section 5: What this is not -->
-  <section class="section">
+  <section class="section" id="what-this-is-not">
     <div class="container-narrow">
       <p class="section-eyebrow">05 &middot; What this is not</p>
       <h2 class="section-title">An independent analysis. Not a vendor pitch, not a verdict, not a substitute for counsel.</h2>
@@ -889,15 +920,17 @@
   </section>
 
   <!-- Closing CTA -->
-  <section class="closing-cta">
+  <section class="closing-cta" id="get-started">
     <div class="container-narrow">
       <h2 class="cta-headline">Read your contract <em>before</em> the auditor does.</h2>
-      <p class="cta-sub">Free Quick Look. PDF in your inbox. Three minutes.</p>
+      <p class="cta-sub">Free Quick Look. PDF in your inbox within minutes.</p>
       <a class="btn btn-primary" href="/intake/">
         Analyze your contract &rarr;
       </a>
     </div>
   </section>
+    </div><!-- /.scrollspy-content -->
+  </div><!-- /.scrollspy-layout -->
 
 </main>
 
@@ -1081,5 +1114,6 @@
   });
 </script>
 
+<script src="/scrollspy.js" defer></script>
 </body>
 </html>

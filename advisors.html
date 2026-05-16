@@ -725,6 +725,7 @@
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
 </style>
+<link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
 
@@ -770,7 +771,37 @@
   </section>
 
   <!-- Section 1: The methodology problem -->
-  <section class="section">
+  
+  <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
+  <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
+    <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
+      <span class="scrollspy-pill-current">The methodology problem</span>
+    </button>
+    <ul>
+      <li><a href="#methodology-problem">The methodology problem</a></li>
+      <li><a href="#how-advisors-use-it">How advisors use it</a></li>
+      <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#who-this-is-for">Who this is for</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Get started</a></li>
+    </ul>
+  </aside>
+
+  <div class="scrollspy-layout">
+    <nav class="scrollspy" aria-label="Page sections">
+      <p class="scrollspy-label">On this page</p>
+      <ul>
+      <li><a href="#methodology-problem">The methodology problem</a></li>
+      <li><a href="#how-advisors-use-it">How advisors use it</a></li>
+      <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#who-this-is-for">Who this is for</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Get started</a></li>
+      </ul>
+    </nav>
+
+    <div class="scrollspy-content">
+<section class="section" id="methodology-problem">
     <div class="container-narrow">
       <p class="section-eyebrow">01 &middot; The methodology problem</p>
       <h2 class="section-title">Your clients are asking how they know their PBM contract is good.</h2>
@@ -785,7 +816,7 @@
   </section>
 
   <!-- Section 2: How advisors use it -->
-  <section class="section">
+  <section class="section" id="how-advisors-use-it">
     <div class="container-narrow">
       <p class="section-eyebrow">02 &middot; How advisors use Contract X-Ray</p>
       <h2 class="section-title">Three use cases that fit how you already work.</h2>
@@ -804,14 +835,14 @@
         <li>
           <p class="usecase-label">Use case 03</p>
           <h3 class="usecase-name">Annual fiduciary review</h3>
-          <p class="usecase-desc">Re-score the contract before renewal to show the fiduciary committee the trajectory. A Trajectory Report compares the current version to prior cycles, so the board sees what improved, what regressed, and what work remains.</p>
+          <p class="usecase-desc">Re-score the contract before renewal to show the fiduciary committee the trajectory. Compare against the prior cycle to surface what improved, what regressed, and what work remains.</p>
         </li>
       </ul>
     </div>
   </section>
 
   <!-- Section 3: What you get -->
-  <section class="section">
+  <section class="section" id="what-you-receive">
     <div class="container-narrow">
       <p class="section-eyebrow">03 &middot; What you receive</p>
       <h2 class="section-title">The same deliverables your client sees, branded under the independent framework.</h2>
@@ -827,7 +858,7 @@
 
       <div class="deliverable-block">
         <h3>Full Assessment (paid by the plan sponsor)</h3>
-        <p>Adds the eight to ten page Negotiation Report with redline language, an Executive Brief for board presentation, a Data Sovereignty Score with tier designation, and the Trajectory Report for multi-version analysis.</p>
+        <p>Adds the eight to ten page Negotiation Report with redline language, an Executive Brief for board presentation, and a Data Sovereignty Score with tier designation.</p>
       </div>
 
       <div class="midpage-cta">
@@ -838,13 +869,13 @@
   </section>
 
   <!-- Section 4: Who this is for -->
-  <section class="section">
+  <section class="section" id="who-this-is-for">
     <div class="container-narrow">
       <p class="section-eyebrow">04 &middot; Who this is for</p>
       <h2 class="section-title">Advisors who serve plan sponsors in any role.</h2>
 
       <ul class="audience-list">
-        <li><strong>Independent benefits consultants and brokers</strong> supporting self-funded employer clients with PBM strategy, RFP, and renewal work.</li>
+        <li><strong>Independent benefits consultants and advisors</strong> supporting self-funded employer clients with PBM strategy, RFP, and renewal work.</li>
         <li><strong>ERISA attorneys</strong> advising plan sponsors on fiduciary process, contract review, and CAA 2026 compliance work.</li>
         <li><strong>Coalition staff and association leaders</strong> supporting member employers with shared analytics, benchmarking, and group-level negotiating.</li>
         <li><strong>Internal benefits teams</strong> who function as advisors to their own organization&rsquo;s fiduciary committee.</li>
@@ -858,7 +889,7 @@
   </section>
 
   <!-- Section 5: What this is not -->
-  <section class="section">
+  <section class="section" id="what-this-is-not">
     <div class="container-narrow">
       <p class="section-eyebrow">05 &middot; What this is not</p>
       <h2 class="section-title">An independent framework. Not a revenue stream, not a replacement, not a captive tool.</h2>
@@ -875,15 +906,17 @@
   </section>
 
   <!-- Closing CTA -->
-  <section class="closing-cta">
+  <section class="closing-cta" id="get-started">
     <div class="container-narrow">
       <h2 class="cta-headline">Bring the framework. Keep the <em>relationship</em>.</h2>
-      <p class="cta-sub">Free Quick Look on any client contract. PDF in your inbox. Three minutes.</p>
+      <p class="cta-sub">Free Quick Look on any client contract. PDF in your inbox within minutes.</p>
       <a class="btn btn-primary" href="/intake/">
         Analyze a contract &rarr;
       </a>
     </div>
   </section>
+    </div><!-- /.scrollspy-content -->
+  </div><!-- /.scrollspy-layout -->
 
 </main>
 
@@ -1079,5 +1112,6 @@
   });
 </script>
 
+<script src="/scrollspy.js" defer></script>
 </body>
 </html>

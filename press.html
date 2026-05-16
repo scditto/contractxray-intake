@@ -457,6 +457,7 @@
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
 </style>
+<link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
 
@@ -495,6 +496,36 @@
     </div>
   </section>
 
+  <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
+  <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
+    <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
+      <span class="scrollspy-pill-current">For researchers</span>
+    </button>
+    <ul>
+      <li><a href="#for-researchers">For researchers</a></li>
+      <li><a href="#research-topics">Research collaboration topics</a></li>
+      <li><a href="#for-press">For press</a></li>
+      <li><a href="#publicly-quotable">What is publicly quotable</a></li>
+      <li><a href="#institutional-partners">Institutional partners</a></li>
+      <li><a href="#get-in-touch">Get in touch</a></li>
+    </ul>
+  </aside>
+
+  <div class="scrollspy-layout">
+    <nav class="scrollspy" aria-label="Page sections">
+      <p class="scrollspy-label">On this page</p>
+      <ul>
+        <li><a href="#for-researchers">For researchers</a></li>
+        <li><a href="#research-topics">Research collaboration topics</a></li>
+        <li><a href="#for-press">For press</a></li>
+        <li><a href="#publicly-quotable">What is publicly quotable</a></li>
+        <li><a href="#institutional-partners">Institutional partners</a></li>
+        <li><a href="#get-in-touch">Get in touch</a></li>
+      </ul>
+    </nav>
+
+    <div class="scrollspy-content">
+
   <section class="document">
     <div class="container-narrow">
 
@@ -502,14 +533,14 @@
         <p>Nautilus Health Institute is a 501(c)(3) nonprofit advancing fiduciary-aligned standards for PBM contracts. Contract X-Ray is the methodology Nautilus develops and maintains. This page exists for two audiences: researchers interested in the methodology and the growing reference dataset, and press covering PBM contracting, fiduciary practice, and CAA 2026.</p>
       </div>
 
-      <div class="doc-section">
+      <div class="doc-section" id="for-researchers">
         <h2>For researchers</h2>
-        <p>Contract X-Ray scores PBM contracts against a fiduciary-aligned framework of ten provisions across three domains. The methodology is publicly documented on the <a href="/methodology.html">Methodology page</a>. The framework was developed with input from over 30 experts in ERISA fiduciary law, PBM contracting, employer health plan governance, and benefits consulting, and is applied consistently across all contracts analyzed.</p>
-        <p>Nautilus is building a reference dataset of scored PBM contracts. The dataset currently spans approximately 20 distinct PBMs and grows with each cycle. The aggregate statistics produced from this dataset are first-party research and may be published without PBM consent. Individual contract scores remain confidential to the client engagements that produced them.</p>
+        <p>Contract X-Ray scores PBM contracts against a fiduciary-aligned framework of ten provisions across three domains. The methodology is publicly documented on the <a href="/methodology.html">Methodology page</a>. The framework was developed with input from 30+ experts in ERISA fiduciary law, PBM contracting, employer health plan governance, and benefits consulting, and is applied consistently across all contracts analyzed.</p>
+        <p>Nautilus is building a reference dataset of scored PBM contracts. The dataset currently spans 20+ distinct PBMs and grows with each cycle. The aggregate statistics produced from this dataset are first-party research and may be published without PBM consent. Individual contract scores remain confidential to the client engagements that produced them.</p>
         <p>Research collaboration is core to the educational mission of a 501(c)(3) nonprofit. Nautilus welcomes inquiries from academic researchers, policy analysts, think tank staff, and independent writers interested in:</p>
       </div>
 
-      <div class="doc-section">
+      <div class="doc-section" id="research-topics">
         <h2>Research collaboration topics</h2>
         <p><strong>Studying the reference dataset.</strong> Aggregate statistics on contract language patterns across the PBM market, broken down by provision, by PBM business model, or by employer segment.</p>
         <p><strong>Co-authored publications.</strong> Working with Nautilus on research articles, white papers, or policy briefs grounded in Contract X-Ray data.</p>
@@ -518,13 +549,13 @@
         <p>Inquiries: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Research collaboration inquiry')">info@nautilushealth.org</button> with subject line "Research collaboration inquiry."</p>
       </div>
 
-      <div class="doc-section">
+      <div class="doc-section" id="for-press">
         <h2>For press</h2>
         <p>Background calls, fact-checks, and interviews are welcome on PBM contracting, ERISA fiduciary practice, CAA 2026 readiness, the CAA 2026 Readiness Quarterly Report, and related topics. Reporters covering these areas can reach Nautilus directly.</p>
         <p>Press contact: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Press inquiry')">info@nautilushealth.org</button> with subject line "Press inquiry," or <a href="https://calendly.com/steve-dittoandassociates/30-minute-call">schedule a 30-minute call</a>.</p>
       </div>
 
-      <div class="doc-section">
+      <div class="doc-section" id="publicly-quotable">
         <h2>What is publicly quotable</h2>
         <p><strong>The methodology.</strong> The ten provisions, three domains, five-tier scoring scale, and framework documentation are public.</p>
         <p><strong>Aggregate reference-set statistics.</strong> Market-level findings from the reference dataset are first-party Nautilus research and may be quoted with attribution.</p>
@@ -532,15 +563,23 @@
         <p><strong>Confidential.</strong> Individual client contract scores and findings outside the Quarterly Report disclosure are confidential to the engagements that produced them and are not available for public attribution.</p>
       </div>
 
-      <div class="doc-section">
+      <div class="doc-section" id="institutional-partners">
         <h2>Institutional partners</h2>
         <p><strong>Health Rosetta.</strong> Content and market amplification partner. Health Rosetta publishes Contract X-Ray analytical content for its network of advisors, employers, and benefits professionals.</p>
         <p><strong>National Alliance of Healthcare Purchaser Coalitions.</strong> Publisher of the CAA 2026 Readiness Quarterly Report and a partner in advancing fiduciary-aligned standards across the coalition network.</p>
         <p>Nautilus develops and maintains the methodology independently. Partners amplify and apply the framework within their networks; they do not maintain or modify the methodology itself.</p>
       </div>
 
+      <div class="doc-section" id="get-in-touch">
+        <h2>Get in touch</h2>
+        <p>For research collaboration, press inquiries, or methodology questions, contact <button type="button" class="inline-contact" onclick="openContactModal()">info@nautilushealth.org</button> or <a href="https://calendly.com/steve-dittoandassociates/30-minute-call">schedule a 30-minute call</a>.</p>
+      </div>
+
     </div>
   </section>
+
+    </div><!-- /.scrollspy-content -->
+  </div><!-- /.scrollspy-layout -->
 
 </main>
 
@@ -736,5 +775,6 @@
   });
 </script>
 
+<script src="/scrollspy.js" defer></script>
 </body>
 </html>

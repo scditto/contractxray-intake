@@ -839,6 +839,7 @@
     overflow: hidden;
   }
 </style>
+<link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
 
@@ -884,7 +885,39 @@
   </section>
 
   <!-- ───── Section 1: What we score ───── -->
-  <section class="section">
+  
+  <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
+  <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
+    <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
+      <span class="scrollspy-pill-current">What we score</span>
+    </button>
+    <ul>
+      <li><a href="#what-we-score">What we score</a></li>
+      <li><a href="#ten-provisions">Ten provisions, three domains</a></li>
+      <li><a href="#how-we-score">How we score</a></li>
+      <li><a href="#how-it-was-built">How the framework was built</a></li>
+      <li><a href="#regulatory-alignment">Regulatory alignment</a></li>
+      <li><a href="#out-of-scope">Out of scope</a></li>
+      <li><a href="#get-started">Get started</a></li>
+    </ul>
+  </aside>
+
+  <div class="scrollspy-layout">
+    <nav class="scrollspy" aria-label="Page sections">
+      <p class="scrollspy-label">On this page</p>
+      <ul>
+      <li><a href="#what-we-score">What we score</a></li>
+      <li><a href="#ten-provisions">Ten provisions, three domains</a></li>
+      <li><a href="#how-we-score">How we score</a></li>
+      <li><a href="#how-it-was-built">How the framework was built</a></li>
+      <li><a href="#regulatory-alignment">Regulatory alignment</a></li>
+      <li><a href="#out-of-scope">Out of scope</a></li>
+      <li><a href="#get-started">Get started</a></li>
+      </ul>
+    </nav>
+
+    <div class="scrollspy-content">
+<section class="section" id="what-we-score">
     <div class="container-narrow">
       <p class="section-eyebrow">01 &middot; What we score</p>
       <h2 class="section-title">Scores reflect explicit contract language, not business practices or marketing claims.</h2>
@@ -900,7 +933,7 @@
   </section>
 
   <!-- ───── Section 2: 10 provisions across 3 domains ───── -->
-  <section class="section">
+  <section class="section" id="ten-provisions">
     <div class="container">
       <div class="container-narrow" style="padding-left: 0; padding-right: 0;">
         <p class="section-eyebrow">02 &middot; The framework</p>
@@ -1000,7 +1033,7 @@
   </section>
 
   <!-- ───── Section 3: How we score ───── -->
-  <section class="section">
+  <section class="section" id="how-we-score">
     <div class="container-narrow">
       <p class="section-eyebrow">03 &middot; How we score</p>
       <h2 class="section-title">A five-tier scale, calibrated against a reference set of contracts.</h2>
@@ -1010,52 +1043,52 @@
 
       <div class="tier-scale">
         <div class="tier-row">
-          <span class="tier-range">85&ndash;100</span>
+          <span class="tier-range">90&ndash;100</span>
           <span class="tier-badge excellent">Excellent</span>
           <span class="tier-text">Contract language exceeds the fiduciary standard.</span>
         </div>
         <div class="tier-row">
-          <span class="tier-range">70&ndash;84</span>
+          <span class="tier-range">75&ndash;89</span>
           <span class="tier-badge good">Good</span>
           <span class="tier-text">Contract language meets the fiduciary standard.</span>
         </div>
         <div class="tier-row">
-          <span class="tier-range">55&ndash;69</span>
+          <span class="tier-range">60&ndash;74</span>
           <span class="tier-badge fair">Fair</span>
           <span class="tier-text">Contract language partially meets the standard.</span>
         </div>
         <div class="tier-row">
-          <span class="tier-range">40&ndash;54</span>
+          <span class="tier-range">45&ndash;59</span>
           <span class="tier-badge concern">Concern</span>
           <span class="tier-text">Material gaps in contract language that warrant attention.</span>
         </div>
         <div class="tier-row">
-          <span class="tier-range">0&ndash;39</span>
+          <span class="tier-range">0&ndash;44</span>
           <span class="tier-badge redflag">Red Flag</span>
           <span class="tier-text">Contract language exposes the plan sponsor to fiduciary risk.</span>
         </div>
       </div>
 
       <div class="rollup-note">
-        <p>The ten provisions are equally weighted at 10 percent each. They roll up to a single 0 to 100 <strong>Fiduciary Alignment Score</strong>, which itself maps to the same five-tier scale and serves as the headline number on every report. Each contract is scored against a reference set drawn from approximately 20 distinct PBMs, so a score is both an absolute measurement and a market-relative one.</p>
+        <p>The ten provisions are equally weighted at 10 percent each. They roll up to a single 0 to 100 <strong>Fiduciary Alignment Score</strong>, which itself maps to the same five-tier scale and serves as the headline number on every report. Each contract is scored against a reference set drawn from 20+ distinct PBMs, so a score is both an absolute measurement and a market-relative one.</p>
       </div>
     </div>
   </section>
 
   <!-- ───── Section 4: How the framework was built and how it's applied ───── -->
-  <section class="section">
+  <section class="section" id="how-it-was-built">
     <div class="container-narrow">
       <p class="section-eyebrow">04 &middot; How the framework was built</p>
       <h2 class="section-title">Expert-developed rules, applied the same way every time.</h2>
       <div class="prose">
-        <p>The Contract X-Ray framework was developed with input from over 30 experts in ERISA fiduciary law, PBM contracting, employer health plan governance, and benefits consulting. Their judgment is codified into the scoring rubric: specific rules, specific evidence requirements, specific thresholds. The expert panel decides what counts as a Red Flag. The framework records that decision.</p>
+        <p>The Contract X-Ray framework was developed with input from 30+ experts in ERISA fiduciary law, PBM contracting, employer health plan governance, and benefits consulting. Their judgment is codified into the scoring rubric: specific rules, specific evidence requirements, specific thresholds. The expert panel decides what counts as a Red Flag. The framework records that decision.</p>
         <p>Once the framework exists, the scoring itself is automated. Every contract runs through the same rubric the same way. No analyst freelances a score, and no contract is scored against a different bar than the one before it. Automated application is what makes results consistent across contracts and reproducible over time.</p>
       </div>
     </div>
   </section>
 
   <!-- ───── Section 5: Alignment with regulation and standards ───── -->
-  <section class="section">
+  <section class="section" id="regulatory-alignment">
     <div class="container-narrow">
       <p class="section-eyebrow">05 &middot; Regulatory alignment</p>
       <h2 class="section-title">Aligned with the standards plan sponsors are already accountable to.</h2>
@@ -1073,7 +1106,7 @@
   </section>
 
   <!-- ───── Section 6: What we don't score ───── -->
-  <section class="section">
+  <section class="section" id="out-of-scope">
     <div class="container-narrow">
       <p class="section-eyebrow">06 &middot; Out of scope</p>
       <h2 class="section-title">What Contract X-Ray does not evaluate.</h2>
@@ -1089,15 +1122,17 @@
   </section>
 
   <!-- ───── Closing CTA ───── -->
-  <section class="closing-cta">
+  <section class="closing-cta" id="get-started">
     <div class="container-narrow">
       <h2 class="cta-headline">Run your contract through the <em>methodology</em>.</h2>
-      <p class="cta-sub">Free Quick Look. PDF in your inbox. Three minutes.</p>
+      <p class="cta-sub">Free Quick Look. PDF in your inbox within minutes.</p>
       <a class="btn btn-primary" href="/intake/">
         Analyze your contract &rarr;
       </a>
     </div>
   </section>
+    </div><!-- /.scrollspy-content -->
+  </div><!-- /.scrollspy-layout -->
 
 </main>
 
@@ -1281,5 +1316,6 @@
   });
 </script>
 
+<script src="/scrollspy.js" defer></script>
 </body>
 </html>

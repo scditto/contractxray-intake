@@ -676,6 +676,7 @@
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
 </style>
+<link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
 
@@ -721,7 +722,37 @@
   </section>
 
   <!-- Section 1: The conversation -->
-  <section class="section">
+  
+  <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
+  <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
+    <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
+      <span class="scrollspy-pill-current">The conversation</span>
+    </button>
+    <ul>
+      <li><a href="#the-conversation">The conversation</a></li>
+      <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
+      <li><a href="#five-step-process">Five-step process</a></li>
+      <li><a href="#quarterly-report">Quarterly Report</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Start a conversation</a></li>
+    </ul>
+  </aside>
+
+  <div class="scrollspy-layout">
+    <nav class="scrollspy" aria-label="Page sections">
+      <p class="scrollspy-label">On this page</p>
+      <ul>
+      <li><a href="#the-conversation">The conversation</a></li>
+      <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
+      <li><a href="#five-step-process">Five-step process</a></li>
+      <li><a href="#quarterly-report">Quarterly Report</a></li>
+      <li><a href="#what-this-is-not">What this is not</a></li>
+      <li><a href="#get-started">Start a conversation</a></li>
+      </ul>
+    </nav>
+
+    <div class="scrollspy-content">
+<section class="section" id="the-conversation">
     <div class="container-narrow">
       <p class="section-eyebrow">01 &middot; The conversation plan sponsors are having</p>
       <h2 class="section-title">Plan sponsors are asking different questions than they did three years ago.</h2>
@@ -737,7 +768,7 @@
   </section>
 
   <!-- Section 2: How PBMs work with Nautilus -->
-  <section class="section">
+  <section class="section" id="working-with-nautilus">
     <div class="container-narrow">
       <p class="section-eyebrow">02 &middot; How PBMs work with Nautilus</p>
       <h2 class="section-title">An independent standards body, working collaboratively with PBMs.</h2>
@@ -750,7 +781,7 @@
   </section>
 
   <!-- Section 3: What participation involves -->
-  <section class="section">
+  <section class="section" id="five-step-process">
     <div class="container-narrow">
       <p class="section-eyebrow">03 &middot; What participation involves</p>
       <h2 class="section-title">A five-step process designed to protect the PBM at every stage.</h2>
@@ -799,7 +830,7 @@
   </section>
 
   <!-- Section 4: The Quarterly Report -->
-  <section class="section">
+  <section class="section" id="quarterly-report">
     <div class="container-narrow">
       <p class="section-eyebrow">04 &middot; The CAA 2026 Readiness Quarterly Report</p>
       <h2 class="section-title">A public benchmark, published by the National Alliance.</h2>
@@ -833,7 +864,7 @@
   </section>
 
   <!-- Section 5: What this is not -->
-  <section class="section">
+  <section class="section" id="what-this-is-not">
     <div class="container-narrow">
       <p class="section-eyebrow">05 &middot; What this is not</p>
       <h2 class="section-title">A collaborative engagement, not an audit.</h2>
@@ -848,7 +879,7 @@
   </section>
 
   <!-- Closing CTA: dual button (Calendly + email) -->
-  <section class="closing-cta">
+  <section class="closing-cta" id="get-started">
     <div class="container-narrow">
       <h2 class="cta-headline">Start a <em>conversation</em>.</h2>
       <p class="cta-sub">The first step is a 30-minute call to understand your contract, your timeline, and whether participation in the inaugural Quarterly Report is the right fit.</p>
@@ -862,6 +893,8 @@
       </div>
     </div>
   </section>
+    </div><!-- /.scrollspy-content -->
+  </div><!-- /.scrollspy-layout -->
 
 </main>
 
@@ -1057,5 +1090,6 @@
   });
 </script>
 
+<script src="/scrollspy.js" defer></script>
 </body>
 </html>
