@@ -877,6 +877,85 @@
   body.modal-open {
     overflow: hidden;
   }
+
+  /* ───── Lightbox ───── */
+  .lightbox-trigger {
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+  }
+  .lightbox-trigger:hover {
+    opacity: 0.92;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 40, 69, 0.92);
+    z-index: 9000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .lightbox.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    border-radius: 4px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: rgba(255, 252, 246, 0.12);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    font-family: var(--font-body);
+  }
+  .lightbox-close:hover {
+    background: rgba(255, 252, 246, 0.22);
+  }
+  .lightbox-close:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  .lightbox-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255, 252, 246, 0.85);
+    font-family: var(--font-body);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    .lightbox { padding: 16px; }
+    .lightbox-close { top: 12px; right: 12px; width: 38px; height: 38px; font-size: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -930,11 +1009,11 @@
         <div class="featured-spreads">
           <div class="page-preview">
             <span class="page-badge">Page 1</span>
-            <img src="Sample-Report-Hero-Preview.jpg" alt="Quick Look sample report, page 1, showing provision counts, analyst recommendation, and three-domain summary">
+            <img class="lightbox-trigger" src="Sample-Report-Hero-Preview.jpg" data-lightbox="Sample-Report-Hero-Preview.jpg" data-caption="Quick Look · Page 1 of 2" alt="Quick Look sample report, page 1, showing provision counts, analyst recommendation, and three-domain summary">
           </div>
           <div class="page-preview">
             <span class="page-badge">Page 2</span>
-            <img src="Sample-Report-Page2-Preview.jpg" alt="Quick Look sample report, page 2, showing three most significant red flags and CAA 2026 readiness mapping">
+            <img class="lightbox-trigger" src="Sample-Report-Page2-Preview.jpg" data-lightbox="Sample-Report-Page2-Preview.jpg" data-caption="Quick Look · Page 2 of 2" alt="Quick Look sample report, page 2, showing three most significant red flags and CAA 2026 readiness mapping">
           </div>
         </div>
 
@@ -977,7 +1056,7 @@
         </div>
 
         <div class="card-footer">
-          <a class="view-sample" href="QuickLook_Sample_PBM_Inc_2026-05-13.pdf">View full sample &rarr;</a>
+          <a class="view-sample" href="CXR_QuickLook_SampleEmployer_v1.pdf">View full sample &rarr;</a>
           <a class="card-cta-button" href="/intake/">
             Get Your Quick Look <span class="arrow">&rarr;</span>
           </a>
@@ -992,10 +1071,10 @@
     <div class="container-narrow">
       <p class="transition-label">Full Assessment</p>
       <h2 class="transition-headline">
-        Upgrade unlocks <em>these four reports</em>.
+        Each Full Assessment <em>generates the full report suite</em>.
       </h2>
       <p class="transition-body">
-        The Quick Look tells you what&rsquo;s wrong. The Full Assessment tells you what to do about it. Each of the four reports below is built around a different audience and a different decision moment.
+        The Quick Look tells you what&rsquo;s wrong. The Full Assessment tells you what to do about it. Each report below is built around a different audience and a different decision moment.
       </p>
     </div>
   </section>
@@ -1008,7 +1087,7 @@
         <!-- Contract Scorecard -->
         <article class="report-card">
           <div class="report-thumbnail">
-            <img src="Scorecard-Sample-Thumbnail.jpg" alt="Contract Scorecard sample showing Fiduciary Alignment Score of 34/100, three domain scores, and individual provision scores">
+            <img class="lightbox-trigger" src="Scorecard-Sample-Thumbnail.jpg" data-lightbox="Scorecard-Sample-Thumbnail-Large.jpg" data-caption="Contract Scorecard · Page 1 sample" alt="Contract Scorecard sample showing Fiduciary Alignment Score of 34/100, three domain scores, and individual provision scores">
           </div>
           <div class="report-body">
             <div>
@@ -1030,74 +1109,8 @@
               </div>
             </div>
           </div>
-          <div class="card-footer cta-footer">
-            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
-            <a class="card-cta-button" href="/intake/">
-              Get Full Assessment <span class="arrow">&rarr;</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Negotiation Report -->
-        <article class="report-card">
-          <div class="report-thumbnail">
-            <img src="Negotiation-Sample-Thumbnail.jpg" alt="Negotiation Report sample showing negotiation strategy and priority redlines for flagged provisions">
-          </div>
-          <div class="report-body">
-            <div>
-              <h3 class="report-title">Negotiation Report</h3>
-              <p class="report-subtitle">Redline-ready language for every flagged provision.</p>
-            </div>
-            <div class="info-blocks">
-              <div class="info-block">
-                <h4>What it is</h4>
-                <p>Eight to ten page report providing provision-by-provision redline language for every Red Flag and Concern finding. Includes the current contract quote, proposed replacement language, and a negotiation priority assessment for each item, so you know what is non-negotiable and what is achievable.</p>
-              </div>
-              <div class="info-block">
-                <h4>Who it&rsquo;s for</h4>
-                <p>Plan sponsors and the advisors leading their negotiations. Designed to be handed to outside counsel without further preparation.</p>
-              </div>
-              <div class="info-block">
-                <h4>When you&rsquo;d use it</h4>
-                <p>Before contract execution, contract renewal, or any negotiation with the PBM where contract terms are in scope.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer cta-footer">
-            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
-            <a class="card-cta-button" href="/intake/">
-              Get Full Assessment <span class="arrow">&rarr;</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Data Sovereignty Score -->
-        <article class="report-card">
-          <div class="report-thumbnail">
-            <img src="DSI-Sample-Thumbnail.jpg" alt="Data Sovereignty Score sample showing DSI Designation result and per-provision floors">
-          </div>
-          <div class="report-body">
-            <div>
-              <h3 class="report-title">Data Sovereignty Score</h3>
-              <p class="report-subtitle">A specialized lens on data control and audit rights.</p>
-            </div>
-            <div class="info-blocks">
-              <div class="info-block">
-                <h4>What it is</h4>
-                <p>Your specific result on the five Data Sovereignty provisions: data ownership, audit rights, conflicts disclosure, formulary economics, and rebate revenue. Earns one of four Designation tiers (Gold, Silver, Bronze, or Ineligible).</p>
-              </div>
-              <div class="info-block">
-                <h4>Who it&rsquo;s for</h4>
-                <p>Plan sponsors who want a sub-certification focused specifically on whether the contract gives them genuine control over their own data and economics.</p>
-              </div>
-              <div class="info-block">
-                <h4>When you&rsquo;d use it</h4>
-                <p>Whenever data sovereignty is a strategic priority. Particularly relevant for self-funded employers preparing for CAA 2026 audit-rights enforcement.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer cta-footer">
-            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+          <div class="card-footer">
+            <a class="view-sample" href="CXR_Scorecard_SampleEmployer_v1.pdf">View full sample &rarr;</a>
             <a class="card-cta-button" href="/intake/">
               Get Full Assessment <span class="arrow">&rarr;</span>
             </a>
@@ -1107,7 +1120,7 @@
         <!-- Executive Brief -->
         <article class="report-card">
           <div class="report-thumbnail">
-            <img src="ExecBrief-Sample-Thumbnail.jpg" alt="Executive Brief sample showing board-ready narrative summary with key metrics and recommended next actions">
+            <img class="lightbox-trigger" src="ExecBrief-Sample-Thumbnail.jpg" data-lightbox="ExecBrief-Sample-Thumbnail-Large.jpg" data-caption="Executive Brief · Page 1 sample" alt="Executive Brief sample showing board-ready narrative summary with key metrics and recommended next actions">
           </div>
           <div class="report-body">
             <div>
@@ -1129,8 +1142,74 @@
               </div>
             </div>
           </div>
-          <div class="card-footer cta-footer">
-            <span class="footer-meta">Available with the <strong>Full Assessment</strong></span>
+          <div class="card-footer">
+            <a class="view-sample" href="CXR_ExecBrief_SampleEmployer_v1.pdf">View full sample &rarr;</a>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Data Sovereignty Score -->
+        <article class="report-card">
+          <div class="report-thumbnail">
+            <img class="lightbox-trigger" src="DSI-Sample-Thumbnail.jpg" data-lightbox="DSI-Sample-Thumbnail-Large.jpg" data-caption="Data Sovereignty Score · Page 1 sample" alt="Data Sovereignty Score sample showing DSI Designation result and per-provision floors">
+          </div>
+          <div class="report-body">
+            <div>
+              <h3 class="report-title">Data Sovereignty Score</h3>
+              <p class="report-subtitle">A specialized lens on data control and audit rights.</p>
+            </div>
+            <div class="info-blocks">
+              <div class="info-block">
+                <h4>What it is</h4>
+                <p>Your specific result on the five Data Sovereignty provisions: data ownership, audit rights, conflicts disclosure, formulary economics, and rebate revenue. Earns one of four Designation tiers (Gold, Silver, Bronze, or Ineligible).</p>
+              </div>
+              <div class="info-block">
+                <h4>Who it&rsquo;s for</h4>
+                <p>Plan sponsors who want a sub-certification focused specifically on whether the contract gives them genuine control over their own data and economics.</p>
+              </div>
+              <div class="info-block">
+                <h4>When you&rsquo;d use it</h4>
+                <p>Whenever data sovereignty is a strategic priority. Particularly relevant for self-funded employers preparing for CAA 2026 audit-rights enforcement.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="view-sample" href="CXR_DataSovereignty_SampleEmployer_v1.pdf">View full sample &rarr;</a>
+            <a class="card-cta-button" href="/intake/">
+              Get Full Assessment <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Negotiation Report -->
+        <article class="report-card">
+          <div class="report-thumbnail">
+            <img class="lightbox-trigger" src="Negotiation-Sample-Thumbnail.jpg" data-lightbox="Negotiation-Sample-Thumbnail-Large.jpg" data-caption="Negotiation Report · Page 1 sample" alt="Negotiation Report sample showing negotiation strategy and priority redlines for flagged provisions">
+          </div>
+          <div class="report-body">
+            <div>
+              <h3 class="report-title">Negotiation Report</h3>
+              <p class="report-subtitle">Redline-ready language for every flagged provision.</p>
+            </div>
+            <div class="info-blocks">
+              <div class="info-block">
+                <h4>What it is</h4>
+                <p>Eight to ten page report providing provision-by-provision redline language for every Red Flag and Concern finding. Includes the current contract quote, proposed replacement language, and a negotiation priority assessment for each item, so you know what is non-negotiable and what is achievable.</p>
+              </div>
+              <div class="info-block">
+                <h4>Who it&rsquo;s for</h4>
+                <p>Plan sponsors and the advisors leading their negotiations. Designed to be handed to outside counsel without further preparation.</p>
+              </div>
+              <div class="info-block">
+                <h4>When you&rsquo;d use it</h4>
+                <p>Before contract execution, contract renewal, or any negotiation with the PBM where contract terms are in scope.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a class="view-sample" href="CXR_Negotiation_SampleEmployer_v1.pdf">View full sample &rarr;</a>
             <a class="card-cta-button" href="/intake/">
               Get Full Assessment <span class="arrow">&rarr;</span>
             </a>
@@ -1322,6 +1401,67 @@
       if (modal.classList.contains('active')) closeContactModal();
     }
   });
+</script>
+
+<!-- ───── Lightbox ───── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged sample report">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close enlarged view">&times;</button>
+  <img class="lightbox-image" id="lightbox-image" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+  (function() {
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightbox-image');
+    const lightboxCap  = document.getElementById('lightbox-caption');
+    const closeBtn     = document.getElementById('lightbox-close');
+
+    function openLightbox(src, alt, caption) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightboxCap.textContent = caption || '';
+      lightbox.classList.add('active');
+      document.body.classList.add('modal-open');
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.classList.remove('modal-open');
+      // Clear src after transition so we don't keep image in memory
+      setTimeout(() => { lightboxImg.src = ''; }, 250);
+    }
+
+    // Wire all images marked as lightbox triggers
+    document.querySelectorAll('.lightbox-trigger').forEach(function(img) {
+      img.addEventListener('click', function() {
+        const fullSrc = img.dataset.lightbox || img.src;
+        openLightbox(fullSrc, img.alt, img.dataset.caption);
+      });
+      // Keyboard activation for accessibility
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const fullSrc = img.dataset.lightbox || img.src;
+          openLightbox(fullSrc, img.alt, img.dataset.caption);
+        }
+      });
+    });
+
+    // Close: button, click outside image, Esc
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  })();
 </script>
 
 </body>
