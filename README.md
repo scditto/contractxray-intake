@@ -54,7 +54,7 @@ CXR_*_SampleEmployer_v1.pdf                  Sample reports shown on the site
 
 ## Where the methodology lives
 
-The scoring rules, the report generators, and the rendering pipeline are maintained in the private `cxr-methodology` repository. That repository is the source of record for how Contract X-Ray scores a contract and how it produces a report. Reviewers who need to examine the methodology should request access there.
+The scoring rules, the report generators, and the rendering pipeline are maintained in the nautilus-health `cxr-methodology` repository. That repository is the source of record for how Contract X-Ray scores a contract and how it produces a report. Reviewers who need to examine the methodology should request access there.
 
 ---
 
