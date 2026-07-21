@@ -41,6 +41,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
   html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
 
   body {
@@ -475,7 +476,8 @@
     letter-spacing: 0.02em;
   }
 
-  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; }
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex;
+    flex-wrap: wrap; gap: 28px; }
   .footer-legal a { font-size: 13px; color: var(--ink-soft); }
   .footer-legal a:hover { color: var(--navy); }
 
