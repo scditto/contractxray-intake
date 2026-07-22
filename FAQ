@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Plain-language answers for plan sponsors about Contract X-Ray: confidentiality, AI training, cost, what you get, and how the score works.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #1B365D;
+    --navy-deep: #122845;
+    --teal: #2D8B9A;
+    --teal-deep: #236f7c;
+    --gold: #C5A572;
+    --cream: #F5F0E6;
+    --cream-light: #FAF6EE;
+    --paper: #FFFCF6;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
+    --red: #B84A2C;
+    --ink: #1A1F2E;
+    --ink-soft: #4A4F5C;
+    --ink-muted: #7A7F8C;
+    --border: rgba(27, 54, 93, 0.14);
+    --border-strong: rgba(27, 54, 93, 0.22);
+
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --container-max: 1320px;
+    --container-narrow: 800px;
+    --side-pad: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
