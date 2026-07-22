@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acceptable Use Guidelines | Contract X-Ray | Nautilus Health Institute</title>
-<meta name="description" content="Guidelines governing participation in and use of Contract X-Ray. Protecting the employer, the methodology, and the work itself.">
+<title>Advisor Acceptable Use Guidelines | Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Guidelines governing participation in and use of Contract X-Ray. Protecting the employer, the methodology, and the work itself. Version 4.0.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,9 @@
     --cream: #F5F0E6;
     --cream-light: #FAF6EE;
     --paper: #FFFCF6;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
+    --red: #B84A2C;
     --ink: #1A1F2E;
     --ink-soft: #4A4F5C;
     --ink-muted: #7A7F8C;
@@ -109,9 +112,7 @@
   }
 
   /* Document body */
-  .document {
-    padding: 32px 0 80px;
-  }
+  .document { padding: 32px 0 80px; }
 
   .doc-intro {
     font-size: 17px;
@@ -125,50 +126,8 @@
   .doc-intro p:last-child { margin-bottom: 0; }
   .doc-intro strong { color: var(--navy); font-weight: 600; }
 
-  .doc-section {
-    margin: 0 0 36px;
-    max-width: 720px;
-  }
-
-  .doc-section:last-child { margin-bottom: 0; }
-
-  .doc-section h2 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.25;
-    color: var(--navy);
-    margin: 0 0 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .doc-section p {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin: 0 0 14px;
-  }
-
-  .doc-section p:last-child { margin-bottom: 0; }
-
-  .doc-section a {
-    color: var(--teal-deep);
-    font-weight: 500;
-    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
-  }
-
-  .doc-section a:hover { border-bottom-color: var(--teal-deep); }
-
-  .doc-section strong { color: var(--navy); font-weight: 600; }
-
-
-  /* Numbered rule sections (0-6 in the AUP v3.1) */
-  .rule-section {
-    margin: 0 0 44px;
-    max-width: 760px;
-  }
-
+  /* Numbered rule sections */
+  .rule-section { margin: 0 0 44px; max-width: 760px; }
   .rule-section:last-child { margin-bottom: 0; }
 
   .rule-section-header {
@@ -297,7 +256,7 @@
     background: var(--red);
   }
 
-  /* Acknowledgment block at bottom */
+  /* Acknowledgment block */
   .ack-block {
     margin: 48px 0 0;
     padding: 28px 32px;
@@ -333,11 +292,7 @@
     gap: 24px;
   }
 
-  .version-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .version-cell { display: flex; flex-direction: column; gap: 4px; }
 
   .version-label {
     font-family: var(--font-mono);
@@ -348,11 +303,7 @@
     color: var(--ink-muted);
   }
 
-  .version-value {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-  }
+  .version-value { font-size: 14px; font-weight: 600; color: var(--navy); }
 
   @media (max-width: 640px) {
     .rule-section-header { flex-wrap: wrap; gap: 8px; }
@@ -416,8 +367,7 @@
     font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
   }
 
-  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex;
-    flex-wrap: wrap; gap: 28px; }
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 28px; }
   .footer-legal a { font-size: 13px; color: var(--ink-soft); }
   .footer-legal a:hover { color: var(--navy); }
   .footer-legal a.current { color: var(--navy); font-weight: 600; }
@@ -435,229 +385,98 @@
     .nav-bar { gap: 16px; }
     .main-nav { display: none; }
     .intro-headline { font-size: clamp(28px, 7vw, 38px); }
-    .doc-section h2 { font-size: 19px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .footer-legal { flex-wrap: wrap; gap: 14px; }
   }
 
-  /* ───── Brand link split ───── */
-  .brand-link-org,
-  .brand-link-product {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--navy);
-    transition: opacity 0.2s ease;
+  /* Brand link split */
+  .brand-link-org, .brand-link-product {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--navy); transition: opacity 0.2s ease;
   }
+  .brand-link-org:hover, .brand-link-product:hover { opacity: 0.75; }
 
-  .brand-link-org:hover,
-  .brand-link-product:hover {
-    opacity: 0.75;
-  }
-
-  /* ───── Contact modal ───── */
+  /* Contact modal */
   .contact-link {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-align: left;
+    background: none; border: none; padding: 0; margin: 0;
+    font: inherit; color: inherit; cursor: pointer; text-align: left;
   }
-
   .contact-link:hover { color: var(--navy); }
 
   .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(18, 40, 69, 0.55);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-y: auto;
+    display: none; position: fixed; inset: 0;
+    background: rgba(18, 40, 69, 0.55); z-index: 100;
+    align-items: center; justify-content: center; padding: 24px; overflow-y: auto;
   }
-
-  .modal-overlay.active {
-    display: flex;
-  }
+  .modal-overlay.active { display: flex; }
 
   .modal {
-    background: var(--paper);
-    border-radius: 6px;
-    max-width: 520px;
-    width: 100%;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    box-shadow:
-      0 1px 4px rgba(27, 54, 93, 0.10),
-      0 16px 48px rgba(27, 54, 93, 0.20);
+    background: var(--paper); border-radius: 6px;
+    max-width: 520px; width: 100%; max-height: calc(100vh - 48px); overflow-y: auto;
+    box-shadow: 0 1px 4px rgba(27, 54, 93, 0.10), 0 16px 48px rgba(27, 54, 93, 0.20);
     border: 1px solid var(--border);
   }
 
   .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 28px 18px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 28px 18px; border-bottom: 1px solid var(--border);
   }
-
   .modal-header h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--navy);
-    margin: 0;
+    font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2;
+    color: var(--navy); margin: 0;
   }
-
   .modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--ink-muted);
-    cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease;
+    background: none; border: none; font-size: 28px; line-height: 1;
+    color: var(--ink-muted); cursor: pointer; padding: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center; transition: color 0.15s ease;
   }
-
   .modal-close:hover { color: var(--navy); }
 
-  .modal-body {
-    padding: 24px 28px;
-  }
+  .modal-body { padding: 24px 28px; }
+  .modal-body p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 18px; }
 
-  .modal-body p {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
-  }
-
-  .modal-field {
-    margin-bottom: 16px;
-  }
-
+  .modal-field { margin-bottom: 16px; }
   .modal-field:last-child { margin-bottom: 0; }
-
-  .modal-field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 6px;
+  .modal-field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .modal-field .opt { font-weight: 400; color: var(--ink-muted); }
+  .modal-field .req { color: var(--teal-deep); margin-left: 2px; }
+  .modal-field input, .modal-field textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 4px;
+    font-family: var(--font-body); font-size: 14px; color: var(--ink); background: var(--paper);
+    transition: border-color 0.15s ease; box-sizing: border-box;
   }
-
-  .modal-field .opt {
-    font-weight: 400;
-    color: var(--ink-muted);
-  }
-
-  .modal-field .req {
-    color: var(--teal-deep);
-    margin-left: 2px;
-  }
-
-  .modal-field input,
-  .modal-field textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--paper);
-    transition: border-color 0.15s ease;
-    box-sizing: border-box;
-  }
-
-  .modal-field textarea {
-    resize: vertical;
-    min-height: 96px;
-  }
-
-  .modal-field input:focus,
-  .modal-field textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-  }
+  .modal-field textarea { resize: vertical; min-height: 96px; }
+  .modal-field input:focus, .modal-field textarea:focus { outline: none; border-color: var(--teal); }
 
   .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 16px 28px 22px;
-    border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end; gap: 12px;
+    padding: 16px 28px 22px; border-top: 1px solid var(--border);
   }
+  .modal-footer .btn { padding: 11px 22px; font-size: 14px; }
+  .btn { border-radius: 4px; font-family: var(--font-body); font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+  .btn-secondary { background: none; border-color: var(--border-strong); color: var(--ink-soft); }
+  .btn-secondary:hover { color: var(--navy); border-color: var(--navy); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-deep); }
 
-  .modal-footer .btn {
-    padding: 11px 22px;
-    font-size: 14px;
-  }
-
-  .modal-thanks {
-    text-align: center;
-    padding: 20px 0 10px;
-  }
-
+  .modal-thanks { text-align: center; padding: 20px 0 10px; }
   .modal-thanks-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(45, 122, 79, 0.12);
-    border: 1px solid var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12); border: 1px solid var(--green);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
   }
+  .modal-thanks h4 { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--navy); margin: 0 0 6px; }
+  .modal-thanks p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-  .modal-thanks h4 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--navy);
-    margin: 0 0 6px;
-  }
-
-  .modal-thanks p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-  body.modal-open {
-    overflow: hidden;
-  }
-
+  body.modal-open { overflow: hidden; }
 
   .inline-contact {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: var(--teal-deep);
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
-    transition: border-color 0.2s ease;
+    background: none; border: none; padding: 0; margin: 0; font: inherit;
+    color: var(--teal-deep); font-weight: 500; cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4); transition: border-color 0.2s ease;
   }
-
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
-
 </style>
 </head>
 <body>
@@ -692,8 +511,8 @@
         <span>Acceptable Use</span>
       </p>
 
-      <h1 class="intro-headline">Acceptable Use Guidelines</h1>
-      <p class="effective-date">Version 3.1 &middot; Effective May 2026</p>
+      <h1 class="intro-headline">Advisor Acceptable Use Guidelines</h1>
+      <p class="effective-date">Version 4.0 &middot; Effective July 28, 2026</p>
     </div>
   </section>
 
@@ -703,7 +522,7 @@
       <div class="doc-intro">
         <p>Nautilus Health Institute is a 501(c)(3) nonprofit organization that advances transparency and fiduciary accountability for employer plan sponsors by providing independent, standards-based analysis of benefits contracts. Contract X-Ray is the platform and methodology Nautilus maintains for evaluating benefits contracts against Fiduciary-Aligned Contract Standards.</p>
         <p><strong>These guidelines protect three things at once:</strong> the employer, whose analysis serves their fiduciary duty and not someone else&rsquo;s commercial purpose; the methodology, whose credibility depends on independent and consistent application; and the work itself, against repurposing in ways that conflict with the mission. Every guideline that follows traces back to one of those three protections.</p>
-        <p><strong>Scope.</strong> These guidelines apply to anyone who submits a contract for analysis or receives an analysis output. They are written for advisors who submit on behalf of employer clients, where the operational rules have the most substance. Employer plan sponsors submitting directly are bound by the same standards in the sections that apply to them. This document covers contract submission and use of reports. It does not cover brand and co-marketing rules or network partnership terms, which are governed by the Network Partner Program. If a submission flows through a Network Partner, additional terms apply under that separate agreement.</p>
+        <p><strong>Scope.</strong> These guidelines apply to anyone who submits a contract for analysis or receives an analysis output. They are written for advisors who submit on behalf of employer clients, where the operational rules have the most substance. Employer plan sponsors submitting directly are bound by the same standards in the sections that apply to them. This document covers contract submission and use of reports. It does not cover brand and co-marketing rules or network partnership terms. Those will be governed by the forthcoming Network Partner Program. If a submission flows through a Network Partner once that program launches, additional terms will apply under that forthcoming agreement.</p>
       </div>
 
       <div class="rule-section">
@@ -821,11 +640,15 @@
           </li>
           <li class="rule-item no">
             <span class="rule-marker no">NO</span>
+            <span class="rule-text">Use a client&rsquo;s report or any analysis deliverable in marketing or client outreach without that client&rsquo;s consent, or in any way that misrepresents Nautilus or the score.</span>
+          </li>
+          <li class="rule-item no">
+            <span class="rule-marker no">NO</span>
             <span class="rule-text">Represent Contract X-Ray as an endorsement, certification, or recommendation of any PBM or plan design.</span>
           </li>
           <li class="rule-item no">
             <span class="rule-marker no">NO</span>
-            <span class="rule-text">Use the Contract X-Ray name and branding, the Nautilus name and branding, or the name of any report or index in marketing materials without Nautilus&rsquo;s prior approval.</span>
+            <span class="rule-text">Use the Contract X-Ray name and branding, the Nautilus name and branding, or the name of any report or designation in marketing materials without Nautilus&rsquo;s prior approval.</span>
           </li>
         </ul>
       </div>
@@ -907,21 +730,21 @@
 
       <div class="ack-block">
         <p><strong>Acknowledgment.</strong> If a use case is not addressed here, contact Nautilus before proceeding. When in doubt, treat client scores and analysis as confidential. Submission of a contract for analysis constitutes acknowledgment and acceptance of these guidelines as a condition of participation.</p>
-        <p>Questions: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Acceptable Use Guidelines question')">info@nautilushealth.org</button></p>
+        <p>Questions: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Advisor Acceptable Use Guidelines question')">info@nautilushealth.org</button></p>
       </div>
 
       <div class="version-footer">
         <div class="version-cell">
           <span class="version-label">Version</span>
-          <span class="version-value">3.1</span>
+          <span class="version-value">4.0</span>
         </div>
         <div class="version-cell">
           <span class="version-label">Effective</span>
-          <span class="version-value">May 2026</span>
+          <span class="version-value">July 28, 2026</span>
         </div>
         <div class="version-cell">
           <span class="version-label">Supersedes</span>
-          <span class="version-value">v3.0 (April 2026)</span>
+          <span class="version-value">v3.1 (May 2026)</span>
         </div>
         <div class="version-cell">
           <span class="version-label">Maintained by</span>
@@ -952,6 +775,8 @@
           <li><a href="/intake/">Analyze your contract</a></li>
           <li><a href="/samples.html">Sample reports</a></li>
           <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+          <li><a href="https://legal.contractxray.com/governance-charter.pdf" target="_blank" rel="noopener">Governance Charter (PDF)</a></li>
+          <li><a href="https://legal.contractxray.com/participation-agreement.pdf" target="_blank" rel="noopener">Participation Agreement (PDF)</a></li>
         </ul>
       </div>
 
@@ -979,7 +804,8 @@
       <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
       <ul class="footer-legal">
         <li><a href="/methodology.html">Methodology</a></li>
-        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/acceptable-use.html" class="current">Acceptable Use</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
       </ul>
@@ -987,7 +813,7 @@
   </div>
 </footer>
 
-<!-- ───── Contact Modal ───── -->
+<!-- Contact Modal -->
 <div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
   <div class="modal">
     <div class="modal-header">
@@ -1056,6 +882,7 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+
   function openContactModalWithTopic(topic) {
     openContactModal();
     setTimeout(function() {
@@ -1067,7 +894,6 @@
       }
     }, 100);
   }
-
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();
