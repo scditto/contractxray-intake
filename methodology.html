@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Methodology | Contract X-Ray | How we score PBM contracts</title>
-<meta name="description" content="How Contract X-Ray scores a PBM contract. A transparent framework grounded in explicit contract language, aligned with ERISA fiduciary standards and CAA 2026.">
+<meta name="description" content="How Contract X-Ray scores a PBM contract. A transparent framework grounded in explicit contract language, aligned with fiduciary standards under applicable law and CAA 2026.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -504,6 +504,14 @@
     transform: translateY(-1px);
   }
 
+  .btn-secondary {
+    background: none;
+    border-color: var(--border-strong);
+    color: var(--ink-soft);
+  }
+
+  .btn-secondary:hover { color: var(--navy); border-color: var(--navy); }
+
   /* ───── Footer ───── */
   .site-footer {
     border-top: 1px solid var(--border);
@@ -605,6 +613,7 @@
 
   .footer-legal a { font-size: 13px; color: var(--ink-soft); }
   .footer-legal a:hover { color: var(--navy); }
+  .footer-legal a.current { color: var(--navy); font-weight: 600; }
 
   /* ───── Responsive ───── */
   @media (max-width: 1100px) {
@@ -881,7 +890,7 @@
       </h1>
 
       <p class="intro-body">
-        A transparent framework grounded in explicit contract language, aligned with ERISA fiduciary standards and CAA 2026.
+        A transparent framework grounded in explicit contract language, aligned with fiduciary standards under applicable law and CAA 2026.
       </p>
     </div>
   </section>
@@ -1156,6 +1165,8 @@
           <li><a href="/intake/">Analyze your contract</a></li>
           <li><a href="/samples.html">Sample reports</a></li>
           <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+          <li><a href="https://legal.contractxray.com/governance-charter.pdf" target="_blank" rel="noopener">Governance Charter (PDF)</a></li>
+          <li><a href="https://legal.contractxray.com/participation-agreement.pdf" target="_blank" rel="noopener">Participation Agreement (PDF)</a></li>
         </ul>
       </div>
 
@@ -1182,8 +1193,9 @@
     <div class="footer-bottom">
       <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
       <ul class="footer-legal">
-        <li><a href="/methodology.html">Methodology</a></li>
+        <li><a href="/methodology.html" class="current">Methodology</a></li>
         <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
       </ul>
