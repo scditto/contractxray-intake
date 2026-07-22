@@ -108,7 +108,7 @@
 </div>
 <div class="check-row">
 <input id="terms" name="terms" type="checkbox"/>
-<label for="terms">I agree to the <a href="#" onclick="openTermsModal(event)">Terms of Service</a></label>
+<label for="terms">I agree to the <a href="/terms.html" target="_blank" rel="noopener">Terms of Service</a></label>
 </div>
 <div class="nda-note">
 <strong>Confidentiality:</strong> If your organization requires an NDA, <span class="copy-email" onclick="openContactModal()" style="cursor:pointer;" title="Get in touch">contact us</span> and we will process one electronically before you submit.
@@ -126,72 +126,8 @@
 <footer class="site-footer">
     © 2026 <a href="https://nautilushealth.org" target="_blank" rel="noopener">Nautilus Health Institute</a>. All rights reserved.  • 
     <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>  • 
-    <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>
+    <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
 </footer>
-<!-- Terms of Service Modal -->
-<div class="modal-overlay" id="modal-terms">
-<div class="modal" style="max-width:700px;">
-<div class="modal-header">
-<h3>Terms of Service</h3>
-<button class="modal-close" onclick="closeTermsModal()">×</button>
-</div>
-<div class="modal-body">
-<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
-<p>These Terms of Service govern your use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization. By uploading a contract or using our service, you agree to these Terms.</p>
-<p>Nautilus's mission is to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
-<ol>
-<li><strong>Service Description.</strong> Contract X-Ray reviews PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts.</li>
-<li><strong>Information You Share.</strong> When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with us. You represent that you have the legal right to share this information with us for analysis.</li>
-<li><strong>How We Use Contract Information.</strong> We use your contract solely to: (a) conduct analysis and provide reports to you; (b) develop industry educational materials using aggregate, anonymized data that does not identify you or reveal your specific terms; and (c) support our nonprofit educational mission.</li>
-<li><strong>Confidentiality.</strong> We will maintain your contract in confidence using reasonable care and not disclose it to third parties without your consent.</li>
-<li><strong>What We May Publish.</strong> We may publish aggregate benchmarks and educational content derived from contract analysis, provided such publications do not identify you or reveal your specific terms.</li>
-<li><strong>Your Responsibilities.</strong> Upload only contracts you have legal authority to share. Our analysis is for educational purposes and does not constitute legal, financial, or professional advice.</li>
-<li><strong>Disclaimers and Limitations.</strong> Service provided "as is." Liability limited to $100 for free services or fees paid for paid services. Not liable for indirect or consequential damages.</li>
-<li><strong>Data Retention.</strong> We retain contract information for three years. You may request deletion by contacting us.</li>
-<li><strong>General Terms.</strong> Governed by Delaware law. We may update these Terms with 30 days notice. Continued use constitutes acceptance.</li>
-</ol>
-<p style="margin-top:0.75rem;">Questions: <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
-</div>
-<div class="modal-footer">
-<button class="btn btn-primary" onclick="closeTermsModal()" style="width:auto;">Close</button>
-</div>
-</div>
-</div>
-
-<!-- Privacy Policy Modal -->
-<div class="modal-overlay" id="modal-privacy">
-<div class="modal" style="max-width:700px;">
-<div class="modal-header">
-<h3>Privacy Policy</h3>
-<button class="modal-close" onclick="closePrivacyModal()">×</button>
-</div>
-<div class="modal-body">
-<p style="color:var(--light-text);font-size:0.82rem;margin-bottom:1.25rem;"><em>Effective Date: February 28, 2026</em></p>
-<h4>1. Who We Are</h4>
-<p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit dedicated to improving transparency, accountability, and fiduciary standards in employer-sponsored health plans. This Privacy Policy explains how we collect, use, and protect your information when you use our contract analysis service.</p>
-<h4>2. Information We Collect</h4>
-<p>When you submit a contract for analysis, we collect: contact information (email, company name), contract details (PBM name), uploaded documents (PDF), and for Premium, payment processed securely through Stripe. We do not store your credit card details.</p>
-<h4>3. How We Use Engagement Details</h4>
-<p>Solely to generate your analysis report, deliver it to your email, respond to questions, and improve our scoring methodology using anonymized aggregated data.</p>
-<h4>4. Who Has Access to Your Contract</h4>
-<p>Access is strictly limited to Nautilus analysts and secure AI systems used in the analysis process. We do not sell, share, or disclose your contract to third parties, PBMs, competitors, or any external organizations.</p>
-<h4>5. Data Security</h4>
-<p>Encrypted transmission of all data, access controls limiting who can view contracts, and secure cloud storage with encryption at rest.</p>
-<h4>6. Data Retention</h4>
-<p>Contracts and analysis are retained for 12 months to support follow-up questions. After this period, contracts are securely deleted unless you request otherwise.</p>
-<h4>7. Your Rights</h4>
-<p>You may request a copy of your data, request deletion, or ask questions. Contact <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span>.</p>
-<h4>8. Changes to This Policy</h4>
-<p>Material changes will be communicated via email to active users. The effective date indicates when it was last revised.</p>
-<h4>9. Contact Us</h4>
-<p>Nautilus Health Institute — <span class="copy-email" onclick="openContactModal()" title="Get in touch">info@nautilushealth.org</span></p>
-</div>
-<div class="modal-footer">
-<button class="btn btn-primary" onclick="closePrivacyModal()" style="width:auto;">Close</button>
-</div>
-</div>
-</div>
-
 <!-- Contact Modal -->
 <div class="modal-overlay" id="modal-contact">
 <div class="modal" style="max-width:480px;">
