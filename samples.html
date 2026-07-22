@@ -20,8 +20,9 @@
     --teal-deep: #236f7c;
     --gold: #C5A572;
     --gold-deep: #a88752;
-    --red: #B73E3E;
-    --green: #4A7C3A;
+    --red: #B84A2C;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
     --cream: #F5F0E6;
     --cream-light: #FAF6EE;
     --paper: #FFFCF6;
@@ -839,6 +840,27 @@
     border-top: 1px solid var(--border);
   }
 
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary { background: var(--navy); color: var(--paper); }
+  .btn-primary:hover { background: var(--navy-deep); transform: translateY(-1px); }
+
+  .btn-secondary { background: var(--paper); color: var(--navy); border-color: var(--border-strong); }
+  .btn-secondary:hover { background: var(--cream-light); transform: translateY(-1px); }
+
   .modal-footer .btn {
     padding: 11px 22px;
     font-size: 14px;
@@ -1242,6 +1264,8 @@
           <li><a href="/intake/">Analyze your contract</a></li>
           <li><a href="/samples.html">Sample reports</a></li>
           <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+          <li><a href="https://legal.contractxray.com/governance-charter.pdf" target="_blank" rel="noopener">Governance Charter (PDF)</a></li>
+          <li><a href="https://legal.contractxray.com/participation-agreement.pdf" target="_blank" rel="noopener">Participation Agreement (PDF)</a></li>
         </ul>
       </div>
 
@@ -1270,6 +1294,7 @@
       <ul class="footer-legal">
         <li><a href="/methodology.html">Methodology</a></li>
         <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/faq.html">FAQ</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
       </ul>
