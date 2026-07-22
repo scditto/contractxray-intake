@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service | Contract X-Ray | Nautilus Health Institute</title>
-<meta name="description" content="Terms of Service governing the use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization.">
+<meta name="description" content="Terms of Service governing use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit. Version 2.0.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,9 @@
     --cream: #F5F0E6;
     --cream-light: #FAF6EE;
     --paper: #FFFCF6;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
+    --red: #B84A2C;
     --ink: #1A1F2E;
     --ink-soft: #4A4F5C;
     --ink-muted: #7A7F8C;
@@ -109,9 +112,7 @@
   }
 
   /* Document body */
-  .document {
-    padding: 32px 0 80px;
-  }
+  .document { padding: 32px 0 80px; }
 
   .doc-intro {
     font-size: 17px;
@@ -124,12 +125,9 @@
   .doc-intro p { margin: 0 0 18px; }
   .doc-intro p:last-child { margin-bottom: 0; }
   .doc-intro strong { color: var(--navy); font-weight: 600; }
+  .doc-intro em { font-style: italic; color: var(--ink-soft); }
 
-  .doc-section {
-    margin: 0 0 36px;
-    max-width: 720px;
-  }
-
+  .doc-section { margin: 0 0 36px; max-width: 720px; }
   .doc-section:last-child { margin-bottom: 0; }
 
   .doc-section h2 {
@@ -143,6 +141,14 @@
     border-bottom: 1px solid var(--border);
   }
 
+  .doc-section h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--navy);
+    margin: 20px 0 8px;
+  }
+
   .doc-section p {
     font-size: 16px;
     line-height: 1.7;
@@ -152,6 +158,11 @@
 
   .doc-section p:last-child { margin-bottom: 0; }
 
+  .doc-section ul { margin: 0 0 14px; padding-left: 22px; }
+  .doc-section li { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 8px; }
+  .doc-section li:last-child { margin-bottom: 0; }
+  .doc-section li strong { color: var(--navy); font-weight: 600; }
+
   .doc-section a {
     color: var(--teal-deep);
     font-weight: 500;
@@ -159,8 +170,43 @@
   }
 
   .doc-section a:hover { border-bottom-color: var(--teal-deep); }
-
   .doc-section strong { color: var(--navy); font-weight: 600; }
+
+  /* Intake acceptance callout */
+  .intake-callout {
+    max-width: 720px;
+    margin: 40px 0 0;
+    padding: 24px 28px;
+    background: var(--cream-light);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+  }
+  .intake-callout p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 12px; }
+  .intake-callout .checkbox-line {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* Version footer */
+  .version-footer {
+    margin: 44px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .version-cell { display: flex; flex-direction: column; gap: 4px; }
+  .version-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .version-value { font-size: 14px; font-weight: 600; color: var(--navy); }
 
   /* Footer */
   .site-footer {
@@ -215,8 +261,7 @@
     font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
   }
 
-  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex;
-    flex-wrap: wrap; gap: 28px; }
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 28px; }
   .footer-legal a { font-size: 13px; color: var(--ink-soft); }
   .footer-legal a:hover { color: var(--navy); }
   .footer-legal a.current { color: var(--navy); font-weight: 600; }
@@ -235,228 +280,99 @@
     .main-nav { display: none; }
     .intro-headline { font-size: clamp(28px, 7vw, 38px); }
     .doc-section h2 { font-size: 19px; }
+    .version-footer { grid-template-columns: 1fr 1fr; gap: 18px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .footer-legal { flex-wrap: wrap; gap: 14px; }
   }
 
-  /* ───── Brand link split ───── */
-  .brand-link-org,
-  .brand-link-product {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--navy);
-    transition: opacity 0.2s ease;
+  /* Brand link split */
+  .brand-link-org, .brand-link-product {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--navy); transition: opacity 0.2s ease;
   }
+  .brand-link-org:hover, .brand-link-product:hover { opacity: 0.75; }
 
-  .brand-link-org:hover,
-  .brand-link-product:hover {
-    opacity: 0.75;
-  }
-
-  /* ───── Contact modal ───── */
+  /* Contact modal */
   .contact-link {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-align: left;
+    background: none; border: none; padding: 0; margin: 0;
+    font: inherit; color: inherit; cursor: pointer; text-align: left;
   }
-
   .contact-link:hover { color: var(--navy); }
 
   .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(18, 40, 69, 0.55);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-y: auto;
+    display: none; position: fixed; inset: 0;
+    background: rgba(18, 40, 69, 0.55); z-index: 100;
+    align-items: center; justify-content: center; padding: 24px; overflow-y: auto;
   }
-
-  .modal-overlay.active {
-    display: flex;
-  }
+  .modal-overlay.active { display: flex; }
 
   .modal {
-    background: var(--paper);
-    border-radius: 6px;
-    max-width: 520px;
-    width: 100%;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    box-shadow:
-      0 1px 4px rgba(27, 54, 93, 0.10),
-      0 16px 48px rgba(27, 54, 93, 0.20);
+    background: var(--paper); border-radius: 6px;
+    max-width: 520px; width: 100%; max-height: calc(100vh - 48px); overflow-y: auto;
+    box-shadow: 0 1px 4px rgba(27, 54, 93, 0.10), 0 16px 48px rgba(27, 54, 93, 0.20);
     border: 1px solid var(--border);
   }
 
   .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 28px 18px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 28px 18px; border-bottom: 1px solid var(--border);
   }
-
   .modal-header h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--navy);
-    margin: 0;
+    font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2;
+    color: var(--navy); margin: 0;
   }
-
   .modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--ink-muted);
-    cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease;
+    background: none; border: none; font-size: 28px; line-height: 1;
+    color: var(--ink-muted); cursor: pointer; padding: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center; transition: color 0.15s ease;
   }
-
   .modal-close:hover { color: var(--navy); }
 
-  .modal-body {
-    padding: 24px 28px;
-  }
+  .modal-body { padding: 24px 28px; }
+  .modal-body p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 18px; }
 
-  .modal-body p {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
-  }
-
-  .modal-field {
-    margin-bottom: 16px;
-  }
-
+  .modal-field { margin-bottom: 16px; }
   .modal-field:last-child { margin-bottom: 0; }
-
-  .modal-field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 6px;
+  .modal-field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .modal-field .opt { font-weight: 400; color: var(--ink-muted); }
+  .modal-field .req { color: var(--teal-deep); margin-left: 2px; }
+  .modal-field input, .modal-field textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 4px;
+    font-family: var(--font-body); font-size: 14px; color: var(--ink); background: var(--paper);
+    transition: border-color 0.15s ease; box-sizing: border-box;
   }
-
-  .modal-field .opt {
-    font-weight: 400;
-    color: var(--ink-muted);
-  }
-
-  .modal-field .req {
-    color: var(--teal-deep);
-    margin-left: 2px;
-  }
-
-  .modal-field input,
-  .modal-field textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--paper);
-    transition: border-color 0.15s ease;
-    box-sizing: border-box;
-  }
-
-  .modal-field textarea {
-    resize: vertical;
-    min-height: 96px;
-  }
-
-  .modal-field input:focus,
-  .modal-field textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-  }
+  .modal-field textarea { resize: vertical; min-height: 96px; }
+  .modal-field input:focus, .modal-field textarea:focus { outline: none; border-color: var(--teal); }
 
   .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 16px 28px 22px;
-    border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end; gap: 12px;
+    padding: 16px 28px 22px; border-top: 1px solid var(--border);
   }
+  .modal-footer .btn { padding: 11px 22px; font-size: 14px; }
+  .btn { border-radius: 4px; font-family: var(--font-body); font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+  .btn-secondary { background: none; border-color: var(--border-strong); color: var(--ink-soft); }
+  .btn-secondary:hover { color: var(--navy); border-color: var(--navy); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-deep); }
 
-  .modal-footer .btn {
-    padding: 11px 22px;
-    font-size: 14px;
-  }
-
-  .modal-thanks {
-    text-align: center;
-    padding: 20px 0 10px;
-  }
-
+  .modal-thanks { text-align: center; padding: 20px 0 10px; }
   .modal-thanks-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(45, 122, 79, 0.12);
-    border: 1px solid var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12); border: 1px solid var(--green);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
   }
+  .modal-thanks h4 { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--navy); margin: 0 0 6px; }
+  .modal-thanks p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-  .modal-thanks h4 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--navy);
-    margin: 0 0 6px;
-  }
-
-  .modal-thanks p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-  body.modal-open {
-    overflow: hidden;
-  }
-
+  body.modal-open { overflow: hidden; }
 
   .inline-contact {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: var(--teal-deep);
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
-    transition: border-color 0.2s ease;
+    background: none; border: none; padding: 0; margin: 0; font: inherit;
+    color: var(--teal-deep); font-weight: 500; cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4); transition: border-color 0.2s ease;
   }
-
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
-
 </style>
 </head>
 <body>
@@ -492,7 +408,7 @@
       </p>
 
       <h1 class="intro-headline">Terms of Service</h1>
-      <p class="effective-date">Effective February 28, 2026</p>
+      <p class="effective-date">Version 2.0 &middot; Effective July 28, 2026</p>
     </div>
   </section>
 
@@ -500,58 +416,141 @@
     <div class="container-narrow">
 
       <div class="doc-intro">
-        <p>These Terms of Service govern your use of the Contract X-Ray analysis service provided by Nautilus Health Institute, a 501(c)(3) nonprofit organization. By uploading a contract or using the service, you agree to these Terms.</p>
-        <p>Nautilus exists to improve healthcare industry transparency and fiduciary standards through education and analysis of pharmacy benefit management (PBM) contracts.</p>
+        <p><em>By submitting a contract or checking the acceptance box on the Contract X-Ray intake form, you agree to these Terms. If you are submitting on behalf of an employer client, your acceptance covers both your obligations and your representation that you have the authority to submit on the employer's behalf.</em></p>
       </div>
 
       <div class="doc-section">
-        <h2>1. Service description</h2>
-        <p>Contract X-Ray reviews PBM contracts against fiduciary-aligned standards and provides scores, ratings, and recommendations. The service is offered for educational purposes to support informed decision-making about PBM contracts. The service does not constitute legal, financial, or professional advice.</p>
+        <h2>1. About Contract X-Ray</h2>
+        <p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit organization. Our mission is to advance transparency and fiduciary accountability for employer plan sponsors by providing independent, standards-based analysis of benefits contracts.</p>
+        <p>Contract X-Ray evaluates benefits contracts against Fiduciary-Aligned Contract Standards and delivers scored analysis to help employer plan sponsors understand their contractual protections, identify gaps, and support renegotiation or procurement decisions. The service applies to pharmacy benefit manager (PBM) contracts and will extend to other benefits contract types as the platform grows.</p>
+        <p>Employer-initiated submissions are processed under Track B of the Contract X-Ray evaluation model, described in the <a href="https://legal.contractxray.com/governance-charter.pdf">Contract X-Ray Governance Charter</a>. These Terms govern Track B submissions. They do not govern PBM voluntary participation in Track A, which the <a href="https://legal.contractxray.com/participation-agreement.pdf">PBM Participation Agreement</a> addresses.</p>
       </div>
 
       <div class="doc-section">
-        <h2>2. Information you share</h2>
-        <p>When you upload a PBM contract for analysis, you are sharing contract terms, provisions, and pricing information with Nautilus. You represent that you have the legal right to share this information with us for analysis.</p>
+        <h2>2. Who these Terms apply to</h2>
+        <p>These Terms apply to anyone who submits a benefits contract for analysis or uses Contract X-Ray services. Two scenarios are common. Both are covered here.</p>
+        <h3>Employer Direct</h3>
+        <p>You are the employer plan sponsor or an authorized representative of the organization whose contract is being submitted. You have direct access to the contract through your own records or procurement process. You are submitting for your own benefit to evaluate, renegotiate, or benchmark your current PBM arrangement. By submitting, you represent you have the legal right to share the contract for this purpose.</p>
+        <h3>Advisor or Consultant</h3>
+        <p>You are a benefits advisor, benefits consultant, or other representative submitting on behalf of an employer plan sponsor client. You have obtained the contract through your client relationship, a FOIA or public records request, or other authorized channel. By submitting, you represent you have your employer client's authorization to submit this contract for analysis on their behalf. You further represent that the submission does not violate any confidentiality agreement you have signed with the PBM or any other party. Your use of the analysis after delivery is governed by the <a href="/acceptable-use.html">Nautilus Advisor Acceptable Use Guidelines</a>. Accepting these Terms constitutes your acknowledgment of those guidelines.</p>
+        <p>If you are unsure which scenario applies to you, or if your situation does not fit either description, <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Terms of Service question')">contact Nautilus</button> before submitting.</p>
       </div>
 
       <div class="doc-section">
-        <h2>3. How we use contract information</h2>
-        <p>We use your contract solely to conduct the analysis and provide reports to you, develop industry educational materials using aggregate anonymized data that does not identify you or reveal your specific terms, and support our nonprofit educational mission.</p>
+        <h2>3. What you are sharing</h2>
+        <p>When you submit a contract, you provide your contract documents, your contact information, and, for Premium tier submissions, payment details processed by Stripe. The <a href="/privacy.html">Contract X-Ray Privacy Policy</a> describes exactly what we collect, how we use it, who processes it, and how we protect it. The Privacy Policy is incorporated into these Terms by reference.</p>
+        <p>You represent that the submitted contract is the actual agreement as executed or offered, and that you have not altered it in a way that would misrepresent its terms for scoring purposes.</p>
       </div>
 
       <div class="doc-section">
-        <h2>4. Confidentiality</h2>
-        <p>We will maintain your contract in confidence using reasonable care and will not disclose it to third parties without your consent.</p>
+        <h2>4. Your responsibilities</h2>
+        <h3>Authority to submit</h3>
+        <p>You confirm you have the legal authority to share this contract with Nautilus for analysis. One of the following is true:</p>
+        <ul>
+          <li>You are the employer plan sponsor or an authorized officer of the sponsoring organization.</li>
+          <li>You are an advisor or representative who has received explicit authorization from the employer plan sponsor to submit this contract on their behalf.</li>
+          <li>The contract was obtained through a FOIA or public records request, and its status as a public record gives you the right to share it for analysis.</li>
+        </ul>
+        <h3>Confidentiality obligations you may have</h3>
+        <p>Many PBM contracts contain confidentiality clauses that restrict sharing contract terms with third parties. Before submitting, confirm your submission is permitted under any confidentiality provisions that bind you. Nautilus treats all submitted contract materials as confidential and will not disclose them to PBMs or any other third party, but that does not affect your own obligations under any agreement you have signed.</p>
+        <p>If you are an employer who believes your PBM contract prohibits this submission, we recommend consulting legal counsel before proceeding. If you are an advisor, confirm with your client that submission is authorized and that any confidentiality obligations you signed with the PBM permit sharing with a nonprofit analysis service.</p>
+        <h3>Accurate representation</h3>
+        <p>Submit the complete contract. Do not omit schedules, exhibits, or rate sheets that are part of the agreement. Incomplete submissions produce incomplete scores. If certain documents are not available, Nautilus applies the missing document scoring rules described in the methodology.</p>
       </div>
 
       <div class="doc-section">
-        <h2>5. What we may publish</h2>
-        <p>We may publish aggregate benchmarks and educational content derived from contract analysis, provided such publications do not identify you or reveal your specific contract terms.</p>
+        <h2>5. How Nautilus uses your contract</h2>
+        <h3>Your contract stays confidential</h3>
+        <p>Nautilus treats all submitted contract materials as confidential. The underlying contract, its pricing terms, its provisions, and any commercially sensitive language will not be shared with the PBM, with competitors, with advisors outside your engagement, or with any other third party. This applies whether the employer submitted the contract directly or an advisor submitted it on the employer's behalf.</p>
+        <h3>License and purpose</h3>
+        <p>You grant Nautilus a limited license to use your submitted contract solely to conduct the Contract X-Ray analysis, deliver the resulting reports to you, and maintain the internal scoring records, audit trail, and human calibration files that support the methodology, and for no other purpose. Nautilus does not use your submission to automatically train a model. The Privacy Policy governs the handling, storage, and retention of your materials.</p>
+        <h3>Scores and derived data</h3>
+        <p>Scores, tier designations, and analytical outputs derived from contract evaluations are the work product of Nautilus's independent analysis. They do not contain or reveal your contract's specific terms, pricing, or commercially sensitive provisions.</p>
+        <p>Nautilus may incorporate scores and derived data, without identifying you or your confidential information, into Market Analytics and Market Reports. Market Analytics are aggregate statistics computed from the evaluated contract population. Market Reports are published outputs built from those statistics, such as the CAA 2026 Readiness Report. Neither contains your contract language, pricing terms, or any information that identifies you or your organization. Coalition and association partners who license Market Analytics and Market Reports from Nautilus receive the same: statistics and published outputs, never underlying confidential information.</p>
       </div>
 
       <div class="doc-section">
-        <h2>6. Your responsibilities</h2>
-        <p>Upload only contracts you have legal authority to share. Our analysis is for educational purposes and does not constitute legal, financial, or professional advice. Use the report in consultation with your own legal counsel and fiduciary process.</p>
+        <h2>6. Your reports and how you may use them</h2>
+        <p>The reports Nautilus delivers from your submission, including the Contract Scorecard, Negotiation Report, Remediation Report, Comparison Report, Executive Brief, and Data Sovereignty Score, are your property. As the employer plan sponsor, you own the reports produced from your contract, including when an advisor submits on your behalf.</p>
+        <p>You may use your reports for any business purpose, including evaluating your contract, negotiating with your PBM, and informing procurement decisions. You may share them with your advisors, your counsel, and your internal stakeholders.</p>
+        <p><strong>Public republication of a score as a Nautilus rating requires written consent.</strong> You may not publicly present or publish a Contract X-Ray score as a Nautilus rating, endorsement, or certification of your PBM without Nautilus's written consent. The consent path follows the same process as public disclosure under the CAA 2026 Readiness Report. This protects the integrity of the score and the neutrality of the methodology. It does not restrict your private use of the report in negotiation or procurement.</p>
+        <p><strong>Accuracy and integrity.</strong> Each report reflects the contract as submitted on the report date. You may not alter a report, misrepresent its findings, or present a modified or outdated report as a current Nautilus analysis.</p>
+        <p><strong>Advisor use.</strong> If you are an advisor, your use of a client's report, including any use in marketing or client outreach, is governed by the <a href="/acceptable-use.html">Nautilus Advisor Acceptable Use Guidelines</a> and requires the client's consent.</p>
       </div>
 
       <div class="doc-section">
-        <h2>7. Disclaimers and limitations</h2>
-        <p>The service is provided "as is." Our liability is limited to $100 for free services or to fees paid for paid services. We are not liable for indirect or consequential damages.</p>
+        <h2>7. What the analysis is and is not</h2>
+        <p>Contract X-Ray analysis is for informational and educational purposes only. It does not constitute legal advice, financial advice, compliance guidance under applicable law and CAA 2026, or a professional recommendation. A low score does not mean your PBM is acting in bad faith. A high score does not mean your plan is legally protected. Before making significant plan decisions based on a Contract X-Ray analysis, consult qualified benefits counsel.</p>
+        <p>Contract X-Ray scores reflect contract language at the time of analysis. A score tells you what your contract explicitly commits your PBM to do. It does not tell you how the PBM performs operationally, what the PBM's service quality is, or whether the PBM is a good fit for your plan.</p>
+        <p>A Contract X-Ray score is not:</p>
+        <ul>
+          <li>A recommendation to hire, retain, or terminate any PBM.</li>
+          <li>A determination that any provision is legal or illegal under applicable law.</li>
+          <li>A representation that your plan is or is not in compliance with its fiduciary obligations.</li>
+          <li>Legal advice of any kind. Nautilus is not a law firm, and the analysis is not attorney-client communication.</li>
+        </ul>
+        <p>A Contract X-Ray score is:</p>
+        <ul>
+          <li>An independent analytical opinion based on published methodology applied to your submitted materials.</li>
+          <li>A point-in-time evaluation of the specific documents submitted on the analysis date.</li>
+          <li>A starting point for informed dialogue with your PBM, benefits advisor, and legal counsel.</li>
+        </ul>
       </div>
 
       <div class="doc-section">
-        <h2>8. Data retention</h2>
-        <p>We retain contract information for 12 months to support follow-up questions and version comparisons. After this period, contracts are securely deleted unless you request a different retention term. You may request deletion at any time by contacting us.</p>
+        <h2>8. Data handling and retention</h2>
+        <p>Nautilus's data practices, including what we collect, how we use it, our sub-processors, our security measures, and how long we keep your data, are described in the <a href="/privacy.html">Contract X-Ray Privacy Policy</a>, incorporated into these Terms by reference. In summary, we do not run a fixed deletion clock on your submitted materials, and we delete them within 30 days of your request, except where retention is required by applicable law or active legal proceedings. To request deletion, <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Deletion request')">contact Nautilus</button>.</p>
       </div>
 
       <div class="doc-section">
-        <h2>9. General terms</h2>
-        <p>These Terms are governed by Delaware law. We may update these Terms with 30 days notice. Continued use of the service constitutes acceptance of any updated Terms.</p>
+        <h2>9. Disclaimer and limitation of liability</h2>
+        <p>Contract X-Ray is provided on an as-is basis. Nautilus makes no warranty, express or implied, regarding the completeness, accuracy, or fitness for any particular purpose of any score, report, or analysis. The evaluation reflects Nautilus's independent analytical opinion as of the analysis date.</p>
+        <p>Contract X-Ray is provided on a reasonable-efforts basis by a nonprofit organization. Nautilus does not warrant that the service will be available without interruption, error, or delay. We will make reasonable efforts to maintain availability and communicate planned downtime, but we make no uptime guarantees.</p>
+        <p>Nautilus's total aggregate liability for any and all claims under these Terms shall not exceed one hundred dollars ($100). Nautilus is not liable for any indirect, incidental, consequential, or punitive damages, including lost profits, loss of business opportunity, or reputational harm, even if advised of the possibility of such damages.</p>
+        <p>This limitation reflects the nonprofit, public benefit nature of the service. Contract X-Ray is provided in furtherance of Nautilus's educational mission to advance fiduciary accountability for employer plan sponsors. It is not a commercial service.</p>
       </div>
 
       <div class="doc-section">
-        <h2>10. Contact</h2>
-        <p>Questions about these Terms: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Terms of Service question')">info@nautilushealth.org</button></p>
+        <h2>10. Updates to these Terms</h2>
+        <p>Nautilus may update these Terms from time to time to reflect changes in the service, the law, or our governance practices. When we make material changes, we will post the updated Terms at contractxray.com and www.nautilushealth.org and update the effective date. Continued use of Contract X-Ray after the updated Terms take effect constitutes acceptance of the changes.</p>
+        <p>The <a href="https://legal.contractxray.com/governance-charter.pdf">Contract X-Ray Governance Charter</a>, which describes the evaluation model, standards governance, and dispute process, is updated separately on the schedule described in the Charter. Material Charter changes that affect employer rights will be communicated directly to active submission contacts.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>11. General terms</h2>
+        <ul>
+          <li><strong>Governing law:</strong> these Terms are governed by the laws of the State of Washington without regard to conflict of law principles.</li>
+          <li><strong>Entire agreement:</strong> these Terms, together with the <a href="https://legal.contractxray.com/governance-charter.pdf">Contract X-Ray Governance Charter</a> and the <a href="/privacy.html">Contract X-Ray Privacy Policy</a>, each incorporated by reference, constitute the complete agreement between you and Nautilus regarding your use of Contract X-Ray for Track B analysis.</li>
+          <li><strong>Severability:</strong> if any provision of these Terms is found unenforceable, the remaining provisions continue in full force.</li>
+          <li><strong>Dispute resolution:</strong> if a dispute arises out of or relating to these Terms or the Contract X-Ray service, the parties will first attempt to resolve it informally by <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Terms dispute')">contacting Nautilus</button>. If the dispute is not resolved within 30 days, either party may submit it to non-binding mediation before a single mediator under JAMS mediation rules, with costs shared equally. Nothing in this section prevents either party from seeking injunctive or other equitable relief in a court of competent jurisdiction where necessary to prevent irreparable harm.</li>
+          <li><strong>No waiver:</strong> Nautilus's failure to enforce any provision of these Terms does not waive its right to do so in the future.</li>
+          <li><strong>Electronic acceptance:</strong> checking the acceptance box on the Contract X-Ray intake form constitutes a legally binding acceptance of these Terms to the same extent as a written signature.</li>
+          <li><strong>Contact:</strong> questions about these Terms: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Terms of Service question')">info@nautilushealth.org</button></li>
+        </ul>
+      </div>
+
+      <div class="intake-callout">
+        <p>The following is the acceptance text displayed on the Contract X-Ray intake form. Checking this box constitutes agreement to these Terms:</p>
+        <p class="checkbox-line">&#9744; I agree to the Terms of Service and confirm I have legal authority to submit this contract for analysis.</p>
+      </div>
+
+      <div class="version-footer">
+        <div class="version-cell">
+          <span class="version-label">Version</span>
+          <span class="version-value">2.0</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Effective</span>
+          <span class="version-value">July 28, 2026</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Supersedes</span>
+          <span class="version-value">Version 1.0</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Maintained by</span>
+          <span class="version-value">Nautilus Health Institute</span>
+        </div>
       </div>
 
     </div>
@@ -605,14 +604,14 @@
       <ul class="footer-legal">
         <li><a href="/methodology.html">Methodology</a></li>
         <li><a href="/acceptable-use.html">Acceptable Use</a></li>
-        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/terms.html" class="current">Terms of Service</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<!-- ───── Contact Modal ───── -->
+<!-- Contact Modal -->
 <div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
   <div class="modal">
     <div class="modal-header">
@@ -681,6 +680,7 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+
   function openContactModalWithTopic(topic) {
     openContactModal();
     setTimeout(function() {
@@ -692,7 +692,6 @@
       }
     }, 100);
   }
-
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();
