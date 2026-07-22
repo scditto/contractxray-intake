@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Contract X-Ray | Nautilus Health Institute</title>
+<meta name="description" content="Plain-language answers for plan sponsors about Contract X-Ray: confidentiality, AI training, cost, what you get, and how the score works.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #1B365D;
+    --navy-deep: #122845;
+    --teal: #2D8B9A;
+    --teal-deep: #236f7c;
+    --gold: #C5A572;
+    --cream: #F5F0E6;
+    --cream-light: #FAF6EE;
+    --paper: #FFFCF6;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
+    --red: #B84A2C;
+    --ink: #1A1F2E;
+    --ink-soft: #4A4F5C;
+    --ink-muted: #7A7F8C;
+    --border: rgba(27, 54, 93, 0.14);
+    --border-strong: rgba(27, 54, 93, 0.22);
+
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+    --container-max: 1320px;
+    --container-narrow: 800px;
+    --side-pad: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 80% 0%, rgba(45, 139, 154, 0.06), transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(197, 165, 114, 0.05), transparent 50%);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--side-pad); }
+  .container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 var(--side-pad); }
+
+  .site-header {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.6);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+  .brand { display: flex; align-items: center; gap: 14px; color: var(--navy); }
+  .brand-logo { width: 32px; height: 32px; display: block; }
+  .brand-name { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--navy); }
+  .brand-divider { width: 1px; height: 22px; background: var(--border-strong); }
+  .brand-product { font-weight: 500; font-size: 15px; color: var(--navy); letter-spacing: 0.02em; }
+  .brand-product em { font-family: var(--font-display); font-style: italic; font-weight: 500; color: var(--teal); margin-left: 2px; }
+
+  .main-nav { display: flex; gap: 38px; }
+  .main-nav a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.2s ease; }
+  .main-nav a:hover { color: var(--navy); }
+
+  .intro { padding: 72px 0 40px; text-align: center; }
+
+  .breadcrumb {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted); margin: 0 0 28px;
+  }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb .divider { opacity: 0.4; }
+
+  .intro-headline {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin: 0 auto 16px;
+    max-width: 720px;
+  }
+
+  .intro-sub {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* Document body */
+  .document { padding: 32px 0 80px; }
+
+  /* Subordination note */
+  .faq-note {
+    max-width: 720px;
+    margin: 0 0 44px;
+    padding: 18px 24px;
+    background: var(--cream-light);
+    border: 1px solid var(--border-strong);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .faq-note a {
+    color: var(--teal-deep);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+  }
+  .faq-note a:hover { border-bottom-color: var(--teal-deep); }
+
+  /* FAQ groups */
+  .faq-group { max-width: 720px; margin: 0 0 40px; }
+  .faq-group:last-of-type { margin-bottom: 0; }
+
+  .faq-group-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--navy);
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-item { margin: 0 0 22px; }
+  .faq-item:last-child { margin-bottom: 0; }
+
+  .faq-q {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--navy);
+    margin: 0 0 8px;
+  }
+
+  .faq-a {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .faq-a strong { color: var(--navy); font-weight: 600; }
+
+  .inline-contact {
+    background: none; border: none; padding: 0; margin: 0; font: inherit;
+    color: var(--teal-deep); font-weight: 500; cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4); transition: border-color 0.2s ease;
+  }
+  .inline-contact:hover { border-bottom-color: var(--teal-deep); }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: rgba(255, 252, 246, 0.5);
+    padding: 72px 0 32px;
+  }
+
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 56px; padding-bottom: 56px; }
+
+  .footer-col h4 {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 22px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .footer-col li a { font-size: 15px; color: var(--ink-soft); transition: color 0.2s ease; }
+  .footer-col li a:hover { color: var(--navy); }
+
+  .footer-brand-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .footer-brand-row .brand-logo { width: 28px; height: 28px; }
+  .footer-brand-row span { font-weight: 600; font-size: 16px; color: var(--navy); }
+
+  .footer-brand p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    max-width: 360px;
+  }
+
+  .footer-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--navy);
+  }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 28px; border-top: 1px solid var(--border);
+    flex-wrap: wrap; gap: 16px;
+  }
+
+  .footer-bottom p {
+    margin: 0; font-family: var(--font-mono);
+    font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
+  }
+
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 28px; }
+  .footer-legal a { font-size: 13px; color: var(--ink-soft); }
+  .footer-legal a:hover { color: var(--navy); }
+  .footer-legal a.current { color: var(--navy); font-weight: 600; }
+
+  @media (max-width: 1100px) { :root { --side-pad: 40px; } .main-nav { gap: 24px; } }
+  @media (max-width: 900px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .intro { padding: 56px 0 32px; }
+    .document { padding: 24px 0 64px; }
+  }
+
+  @media (max-width: 640px) {
+    :root { --side-pad: 24px; }
+    .nav-bar { gap: 16px; }
+    .main-nav { display: none; }
+    .intro-headline { font-size: clamp(28px, 7vw, 38px); }
+    .faq-group-title { font-size: 19px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .footer-legal { flex-wrap: wrap; gap: 14px; }
+  }
+
+  /* Brand link split */
+  .brand-link-org, .brand-link-product {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--navy); transition: opacity 0.2s ease;
+  }
+  .brand-link-org:hover, .brand-link-product:hover { opacity: 0.75; }
+
+  /* Contact modal */
+  .contact-link {
+    background: none; border: none; padding: 0; margin: 0;
+    font: inherit; color: inherit; cursor: pointer; text-align: left;
+  }
+  .contact-link:hover { color: var(--navy); }
+
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(18, 40, 69, 0.55); z-index: 100;
+    align-items: center; justify-content: center; padding: 24px; overflow-y: auto;
+  }
+  .modal-overlay.active { display: flex; }
+
+  .modal {
+    background: var(--paper); border-radius: 6px;
+    max-width: 520px; width: 100%; max-height: calc(100vh - 48px); overflow-y: auto;
+    box-shadow: 0 1px 4px rgba(27, 54, 93, 0.10), 0 16px 48px rgba(27, 54, 93, 0.20);
+    border: 1px solid var(--border);
+  }
+
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 28px 18px; border-bottom: 1px solid var(--border);
+  }
+  .modal-header h3 {
+    font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2;
+    color: var(--navy); margin: 0;
+  }
+  .modal-close {
+    background: none; border: none; font-size: 28px; line-height: 1;
+    color: var(--ink-muted); cursor: pointer; padding: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center; transition: color 0.15s ease;
+  }
+  .modal-close:hover { color: var(--navy); }
+
+  .modal-body { padding: 24px 28px; }
+  .modal-body p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 18px; }
+
+  .modal-field { margin-bottom: 16px; }
+  .modal-field:last-child { margin-bottom: 0; }
+  .modal-field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .modal-field .opt { font-weight: 400; color: var(--ink-muted); }
+  .modal-field .req { color: var(--teal-deep); margin-left: 2px; }
+  .modal-field input, .modal-field textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 4px;
+    font-family: var(--font-body); font-size: 14px; color: var(--ink); background: var(--paper);
+    transition: border-color 0.15s ease; box-sizing: border-box;
+  }
+  .modal-field textarea { resize: vertical; min-height: 96px; }
+  .modal-field input:focus, .modal-field textarea:focus { outline: none; border-color: var(--teal); }
+
+  .modal-footer {
+    display: flex; justify-content: flex-end; gap: 12px;
+    padding: 16px 28px 22px; border-top: 1px solid var(--border);
+  }
+  .modal-footer .btn { padding: 11px 22px; font-size: 14px; }
+  .btn { border-radius: 4px; font-family: var(--font-body); font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+  .btn-secondary { background: none; border-color: var(--border-strong); color: var(--ink-soft); }
+  .btn-secondary:hover { color: var(--navy); border-color: var(--navy); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-deep); }
+
+  .modal-thanks { text-align: center; padding: 20px 0 10px; }
+  .modal-thanks-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12); border: 1px solid var(--green);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
+  }
+  .modal-thanks h4 { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--navy); margin: 0 0 6px; }
+  .modal-thanks p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+  body.modal-open { overflow: hidden; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <div class="brand">
+      <a class="brand-link-org" href="https://www.nautilushealth.org/pbm" target="_blank" rel="noopener">
+        <img src="/Nautilus_Logo.png" alt="Nautilus Health Institute" class="brand-logo">
+        <span class="brand-name">Nautilus</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <a class="brand-link-product" href="/">
+        <span class="brand-product">Contract <em>X-Ray</em></span>
+      </a>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="/plan-sponsors.html">Plan Sponsors</a>
+      <a href="/advisors.html">Advisors</a>
+      <a href="/pbms.html">PBMs</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="container-narrow">
+      <p class="breadcrumb">
+        <a href="/">Contract X-Ray</a>
+        <span class="divider">/</span>
+        <span>FAQ</span>
+      </p>
+
+      <h1 class="intro-headline">Frequently Asked Questions</h1>
+      <p class="intro-sub">Plain-language answers for plan sponsors</p>
+    </div>
+  </section>
+
+  <section class="document">
+    <div class="container-narrow">
+
+      <div class="faq-note">
+        This FAQ is a plain-language summary. The <a href="/terms.html">Terms of Service</a>, <a href="/privacy.html">Privacy Policy</a>, and <a href="https://legal.contractxray.com/governance-charter.pdf">Governance Charter</a> govern.
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">About Contract X-Ray</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">What is Contract X-Ray?</p>
+          <p class="faq-a">Contract X-Ray is an independent, standards-based analysis of your PBM contract. It scores the contract's language against fiduciary-aligned standards, so you can see what your contract actually commits your PBM to do, rather than what marketing claims.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Who is behind it?</p>
+          <p class="faq-a">Contract X-Ray is built by Nautilus Health Institute, a 501(c)(3) nonprofit. Nautilus takes no fees from PBMs and holds no commercial relationships that could influence a score.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Is this a certification, an endorsement, or legal advice?</p>
+          <p class="faq-a">None of those. A Contract X-Ray score is an independent analytical opinion about your contract's language, measured against published standards. It is not a certification, not an endorsement or recommendation of any PBM, and not legal or financial advice. Use it to inform the decisions you make with your advisors and counsel.</p>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">Your contract and your data</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">Do you keep my contract confidential?</p>
+          <p class="faq-a">Yes. We never disclose your specific pricing, rebate structures, or provisions to competitors, to other PBMs, to other clients, or to anyone outside your engagement. No other client or PBM is named in your reports. If your PBM requires an NDA, we can sign one.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Do you use my contract to train an AI model?</p>
+          <p class="faq-a">No. Your score reflects human expert opinion, refined over time through human calibration, not automated training. To produce the analysis, your contract text is sent to Anthropic's API. Under Anthropic's commercial terms, Anthropic does not train on it and retains it only briefly for abuse monitoring before deletion. We never use your contract to score or draft language for any other party.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Can I have my data deleted?</p>
+          <p class="faq-a">Yes. We do not run a fixed deletion clock. We delete your submitted materials within 30 days of your request, except where the law or an active dispute requires us to keep them. Our internal workpapers, which document the basis for each score, are our audit record and are retained.</p>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">What you get</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">What do I get?</p>
+          <p class="faq-a">Two levels. Quick Look is a free first read of your contract's fiduciary alignment. The Full Assessment is the complete analysis and includes four reports: the Contract Scorecard, the Negotiation Report, the Executive Brief, and the Data Sovereignty Score.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">What does it cost?</p>
+          <p class="faq-a">Quick Look is free. The Full Assessment runs on a voluntary contribution model: a $50 floor that covers operating costs, plus a suggested amount that scales to your organization's size. You may contribute any amount at or above the floor. Nautilus is a nonprofit, and contributions support the mission.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Who owns the reports, and can my score be made public?</p>
+          <p class="faq-a">The reports are yours. You own the analysis produced from your contract and may use it for any business purpose, including negotiating with your PBM. Your results stay confidential to your engagement, and no one publishes your score as a Nautilus rating without your written consent.</p>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">The score</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">How is the score calculated?</p>
+          <p class="faq-a">Your contract is scored from 0 to 100, the Fiduciary Alignment Score, across ten provisions grouped into three areas: fiduciary conduct, financial integrity, and oversight and control. The overall result maps to one of five tiers: Excellent, Good, Fair, Concern, or Red Flag. A separate Data Sovereignty Score rates how well your contract protects your access to your own data.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">What if my contract scores poorly?</p>
+          <p class="faq-a">A low score is a starting point, not a verdict. It identifies exactly which provisions fall short and what stronger language looks like, so you can prioritize what to address. Many strong operators simply hold contracts that have not kept pace with their own practices.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Do I have to switch PBMs?</p>
+          <p class="faq-a">No. Contract X-Ray evaluates the contract, not the vendor. A low score points to specific language worth fixing, which you can often address by amending your current agreement rather than changing PBMs.</p>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">CAA 2026</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">What is CAA 2026, and why does it matter?</p>
+          <p class="faq-a">The Consolidated Appropriations Act of 2026 raises what plan sponsors are expected to document about their pharmacy contracts. The plan sponsor, not the PBM, holds the fiduciary duty. Contract X-Ray shows you where your contract stands against applicable law and CAA 2026, so you can address any gaps with your advisors and counsel.</p>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h2 class="faq-group-title">Questions</h2>
+        <div class="faq-item">
+          <p class="faq-a">For anything not covered here, <button type="button" class="inline-contact" onclick="openContactModalWithTopic('FAQ question')">contact Nautilus</button>.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <div class="footer-brand-row">
+          <img src="/Nautilus_Logo.png" alt="" class="brand-logo">
+          <span>Nautilus Health Institute</span>
+        </div>
+        <p>Independent nonprofit advancing fiduciary-aligned standards and tools that empower employers to evaluate, negotiate, and improve PBM contracts.</p>
+        <span class="footer-tag">501(C)(3) NONPROFIT</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/intake/">Analyze your contract</a></li>
+          <li><a href="/samples.html">Sample reports</a></li>
+          <li><a href="/caa-2026.html">CAA 2026 readiness</a></li>
+          <li><a href="https://legal.contractxray.com/governance-charter.pdf" target="_blank" rel="noopener">Governance Charter (PDF)</a></li>
+          <li><a href="https://legal.contractxray.com/participation-agreement.pdf" target="_blank" rel="noopener">Participation Agreement (PDF)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>For</h4>
+        <ul>
+          <li><a href="/plan-sponsors.html">Plan sponsors</a></li>
+          <li><a href="/advisors.html">Advisors</a></li>
+          <li><a href="/pbms.html">PBMs</a></li>
+          <li><a href="/press.html">Researchers &amp; press</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><button type="button" class="contact-link" onclick="openContactModal()">info@nautilushealth.org</button></li>
+          <li><a href="https://calendly.com/steve-dittoandassociates/30-minute-call">Schedule a call</a></li>
+          <li><a href="https://www.nautilushealth.org/">www.nautilushealth.org</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nautilus Health Institute. All rights reserved.</p>
+      <ul class="footer-legal">
+        <li><a href="/methodology.html">Methodology</a></li>
+        <li><a href="/acceptable-use.html">Acceptable Use</a></li>
+        <li><a href="/faq.html" class="current">FAQ</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Contact Modal -->
+<div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-contact-title">Get in touch</h3>
+      <button class="modal-close" onclick="closeContactModal()" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="contact-form-body">
+      <p>Tell us about your organization and what you are trying to accomplish. We will follow up within one business day.</p>
+      <div class="modal-field">
+        <label for="contact-name">Name <span class="req">*</span></label>
+        <input id="contact-name" type="text" placeholder="Your full name">
+      </div>
+      <div class="modal-field">
+        <label for="contact-email">Email <span class="req">*</span></label>
+        <input id="contact-email" type="email" placeholder="you@company.com">
+      </div>
+      <div class="modal-field">
+        <label for="contact-org">Organization <span class="opt">(optional)</span></label>
+        <input id="contact-org" type="text" placeholder="Your company, coalition, or firm">
+      </div>
+      <div class="modal-field">
+        <label for="contact-message">Message <span class="req">*</span></label>
+        <textarea id="contact-message" placeholder="Tell us what you are working on..."></textarea>
+      </div>
+    </div>
+    <div class="modal-body" id="contact-thanks-body" style="display:none;">
+      <div class="modal-thanks">
+        <div class="modal-thanks-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h4>Message received.</h4>
+        <p>We will follow up within one business day.</p>
+      </div>
+    </div>
+    <div class="modal-footer" id="contact-footer">
+      <button class="btn btn-secondary" onclick="closeContactModal()">Cancel</button>
+      <button class="btn btn-primary" id="contact-submit-btn" onclick="submitContact()">Send message</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init('C7xembvd7srWMEvEU');
+    }
+  })();
+
+  function openContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    document.getElementById('contact-form-body').style.display = '';
+    document.getElementById('contact-thanks-body').style.display = 'none';
+    document.getElementById('contact-footer').style.display = '';
+    setTimeout(function() {
+      const nameField = document.getElementById('contact-name');
+      if (nameField) nameField.focus();
+    }, 50);
+  }
+
+  function closeContactModal() {
+    const modal = document.getElementById('modal-contact');
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
+
+  function openContactModalWithTopic(topic) {
+    openContactModal();
+    setTimeout(function() {
+      const msgField = document.getElementById('contact-message');
+      if (msgField) {
+        msgField.value = 'Topic: ' + topic + '\n\n';
+        msgField.focus();
+        msgField.setSelectionRange(msgField.value.length, msgField.value.length);
+      }
+    }, 100);
+  }
+
+  function submitContact() {
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const org = document.getElementById('contact-org').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const btn = document.getElementById('contact-submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    if (typeof emailjs === 'undefined') {
+      alert('Could not load the contact service. Please email info@nautilushealth.org directly.');
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+      return;
+    }
+
+    emailjs.send('service_3z4s8ya', 'template_ywq6kvq', {
+      from_name: name,
+      from_email: email,
+      organization: org || '(not provided)',
+      message: message,
+      source_page: window.location.pathname
+    }).then(function() {
+      document.getElementById('contact-form-body').style.display = 'none';
+      document.getElementById('contact-thanks-body').style.display = '';
+      document.getElementById('contact-footer').style.display = 'none';
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('contact-org').value = '';
+      document.getElementById('contact-message').value = '';
+    }, function(err) {
+      console.error('EmailJS error:', err);
+      alert('Something went wrong sending your message. Please try again or email info@nautilushealth.org directly.');
+    }).finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal-contact');
+    if (e.target === modal) closeContactModal();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal-contact');
+      if (modal.classList.contains('active')) closeContactModal();
+    }
+  });
+</script>
+
+</body>
+</html>
