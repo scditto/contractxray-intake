@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy | Contract X-Ray | Nautilus Health Institute</title>
-<meta name="description" content="How Nautilus Health Institute collects, uses, and protects your information when you use the Contract X-Ray analysis service.">
+<meta name="description" content="How Nautilus Health Institute collects, uses, and protects your information when you use the Contract X-Ray service. Version 2.0.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +22,9 @@
     --cream: #F5F0E6;
     --cream-light: #FAF6EE;
     --paper: #FFFCF6;
+    --green: #2D7A4F;
+    --amber: #D48B3C;
+    --red: #B84A2C;
     --ink: #1A1F2E;
     --ink-soft: #4A4F5C;
     --ink-muted: #7A7F8C;
@@ -109,9 +112,7 @@
   }
 
   /* Document body */
-  .document {
-    padding: 32px 0 80px;
-  }
+  .document { padding: 32px 0 80px; }
 
   .doc-intro {
     font-size: 17px;
@@ -125,11 +126,7 @@
   .doc-intro p:last-child { margin-bottom: 0; }
   .doc-intro strong { color: var(--navy); font-weight: 600; }
 
-  .doc-section {
-    margin: 0 0 36px;
-    max-width: 720px;
-  }
-
+  .doc-section { margin: 0 0 36px; max-width: 720px; }
   .doc-section:last-child { margin-bottom: 0; }
 
   .doc-section h2 {
@@ -143,6 +140,14 @@
     border-bottom: 1px solid var(--border);
   }
 
+  .doc-section h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--navy);
+    margin: 20px 0 8px;
+  }
+
   .doc-section p {
     font-size: 16px;
     line-height: 1.7;
@@ -152,6 +157,11 @@
 
   .doc-section p:last-child { margin-bottom: 0; }
 
+  .doc-section ul { margin: 0 0 14px; padding-left: 22px; }
+  .doc-section li { font-size: 16px; line-height: 1.7; color: var(--ink-soft); margin: 0 0 8px; }
+  .doc-section li:last-child { margin-bottom: 0; }
+  .doc-section li strong { color: var(--navy); font-weight: 600; }
+
   .doc-section a {
     color: var(--teal-deep);
     font-weight: 500;
@@ -159,8 +169,33 @@
   }
 
   .doc-section a:hover { border-bottom-color: var(--teal-deep); }
-
   .doc-section strong { color: var(--navy); font-weight: 600; }
+
+  /* Tables */
+  .doc-table-wrap { max-width: 720px; margin: 0 0 14px; overflow-x: auto; }
+  .doc-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.55; }
+  .doc-table th, .doc-table td { text-align: left; vertical-align: top; padding: 12px 14px; border: 1px solid var(--border); }
+  .doc-table th { font-weight: 600; color: var(--navy); background: var(--cream-light); font-size: 12px; letter-spacing: 0.02em; }
+  .doc-table td { color: var(--ink-soft); }
+  .doc-table td strong { color: var(--navy); font-weight: 600; }
+
+  /* Version footer */
+  .version-footer {
+    margin: 44px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid var(--border);
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .version-cell { display: flex; flex-direction: column; gap: 4px; }
+  .version-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .version-value { font-size: 14px; font-weight: 600; color: var(--navy); }
 
   /* Footer */
   .site-footer {
@@ -215,8 +250,7 @@
     font-size: 11px; color: var(--ink-muted); letter-spacing: 0.02em;
   }
 
-  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex;
-    flex-wrap: wrap; gap: 28px; }
+  .footer-legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 28px; }
   .footer-legal a { font-size: 13px; color: var(--ink-soft); }
   .footer-legal a:hover { color: var(--navy); }
   .footer-legal a.current { color: var(--navy); font-weight: 600; }
@@ -235,228 +269,99 @@
     .main-nav { display: none; }
     .intro-headline { font-size: clamp(28px, 7vw, 38px); }
     .doc-section h2 { font-size: 19px; }
+    .version-footer { grid-template-columns: 1fr 1fr; gap: 18px; }
     .footer-grid { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; align-items: flex-start; }
     .footer-legal { flex-wrap: wrap; gap: 14px; }
   }
 
-  /* ───── Brand link split ───── */
-  .brand-link-org,
-  .brand-link-product {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    color: var(--navy);
-    transition: opacity 0.2s ease;
+  /* Brand link split */
+  .brand-link-org, .brand-link-product {
+    display: inline-flex; align-items: center; gap: 14px;
+    color: var(--navy); transition: opacity 0.2s ease;
   }
+  .brand-link-org:hover, .brand-link-product:hover { opacity: 0.75; }
 
-  .brand-link-org:hover,
-  .brand-link-product:hover {
-    opacity: 0.75;
-  }
-
-  /* ───── Contact modal ───── */
+  /* Contact modal */
   .contact-link {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    text-align: left;
+    background: none; border: none; padding: 0; margin: 0;
+    font: inherit; color: inherit; cursor: pointer; text-align: left;
   }
-
   .contact-link:hover { color: var(--navy); }
 
   .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(18, 40, 69, 0.55);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow-y: auto;
+    display: none; position: fixed; inset: 0;
+    background: rgba(18, 40, 69, 0.55); z-index: 100;
+    align-items: center; justify-content: center; padding: 24px; overflow-y: auto;
   }
-
-  .modal-overlay.active {
-    display: flex;
-  }
+  .modal-overlay.active { display: flex; }
 
   .modal {
-    background: var(--paper);
-    border-radius: 6px;
-    max-width: 520px;
-    width: 100%;
-    max-height: calc(100vh - 48px);
-    overflow-y: auto;
-    box-shadow:
-      0 1px 4px rgba(27, 54, 93, 0.10),
-      0 16px 48px rgba(27, 54, 93, 0.20);
+    background: var(--paper); border-radius: 6px;
+    max-width: 520px; width: 100%; max-height: calc(100vh - 48px); overflow-y: auto;
+    box-shadow: 0 1px 4px rgba(27, 54, 93, 0.10), 0 16px 48px rgba(27, 54, 93, 0.20);
     border: 1px solid var(--border);
   }
 
   .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 28px 18px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 28px 18px; border-bottom: 1px solid var(--border);
   }
-
   .modal-header h3 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 1.2;
-    color: var(--navy);
-    margin: 0;
+    font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2;
+    color: var(--navy); margin: 0;
   }
-
   .modal-close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--ink-muted);
-    cursor: pointer;
-    padding: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.15s ease;
+    background: none; border: none; font-size: 28px; line-height: 1;
+    color: var(--ink-muted); cursor: pointer; padding: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center; transition: color 0.15s ease;
   }
-
   .modal-close:hover { color: var(--navy); }
 
-  .modal-body {
-    padding: 24px 28px;
-  }
+  .modal-body { padding: 24px 28px; }
+  .modal-body p { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 18px; }
 
-  .modal-body p {
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
-  }
-
-  .modal-field {
-    margin-bottom: 16px;
-  }
-
+  .modal-field { margin-bottom: 16px; }
   .modal-field:last-child { margin-bottom: 0; }
-
-  .modal-field label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 6px;
+  .modal-field label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .modal-field .opt { font-weight: 400; color: var(--ink-muted); }
+  .modal-field .req { color: var(--teal-deep); margin-left: 2px; }
+  .modal-field input, .modal-field textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 4px;
+    font-family: var(--font-body); font-size: 14px; color: var(--ink); background: var(--paper);
+    transition: border-color 0.15s ease; box-sizing: border-box;
   }
-
-  .modal-field .opt {
-    font-weight: 400;
-    color: var(--ink-muted);
-  }
-
-  .modal-field .req {
-    color: var(--teal-deep);
-    margin-left: 2px;
-  }
-
-  .modal-field input,
-  .modal-field textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--ink);
-    background: var(--paper);
-    transition: border-color 0.15s ease;
-    box-sizing: border-box;
-  }
-
-  .modal-field textarea {
-    resize: vertical;
-    min-height: 96px;
-  }
-
-  .modal-field input:focus,
-  .modal-field textarea:focus {
-    outline: none;
-    border-color: var(--teal);
-  }
+  .modal-field textarea { resize: vertical; min-height: 96px; }
+  .modal-field input:focus, .modal-field textarea:focus { outline: none; border-color: var(--teal); }
 
   .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    padding: 16px 28px 22px;
-    border-top: 1px solid var(--border);
+    display: flex; justify-content: flex-end; gap: 12px;
+    padding: 16px 28px 22px; border-top: 1px solid var(--border);
   }
+  .modal-footer .btn { padding: 11px 22px; font-size: 14px; }
+  .btn { border-radius: 4px; font-family: var(--font-body); font-weight: 600; cursor: pointer; border: 1px solid transparent; }
+  .btn-secondary { background: none; border-color: var(--border-strong); color: var(--ink-soft); }
+  .btn-secondary:hover { color: var(--navy); border-color: var(--navy); }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-primary:hover { background: var(--teal-deep); }
 
-  .modal-footer .btn {
-    padding: 11px 22px;
-    font-size: 14px;
-  }
-
-  .modal-thanks {
-    text-align: center;
-    padding: 20px 0 10px;
-  }
-
+  .modal-thanks { text-align: center; padding: 20px 0 10px; }
   .modal-thanks-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(45, 122, 79, 0.12);
-    border: 1px solid var(--green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 14px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(45, 122, 79, 0.12); border: 1px solid var(--green);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 14px;
   }
+  .modal-thanks h4 { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--navy); margin: 0 0 6px; }
+  .modal-thanks p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-  .modal-thanks h4 {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: 20px;
-    color: var(--navy);
-    margin: 0 0 6px;
-  }
-
-  .modal-thanks p {
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin: 0;
-  }
-
-  body.modal-open {
-    overflow: hidden;
-  }
-
+  body.modal-open { overflow: hidden; }
 
   .inline-contact {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    color: var(--teal-deep);
-    font-weight: 500;
-    cursor: pointer;
-    border-bottom: 1px solid rgba(45, 139, 154, 0.4);
-    transition: border-color 0.2s ease;
+    background: none; border: none; padding: 0; margin: 0; font: inherit;
+    color: var(--teal-deep); font-weight: 500; cursor: pointer;
+    border-bottom: 1px solid rgba(45, 139, 154, 0.4); transition: border-color 0.2s ease;
   }
-
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
-
 </style>
 </head>
 <body>
@@ -492,7 +397,7 @@
       </p>
 
       <h1 class="intro-headline">Privacy Policy</h1>
-      <p class="effective-date">Effective February 28, 2026</p>
+      <p class="effective-date">Version 2.0 &middot; Effective July 28, 2026</p>
     </div>
   </section>
 
@@ -500,47 +405,202 @@
     <div class="container-narrow">
 
       <div class="doc-intro">
-        <p>Contract X-Ray is a service of Nautilus Health Institute, a 501(c)(3) nonprofit dedicated to improving transparency, accountability, and fiduciary standards in employer-sponsored health plans. This Privacy Policy explains how we collect, use, and protect your information when you use the Contract X-Ray analysis service.</p>
+        <p>This Privacy Policy explains what information we collect when you use the Contract X-Ray service or visit www.nautilushealth.org, how we use it, who we share it with, and what rights you have over it. We keep it plain and specific because that is what you deserve.</p>
+        <p>Privacy questions, data requests, and deletion requests: <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Privacy request')">info@nautilushealth.org</button></p>
       </div>
 
       <div class="doc-section">
-        <h2>1. Information we collect</h2>
-        <p>When you submit a contract for analysis, we collect contact information (email, company name), contract details (PBM name), and the uploaded contract document in PDF form. For Full Assessment submissions, payment is processed securely through Stripe. We do not store your credit card details.</p>
+        <h2>1. Who we are</h2>
+        <p>Nautilus Health Institute is a 501(c)(3) nonprofit organization. Contract X-Ray is an independent, standards-based evaluation of benefits contracts that helps employer plan sponsors understand their contractual protections and fulfill their fiduciary obligations to plan members.</p>
       </div>
 
       <div class="doc-section">
-        <h2>2. How we use the information</h2>
-        <p>We use the information solely to generate your analysis report, deliver it to your email, respond to questions you may have about the analysis, and improve our scoring methodology using anonymized aggregated data that does not identify you or your contract.</p>
+        <h2>2. Information we collect</h2>
+        <h3>If you browse the website without submitting</h3>
+        <p>Beyond the functional cookies discussed below, we do not currently collect personal information from visitors who browse the website without submitting a contract or completing the intake form. We do not run advertising trackers, third-party analytics scripts, or social media pixels on this website.</p>
+        <p>Standard server logs may record your IP address and browser type as part of routine web infrastructure operation. These logs are used solely for security monitoring and are not linked to any personal profile.</p>
+        <h3>If you submit a contract</h3>
+        <p>When you submit a contract through the Contract X-Ray intake form, we collect:</p>
+        <ul>
+          <li>Your name and email address.</li>
+          <li>Your organization name and the name of the PBM party to the contract.</li>
+          <li>The contract documents you upload, including all schedules, exhibits, and amendments.</li>
+          <li>For Premium tier: Stripe handles payment processing. We do not store your card number, CVV, or bank account details. Stripe processes and holds payment credentials directly.</li>
+          <li>Submission metadata: date, tier selected, and whether a coalition or partner access code was used.</li>
+        </ul>
+        <h3>Information we do not collect</h3>
+        <p>We do not collect sensitive personal categories such as health information, Social Security numbers, government identification, or financial account details beyond what Stripe processes for payment or what is included in your submitted contract documents. We do not build user profiles or collect information from social media platforms.</p>
       </div>
 
       <div class="doc-section">
-        <h2>3. Who has access to your contract</h2>
-        <p>Access is strictly limited to Nautilus analysts and the secure AI systems used in the analysis process. We do not sell, share, or disclose your contract to third parties, PBMs, competitors, or any external organizations.</p>
+        <h2>3. How we use your information</h2>
+        <h3>Your contract documents</h3>
+        <p>We use contract documents solely to conduct the Contract X-Ray analysis and deliver your reports. We do not use your contract language for any other purpose, commercial or otherwise. We never disclose your specific pricing terms, rebate structures, or contract provisions to competitors, to other PBMs, to other clients, or to any party outside your engagement.</p>
+        <p>Our scoring reflects Nautilus's expert opinion. Our experts refine the methodology over time by reviewing patterns across our findings. This is a human calibration process. We do not use your submission to automatically train a model, and your contract does not teach the scoring rubric on its own.</p>
+        <p>The specific text of your contract is used only to analyze your contract. We never incorporate your contract's language into the scoring of any other party's contract, and we never use it in the model contract language we may propose to any other party.</p>
+        <h3>Your contact information</h3>
+        <p>We use your email address and name to deliver your analysis reports, respond to follow-up questions, and send material policy updates. We do not add you to marketing lists without your consent. We do not sell or share your contact information with third parties for marketing purposes.</p>
+        <h3>Aggregate and anonymized data</h3>
+        <p>We may incorporate scores and analytical findings derived from contract evaluations into Market Analytics and Market Reports. Market Analytics are aggregate statistics computed from the evaluated contract population. Market Reports are published outputs built from those statistics. Neither contains information that identifies you, your organization, or your contract's specific terms. Your score may appear in a statistic. It will never appear with your name.</p>
       </div>
 
       <div class="doc-section">
-        <h2>4. Data security</h2>
-        <p>We use encrypted transmission for all data, access controls limiting who can view contracts, and secure cloud storage with encryption at rest.</p>
+        <h2>4. Cookies and tracking</h2>
+        <h3>What we currently use</h3>
+        <p>We currently use only functional cookies: small data files strictly necessary for the service to operate correctly. Functional cookies are not used for advertising or tracking. Current uses include:</p>
+        <ul>
+          <li>Session state management: remembering where you are in a multi-step submission flow so you are not asked to repeat information.</li>
+          <li>Payment return state: if you complete payment through Stripe and return to the intake form, a session token confirms your payment so you are not sent to the payment screen again.</li>
+          <li>Coalition or partner access: if you arrive via a partner link, a session token attributes your submission to the correct partner for revenue-sharing purposes. This token does not identify you personally.</li>
+        </ul>
+        <h3>What we may add in the future</h3>
+        <p>We may add analytics cookies in the future to understand how visitors use the website and improve the service. If we do, we will update this policy with notice before analytics tracking begins, and we will add an opt-out option.</p>
+        <h3>How to control cookies</h3>
+        <p>You can control cookies through your browser settings. Blocking functional cookies may prevent parts of the intake form from working correctly, including payment confirmation and session continuity.</p>
       </div>
 
       <div class="doc-section">
-        <h2>5. Data retention</h2>
-        <p>Contracts and analysis are retained for 12 months to support follow-up questions and version comparisons. After this period, contracts are securely deleted unless you request a different retention term.</p>
+        <h2>5. Sub-processors</h2>
+        <p>Several third-party services process data on our behalf as part of delivering Contract X-Ray. Each is bound by contractual obligations to protect data and use it only for the stated purpose.</p>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead>
+              <tr><th>Service</th><th>What it does</th><th>Data handling note</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Anthropic</strong></td>
+                <td>AI analysis of contract documents. Contract text is sent to Anthropic's API to run the scoring analysis.</td>
+                <td>Under Anthropic's commercial API terms, which govern our use, Anthropic does not use API inputs or outputs to train its models. Contract text is retained by Anthropic only briefly for abuse monitoring before deletion, and is not used for any other purpose.</td>
+              </tr>
+              <tr>
+                <td><strong>Stripe</strong></td>
+                <td>Payment processing for Premium tier submissions.</td>
+                <td>Stripe holds all payment credentials directly. Nautilus receives only a transaction confirmation. Stripe's privacy policy governs payment data.</td>
+              </tr>
+              <tr>
+                <td><strong>Automation pipeline (Make.com)</strong></td>
+                <td>Workflow automation connecting form submission, AI analysis, and report delivery for Quick Look submissions.</td>
+                <td>Make.com briefly holds submission data so that a failed run can be re-submitted automatically, without action on your part. This data is not used for long-term storage and clears on Make.com's standard schedule, typically within 30 days.</td>
+              </tr>
+              <tr>
+                <td><strong>Cloud storage and delivery</strong></td>
+                <td>Secure storage of submitted contracts, analysis files, and report delivery.</td>
+                <td>Google Drive stores submitted contracts, analysis files, and reports in US-based infrastructure that encrypts data at rest. Access is limited to authorized personnel with a need to complete or support your analysis.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>We do not sell data to any third party. Sub-processors receive only the data necessary to perform their specific function and may not use it for any other purpose.</p>
       </div>
 
       <div class="doc-section">
-        <h2>6. Your rights</h2>
-        <p>You may request a copy of your data, request deletion of your data, or ask questions about how your information is handled. Contact <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Privacy Policy question')">info@nautilushealth.org</button>.</p>
+        <h2>6. Data security</h2>
+        <p>We apply the following protections to all submitted data:</p>
+        <ul>
+          <li><strong>Encryption in transit:</strong> all data transmitted between your browser and our service uses TLS encryption.</li>
+          <li><strong>Encryption at rest:</strong> submitted contracts, analysis files, and reports are stored in Google Drive, which encrypts stored data at rest.</li>
+          <li><strong>Access controls:</strong> access to submitted contract materials is limited to authorized personnel directly involved in your analysis.</li>
+          <li><strong>AI processing boundary:</strong> contract text sent to Anthropic's API is not used to train Anthropic's models, and is retained by Anthropic only briefly for abuse monitoring before deletion.</li>
+        </ul>
+        <p>No security system is absolute. If we become aware of a data breach affecting your information, we will notify you and applicable regulators as required by law.</p>
       </div>
 
       <div class="doc-section">
-        <h2>7. Changes to this policy</h2>
-        <p>Material changes will be communicated via email to active users. The effective date at the top of this page indicates when it was last revised.</p>
+        <h2>7. Data retention</h2>
+        <div class="doc-table-wrap">
+          <table class="doc-table">
+            <thead>
+              <tr><th>Data</th><th>Retention</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Submitted contracts, analysis files, reports, and contact information</strong></td>
+                <td>Retained to deliver your reports, answer your follow-up questions, and support comparisons over time. We do not run a fixed deletion clock. We delete them within 30 days of your request.</td>
+              </tr>
+              <tr>
+                <td><strong>Payment records</strong></td>
+                <td>Retained as required by applicable financial regulations, typically seven years. Payment card credentials are never stored by Nautilus.</td>
+              </tr>
+              <tr>
+                <td><strong>Aggregate and anonymized benchmark data</strong></td>
+                <td>Retained indefinitely as part of the Contract X-Ray market record. Cannot be traced back to any individual submission or organization.</td>
+              </tr>
+              <tr>
+                <td><strong>Server logs (IP address, browser type)</strong></td>
+                <td>Retained for a limited period for security monitoring, then deleted.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>These retention timelines are intended to support the purpose and scope of use of our services, including supporting rescoring as methodologies may be updated, in case of dispute resolution, and to comply with applicable laws and regulations.</p>
+        <p>To request deletion of your data, contact <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Deletion request')">info@nautilushealth.org</button>. We honor deletion requests within 30 days, except where technically unfeasible or retention is required by law or active legal proceedings. Our working papers, which document our findings and form our audit record, and aggregate de-identified statistics, which contain no information that identifies you, are not affected by a deletion request.</p>
       </div>
 
       <div class="doc-section">
-        <h2>8. Contact</h2>
-        <p>Nautilus Health Institute. <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Privacy Policy question')">info@nautilushealth.org</button></p>
+        <h2>8. Your privacy rights</h2>
+        <p>Regardless of where you are located, you have the following rights with respect to personal information Nautilus holds about you:</p>
+        <ul>
+          <li><strong>Access:</strong> request a copy of the personal information we hold about you, including your contact information and submission records.</li>
+          <li><strong>Correction:</strong> request correction of inaccurate personal information.</li>
+          <li><strong>Deletion:</strong> request deletion of your personal information and submitted contract materials, subject to legal retention requirements.</li>
+          <li><strong>Portability:</strong> request your personal information in a structured, machine-readable format.</li>
+          <li><strong>Objection:</strong> object to specific uses of your personal information.</li>
+        </ul>
+        <h3>California residents</h3>
+        <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) and the California Privacy Rights Act (CPRA):</p>
+        <ul>
+          <li>The right to know the categories of personal information collected and the purposes for which it is used.</li>
+          <li>The right to know whether your personal information is sold or shared, and to whom.</li>
+          <li>The right to opt out of the sale or sharing of personal information. Nautilus does not sell or share personal information for advertising or commercial purposes. There is nothing to opt out of.</li>
+          <li>The right to limit use of sensitive personal information. We do not collect sensitive personal information as defined by CPRA.</li>
+          <li>The right to non-discrimination for exercising your privacy rights.</li>
+        </ul>
+        <h3>Other state residents</h3>
+        <p>Residents of Colorado, Virginia, Connecticut, Texas, and other states with comprehensive privacy laws have similar rights to those described above. We apply these rights universally. You do not need to invoke a specific state law to exercise them.</p>
+        <p>To exercise any privacy right, contact <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Privacy rights request')">info@nautilushealth.org</button> with your name, email address, and a description of your request. We will respond within 45 days. Complex requests may require an additional 45-day extension, which we will notify you about.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>9. We do not sell your information</h2>
+        <p>Nautilus does not sell, rent, or trade personal information or contract data to any third party. We are a nonprofit operating in furtherance of an educational mission.</p>
+        <p>Aggregate, anonymized analytical outputs, such as scores, benchmarks, and trend statistics, may be shared with coalition partners and member associations to further our mission. These outputs contain no personal information and cannot be reverse-engineered to identify you or your contract.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>10. Children</h2>
+        <p>Contract X-Ray is a professional service for employer plan sponsors, benefits advisors, and related professionals. It is not directed at children. We do not knowingly collect personal information from anyone under 18 years of age.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>11. Changes to this policy</h2>
+        <p>When we make changes to this Privacy Policy, we will post the updated version at contractxray.com and www.nautilushealth.org with a new effective date. Continued use of the Contract X-Ray website or service after an updated policy takes effect constitutes acceptance of the changes.</p>
+      </div>
+
+      <div class="doc-section">
+        <h2>12. Contact</h2>
+        <p>Privacy questions, data requests, and deletion requests:</p>
+        <p><strong>Nautilus Health Institute</strong><br>
+        <button type="button" class="inline-contact" onclick="openContactModalWithTopic('Privacy request')">info@nautilushealth.org</button> &middot; www.nautilushealth.org</p>
+      </div>
+
+      <div class="version-footer">
+        <div class="version-cell">
+          <span class="version-label">Version</span>
+          <span class="version-value">2.0</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Effective</span>
+          <span class="version-value">July 28, 2026</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Supersedes</span>
+          <span class="version-value">Version 1.0</span>
+        </div>
+        <div class="version-cell">
+          <span class="version-label">Maintained by</span>
+          <span class="version-value">Nautilus Health Institute</span>
+        </div>
       </div>
 
     </div>
@@ -595,13 +655,13 @@
         <li><a href="/methodology.html">Methodology</a></li>
         <li><a href="/acceptable-use.html">Acceptable Use</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
-        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/privacy.html" class="current">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<!-- ───── Contact Modal ───── -->
+<!-- Contact Modal -->
 <div class="modal-overlay" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true">
   <div class="modal">
     <div class="modal-header">
@@ -670,6 +730,7 @@
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
   }
+
   function openContactModalWithTopic(topic) {
     openContactModal();
     setTimeout(function() {
@@ -681,7 +742,6 @@
       }
     }, 100);
   }
-
 
   function submitContact() {
     const name = document.getElementById('contact-name').value.trim();
