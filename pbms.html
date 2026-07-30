@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For PBMs | Contract X-Ray | Collaborative standards for CAA 2026 readiness</title>
-<meta name="description" content="A collaborative engagement model for PBMs and Nautilus. Strengthen contract language, prepare for CAA 2026, and participate in the National Alliance Quarterly Report on your terms.">
+<meta name="description" content="A collaborative engagement model for PBMs and Nautilus. Strengthen contract language, prepare for CAA 2026, and earn a place in the CAA 2026 Readiness Report on your terms.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@
     margin: 0;
   }
 
-  /* Quarterly Report block (section 4) */
+  /* Readiness Report block (section 4) */
   .report-block {
     margin: 32px 0 0;
     padding: 36px 40px;
@@ -677,7 +677,55 @@
 
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
-</style>
+
+    /* Readiness Report panel (section 04) */
+    .rr-lead h3 { margin: 0 0 6px; }
+    .rr-lead-deck {
+      font-size: 15px; font-weight: 500; line-height: 1.5;
+      color: var(--ink-soft); margin: 0;
+    }
+    .rr-inline {
+      display: grid;
+      grid-template-columns: 168px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin: 24px 0 0;
+    }
+    .rr-inline-cover {
+      display: block; background: #fff; padding: 10px;
+      box-shadow: 0 10px 26px rgba(27, 54, 93, 0.14), 0 2px 5px rgba(27, 54, 93, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .rr-inline-cover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(27, 54, 93, 0.18), 0 2px 6px rgba(27, 54, 93, 0.1);
+    }
+    .rr-inline-cover img { display: block; width: 100%; height: auto; }
+    .rr-inline-stats {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px; margin: 0 0 22px;
+    }
+    .rr-stat-n {
+      display: block; font-family: var(--font-display); font-weight: 600;
+      font-size: 27px; line-height: 1; color: var(--navy);
+    }
+    .rr-stat-l {
+      display: block; margin-top: 6px; font-size: 12px;
+      line-height: 1.4; color: var(--ink-muted);
+    }
+    .rr-inline-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .rr-inline-cap {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--ink-muted); margin: 14px 0 0;
+    }
+    .rr-after-panel { margin-top: 36px; }
+
+    @media (max-width: 640px) {
+      .rr-inline { grid-template-columns: 1fr; gap: 22px; }
+      .rr-inline-cover { width: 150px; }
+      .rr-inline-ctas .btn { width: 100%; justify-content: center; }
+    }
+  </style>
 <link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
@@ -718,7 +766,7 @@
       </h1>
 
       <p class="intro-body">
-        How PBMs engage Nautilus to strengthen contract language, prepare for CAA 2026, and participate in the National Alliance Quarterly Report on their own terms.
+        How PBMs engage Nautilus to strengthen contract language, prepare for CAA 2026, and earn a place in the CAA 2026 Readiness Report on their own terms.
       </p>
     </div>
   </section>
@@ -734,7 +782,7 @@
       <li><a href="#the-conversation">The conversation</a></li>
       <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
       <li><a href="#five-step-process">Five-step process</a></li>
-      <li><a href="#quarterly-report">Quarterly Report</a></li>
+      <li><a href="#quarterly-report">The Readiness Report</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Start a conversation</a></li>
     </ul>
@@ -747,7 +795,7 @@
       <li><a href="#the-conversation">The conversation</a></li>
       <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
       <li><a href="#five-step-process">Five-step process</a></li>
-      <li><a href="#quarterly-report">Quarterly Report</a></li>
+      <li><a href="#quarterly-report">The Readiness Report</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Start a conversation</a></li>
       </ul>
@@ -810,57 +858,62 @@
           <span class="step-number">3</span>
           <div class="step-body">
             <h3 class="step-title">Opt-in publication</h3>
-            <p class="step-desc">If satisfied with the process and the resulting score, the PBM agrees to publication of the Fiduciary Alignment Score in the CAA 2026 Readiness Quarterly Report. If not satisfied, the PBM is under no obligation to publish.</p>
+            <p class="step-desc">If satisfied with the process and the resulting score, the PBM agrees to publication of the Fiduciary Alignment Score in the CAA 2026 Readiness Report. If not satisfied, the PBM is under no obligation to publish.</p>
           </div>
         </li>
         <li>
           <span class="step-number">4</span>
           <div class="step-body">
             <h3 class="step-title">Confidentiality preserved</h3>
-            <p class="step-desc">The PBM retains all contract confidentiality protections under the NDA. No contract text is ever published. The Quarterly Report includes only the Fiduciary Alignment Score and tier designation.</p>
+            <p class="step-desc">The PBM retains all contract confidentiality protections under the NDA. No contract text is ever published. The report includes only the Fiduciary Alignment Score and tier designation.</p>
           </div>
         </li>
         <li>
           <span class="step-number">5</span>
           <div class="step-body">
             <h3 class="step-title">Withdrawal rights</h3>
-            <p class="step-desc">The PBM may withdraw from future Quarterly Reports at any time. Participation in one issue does not bind the PBM to participate in subsequent issues.</p>
+            <p class="step-desc">The PBM may withdraw from future issues at any time. Participation in one issue does not bind the PBM to participate in subsequent issues.</p>
           </div>
         </li>
       </ol>
     </div>
   </section>
 
-  <!-- Section 4: The Quarterly Report -->
+  <!-- Section 4: The Readiness Report -->
   <section class="section" id="quarterly-report">
     <div class="container-narrow">
-      <p class="section-eyebrow">04 &middot; The CAA 2026 Readiness Quarterly Report</p>
-      <h2 class="section-title">A public benchmark, published by the National Alliance.</h2>
-      <div class="prose">
-        <p>The first <strong>CAA 2026 Readiness Quarterly Report</strong> publishes at RosettaFest 2026 in Nashville. The report contains two things: a list of PBMs that have agreed to publicly disclose their Fiduciary Alignment Score, and market statistics drawn from the Contract X-Ray reference set.</p>
-        <p>The list signals to plan sponsors and advisors which PBMs have stepped forward to demonstrate that their contracts support the fiduciary obligations CAA 2026 codifies. After RosettaFest, the report publishes quarterly. Participating PBMs may update their scores as contract language evolves.</p>
-      </div>
+      <p class="section-eyebrow">04 &middot; The CAA 2026 Readiness Report</p>
+      <h2 class="section-title">The first issue is published. Nine contracts set the benchmark.</h2>
 
-      <div class="report-block">
-        <p class="report-block-label">First issue: July 29&ndash;31, 2026</p>
-        <h3>What the Quarterly Report includes</h3>
-        <p>The Quarterly Report is a transparency mechanism, not a certification or ranking. It identifies PBMs that have opted in to public disclosure of their Fiduciary Alignment Score. PBMs that do not participate are not named, scored, or referenced.</p>
-        <p>Target participation in the first issue is five to ten PBMs. The window to be part of the inaugural list is open through early summer.</p>
+      <div class="report-block rr-lead">
+        <p class="report-block-label">Inaugural issue &middot; Published July 29, 2026</p>
+        <h3>CAA 2026 Readiness Report</h3>
+        <p class="rr-lead-deck">For the first time, the difference is measured, not argued.</p>
 
-        <div class="report-block-meta">
-          <div class="meta-item">
-            <span class="meta-label">Venue</span>
-            <span class="meta-value">RosettaFest 2026, Nashville</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Publisher</span>
-            <span class="meta-value">National Alliance of Healthcare Purchaser Coalitions</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Methodology</span>
-            <span class="meta-value">Contract X-Ray, Nautilus Health Institute</span>
+        <div class="rr-inline">
+          <a class="rr-inline-cover" href="https://resources.contractxray.com/readiness-report.pdf">
+            <img src="readiness-report-cover.jpg" alt="CAA 2026 Readiness Report, inaugural issue, July 2026" loading="lazy">
+          </a>
+          <div class="rr-inline-body">
+            <div class="rr-inline-stats">
+              <div><span class="rr-stat-n">27</span><span class="rr-stat-l">PBM standard contracts scored</span></div>
+              <div><span class="rr-stat-n">54</span><span class="rr-stat-l">Median Fiduciary Alignment Score</span></div>
+              <div><span class="rr-stat-n">9</span><span class="rr-stat-l">Rated Excellent, the first CAA 2026 Ready cohort</span></div>
+              <div><span class="rr-stat-n">+39</span><span class="rr-stat-l">Average points gained by the nine</span></div>
+            </div>
+            <div class="rr-inline-ctas">
+              <a class="btn btn-primary" href="https://resources.contractxray.com/readiness-report.pdf">Read the report &rarr;</a>
+              <button type="button" class="btn btn-secondary" onclick="openContactModalWithTopic('CAA 2026 Readiness Report. PBM participation')">Get your contract scored &rarr;</button>
+            </div>
+            <p class="rr-inline-cap">19 pages &middot; No signup</p>
           </div>
         </div>
+      </div>
+
+      <div class="prose rr-after-panel">
+        <p>Nautilus published the inaugural issue on July 29, 2026 at RosettaFest in Nashville. Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions, wrote the foreword. The report scores the standard contracts of 27 PBMs and 37 plan sponsor contracts against ten fiduciary provisions, and it publishes quarterly from here.</p>
+        <p>Nine PBMs reached Excellent and form the first CAA 2026 Ready cohort. None of them started there. Two began in Red Flag, four in Concern, three in Fair, and six went through four or more rounds of revision. On all ten provisions, a PBM has already signed language scoring 95 or higher, so no provision in the standard is untested.</p>
+        <p>The report is a transparency mechanism, not a certification or a ranking. It names only the PBMs that reached Excellent and agreed to disclosure. No other PBM is named anywhere in it. Contracts scored with consent or already in the public domain appear only inside aggregate market statistics, never attached to a company name. Participating PBMs may update their scores as contract language evolves, and may withdraw from future issues at any time.</p>
       </div>
     </div>
   </section>
@@ -873,8 +926,8 @@
 
       <ul class="exclusion-list">
         <li><strong>Not an audit or enforcement action.</strong> Nautilus is an independent standards body. The engagement is collaborative, voluntary, and not associated with any regulatory enforcement.</li>
-        <li><strong>Not a public ranking.</strong> The Quarterly Report lists PBMs that opt in to disclosure. It does not name or evaluate PBMs that have not participated.</li>
-        <li><strong>Not a one-way evaluation.</strong> PBMs control whether scores are published. Nautilus does not publish PBM scores without consent under the Participation Agreement.</li>
+        <li><strong>Not a public ranking.</strong> The report names only PBMs that agreed to disclosure. No other PBM is named in it. Aggregate market statistics draw on the full scored set with no company attached.</li>
+        <li><strong>Not a one-way evaluation.</strong> PBMs control whether their own score is published under their name. Nautilus does not attach a PBM&rsquo;s name to a score without consent under the Participation Agreement.</li>
         <li><strong>Not a replacement for the PBM&rsquo;s legal or strategy partners.</strong> The framework is one input to internal contract development. The PBM&rsquo;s existing counsel and strategy teams remain in their roles throughout the engagement.</li>
       </ul>
     </div>
@@ -884,7 +937,7 @@
   <section class="closing-cta" id="get-started">
     <div class="container-narrow">
       <h2 class="cta-headline">Start a <em>conversation</em>.</h2>
-      <p class="cta-sub">The first step is a 30-minute call to understand your contract, your timeline, and whether participation in the inaugural Quarterly Report is the right fit.</p>
+      <p class="cta-sub">The first step is a 30-minute call to understand your contract, your timeline, and whether being scored for an upcoming issue of the Readiness Report is the right fit.</p>
       <div class="cta-button-row">
         <a class="btn btn-primary" href="https://calendly.com/steve-dittoandassociates/30-minute-call">
           Schedule a conversation &rarr;
