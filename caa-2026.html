@@ -794,6 +794,47 @@
       .rr-inline-cover { width: 150px; }
       .rr-inline-btn { width: 100%; justify-content: center; }
     }
+  
+    /* Report panel leading section 01 */
+    .rr-lead { margin-top: 28px; }
+    .rr-lead h3 { margin: 0 0 6px; }
+    .rr-lead-deck {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+    .rr-lead .rr-inline {
+      margin-top: 24px;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .rr-after-panel { margin-top: 36px; }
+
+    /* A <button> styled as an inline link needs the UA chrome removed.
+       Without this the browser draws its own background and its top,
+       left, and right borders, which reads as a half-formed box. */
+    button.inline-link {
+      appearance: none;
+      -webkit-appearance: none;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid rgba(45, 139, 154, 0.4);
+      border-radius: 0;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      /* inherit would give the button the paragraph's 28.9px line box,
+         pushing its underline ~6px below the neighbouring link. */
+      line-height: normal;
+      color: var(--teal-deep);
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+    }
+    button.inline-link:hover { border-bottom-color: var(--teal-deep); }
+    button.inline-link:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
   </style>
 <link rel="stylesheet" href="/scrollspy.css">
 </head>
@@ -845,20 +886,15 @@
     <div class="container-narrow">
       <p class="section-eyebrow">01 &middot; What the first benchmark shows</p>
       <h2 class="section-title">Most PBM contracts fall short of 60, even at their best. Nine clear 90.</h2>
-      <div class="prose">
-        <p>The CAA 2026 Readiness Report published on July 29, 2026 at RosettaFest in Nashville. Nautilus Contract X-Ray scored the standard contracts of 27 PBMs and 37 plan sponsor contracts against ten fiduciary provisions. Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions, wrote the foreword. The report publishes quarterly from here.</p>
-        <p>Nine PBMs opened their standard contracts to independent scoring. All nine now rate Excellent, and not one of them started there. Two began in Red Flag, four in Concern, three in Fair. Each rewrote its contract to reach the standard, gaining 39 points on average, and six went through four or more rounds. Those nine form the first CAA 2026 Ready cohort.</p>
-        <p>How a PBM makes its money predicts almost everything. Transparent pass-through contracts average 92. Spread-priced contracts average 32. Of the 37 plan sponsor contracts scored, not one reaches Good.</p>
-      </div>
 
-      <div class="market-signal">
+      <div class="market-signal rr-lead">
         <p class="market-signal-label">Inaugural issue &middot; Published July 29, 2026</p>
         <h3>CAA 2026 Readiness Report</h3>
-        <p>This is the public benchmark plan sponsors and advisors have been asking for: a measured read on how PBM contracts stand against the fiduciary obligations CAA 2026 establishes, with a clause-level citation behind every judgment.</p>
+        <p class="rr-lead-deck">For the first time, the difference is measured, not argued.</p>
 
         <div class="rr-inline">
           <a class="rr-inline-cover" href="https://resources.contractxray.com/readiness-report.pdf">
-            <img src="readiness-report-cover.jpg" alt="CAA 2026 Readiness Report, inaugural issue, July 2026" loading="lazy">
+            <img src="readiness-report-cover.jpg" alt="CAA 2026 Readiness Report, inaugural issue, July 2026">
           </a>
           <div class="rr-inline-body">
             <div class="rr-inline-stats">
@@ -870,16 +906,19 @@
             <a class="btn btn-primary rr-inline-btn" href="https://resources.contractxray.com/readiness-report.pdf">
               Download the report &rarr;
             </a>
-            <p class="rr-inline-cap">Inaugural issue &middot; 19 pages &middot; No signup</p>
+            <p class="rr-inline-cap">19 pages &middot; No signup</p>
           </div>
         </div>
-
-        <p class="rr-inline-fine">Every contract was scored on its language alone, by the same rubric. Inclusion reflects a PBM&rsquo;s decision to open its contract to scoring. It is not an endorsement or a certification of the company. No PBM paid to be scored, to be remediated, or to be listed. The rating measures contract language, not conduct, price, or service.</p>
       </div>
 
-      <div class="prose" style="margin-top: 32px;">
+      <div class="prose rr-after-panel">
+        <p>Nautilus Contract X-Ray scored the standard contracts of 27 PBMs and 37 plan sponsor contracts against ten fiduciary provisions. Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions, wrote the foreword. The report publishes quarterly from here.</p>
+        <p>Nine PBMs opened their standard contracts to independent scoring. All nine now rate Excellent, and not one of them started there. Two began in Red Flag, four in Concern, three in Fair. Each rewrote its contract to reach the standard, gaining 39 points on average, and six went through four or more rounds. Those nine form the first CAA 2026 Ready cohort.</p>
+        <p>How a PBM makes its money predicts almost everything. Transparent pass-through contracts average 92. Spread-priced contracts average 32. Of the 37 plan sponsor contracts scored, not one reaches Good.</p>
         <p>If you are a PBM and want your standard contract scored for a future issue, <a class="inline-link" href="/pbms.html">learn more on the PBMs page</a> or <button type="button" class="inline-link" onclick="openContactModalWithTopic('CAA 2026 Readiness Report. PBM participation')">get in touch</button>.</p>
       </div>
+
+      <p class="rr-inline-fine">Every contract was scored on its language alone, by the same rubric. Inclusion reflects a PBM&rsquo;s decision to open its contract to scoring. It is not an endorsement or a certification of the company. No PBM paid to be scored, to be remediated, or to be listed. The rating measures contract language, not conduct, price, or service.</p>
     </div>
   </section>
 
