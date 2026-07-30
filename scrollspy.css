@@ -70,8 +70,15 @@
   z-index: 50;
   background: var(--paper, #FFFCF6);
   border-bottom: 1px solid var(--border, rgba(27, 54, 93, 0.14));
-  padding: 12px 0;
-  margin: 0 -16px 16px -16px;
+  padding: 12px var(--side-pad, 24px);
+  /* Was: margin: 0 -16px 16px -16px;
+     The negative side margins were meant to bleed past container padding,
+     but this element's containing block already spans the viewport, so the
+     used width became 100% + 32px. That pushed the right edge 16px past the
+     viewport and made every page carrying the pill scroll sideways on
+     phones. Inset with padding instead, using the page's own --side-pad so
+     the label lines up with the body text column. */
+  margin: 0 0 16px 0;
 }
 
 .scrollspy-pill-toggle {
@@ -86,7 +93,7 @@
   font-weight: 600;
   color: var(--navy, #1B365D);
   cursor: pointer;
-  padding: 6px 16px;
+  padding: 6px 0;
   text-align: left;
 }
 
@@ -104,7 +111,7 @@
 
 .scrollspy-pill ul {
   list-style: none;
-  margin: 10px 16px 4px 16px;
+  margin: 10px 0 4px -14px;
   padding: 0;
   display: none;
   flex-direction: column;
