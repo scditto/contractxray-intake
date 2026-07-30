@@ -727,7 +727,74 @@
 
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
-</style>
+
+    /* ───── Readiness Report block (section 01) ───── */
+    .rr-inline {
+      display: grid;
+      grid-template-columns: 168px minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin: 26px 0 0;
+      padding: 24px 0 0;
+      border-top: 1px solid var(--border);
+    }
+    .rr-inline-cover {
+      display: block;
+      background: #fff;
+      padding: 10px;
+      box-shadow: 0 10px 26px rgba(27, 54, 93, 0.14), 0 2px 5px rgba(27, 54, 93, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .rr-inline-cover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(27, 54, 93, 0.18), 0 2px 6px rgba(27, 54, 93, 0.1);
+    }
+    .rr-inline-cover img { display: block; width: 100%; height: auto; }
+    .rr-inline-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px;
+      margin: 0 0 22px;
+    }
+    .rr-stat-n {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 1;
+      color: var(--navy);
+    }
+    .rr-stat-l {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--ink-muted);
+    }
+    .rr-inline-btn { margin: 0; }
+    .rr-inline-cap {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin: 12px 0 0;
+    }
+    .rr-inline-fine {
+      margin: 22px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 640px) {
+      .rr-inline { grid-template-columns: 1fr; gap: 22px; }
+      .rr-inline-cover { width: 150px; }
+      .rr-inline-btn { width: 100%; justify-content: center; }
+    }
+  </style>
 <link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
@@ -773,19 +840,62 @@
     </div>
   </section>
 
-  <!-- Section 1: What CAA 2026 codifies -->
+  <!-- Section 1: What the first published benchmark shows -->
+  <section class="section" id="market-response">
+    <div class="container-narrow">
+      <p class="section-eyebrow">01 &middot; What the first benchmark shows</p>
+      <h2 class="section-title">Most PBM contracts fall short of 60, even at their best. Nine clear 90.</h2>
+      <div class="prose">
+        <p>The CAA 2026 Readiness Report published on July 29, 2026 at RosettaFest in Nashville. Nautilus Contract X-Ray scored the standard contracts of 27 PBMs and 37 plan sponsor contracts against ten fiduciary provisions. Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions, wrote the foreword. The report publishes quarterly from here.</p>
+        <p>Nine PBMs opened their standard contracts to independent scoring. All nine now rate Excellent, and not one of them started there. Two began in Red Flag, four in Concern, three in Fair. Each rewrote its contract to reach the standard, gaining 39 points on average, and six went through four or more rounds. Those nine form the first CAA 2026 Ready cohort.</p>
+        <p>How a PBM makes its money predicts almost everything. Transparent pass-through contracts average 92. Spread-priced contracts average 32. Of the 37 plan sponsor contracts scored, not one reaches Good.</p>
+      </div>
+
+      <div class="market-signal">
+        <p class="market-signal-label">Inaugural issue &middot; Published July 29, 2026</p>
+        <h3>CAA 2026 Readiness Report</h3>
+        <p>This is the public benchmark plan sponsors and advisors have been asking for: a measured read on how PBM contracts stand against the fiduciary obligations CAA 2026 establishes, with a clause-level citation behind every judgment.</p>
+
+        <div class="rr-inline">
+          <a class="rr-inline-cover" href="https://resources.contractxray.com/readiness-report.pdf">
+            <img src="readiness-report-cover.jpg" alt="CAA 2026 Readiness Report, inaugural issue, July 2026" loading="lazy">
+          </a>
+          <div class="rr-inline-body">
+            <div class="rr-inline-stats">
+              <div><span class="rr-stat-n">27</span><span class="rr-stat-l">PBM standard contracts scored</span></div>
+              <div><span class="rr-stat-n">54</span><span class="rr-stat-l">Median Fiduciary Alignment Score</span></div>
+              <div><span class="rr-stat-n">9</span><span class="rr-stat-l">Rated Excellent, the first CAA 2026 Ready cohort</span></div>
+              <div><span class="rr-stat-n">0 of 37</span><span class="rr-stat-l">Plan sponsor contracts that reach Good</span></div>
+            </div>
+            <a class="btn btn-primary rr-inline-btn" href="https://resources.contractxray.com/readiness-report.pdf">
+              Download the report &rarr;
+            </a>
+            <p class="rr-inline-cap">Inaugural issue &middot; 19 pages &middot; No signup</p>
+          </div>
+        </div>
+
+        <p class="rr-inline-fine">Every contract was scored on its language alone, by the same rubric. Inclusion reflects a PBM&rsquo;s decision to open its contract to scoring. It is not an endorsement or a certification of the company. No PBM paid to be scored, to be remediated, or to be listed. The rating measures contract language, not conduct, price, or service.</p>
+      </div>
+
+      <div class="prose" style="margin-top: 32px;">
+        <p>If you are a PBM and want your standard contract scored for a future issue, <a class="inline-link" href="/pbms.html">learn more on the PBMs page</a> or <button type="button" class="inline-link" onclick="openContactModalWithTopic('CAA 2026 Readiness Report. PBM participation')">get in touch</button>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: What CAA 2026 codifies -->
   
   <!-- ───── Scrollspy sidebar (desktop) + pill (mobile) ───── -->
   <aside class="scrollspy-pill" data-open="false" aria-label="Page sections">
     <button class="scrollspy-pill-toggle" type="button" aria-expanded="false">
-      <span class="scrollspy-pill-current">Why the law is the floor</span>
+      <span class="scrollspy-pill-current">What the first benchmark shows</span>
     </button>
     <ul>
+      <li><a href="#market-response">What the first benchmark shows</a></li>
       <li><a href="#what-caa-codifies">Why the law is the floor</a></li>
       <li><a href="#contract-burden">Where the contract carries the burden</a></li>
       <li><a href="#what-analysis-tells">What the analysis tells you</a></li>
-      <li><a href="#market-response">How the market is responding</a></li>
-      <li><a href="#what-this-is-not">What this is not</a></li>
+            <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#when-to-look">When to look at this</a></li>
       <li><a href="#get-started">Get started</a></li>
     </ul>
@@ -795,11 +905,11 @@
     <nav class="scrollspy" aria-label="Page sections">
       <p class="scrollspy-label">On this page</p>
       <ul>
+      <li><a href="#market-response">What the first benchmark shows</a></li>
       <li><a href="#what-caa-codifies">Why the law is the floor</a></li>
       <li><a href="#contract-burden">Where the contract carries the burden</a></li>
       <li><a href="#what-analysis-tells">What the analysis tells you</a></li>
-      <li><a href="#market-response">How the market is responding</a></li>
-      <li><a href="#what-this-is-not">What this is not</a></li>
+            <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#when-to-look">When to look at this</a></li>
       <li><a href="#get-started">Get started</a></li>
       </ul>
@@ -808,16 +918,16 @@
     <div class="scrollspy-content">
 <section class="section" id="what-caa-codifies">
     <div class="container-narrow">
-      <p class="section-eyebrow">01 &middot; Why the law is the floor, not the ceiling</p>
+      <p class="section-eyebrow">02 &middot; Why the law is the floor, not the ceiling</p>
       <h2 class="section-title">Fiduciary best practice. The law is the floor, not the ceiling.</h2>
       <div class="prose">
-        <p>There has never been a clear fiduciary standard for PBM contracts. ERISA and CAA 2021 set the obligations &mdash; loyalty, prudence, diligence &mdash; but those are principles, not specifications. CAA 2026 and the DOL rule that implements it codify more of the framework. Specific requirements around rebate pass-through, spread pricing, audit independence, and fee disclosure are now law. But the fiduciary judgment about what is in the best interest of participants stays where it has always been: with the plan sponsor.</p>
+        <p>There has never been a clear fiduciary standard for PBM contracts. ERISA and CAA 2021 set the obligations of loyalty, prudence, and diligence, but those are principles, not specifications. CAA 2026 and the DOL rule that implements it codify more of the framework. Specific requirements around rebate pass-through, spread pricing, audit independence, and fee disclosure are now law. But the fiduciary judgment about what is in the best interest of participants stays where it has always been: with the plan sponsor.</p>
 
         <p>Plan sponsors have the latitude to do business with whomever they choose, under whatever terms they choose. There is no reason to wait for staggered effective dates, and no reason to contract only to what the statute requires. The law is the floor. A fiduciary-grade contract is the ceiling, and it includes statutory requirements, regulatory requirements, fiduciary safeguards that protect against identifiable risks, and best practices that make the work more achievable.</p>
 
         <p>Most PBM contracts in force today were written by PBMs, lightly reviewed, lightly negotiated. They fall short of this standard because they were never built to it. PBMs adapting to CAA 2026 will work to preserve the economics the new rules curtail. The contract is where that adaptation either succeeds or fails, and the plan sponsor is the only party with the standing to draw that line.</p>
 
-        <p>Contract X-Ray sets the bar at fiduciary-aligned standards now. Statutory, regulatory, fiduciary safeguard, and best practice &mdash; all four together, applied today, ahead of the staggered effective dates that run through 2029. Plan sponsors are asking for contracts built to that standard. PBMs that recognize where the market is moving are adopting model language to meet it. The first public benchmark of which PBMs have done so publishes at RosettaFest in July.</p>
+        <p>Contract X-Ray sets the bar at fiduciary-aligned standards now. Statutory, regulatory, fiduciary safeguard, and best practice: all four together, applied today, ahead of the staggered effective dates that run through 2029. Plan sponsors are asking for contracts built to that standard. PBMs that recognize where the market is moving are adopting model language to meet it. The first public benchmark of which PBMs have done so publishes at RosettaFest in July.</p>
       </div>
 
       <div class="citation-strip">
@@ -837,10 +947,10 @@
     </div>
   </section>
 
-  <!-- Section 2: Where the contract carries the burden -->
+  <!-- Section 3: Where the contract carries the burden -->
   <section class="section" id="contract-burden">
     <div class="container-narrow">
-      <p class="section-eyebrow">02 &middot; Where the contract carries the burden</p>
+      <p class="section-eyebrow">03 &middot; Where the contract carries the burden</p>
       <h2 class="section-title">Four provisions where the contract determines what the plan sponsor can actually do.</h2>
       <div class="prose">
         <p>A CAA-2026-ready contract holds up at four specific provisions where the contract determines what the plan sponsor can actually do. Four of the ten Contract X-Ray provisions intersect directly with the standards CAA 2026 codifies.</p>
@@ -879,10 +989,10 @@
     </div>
   </section>
 
-  <!-- Section 3: What the analysis tells you -->
+  <!-- Section 4: What the analysis tells you -->
   <section class="section" id="what-analysis-tells">
     <div class="container-narrow">
-      <p class="section-eyebrow">03 &middot; What a Contract X-Ray analysis tells you</p>
+      <p class="section-eyebrow">04 &middot; What a Contract X-Ray analysis tells you</p>
       <h2 class="section-title">A specific read on where your contract stands.</h2>
       <div class="prose">
         <p>A Contract X-Ray analysis returns a score and citation for each of the four CAA-relevant provisions plus the other six. The output identifies where contract language meets the standard, where it falls short, and where the contract is silent.</p>
@@ -892,44 +1002,6 @@
       <div class="midpage-cta">
         <p class="midpage-cta-text">See where your contract stands on CAA 2026.</p>
         <a class="btn btn-primary" href="/intake/">Analyze your contract &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: How the market is responding -->
-  <section class="section" id="market-response">
-    <div class="container-narrow">
-      <p class="section-eyebrow">04 &middot; How the market is responding</p>
-      <h2 class="section-title">PBMs are building forward. The first public benchmark publishes in July.</h2>
-      <div class="prose">
-        <p>The plan sponsor view of CAA 2026 readiness is one side of the conversation. The PBM view is the other. PBMs that recognize the market is moving toward fiduciary-aligned contracts are using the Contract X-Ray framework to build forward rather than defend backward. Five to ten PBMs will be working actively with the methodology by mid-2026.</p>
-        <p>The market signal is about to become public.</p>
-      </div>
-
-      <div class="market-signal">
-        <p class="market-signal-label">Coming July 29&ndash;31, 2026</p>
-        <h3>CAA 2026 Readiness Quarterly Report</h3>
-        <p>At <strong>RosettaFest 2026</strong> in Nashville, the <strong>National Alliance of Healthcare Purchaser Coalitions</strong> will publish the first <strong>CAA 2026 Readiness Quarterly Report</strong>. The report includes two things: a list of PBMs that have agreed to publicly disclose their Fiduciary Alignment Score, and market statistics drawn from the Contract X-Ray reference set.</p>
-        <p>This is the public benchmark plan sponsors and advisors have been asking for. PBMs that opt in to disclosure send a market signal that their contracts hold up to fiduciary scrutiny. PBMs that decline send a different signal. After RosettaFest, the report publishes quarterly.</p>
-
-        <div class="market-signal-meta">
-          <div class="meta-item">
-            <span class="meta-label">Venue</span>
-            <span class="meta-value">RosettaFest 2026, Nashville</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Publisher</span>
-            <span class="meta-value">National Alliance of Healthcare Purchaser Coalitions</span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Methodology</span>
-            <span class="meta-value">Contract X-Ray, Nautilus Health Institute</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="prose" style="margin-top: 32px;">
-        <p>If you are a PBM and want to participate in the first published list, <a class="inline-link" href="/pbms.html">learn more on the PBMs page</a> or <button type="button" class="inline-link" onclick="openContactModalWithTopic('CAA 2026 Readiness Quarterly Report. PBM participation')">get in touch</button>.</p>
       </div>
     </div>
   </section>
@@ -970,8 +1042,8 @@
         </div>
         <div class="timing-card">
           <p class="timing-label">PBMs</p>
-          <p class="timing-audience">Before the July publication</p>
-          <p class="timing-action">Engage the methodology now to participate in the first CAA 2026 Readiness Quarterly Report.</p>
+          <p class="timing-audience">Before the next issue</p>
+          <p class="timing-action">Submit your standard contract now to be scored for the next quarterly issue.</p>
         </div>
       </div>
     </div>
