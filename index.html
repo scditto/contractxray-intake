@@ -696,7 +696,70 @@
   body.modal-open {
     overflow: hidden;
   }
-</style>
+
+    /* ───── Readiness Report announcement banner ───── */
+    .rr-banner {
+      display: block;
+      background: var(--navy);
+      color: var(--paper);
+      text-decoration: none;
+      border-bottom: 2px solid var(--gold);
+    }
+    .rr-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 11px var(--side-pad);
+      max-width: var(--container-max);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .rr-banner-tag {
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(197, 165, 114, 0.5);
+      border-radius: 2px;
+      padding: 3px 8px;
+    }
+    .rr-banner-text {
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--paper);
+    }
+    .rr-banner-text strong { font-weight: 600; }
+    .rr-banner-go {
+      flex: 0 0 auto;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+      transition: transform 0.15s ease;
+    }
+    .rr-banner:hover { background: var(--navy-deep); }
+    .rr-banner:hover .rr-banner-go { transform: translateX(3px); }
+    .rr-banner:focus-visible { outline: 2px solid var(--gold); outline-offset: -3px; }
+
+    @media (max-width: 780px) {
+      .rr-banner-inner { flex-wrap: wrap; gap: 8px 10px; padding: 10px var(--side-pad); }
+      .rr-banner-tag { font-size: 9px; }
+      .rr-banner-text { font-size: 13px; }
+      .rr-banner-go { font-size: 13px; }
+    }
+
+    /* ───── Mobile sideways-scroll fix (hero partner lockup) ───── */
+    @media (max-width: 640px) {
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-partner { flex-wrap: wrap; gap: 14px; }
+      .hero-partner-label { white-space: normal; }
+      .hero-partner-link img { height: auto; max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
@@ -719,6 +782,17 @@
     </nav>
   </div>
 </header>
+
+<a class="rr-banner" href="/caa-2026.html">
+  <span class="rr-banner-inner">
+    <span class="rr-banner-tag">New</span>
+    <span class="rr-banner-text">
+      The <strong>CAA 2026 Readiness Report</strong> is out. Most PBM contracts fall short of 60, even at their best. <strong>Nine clear 90.</strong>
+    </span>
+    <span class="rr-banner-go">Read the findings &rarr;</span>
+  </span>
+</a>
+
 
 <main>
   <section class="hero">
