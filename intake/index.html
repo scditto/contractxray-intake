@@ -140,7 +140,7 @@ PDF in under 1 hour
 <a class="tc-link" href="#" onclick="openModal('essential', event)">Review sample deliverables &rarr;</a>
 </div>
 </div>
-<div class="tier-card" data-tier="premium" onclick="openWaitlistModal()">
+<div class="tier-card" data-tier="premium" onclick="selectTier('premium')">
 <div class="sel-badge"><svg viewbox="0 0 12 12"><polyline points="2 6 5 9 10 3"></polyline></svg></div>
 <div class="tc-main">
 <div class="tc-eyebrow">Fiduciary-Grade Review</div>
@@ -154,11 +154,7 @@ PDF in under 1 hour
 <ul class="tc-features"><li><strong>Contract Scorecard:</strong> Fiduciary Alignment Score across ten provisions</li><li><strong>Data Sovereignty Score:</strong> Rating across five data-control provisions</li><li><strong>Negotiation Report:</strong> Gap analysis, model language, and talking points</li><li><strong>Executive Brief:</strong> Board-ready summary for leadership</li></ul>
 </div>
 <div class="tc-action">
-<div class="tc-secondary-note" style="color:var(--gold);font-weight:600;">Founding Cohort open now through RosettaFest 2026.</div>
-<a class="tc-cta" href="#" onclick="event.stopPropagation(); openWaitlistModal();" style="flex-direction:column;gap:0.05rem;padding-top:0.7rem;padding-bottom:0.7rem;">
-<span style="font-size:1rem;font-weight:700;line-height:1.1;">Reserve</span>
-<span style="font-size:0.78rem;font-weight:600;line-height:1.15;letter-spacing:0.01em;">Founding Cohort Access</span>
-</a>
+<a class="tc-cta" href="#" onclick="event.stopPropagation(); selectTier('premium');">Begin Full Assessment</a>
 <a class="tc-link" href="#" onclick="switchFoundingTab('ps'); openModal('founding', event)">Founding Cohort details &rarr;</a>
 <a class="tc-link" href="#" onclick="openModal('premium', event)">Review sample deliverables &rarr;</a>
 </div>
@@ -256,12 +252,12 @@ PDF in under 1 hour
 </div>
 </div>
 <div style="margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--border);">
-<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;"><strong style="color:var(--gold);">The Founding Cohort is open now through RosettaFest, July 2026.</strong> Founding members lock in their contribution terms through 2029. <a href="#" onclick="closeModal('premium'); switchFoundingTab('ps'); openModal('founding', event); return false;" style="color:var(--teal);font-weight:600;">View Founding Cohort details &rarr;</a></p>
+<p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;"><strong style="color:var(--gold);">Founding members lock in their contribution terms through 2029.</strong> <a href="#" onclick="closeModal('premium'); switchFoundingTab('ps'); openModal('founding', event); return false;" style="color:var(--teal);font-weight:600;">View Founding Cohort details &rarr;</a></p>
 </div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-secondary" onclick="closeModal('premium')">Close</button>
-<button class="btn btn-primary" onclick="closeModal('premium'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
+<button class="btn btn-primary" onclick="closeModal('premium'); selectTier('premium');" style="width:auto;background:var(--gold);color:#fff;">Begin Full Assessment</button>
 </div>
 </div>
 </div>
@@ -279,7 +275,7 @@ PDF in under 1 hour
 <button type="button" id="ftab-adv" onclick="switchFoundingTab('adv')" style="padding:0.5rem 0.95rem;font-size:0.9rem;font-weight:600;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--mid-text);">Advisor</button>
 </div>
 <div id="fpanel-ps">
-<p><strong style="color:var(--gold);">The Founding Cohort is open now through RosettaFest, July 2026.</strong> Join now and lock in your Founding contribution terms through 2029. We begin your contract analysis right away by email, and your access carries straight through as the platform comes out of beta at RosettaFest. Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
+<p><strong style="color:var(--gold);">Join now and lock in your Founding contribution terms through 2029.</strong> Comparable independent fiduciary review from traditional firms costs $20,000 and up. The Full Assessment is AI-enabled and Founding Cohort funded.</p>
 <p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1.25rem;">Join the Founding Cohort and lock in:</p>
 <ul style="font-size:0.92rem;color:var(--mid-text);line-height:1.55;margin-bottom:1.25rem;padding-left:1.1rem;">
 <li style="margin-bottom:0.5rem;"><strong>Three years of Full Assessment access</strong> from your join date, with one Founding contribution. Submit any contract during that period: your current PBM agreement, a renewal draft, or a competing proposal under evaluation.</li>
@@ -301,7 +297,7 @@ PDF in under 1 hour
 <p style="font-size:0.84rem;color:var(--mid-text);margin-bottom:0;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);">Want to see what you'll receive? <a href="#" onclick="closeModal('founding'); openModal('premium', event); return false;" style="color:var(--teal);font-weight:600;">Review sample deliverables &rarr;</a></p>
 </div>
 <div id="fpanel-adv" style="display:none;">
-<p><strong style="color:var(--gold);">Founding Advisor Partner.</strong> An optional membership for advisors who want to lead with this work. Open now through RosettaFest, July 2026.</p>
+<p><strong style="color:var(--gold);">Founding Advisor Partner.</strong> An optional membership for advisors who want to lead with this work.</p>
 <p style="font-size:0.92rem;color:var(--mid-text);font-weight:600;margin-bottom:0.5rem;margin-top:1.25rem;">What you get for $2,500:</p>
 <ul style="font-size:0.92rem;color:var(--mid-text);line-height:1.55;margin-bottom:1.25rem;padding-left:1.1rem;">
 <li style="margin-bottom:0.5rem;"><strong>Two free Full Assessments</strong> for plan sponsors of your choosing. A $2,000 to $10,000 value each, and a low-friction way to bring your best clients into the cohort.</li>
@@ -315,7 +311,7 @@ PDF in under 1 hour
 </div>
 <div class="modal-footer">
 <button class="btn btn-secondary" onclick="closeModal('founding')">Close</button>
-<button class="btn btn-primary" id="ffooter-ps" onclick="closeModal('founding'); openWaitlistModal();" style="width:auto;background:var(--gold);color:#fff;">Reserve Founding Cohort Access</button>
+<button class="btn btn-primary" id="ffooter-ps" onclick="closeModal('founding'); selectTier('premium');" style="width:auto;background:var(--gold);color:#fff;">Begin Full Assessment</button>
 <button class="btn btn-primary" id="ffooter-adv" onclick="closeModal('founding'); openFoundingAdvisorContact();" style="width:auto;background:var(--gold);color:#fff;display:none;">Get in touch</button>
 </div>
 </div>
@@ -439,50 +435,12 @@ PDF in under 1 hour
     }
 })();
 
-// === TEST MODE ===
-// Activated by visiting any page with ?test=premium in the URL.
-// Sets a sessionStorage flag that persists across details.html and upload.html.
-// When active: Premium card bypasses the reservation modal and flows normally.
-// A small banner appears at the top of the page so you know you are in test mode.
-(function initTestMode() {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('test') === 'premium') {
-        sessionStorage.setItem('cxr_test_mode', 'premium');
-    }
-    if (sessionStorage.getItem('cxr_test_mode') === 'premium') {
-        // Banner
-        const banner = document.createElement('div');
-        banner.id = 'cxr-test-banner';
-        banner.innerHTML = 'TEST MODE — Premium tier unlocked. Public visitors still see reservation. <a href="#" id="cxr-test-exit" style="color:#fff;text-decoration:underline;margin-left:0.5rem;">Exit test mode</a>';
-        banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:9999;background:#C5A572;color:#fff;font-size:0.78rem;font-weight:600;text-align:center;padding:5px 10px;letter-spacing:0.04em;font-family:-apple-system,sans-serif;';
-        document.body.appendChild(banner);
-        document.body.style.paddingTop = (parseInt(getComputedStyle(document.body).paddingTop) || 0) + 28 + 'px';
-        document.getElementById('cxr-test-exit').onclick = function(e) {
-            e.preventDefault();
-            sessionStorage.removeItem('cxr_test_mode');
-            window.location.href = window.location.pathname; // strip query
-        };
-        // Rewire the Premium tier card and CTA to bypass the modal
-        document.querySelectorAll('[data-tier="premium"]').forEach(function(card) {
-            card.onclick = function() { selectTier('premium'); };
-        });
-        document.querySelectorAll('.tier-card[data-tier="premium"] .tc-cta').forEach(function(cta) {
-            cta.onclick = function(e) { e.stopPropagation(); selectTier('premium'); };
-        });
-    }
-})();
 
 // Tier selection: persist tier and navigate to details page.
 // Original v15 behaviour (showing info-section in place) is replaced with
 // a real navigation to details.html so the URL changes and back button works.
-// Premium is currently disabled for public visitors. Defensive guard: if any
-// path still calls selectTier('premium'), route to the waitlist modal instead.
-// Test mode (?test=premium) bypasses this guard.
+// Premium is open to all visitors as of 2026-07-31.
 function selectTier(tier) {
-    if (tier === 'premium' && sessionStorage.getItem('cxr_test_mode') !== 'premium') {
-        openWaitlistModal();
-        return;
-    }
     setCxrState({ tier: tier });
     window.location.assign('details.html');
 }
