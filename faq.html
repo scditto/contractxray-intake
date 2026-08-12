@@ -175,6 +175,14 @@
     margin: 0;
   }
 
+  .faq-a + .faq-a { margin-top: 12px; }
+
+  .faq-source {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
   .faq-a strong { color: var(--navy); font-weight: 600; }
 
   .inline-contact {
@@ -377,7 +385,7 @@
 
       <h1 class="intro-headline">Frequently Asked Questions</h1>
       <p class="intro-sub">Plain-language answers for plan sponsors</p>
-      <p class="effective-date">Version 2.0 &middot; Effective July 28, 2026</p>
+      <p class="effective-date">Version 2.1 &middot; Effective August 11, 2026</p>
     </div>
   </section>
 
@@ -416,13 +424,38 @@
         </div>
 
         <div class="faq-item">
+          <p class="faq-q">Should we redact or de-identify the contract before we upload it?</p>
+          <p class="faq-a">No. Send the complete executed agreement, including schedules, exhibits, and rate sheets.</p>
+          <p class="faq-a">Pricing terms, rebate definitions, and fee schedules are what several of the ten provisions score. Removing them produces a score that reflects the redaction rather than the contract. Where documents genuinely are not available, we apply published missing-document rules rather than guessing.</p>
+          <p class="faq-a">Your submission is confidential either way, so there is nothing redaction protects that the Terms do not already cover.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/terms.html">Terms of Service</a>, Section 4 (Accurate representation) and Section 5 (Your contract stays confidential).</em></p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Does our PBM contract allow us to submit it?</p>
+          <p class="faq-a">Check before you submit. Many PBM contracts restrict sharing contract terms with third parties. Nautilus treats everything you send as confidential and will not disclose it to your PBM or anyone else, but that does not change any obligation you signed.</p>
+          <p class="faq-a">If you think your contract may prohibit submission, talk to counsel first. If you are an advisor, confirm your client authorizes the submission and that your own agreements with the PBM permit it.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/terms.html">Terms of Service</a>, Section 4 (Confidentiality obligations you may have) and Section 2 (Who these Terms apply to).</em></p>
+        </div>
+
+        <div class="faq-item">
           <p class="faq-q">Do you use my contract to train an AI model?</p>
           <p class="faq-a">No. Your score reflects human expert opinion, refined over time through human calibration, not automated training. To produce the analysis, your contract text is sent to Anthropic's API. Under Anthropic's commercial terms, Anthropic does not train on it and retains it only briefly for abuse monitoring before deletion. We never use your contract to score or draft language for any other party.</p>
         </div>
 
         <div class="faq-item">
-          <p class="faq-q">Can I have my data deleted?</p>
-          <p class="faq-a">Yes. We do not run a fixed deletion clock. We delete your submitted materials within 30 days of your request, except where the law or an active dispute requires us to keep them. Our internal workpapers, which document the basis for each score, are our audit record and are retained.</p>
+          <p class="faq-q">How long do you keep my contract, and is it ever sold?</p>
+          <p class="faq-a">It is never sold. Nautilus does not sell, rent, or trade contract data to any party.</p>
+          <p class="faq-a">We keep your contract and reports so we can answer follow-up questions and compare against your prior cycle. There is no fixed deletion clock, and we delete submitted materials within 30 days of your request. Our workpapers are our audit record and are retained.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/privacy.html">Privacy Policy</a>, Section 7 (Data retention) and Section 9 (We do not sell your information).</em></p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Is there a use agreement, and does Nautilus use what it learns across all the contracts it holds?</p>
+          <p class="faq-a">Yes. The <a href="/terms.html">Terms of Service</a> govern your submission and you accept them at intake. The <a href="/privacy.html">Privacy Policy</a> is incorporated into them by reference, and the <a href="https://legal.contractxray.com/governance-charter.pdf">Governance Charter</a> describes the evaluation model.</p>
+          <p class="faq-a">Your contract is licensed to us for one purpose: to run your analysis, deliver your reports, and maintain the scoring records behind them. Not to train a model, not to score anyone else's contract, and not to draft language for anyone else.</p>
+          <p class="faq-a">Scores and derived findings are a separate thing from contract language, and those do roll into aggregate market statistics and into published work like the CAA 2026 Readiness Report. That is the point of the work. Those outputs carry no contract language, no pricing, and nothing that identifies you. Coalition and association partners who license market analytics receive statistics and published outputs, never underlying confidential information.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/terms.html">Terms of Service</a>, Section 5 (License and purpose; Scores and derived data). <a href="/privacy.html">Privacy Policy</a>, Section 3 (Aggregate and anonymized data).</em></p>
         </div>
       </div>
 
@@ -436,7 +469,15 @@
 
         <div class="faq-item">
           <p class="faq-q">What does it cost?</p>
-          <p class="faq-a">Quick Look is free. The Full Assessment runs on a voluntary contribution model: a $50 floor that covers operating costs, plus a suggested amount that scales to your organization's size. You may contribute any amount at or above the floor. Nautilus is a nonprofit, and contributions support the mission.</p>
+          <p class="faq-a">Quick Look is free. The Full Assessment is a payment for services, scaled to your organization's size: $500 under 500 covered lives, $1,000 from 500 to 1,999, $2,000 from 2,000 to 4,999, $5,000 from 5,000 to 19,999, and $10,000 at 20,000 and above. A $50 floor applies and payment at or above the floor is accepted.</p>
+          <p class="faq-a">Comparable independent fiduciary review from a traditional firm runs $20,000 and up.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Are our results stored so we can review them later?</p>
+          <p class="faq-a">Yes, though there is no self-service portal today. Your reports are PDFs and they are yours to keep, share, and file. We hold a copy along with the workpapers behind each score, so we can re-send them and can compare a later assessment against your prior cycle to show a committee what moved.</p>
+          <p class="faq-a">If a self-service view would be useful, tell us. We are sizing demand for it.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/terms.html">Terms of Service</a>, Section 6 (Your reports and how you may use them). <a href="/privacy.html">Privacy Policy</a>, Section 7.</em></p>
         </div>
 
         <div class="faq-item">
@@ -446,7 +487,7 @@
       </div>
 
       <div class="faq-group">
-        <h2 class="faq-group-title">The score</h2>
+        <h2 class="faq-group-title">The score and the recommendations</h2>
 
         <div class="faq-item">
           <p class="faq-q">How is the score calculated?</p>
@@ -462,14 +503,30 @@
           <p class="faq-q">Do I have to switch PBMs?</p>
           <p class="faq-a">No. Contract X-Ray evaluates the contract, not the vendor. A low score points to specific language worth fixing, which you can often address by amending your current agreement rather than changing PBMs.</p>
         </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Where do the recommendations and proposed contract language come from?</p>
+          <p class="faq-a">From a model language library Nautilus maintains, not generated fresh per report.</p>
+          <p class="faq-a">The framework was built with input from more than 30 experts in ERISA fiduciary law, PBM contracting, employer plan governance, and benefits consulting. That panel decided what each provision requires. For every gap the framework identifies, the library holds tested replacement language. Two contracts with the same gap get the same recommendation.</p>
+          <p class="faq-a">They are drafting starting points for your counsel, not legal advice. Nautilus is not a law firm.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/methodology.html">Methodology</a>, Section 04 (How the framework was built). <a href="/terms.html">Terms of Service</a>, Section 7 (What the analysis is and is not).</em></p>
+        </div>
       </div>
 
       <div class="faq-group">
-        <h2 class="faq-group-title">CAA 2026</h2>
+        <h2 class="faq-group-title">CAA 2026 and applicable law</h2>
 
         <div class="faq-item">
           <p class="faq-q">What is CAA 2026, and why does it matter?</p>
           <p class="faq-a">The Consolidated Appropriations Act of 2026 raises what plan sponsors are expected to document about their pharmacy contracts. The plan sponsor, not the PBM, holds the fiduciary duty. Contract X-Ray shows you where your contract stands against applicable law and CAA 2026, so you can address any gaps with your advisors and counsel.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Does the analysis account for state law?</p>
+          <p class="faq-a">No. Contract X-Ray scores contract language against a fiduciary standard. It does not perform a state-law compliance review, and a score is not a determination that any provision is legal or illegal under applicable law.</p>
+          <p class="faq-a">What we do set is the framing. Private-sector plans are scored against ERISA fiduciary duties. Government and public-sector plan sponsors operate under applicable state and federal law instead, and we set that at intake so the report speaks to the right standard. The underlying contract questions do not change: who owns the data, whether the audit right is usable, whether spread is prohibited.</p>
+          <p class="faq-a">State-law compliance analysis is work for counsel licensed in your state.</p>
+          <p class="faq-a faq-source"><em>Detail: <a href="/terms.html">Terms of Service</a>, Section 7. <a href="/methodology.html">Methodology</a>, Section 05 (Regulatory alignment).</em></p>
         </div>
       </div>
 
