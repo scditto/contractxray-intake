@@ -725,6 +725,42 @@
       .rr-inline-cover { width: 150px; }
       .rr-inline-ctas .btn { width: 100%; justify-content: center; }
     }
+  
+    /* CAA 2026 Ready roster */
+    .cr-wall {
+      list-style: none; padding: 0; margin: 32px 0 0; max-width: 720px;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+    }
+    .cr-tile {
+      display: flex; align-items: center; justify-content: center;
+      height: 92px; padding: 14px 16px; background: #fff;
+      border: 1px solid var(--border); border-radius: 4px; text-align: center;
+    }
+    .cr-tile a {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%; border-radius: 4px;
+    }
+    .cr-tile { transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+    .cr-tile:hover { border-color: var(--teal); box-shadow: 0 4px 14px rgba(27, 54, 93, 0.08); }
+    .cr-tile a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    .cr-tile img { display: block; max-width: 100%; max-height: 60px; width: auto; height: auto; }
+    .cr-tile--text span {
+      font-family: var(--font-display); font-weight: 500; font-size: 16px;
+      line-height: 1.2; color: var(--navy);
+    }
+    .cr-note {
+      max-width: 720px; margin: 16px 0 0; font-size: 14px; line-height: 1.6;
+      color: var(--ink-soft);
+    }
+    .cr-fine {
+      max-width: 720px; margin: 12px 0 0; font-size: 12.5px; line-height: 1.55;
+      color: var(--ink-muted);
+    }
+    @media (max-width: 640px) {
+      .cr-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .cr-tile { height: 80px; }
+      .cr-tile img { max-height: 50px; }
+    }
   </style>
 <link rel="stylesheet" href="/scrollspy.css">
 </head>
@@ -782,7 +818,7 @@
       <li><a href="#the-conversation">The conversation</a></li>
       <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
       <li><a href="#five-step-process">Five-step process</a></li>
-      <li><a href="#quarterly-report">The Readiness Report</a></li>
+      <li><a href="#caa-2026-ready">CAA 2026 Ready PBMs</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Start a conversation</a></li>
     </ul>
@@ -795,7 +831,7 @@
       <li><a href="#the-conversation">The conversation</a></li>
       <li><a href="#working-with-nautilus">Working with Nautilus</a></li>
       <li><a href="#five-step-process">Five-step process</a></li>
-      <li><a href="#quarterly-report">The Readiness Report</a></li>
+      <li><a href="#caa-2026-ready">CAA 2026 Ready PBMs</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Start a conversation</a></li>
       </ul>
@@ -879,41 +915,39 @@
     </div>
   </section>
 
-  <!-- Section 4: The Readiness Report -->
-  <section class="section" id="quarterly-report">
+  <!-- Section 4: PBMs with CAA 2026 Ready contracts -->
+  <section class="section" id="caa-2026-ready">
     <div class="container-narrow">
-      <p class="section-eyebrow">04 &middot; The CAA 2026 Readiness Report</p>
-      <h2 class="section-title">The first issue is published. Nine contracts set the benchmark.</h2>
-
-      <div class="report-block rr-lead">
-        <p class="report-block-label">Inaugural issue &middot; Published July 29, 2026</p>
-        <h3>CAA 2026 Readiness Report</h3>
-        <p class="rr-lead-deck">For the first time, the difference is measured, not argued.</p>
-
-        <div class="rr-inline">
-          <a class="rr-inline-cover" href="https://resources.contractxray.com/readiness-report.pdf">
-            <img src="readiness-report-cover.jpg" alt="CAA 2026 Readiness Report, inaugural issue, July 2026" loading="lazy">
-          </a>
-          <div class="rr-inline-body">
-            <div class="rr-inline-stats">
-              <div><span class="rr-stat-n">27</span><span class="rr-stat-l">PBM standard contracts scored</span></div>
-              <div><span class="rr-stat-n">54</span><span class="rr-stat-l">Median Fiduciary Alignment Score</span></div>
-              <div><span class="rr-stat-n">9</span><span class="rr-stat-l">Rated Excellent, the first CAA 2026 Ready cohort</span></div>
-              <div><span class="rr-stat-n">+39</span><span class="rr-stat-l">Average points gained by the nine</span></div>
-            </div>
-            <div class="rr-inline-ctas">
-              <a class="btn btn-primary" href="https://resources.contractxray.com/readiness-report.pdf">Read the report &rarr;</a>
-              <button type="button" class="btn btn-secondary" onclick="openContactModalWithTopic('CAA 2026 Readiness Report. PBM participation')">Get your contract scored &rarr;</button>
-            </div>
-            <p class="rr-inline-cap">19 pages &middot; No signup</p>
-          </div>
-        </div>
+      <p class="section-eyebrow">04 &middot; PBMs with CAA 2026 Ready contracts</p>
+      <h2 class="section-title">Eleven contracts meet the standard.</h2>
+      <div class="prose">
+        <p>A CAA 2026 Ready contract scores in the Excellent tier, 90 or higher, on the Fiduciary Alignment Score, and reaches Gold on the Data Sovereignty Index. Every PBM below reached it the same way: by rewriting its own standard contract language.</p>
       </div>
 
-      <div class="prose rr-after-panel">
-        <p>Nautilus published the inaugural issue on July 29, 2026 at RosettaFest in Nashville. Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions, wrote the foreword. The report scores the standard contracts of 27 PBMs and 37 plan sponsor contracts against ten fiduciary provisions, and it publishes quarterly from here.</p>
-        <p>Nine PBMs reached Excellent and form the first CAA 2026 Ready cohort. None of them started there. Two began in Red Flag, four in Concern, three in Fair, and six went through four or more rounds of revision. On all ten provisions, a PBM has already signed language scoring 95 or higher, so no provision in the standard is untested.</p>
-        <p>The report is a transparency mechanism, not a certification or a ranking. It names only the PBMs that reached Excellent and agreed to disclosure. No other PBM is named anywhere in it. Contracts scored with consent or already in the public domain appear only inside aggregate market statistics, never attached to a company name. Participating PBMs may update their scores as contract language evolves, and may withdraw from future issues at any time.</p>
+      <ul class="cr-wall" aria-label="PBMs with CAA 2026 Ready contracts">
+          <li class="cr-tile"><a href="https://affirmedrx.com" target="_blank" rel="noopener noreferrer" aria-label="AffirmedRx (opens in a new window)"><img src="/assets/caa-2026-ready/affirmedrx.png" alt="AffirmedRx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://www.disclosedrx.com" target="_blank" rel="noopener noreferrer" aria-label="DisclosedRx (opens in a new window)"><img src="/assets/caa-2026-ready/disclosedrx.png" alt="DisclosedRx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://lucyrx.com" target="_blank" rel="noopener noreferrer" aria-label="LucyRx (opens in a new window)"><img src="/assets/caa-2026-ready/lucyrx.png" alt="LucyRx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://medone-rx.com" target="_blank" rel="noopener noreferrer" aria-label="MedOne (opens in a new window)"><img src="/assets/caa-2026-ready/medone.png" alt="MedOne" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://www.rescription.com" target="_blank" rel="noopener noreferrer" aria-label="Rescription (opens in a new window)"><img src="/assets/caa-2026-ready/rescription.png" alt="Rescription" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://serveyourx.com" target="_blank" rel="noopener noreferrer" aria-label="Serve You Rx (opens in a new window)"><img src="/assets/caa-2026-ready/serve-you-rx.png" alt="Serve You Rx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://slate-rx.com" target="_blank" rel="noopener noreferrer" aria-label="Slate Rx (opens in a new window)"><img src="/assets/caa-2026-ready/slate-rx.png" alt="Slate Rx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://smithrx.com" target="_blank" rel="noopener noreferrer" aria-label="SmithRx (opens in a new window)"><img src="/assets/caa-2026-ready/smithrx.png" alt="SmithRx" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://www.truescripts.com" target="_blank" rel="noopener noreferrer" aria-label="TrueScripts (opens in a new window)"><img src="/assets/caa-2026-ready/truescripts.png" alt="TrueScripts" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://usrxcare.com" target="_blank" rel="noopener noreferrer" aria-label="US-Rx Care (opens in a new window)"><img src="/assets/caa-2026-ready/us-rx-care.png" alt="US-Rx Care" loading="lazy"></a></li>
+          <li class="cr-tile"><a href="https://www.ventegra.com" target="_blank" rel="noopener noreferrer" aria-label="Ventegra (opens in a new window)"><img src="/assets/caa-2026-ready/ventegra.png" alt="Ventegra" loading="lazy"></a></li>
+      </ul>
+      <p class="cr-note">Nine were named in the inaugural CAA 2026 Readiness Report, published July 29, 2026. The rest qualified after publication. The next issue updates the list.</p>
+
+      <p class="cr-fine">Inclusion reflects a PBM&rsquo;s decision to open its standard contract to scoring, and the rating measures contract language rather than conduct, price, or service. No PBM paid to be scored, to be remediated, or to be listed. Recognition here is earned, and it can&rsquo;t be bought.</p>
+
+      <div class="midpage-cta">
+        <p class="midpage-cta-text">Want your standard contract scored for the next issue?</p>
+        <button type="button" class="btn btn-primary" onclick="openContactModalWithTopic('CAA 2026 Readiness Report. PBM participation')">Get your contract scored &rarr;</button>
+      </div>
+
+      <div class="prose" style="margin-top: 32px;">
+        <p>The full market picture, 27 PBM standard contracts and 37 plan sponsor contracts scored against ten fiduciary provisions with a clause-level citation behind every judgment, is in the <a class="inline-link" href="https://resources.contractxray.com/readiness-report.pdf">CAA 2026 Readiness Report</a>. Foreword by Shawn Gremminger, President of the National Alliance of Healthcare Purchaser Coalitions.</p>
       </div>
     </div>
   </section>
