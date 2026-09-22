@@ -728,7 +728,32 @@
 
   .inline-contact:hover { border-bottom-color: var(--teal-deep); }
 
-</style>
+
+    /* Founding Advisor Partners wall */
+    .fa-wall {
+      list-style: none; padding: 0; margin: 32px 0 0; max-width: 720px;
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+    }
+    .fa-tile {
+      display: flex; align-items: center; justify-content: center;
+      height: 92px; padding: 14px 16px; background: #fff;
+      border: 1px solid var(--border); border-radius: 4px; text-align: center;
+    }
+    .fa-tile img { display: block; max-width: 100%; max-height: 60px; width: auto; height: auto; }
+    .fa-tile--text span {
+      font-family: var(--font-display); font-weight: 500; font-size: 16px;
+      line-height: 1.2; color: var(--navy);
+    }
+    .fa-fine {
+      max-width: 720px; margin: 14px 0 0; font-size: 12.5px; line-height: 1.55;
+      color: var(--ink-muted);
+    }
+    @media (max-width: 640px) {
+      .fa-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .fa-tile { height: 80px; }
+      .fa-tile img { max-height: 50px; }
+    }
+  </style>
 <link rel="stylesheet" href="/scrollspy.css">
 </head>
 <body>
@@ -785,6 +810,7 @@
       <li><a href="#methodology-problem">The methodology problem</a></li>
       <li><a href="#how-advisors-use-it">How advisors use it</a></li>
       <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#founding-advisor-partner">Founding Advisors</a></li>
       <li><a href="#who-this-is-for">Who this is for</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Get started</a></li>
@@ -798,6 +824,7 @@
       <li><a href="#methodology-problem">The methodology problem</a></li>
       <li><a href="#how-advisors-use-it">How advisors use it</a></li>
       <li><a href="#what-you-receive">What you receive</a></li>
+      <li><a href="#founding-advisor-partner">Founding Advisors</a></li>
       <li><a href="#who-this-is-for">Who this is for</a></li>
       <li><a href="#what-this-is-not">What this is not</a></li>
       <li><a href="#get-started">Get started</a></li>
@@ -872,44 +899,56 @@
     </div>
   </section>
 
-  <!-- Section 4: Founding Advisor Partner -->
+  <!-- Section 4: Founding Advisor Partners -->
   <section class="section" id="founding-advisor-partner">
     <div class="container-narrow">
-      <p class="section-eyebrow">04 &middot; Founding Advisor Partner</p>
-      <h2 class="section-title">Join the Founding Cohort as a Founding Advisor Partner.</h2>
+      <p class="section-eyebrow">04 &middot; Founding Advisor Partners</p>
+      <h2 class="section-title">The advisors who went first.</h2>
       <div class="prose">
-        <p>Using Contract X-Ray stays free. The Founding Advisor Partner program is an optional membership for advisors who want to lead with this work. It is open now through RosettaFest, July 2026.</p>
-        <p>Here is what you get for $2,500:</p>
+        <p>These firms joined the Founding Cohort as Founding Advisor Partners and brought Contract X-Ray to their clients from the start.</p>
+      </div>
+
+      <ul class="fa-wall" aria-label="Founding Advisor Partners">
+          <li class="fa-tile"><img src="founding-advisors/alera-group.png" alt="Alera Group" loading="lazy"></li>
+          <li class="fa-tile"><img src="founding-advisors/benefit-link.png" alt="Benefit Link" loading="lazy"></li>
+          <li class="fa-tile"><img src="founding-advisors/custom-benefits-solutions.png" alt="Custom Benefits Solutions" loading="lazy"></li>
+          <li class="fa-tile"><img src="founding-advisors/edge-benefit-partners.png" alt="Edge Benefit Partners" loading="lazy"></li>
+      </ul>
+      <p class="fa-fine">Listing reflects participation in the Founding Advisor Partner program. It is not an endorsement, certification, or referral by Nautilus Health Institute, and Nautilus pays no referral fees.</p>
+
+      <div class="prose" style="margin-top: 40px;">
+        <p><strong>The Founding Advisor Cohort is closed.</strong> Using Contract X-Ray stays free, with or without membership. The Founding Advisor Partner program was an optional membership for advisors who wanted to lead with this work.</p>
+        <p>What Founding Advisor Partners received:</p>
       </div>
 
       <div class="deliverable-block">
         <h3>Two free Full Assessments</h3>
-        <p>For plan sponsors of your choosing. A $2,000 to $10,000 value depending on plan size, and a low-friction way to bring your best clients into the cohort.</p>
+        <p>For plan sponsors of their choosing. A $500 to $10,000 value depending on plan size.</p>
       </div>
       <div class="deliverable-block">
         <h3>Methodology training</h3>
-        <p>Walk into every PBM contract conversation with the rigor the framework is built on.</p>
+        <p>The rigor the framework is built on, for every PBM contract conversation.</p>
       </div>
       <div class="deliverable-block">
         <h3>The sales enablement kit</h3>
-        <p>Sample scorecards, Negotiation Report templates, model contract language for every Red Flag provision, and the documented methodology behind the recommendations you already make. Co-branded materials and a webinar for your client base are included.</p>
+        <p>Sample scorecards, Negotiation Report templates, model contract language for every Red Flag provision, and the documented methodology behind the recommendations advisors already make. Co-branded materials and a webinar for their client base are included.</p>
       </div>
       <div class="deliverable-block">
-        <h3>Five copies of The Middleman&rsquo;s Cut</h3>
-        <p>Health Rosetta Press, July 2026. Built to land in the hands of CEOs, CFOs, and boards. Founding members get the books before they reach stores.</p>
+        <h3>25 copies of The Middleman&rsquo;s Cut</h3>
+        <p>Health Rosetta Press, July 2026. Built to land in the hands of CEOs, CFOs, and boards.</p>
       </div>
       <div class="deliverable-block">
         <h3>Founding Advisor recognition</h3>
-        <p>A public listing on contractxray.com as a Founding Advisor: independent, fiduciary-aligned, and on the leading edge of where PBM contract standards are going. Includes Full Assessment access through 2029.</p>
+        <p>A public listing on contractxray.com as a Founding Advisor Partner. The listing runs through 2029.</p>
       </div>
-
-      <div class="prose" style="margin-top: 28px;">
-        <p>Most advisors recover the $2,500 on their first plan sponsor engagement. Everything after is upside: doors opened at prospects you have never reached, conversations restarted with clients who had stopped listening.</p>
+      <div class="deliverable-block">
+        <h3>Pricing locked through 2029</h3>
+        <p>Founding Advisor clients pay today&rsquo;s Full Assessment rates through 2029, at whatever tier their plan size sets. If rates rise, the locked rate holds.</p>
       </div>
 
       <div class="midpage-cta">
-        <p class="midpage-cta-text">Ready to join as a Founding Advisor Partner?</p>
-        <button type="button" class="btn btn-primary" onclick="openContactModalWithTopic('Founding Advisor Partner')">Get in touch &rarr;</button>
+        <p class="midpage-cta-text">Interested in the next cohort?</p>
+        <button type="button" class="btn btn-primary" onclick="openContactModalWithTopic('Founding Advisor Partner. Next cohort')">Ask about the next cohort &rarr;</button>
       </div>
     </div>
   </section>
@@ -944,7 +983,7 @@
       </div>
 
       <ul class="exclusion-list">
-        <li><strong>Not a revenue stream for advisors.</strong> Nautilus pays no referral fees, and advisors pay nothing to use the framework. Quick Look is free, the Full Assessment is paid by the plan sponsor, and the Founding Advisor Partner program is an optional membership, never a requirement.</li>
+        <li><strong>Not a revenue stream for advisors.</strong> Nautilus pays no referral fees, and advisors pay nothing to use the framework. Quick Look is free, the Full Assessment is paid by the plan sponsor, and the Founding Advisor Partner program was an optional membership, never a requirement.</li>
         <li><strong>Not a replacement for advisor expertise.</strong> The report is an analytical input. The judgment about how to negotiate, what to prioritize, and what the relationship requires belongs to the advisor who knows the client.</li>
         <li><strong>Not a captive tool.</strong> Any advisor can use Contract X-Ray on any client&rsquo;s contract. There is no exclusivity, no certification gate, and no firm-level lock-in.</li>
       </ul>
