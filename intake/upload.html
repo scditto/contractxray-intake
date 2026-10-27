@@ -76,11 +76,23 @@
 <div class="page-hd-text">
 <div class="intake-kicker">Upload Materials</div>
 <h1>Submit Contracts and Supporting Documents</h1>
-<p>Upload the base agreement, amendments, exhibits, pricing schedules, and other contract materials.</p>
+<p id="upload-subhead">Upload the base agreement, amendments, exhibits, pricing schedules, and other contract materials.</p>
 </div>
 </div>
 <div class="card">
 <div id="relationships-container"></div>
+<!-- Restored 2026-10-27. The styles for this button have been in styles.css
+     since the multi-page refactor but the element itself was dropped, so
+     renderRelationships()'s querySelector has been returning null and a
+     sponsor with two PBMs had no way to add the second. submitForm() already
+     loops relationships and POSTs each separately, so this is the supported
+     path for a primary plus a specialty carve-out: two relationships, two
+     reports. Without it, users put both agreements in one relationship and
+     only the first was ever analysed. -->
+<button class="btn-add-relationship" type="button" onclick="addRelationship()" style="display:none">
+    <span class="btn-add-relationship-icon">+</span>
+    <span id="add-rel-label">Add another PBM</span>
+</button>
 <div class="sla-strip">
 <svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 <span id="sla-text">Your Quick Look report will be delivered within 1 hour.</span>
@@ -206,6 +218,11 @@ const PBM_NAMES = [
 
 const MAX_REL_BYTES     = 4 * 1024 * 1024;
 const OTHER_VALUE       = 'Other (Please specify below)';
+// Quick Look analyses one agreement per submission. Two PBMs belong in two
+// relationships, which this form already submits as separate runs. Premium
+// takes a full document set in one relationship and is unaffected.
+const SUPPORT_EMAIL     = 'support@nautilushealth.org';
+function maxFilesPerRel() { return selectedTier === 'premium' ? Infinity : 1; }
 const CXR_WORKER_BASE   = 'https://cxr-analyze.steve-340.workers.dev';
 const TIER_SELECTOR_URL = 'https://www.contractxray.com/tier-selector.html';
 
@@ -279,9 +296,16 @@ function addFilesToRel(id, fileList) {
     let running = current;
     const rejected = [];
 
+    const cap = maxFilesPerRel();
+    let overCap = false;
+
     Array.from(fileList).forEach(file => {
         if (!isPdfFile(file)) {
             rejected.push(`"${file.name}" is not a PDF. Only PDF files are accepted.`);
+            return;
+        }
+        if (rel.files.length >= cap) {
+            overCap = true;
             return;
         }
         if (running + file.size > MAX_REL_BYTES) {
@@ -293,9 +317,22 @@ function addFilesToRel(id, fileList) {
         running += file.size;
     });
 
+    if (overCap) {
+        alert(
+            'Quick Look reviews one agreement at a time.\n\n' +
+            'If these are agreements with different PBMs, for example a primary and a ' +
+            'specialty carve-out, add a second PBM below. You will get a separate report ' +
+            'for each, which is more useful than one combined.\n\n' +
+            'If they are parts of a single agreement, combine them into one PDF before ' +
+            'submitting.\n\n' +
+            'Stuck? Email ' + SUPPORT_EMAIL + ' and we will help.'
+        );
+    }
+
     if (rejected.length) {
         alert('Some files were not added:\n\n' + rejected.join('\n') +
-            '\n\nIf the file is too large, please compress it. For other questions, contact info@nautilushealth.org.');
+            '\n\nIf the file is too large, please compress it. For other questions, contact ' +
+            SUPPORT_EMAIL + '.');
     }
     renderRelationships();
     updateSubmitBtn();
@@ -308,13 +345,21 @@ function removeFileFromRel(relId, fileIndex) {
     updateSubmitBtn();
 }
 
+// Premium's submitPremium() reads relationships[0] only, so offering a second
+// relationship there would silently drop it (worklist 6a). Quick Look's
+// submitForm() loops every relationship and POSTs each separately, so the
+// button is correct there and only there, until 6a is fixed.
+function showAddRelationship() {
+    return selectedTier !== 'premium';
+}
+
 function renderRelationships() {
     const container = document.getElementById('relationships-container');
     const addBtn    = document.querySelector('.btn-add-relationship');
 
     if (relationships.length === 0) {
         container.innerHTML = '';
-        if (addBtn) addBtn.style.display = '';
+        if (addBtn) addBtn.style.display = showAddRelationship() ? '' : 'none';
         return;
     }
 
@@ -357,27 +402,34 @@ function renderRelationships() {
                 <div class="rel-size-bar">
                     <span class="${sizeClass}">${sizeMsg}</span>
                 </div>` : ''}
-                ${!overLimit ? `
+                ${!overLimit && rel.files.length < maxFilesPerRel() ? `
                 <div class="rel-drop-zone" id="drop-${rel.id}"
                     onclick="document.getElementById('file-input-${rel.id}').click()"
                     ondragover="relDragOver(event, ${rel.id})"
                     ondragleave="relDragLeave(event, ${rel.id})"
                     ondrop="relDrop(event, ${rel.id})">
                     ${rel.files.length === 0
-                        ? 'Drop contract document(s) here or click to browse'
+                        ? (maxFilesPerRel() === 1
+                            ? 'Drop the agreement here or click to browse &middot; one PDF'
+                            : 'Drop contract document(s) here or click to browse')
                         : '+ Add more documents to this relationship'}
                     <input type="file" id="file-input-${rel.id}" style="display:none"
-                        accept=".pdf" multiple
+                        accept=".pdf" ${maxFilesPerRel() === 1 ? '' : 'multiple'}
                         onchange="addFilesToRel(${rel.id}, this.files); this.value='';">
-                </div>` : `
+                </div>` : overLimit ? `
                 <div class="rel-drop-zone" style="opacity:0.4;cursor:not-allowed;pointer-events:none;">
-                    4 MB limit reached. Compress files or contact support&#64;nautilushealth.org.
+                    4 MB limit reached. Compress files or contact ${SUPPORT_EMAIL}.
+                </div>` : `
+                <div class="rel-note">
+                    One agreement per report. Another PBM? Add it below for a separate report.
+                    Agreement split across files? Combine them into one PDF, or email
+                    <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.
                 </div>`}
             </div>
         </div>`;
     }).join('');
 
-    if (addBtn) addBtn.style.display = '';
+    if (addBtn) addBtn.style.display = showAddRelationship() ? '' : 'none';
 }
 
 function relDragOver(e, id) {
@@ -638,6 +690,19 @@ async function submitForm() {
     if (selectedTier === 'premium') {
         document.getElementById('sla-text').textContent =
             'Your Full Assessment reports will be delivered within 3 business days.';
+    } else {
+        // The default heading invites a full document set, which is Premium's
+        // behaviour. Quick Look analyses one agreement per report, so say so
+        // before anything is selected rather than rejecting it afterwards.
+        const sub = document.getElementById('upload-subhead');
+        if (sub) {
+            sub.innerHTML =
+                'Upload one agreement per PBM. If you have more than one PBM, for example a ' +
+                'primary and a specialty carve-out, add each below and you will receive a ' +
+                'separate report for each. If an agreement is split across several files, ' +
+                'combine them into one PDF, or email <a href="mailto:' + SUPPORT_EMAIL + '">' +
+                SUPPORT_EMAIL + '</a> and we will help.';
+        }
     }
 
     initRelationships();
