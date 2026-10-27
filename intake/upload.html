@@ -321,8 +321,8 @@ function addFilesToRel(id, fileList) {
         alert(
             'Quick Look reviews one agreement at a time.\n\n' +
             'If these are agreements with different PBMs, for example a primary and a ' +
-            'specialty carve-out, add a second PBM below. You will get a separate report ' +
-            'for each, which is more useful than one combined.\n\n' +
+            'specialty carve-out, add a second PBM below and submit once. You will get a ' +
+            'separate report for each, which is more useful than one combined.\n\n' +
             'If they are parts of a single agreement, combine them into one PDF before ' +
             'submitting.\n\n' +
             'Stuck? Email ' + SUPPORT_EMAIL + ' and we will help.'
@@ -421,8 +421,8 @@ function renderRelationships() {
                     4 MB limit reached. Compress files or contact ${SUPPORT_EMAIL}.
                 </div>` : `
                 <div class="rel-note">
-                    One agreement per report. Another PBM? Add it below for a separate report.
-                    Agreement split across files? Combine them into one PDF, or email
+                    One agreement per report. Another PBM? Add it below and submit once for both.
+                    A single agreement split across files? Combine them into one PDF, or email
                     <a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>.
                 </div>`}
             </div>
@@ -698,10 +698,10 @@ async function submitForm() {
         if (sub) {
             sub.innerHTML =
                 'Upload one agreement per PBM. If you have more than one PBM, for example a ' +
-                'primary and a specialty carve-out, add each below and you will receive a ' +
-                'separate report for each. If an agreement is split across several files, ' +
-                'combine them into one PDF, or email <a href="mailto:' + SUPPORT_EMAIL + '">' +
-                SUPPORT_EMAIL + '</a> and we will help.';
+                'primary and a specialty carve-out, add each one here and submit once. You ' +
+                'will receive a separate report for each. If a single agreement is split ' +
+                'across several files, combine them into one PDF, or email ' +
+                '<a href="mailto:' + SUPPORT_EMAIL + '">' + SUPPORT_EMAIL + '</a> and we will help.';
         }
     }
 
