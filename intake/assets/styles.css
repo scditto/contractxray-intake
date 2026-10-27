@@ -583,6 +583,16 @@
         .rel-size-bar .size-ok { color: var(--teal); }
         .rel-size-bar .size-warn { color: #b45309; font-weight: 600; }
 
+        /* Shown once a Quick Look relationship holds its one agreement, in place
+           of the drop zone. Explains the two ways to send more rather than
+           leaving the user to guess why they cannot add another file. */
+        .rel-note {
+            border-left: 2px solid var(--teal);
+            padding: 0.45rem 0 0.45rem 0.7rem;
+            font-size: 0.75rem; line-height: 1.45; color: var(--mid-text);
+        }
+        .rel-note a { color: var(--teal); }
+
         .rel-drop-zone {
             border: 1.5px solid var(--border-mid); border-radius: 5px;
             padding: 0.7rem 1rem; text-align: center; cursor: pointer;
